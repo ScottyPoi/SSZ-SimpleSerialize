@@ -1,0 +1,22 @@
+[
+    {
+        "name": "home",
+        "url": "/",
+        "title": "SSZ Home Page"
+    },
+    {
+        "name": "Specs",
+        "url": "/specs",
+        "title": "SSZ Specs"
+    },
+    {
+        "name": "Merkle Trees",
+        "url": "/merkletrees",
+        "title": "Merkle Trees"
+    },
+    {
+        "name": "Implementations",
+        "url": "/implementations",
+        "title": "SSZ Implementations"
+    }
+] 

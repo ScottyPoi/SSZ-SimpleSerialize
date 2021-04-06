@@ -1,0 +1,62 @@
+[
+    {"title": "Constants",
+    "type": "main"
+    },
+
+    {"title": "Typing",
+    "type": "main"},
+
+    {"title": "- Basic types",
+        "type": "sub"},
+
+    {"title": "- Composite types",
+        "type": "sub"},
+
+    {"title": "- Variable-size and fixed-size",
+        "type": "sub"},
+
+    {"title": "- Aliases",
+        "type": "sub"},
+
+    {"title": "- Default values",
+        "type": "sub"},
+
+    {"title": "- is_zero",
+        "type": "sub"},
+
+    {"title": "- Illegal types",
+        "type": "sub"},
+
+    {"title": "Serialization",
+        "type": "main"},
+
+    {"title": "- uintN",
+        "type": "sub"},
+    {"title": "- boolean",
+        "type": "sub"},
+    {"title": "- null",
+        "type": "sub"},
+
+    {"title": "- BitvectorN",
+        "type": "sub"},
+
+    {"title": "- BitlistN",
+        "type": "sub"},
+
+    {"title": "- Vectors, containers, lists, unions",
+        "type": "sub"},
+
+    {"title": "Deserialization",
+        "type": "main"},
+
+    {"title": "Merkleization",
+        "type": "main"},
+
+    {"title": "Summaries and expansions",
+        "type": "main"},
+
+    {"title": "Implementations",
+        "type": "main"}
+]
+
+

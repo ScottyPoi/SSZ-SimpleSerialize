@@ -1,0 +1,128 @@
+[
+    {
+        "name": "Home",
+        "url": "/",
+        "title": "SSZ Home Page"
+    },
+    {
+        "name": "Overview",
+        "url": "/overview",
+        "title": "Overview",
+        "pages": [
+            {
+                "name": "Overview",
+                "url": "/overview/",
+                "title": "SSZ Overview Introduction"   
+            },
+            {
+                "name": "Introduction",
+                "url": "/overview/introduction",
+                "title": "SSZ Overview - Introduction"   
+            },
+            {
+                "name": "Serialization",
+                "url": "/overview/serialization",
+                "title": "SSZ Overview - Serialization"   
+            },
+            {
+                "name": "Commitments",
+                "url": "/overview/commitments",
+                "title": "SSZ Overview - Commitments"   
+            },
+            {
+                "name": "Merkle Tree",
+                "url": "/overview/merkletree",
+                "title": "SSZ Overview - Merkle Tree"   
+            },
+            {
+                "name": "SimpleSerialize",
+                "url": "/overview/simpleserialize",
+                "title": "SSZ Overview - SimpleSerialize"   
+            }
+        ]
+    },
+    {
+        "name": "Documentation",
+        "url": "/documentation",
+        "title": "Documentation",
+        "pages": [
+            {
+                "name": "Documentation",
+                "url": "/documentation/",
+                "title": "SSZ Documentation"   
+            },
+            {
+                "name": "Specs",
+                "url": "/documentation/specs",
+                "title": "SSZ Specs"   
+            },
+            {
+                "name": "Wiki",
+                "url": "/documentation/wiki",
+                "title": "SSZ Wiki"   
+            }
+        ]
+    },
+    {
+        "name": "Implementations",
+        "url": "/implementations",
+        "title": "SSZ Implementations",
+        "pages": [
+            {
+                "name": "Implementations",
+                "url": "/implementations/",
+                "title": "SSZ Implementations"
+            },
+            {
+                "name": "Python",
+                "url": "/implementations/python",
+                "title": "SSZ Implementations - Python"
+            },
+            {
+                "name": "TypeScript",
+                "url": "/implementations/typescript",
+                "title": "SSZ Implementations - Typescript"
+            },
+            {
+                "name": "Go",
+                "url": "/implementations/go",
+                "title": "SSZ Implementations - Go"
+            },
+            {
+                "name": "Dafny",
+                "url": "/implementations/dafny",
+                "title": "SSZ Implementations - Dafny"
+            },
+            {
+                "name": "Java",
+                "url": "/implementations/java",
+                "title": "SSZ Implementations - Java"
+            },
+            {
+                "name": "Nim",
+                "url": "/implementations/nim",
+                "title": "SSZ Implementations - Nim"
+            },
+            {
+                "name": "C#",
+                "url": "/implementations/csharp",
+                "title": "SSZ Implementations - C#"
+            },
+            {
+                "name": "Zig",
+                "url": "/implementations/zig",
+                "title": "SSZ Implementations - Zig"
+            },
+            {
+                "name": "Rust",
+                "url": "/implementations/rust",
+                "title": "SSZ Implementations - Rust"
+            },
+            {
+                "name": "Swift",
+                "url": "/implementations/swift",
+                "title": "SSZ Implementations - Swift"
+            }
+        ]
+    }
+] 

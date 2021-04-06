@@ -1,0 +1,30 @@
+.Scrollspy1 {
+    font-size: 90%;
+    padding-top: 0;
+    padding-bottom: 0;
+    
+}
+
+.Scrollspy2 {
+    font-size: 70%;
+    margin-left: 40px;
+    padding-top: 0;
+    padding-bottom: 0;
+}
+
+.Scrollspy3 {
+    font-size: 50%;
+    padding-top: 0;
+    padding-bottom: 0;
+    margin-left: 80px;
+}
+
+.iscurrent {
+    display: inline-block;
+    border: solid white;
+}
+
+.container {
+    margin-top: 200px;
+    
+}

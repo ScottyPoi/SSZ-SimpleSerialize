@@ -1,0 +1,50 @@
+- title: Home
+  pages:
+    - path: /
+- title: Overview
+  pages:
+    - path: /overview
+- title: Constants
+  pages:
+    - path: /Specifications/constants
+- title: Typing
+  pages:
+    - title: Basic Types
+      path: /Specifications/typing/basic
+    - title: Composite Types
+      path: /Specifications/typing/composite
+    - title: Default Values
+      path: /Specifications/typing/defaultvalues
+    - title: Variable Size
+      path: /Specifications/typing/variablesize
+    - title: Fixed Size
+      path: /Specifications/typing/fixedsize
+    - title: Illegal Types
+      path: /Specifications/typing/illegaltypes
+- title: Serialization
+  pages:
+    - title: UintN
+      path: /Specifications/serialization/UintN
+    - title: Boolean
+      path: /Specifications/serialization/boolean
+    - title: BitList
+      path: /Specifications/serialization/bitlist
+    - title: BitVector
+      path: /Specifications/serialization/bitvector
+    - title: Lists
+      path: /Specifications/serialization/lists
+    - title: Containers
+      path: /Specifications/serialization/containers
+    - title: Unions
+      path: /Specifications/serialization/unions
+    - title: NullType
+      path: /Specifications/serialization/null
+- title: Deserialization
+  pages:
+    - path: /Specifications/deserialization
+- title: Merkleization
+  pages:
+    - path: /Specifications/merkleization
+- title: Implementations
+  pages:
+    - path: /Specifications/implementations
