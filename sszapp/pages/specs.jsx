@@ -36,7 +36,7 @@ export default function Specs({ SpecsData }) {
           <>
           <section id={topic} />
           <section id={topic}>
-            <ReactMarkdown key={sections[i]} >{`${sections[i]}`}</ReactMarkdown>
+            <ReactMarkdown plugins={[slug, toc, gfm]} key={sections[i]} >{`${sections[i]}`}</ReactMarkdown>
           </section>
           </>
         )}
