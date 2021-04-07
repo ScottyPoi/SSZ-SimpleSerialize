@@ -10,11 +10,6 @@
         "title": "Overview",
         "pages": [
             {
-                "name": "Overview",
-                "url": "/overview/",
-                "title": "SSZ Overview Introduction"   
-            },
-            {
                 "name": "Introduction",
                 "url": "/overview/introduction",
                 "title": "SSZ Overview - Introduction"   
@@ -25,9 +20,9 @@
                 "title": "SSZ Overview - Serialization"   
             },
             {
-                "name": "Commitments",
-                "url": "/overview/commitments",
-                "title": "SSZ Overview - Commitments"   
+                "name": "Hashing",
+                "url": "/overview/hashing",
+                "title": "SSZ Overview - Hashing"   
             },
             {
                 "name": "Merkle Tree",
@@ -47,11 +42,6 @@
         "title": "Documentation",
         "pages": [
             {
-                "name": "Documentation",
-                "url": "/documentation/",
-                "title": "SSZ Documentation"   
-            },
-            {
                 "name": "Specs",
                 "url": "/documentation/specs",
                 "title": "SSZ Specs"   
@@ -68,11 +58,6 @@
         "url": "/implementations",
         "title": "SSZ Implementations",
         "pages": [
-            {
-                "name": "Implementations",
-                "url": "/implementations/",
-                "title": "SSZ Implementations"
-            },
             {
                 "name": "Python",
                 "url": "/implementations/python",
