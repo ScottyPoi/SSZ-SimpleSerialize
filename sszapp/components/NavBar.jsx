@@ -34,6 +34,7 @@ export default function NavBar({ ...props }) {
               <li>
                 <div className='row' >
                   <Link className='nav-link' href='#'>{page.name}</Link>
+                  <ul className='navbar-nav'>
                       {page.pages.map((subpage) => {
                         return (
                         <div className='d-flex flex-row' key={subpage.name}>
@@ -45,6 +46,7 @@ export default function NavBar({ ...props }) {
                         </div>
                         )
                       })}
+                      </ul>
                   </div>       
                 </li>              
               </div>

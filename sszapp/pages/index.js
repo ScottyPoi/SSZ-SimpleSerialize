@@ -2,27 +2,23 @@ import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import React from 'react'
 import Node from '../stories/Node'
 import { FirstStory } from '../stories/Node.stories'
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
 import Link from 'next/link';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { withRouter } from 'react-router';
 import Layout from '../components/layout.jsx';
 import MenuButton from '../stories/MenuButton';
 import { SMap } from '../stories/MenuButton.stories';
 
-const Home = () => (
+export default function Home() {
+  return (
   <Layout>
-    <Row>  
-      <Col lg={9}>
+    <div className='row justify-content-center'>  
+      <div className='col-9'>
         SSZ SimpleSerialize
         <Node {...FirstStory.args} />
         <MenuButton {...SMap.args} />
-      </Col>
-    </Row>
-    <Row>
-      <Col md={4}>
+      </div>
+    </div>
+    <div className='row'>
+      <div className='col-4'>
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">Serialization</h5>
@@ -31,8 +27,8 @@ const Home = () => (
             <Link href="#" className="card-link">Learn about Serialization</Link>
           </div>
         </div>
-      </Col>
-      <Col md={4}>
+      </div>
+      <div className='col-4'>
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">Hashing</h5>
@@ -43,8 +39,8 @@ const Home = () => (
             <Link href="#" className="card-link">Learn about Merkle Trees</Link>
           </div>
         </div>
-      </Col>
-      <Col md={4}>
+      </div>
+      <div className='col-4'>
         <div className="card">
           <div className="card-body">
             <h5 className="card-title">Merkle Tree Proofs</h5>
@@ -53,11 +49,10 @@ const Home = () => (
             <Link href="#" className="card-link">Learn about Merkle Proofs</Link>
           </div>
         </div>
-      </Col>
+      </div>
     
-    </Row>
-      </ Layout>
+    </div>
+  </ Layout>
       )
 
-
-export default Home
+}
