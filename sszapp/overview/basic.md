@@ -3,8 +3,6 @@ title: Basic Types
 section: Types
 ---
 
-## Basic types
-
 The basic types all strictly follow the basic-type principles:
 
 - 1 to 32 bytes long, for merkleization purposes.
