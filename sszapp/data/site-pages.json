@@ -10,30 +10,116 @@
         "title": "Overview",
         "pages": [
             {
-                "name": "Introduction",
-                "url": "/overview/introduction",
-                "title": "SSZ Overview - Introduction"   
+                "name": "Types",
+                "url": "/overview/types",
+                "title": "SSZ Overview - Types",
+                "pages": [
+                    {
+                        "name": "Basic Types",
+                        "url": "/overview/basic",
+                        "title": "Basic Types"
+                    },
+                    {
+                        "name": "Complex Types",
+                        "url": "/overview/complex",
+                        "title": "Complex Types"
+                    },
+                    {
+                        "name": "Bitfields",
+                        "url": "/overview/bitfields",
+                        "title": "Bitfields"
+                    },
+                    {
+                        "name": "Unions",
+                        "url": "/overview/union",
+                        "title": "Unions"
+                    }
+                ]   
             },
             {
-                "name": "Serialization",
-                "url": "/overview/serialization",
-                "title": "SSZ Overview - Serialization"   
+                "name": "Representaion",
+                "url": "",
+                "title": "",
+                "pages": [
+                    {
+                        "name": "Fixed Variable Size",
+                        "url": "/overview/fixed_variable_size",
+                        "title": "Fixed Variable Size"
+                    },
+                    {
+                        "name": "Sequences",
+                        "url": "/overview/sequences",
+                        "title": "Sequences"
+                    }
+                ]
             },
             {
-                "name": "Hashing",
-                "url": "/overview/hashing",
-                "title": "SSZ Overview - Hashing"   
+                "name": "Partials",
+                "url": "/overview/partials",
+                "title": "Partials"
             },
             {
-                "name": "Merkle Tree",
-                "url": "/overview/merkletree",
-                "title": "SSZ Overview - Merkle Tree"   
+                "name": "Navigation",
+                "url": "",
+                "title": "Navigation",
+                "pages": [
+                    {
+                        "name": "Generalized Indices",
+                        "url": "/overview/generalized_indices",
+                        "title": "Generalized Indices"
+                    },
+                    {
+                        "name": "Paths",
+                        "url": "/overview/paths",
+                        "title": "Paths"
+                    },
+                    {
+                        "name": "Summaries and Expansions",
+                        "url": "/overview/summaries_expansions",
+                        "title": "Summaries and Expansions"
+                    }
+
+                ]   
             },
             {
-                "name": "SimpleSerialize",
-                "url": "/overview/simpleserialize",
-                "title": "SSZ Overview - SimpleSerialize"   
+                "name": "Merkleization",
+                "url": "",
+                "title": "Merkleization",
+                "pages": [
+                    {
+                        "name": "Hahsing",
+                        "url": "/overview/hashing",
+                        "title": "Hashing"
+                    },
+                    {
+                        "name": "Chunkify",
+                        "url": "/overview/chunkify",
+                        "title": "Chunkify"
+                    },
+                    {
+                        "name": "Merkle Proofs",
+                        "url": "/overview/merkle_proofs",
+                        "title": "Merkle Proofs"
+                    },
+                    {
+                        "name": "Mixin",
+                        "url": "/overview/mixin",
+                        "title": "Mixin"
+                    },
+                    {
+                        "name": "Subtree Merkleization",
+                        "url": "/overview/subtree_merkleization",
+                        "title": "Subtree Merkleization"
+                    },
+                    {
+                        "name": "Classic Merkle Proof Backings",
+                        "url": "/overview/classic",
+                        "title": "Classic Merkle Proof Backings"
+                    }
+                ]
+
             }
+
         ]
     },
     {

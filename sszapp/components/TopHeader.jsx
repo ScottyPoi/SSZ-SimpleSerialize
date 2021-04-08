@@ -3,7 +3,8 @@ import * as ReactBootStrap from 'react-bootstrap';
 import Head from 'next/head'
 
 export default function TopHeader({...props}) {
-    return (<>
+    return (
+    <>
             <ReactBootStrap.Col md={12}>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark" collapseonselect="true" expand="lg" bg="dark" variant="dark">
                     <div className='container-fluid'>
@@ -39,7 +40,5 @@ export default function TopHeader({...props}) {
                 </nav>
             </ReactBootStrap.Col>
             </>
-
-
     )
 }

@@ -22,13 +22,9 @@ export default function NavBar({ ...props }) {
             if (!page.pages) {
               return (
               <div key={page.name} className='d-flex flex-row'>
-                <li className='nav-link' href="#" >
-                    {page.name}  
-                </li>
+                <li className='nav-link' href="#" >{page.name}  </li>
               </div>
-
-              )
-            }
+            )}
             else { return (
               <div key={page.name} className='d-flex flex-row'>
               <li>
@@ -36,15 +32,38 @@ export default function NavBar({ ...props }) {
                   <Link className='nav-link' href='#'>{page.name}</Link>
                   <ul className='navbar-nav'>
                       {page.pages.map((subpage) => {
-                        return (
+                        if (!subpage.pages) { 
+                          return (
                         <div className='d-flex flex-row' key={subpage.name}>
                           <li>
-                            <Link className={`nav-link`} href="#" style={{fontSize: 80}}>
+                            <Link className={`nav-link`} href='#' style={{fontSize: 80}}>
                               <div className={styles.sitemap3}>{subpage.name}</div>
                             </Link>  
                           </li>
                         </div>
-                        )
+                        )}
+                        else {
+                          return (
+                          <div className='d-flex flex-row' key={subpage.name}>
+                            <li>
+                              <Link className='nav-link' href="#" style={{fontSize: 80}}>
+                                <div className={styles.sitemap3}> {subpage.name} </div>
+                              </Link>
+                              <ul className='navbar-nav'>
+                          {subpage.pages.map((subsubpage) => {
+                              return (
+                                <li className='d-flex flex-row' key={subsubpage.name}>
+                                  <Link className='nav-link' href='#' style={{fontSize: 60}}>
+                                    <div className={styles.sitemap4}>{subsubpage.name}</div>
+                                  </Link>
+                                </li>
+                              )
+                            })}
+                            </ul>
+                            </li>
+                          </div>
+                          )
+                        }
                       })}
                       </ul>
                   </div>       

@@ -43,16 +43,16 @@ Alias: `bit`
 
 Default value: `False`
 
-### Representation
+### Representation (Boolean)
 
 A single byte: 1 (i.e. `0b00000001`) for `True`, and 0 (i.e. `0b00000000`) for `False`.
 
 To have a one-to-one correspondence from value to serialized byte, the non-utilized bits of the byte MUST all be zero bits.
 
-### Merkleization
+### Merkleization (Boolean)
 
 The boolean represented as byte is merkleized exactly like `byte`, including the ability to pack (but only to `byte` precision, refer to bitfields for more efficient packing).
 
-### Size
+### Size (Boolean)
 
 `size_of(bool): 1`

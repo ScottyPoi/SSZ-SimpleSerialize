@@ -11,7 +11,8 @@ export async function getStaticPaths() {
 }
 
 export default function OverviewPage({ overviewPageData }) {
-  return (<div className='position-relative'>
+  return (
+  <div className='position-relative'>
       <Head>
         {overviewPageData.title}
         {overviewPageData.id}
