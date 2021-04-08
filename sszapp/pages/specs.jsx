@@ -5,11 +5,9 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import toc from 'remark-toc';
 import slug from 'remark-slug';
-import Layout from '../components/layout';
 import IsolateTOC from '../components/isolateTOC';
 import SeparateSections from '../components/SeparateSections';
 import TOCscroll from '../components/TOCscroll';
-
 
 export async function getStaticProps() {
   const SpecsData = fs.readFileSync('./eth2.0-specs/ssz/simple-serialize.md', 'utf8')
@@ -36,7 +34,7 @@ export default function Specs({ SpecsData }) {
           <div key={sect}>
           <section id={topic} />
           <section id={topic}>
-            <ReactMarkdown plugins={[slug, toc, gfm]} >{`${sect}`}</ReactMarkdown>
+            <ReactMarkdown plugins={[slug, toc, gfm]}>{`${sect}`}</ReactMarkdown>
           </section>
           </div>
         )}
@@ -46,31 +44,29 @@ export default function Specs({ SpecsData }) {
 
 
     return (
-                <Layout>
-                  <div className='d-flex container'>
-                  <div className='row '>
-                    <div className='col-8'>
-                      <div className='row'>
-                        <h1>Simple Serialize Specs</h1>
-                        <div><p>from Ethereum 2.0</p></div>
-                      </div>
-                      <div className='row'>
-                        {specsBody(sections)}
-                      </div>
-                      
-                    </div>
-                    <div className='col-4'>
-                    </div>
-                  </div>
-                    
-                  <div className='d-flex flex-row row fixed-top'>
-                    <div className='col-9'>
-                    </div>
-                    <div className='col-3'>
-                      {scrollspy}
-                    </div>
-                  </div>
-                  </div>
-                </Layout>
-            )
+      <div className='position-relative'>
+        <div className='row position-absolute top-0 start-0'>
+          <div className='col-8'>
+            <div className='row'>
+              <h1>Simple Serialize Specs</h1>
+              <div><p>from Ethereum 2.0</p></div>
+            </div>
+            <div className='row'>
+              {specsBody(sections)}
+            </div>
+            
+          </div>
+          <div className='col-4'>
+          </div>
+        </div>
+          
+        <div className='row position-fixed start-50'>
+          <div className='col-10'>
+          </div>
+          <div className='col-2'>
+            {scrollspy}
+          </div>
+        </div>
+        </div>
+    )
 }

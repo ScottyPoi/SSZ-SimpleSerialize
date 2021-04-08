@@ -24,7 +24,7 @@ const contentStyle = {
 export default function Layout({ children }) {
     console.log('fuck everything')
     return (
-          <>
+          <div className='Layout' style={layoutStyle}>
             <Head>
               <meta charSet="utf-8" />
             </Head>
@@ -40,36 +40,29 @@ export default function Layout({ children }) {
             <Head> 
               <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> 
             </Head>
-            <div className='container fluid'>
+            <div className='container'>
               <div className='row fixed-top'>
                 <div className='col'>
-                <div className='row'>
-                  <TopHeader { ...MainPage.args } />
+                  <div className='row'>
+                    <TopHeader { ...MainPage.args } />
+                  </div>
                 </div>
-                <div className='d-flex row justify-content-between'>
-                  <div className='d-flex col-3 justify-content-center'>
-                    <nav className="nav align-items-stretch flex-column navbar-dark bg-dark">
+              </div>
+            <div className="Content " style={contentStyle}>
+                <div className='row position-relative flex-row'>
+                  <div className='col-2 justify-content-center position-fixed top-10 start-0'>
+                    <nav className="nav align-items-stretch flex-column">
                       <NavBar { ...MainPage.args } />
                     </nav>
-
                   </div>
-                  <div className='d-flex col-3 justify-content-start'>On This Page</div>
                 </div>
+                <div className='row justify-content-center'>
+                  <div className='col-10'>{children}</div>
                 </div>
-              </div>
-            </div>
-            <body style={contentStyle}>
-              <div className='container'>
-                <div className='d-flex row flex-row'>
-                  <div className='d-flex flex-col col-2'></div>
-                  {console.log('hey joe')}
-                  <div className='d-flex flex-col col-10'>{children}</div>
-                  </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>
-              </div>
-            </body>
-            
-          </>
+            </div>
+          </div>
+          </div>
           )
   }
   

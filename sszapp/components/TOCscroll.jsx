@@ -4,9 +4,11 @@ import Scrollspy from 'react-scrollspy';
 import styles from './TOCscroll.module.css'
 export default function TOCscroll(topics, topicToLevel) {
     return (
-        <ReactBootStrap.Navbar collapseOnSelect expand='lg' className={styles.container} id="toc" >
-          <ReactBootStrap.Navbar.Toggle aria-controls="specs-toc" />
-          <ReactBootStrap.Navbar.Collapse id='specs-toc'>
+      <div >
+      <div className='nav flex-column' id='toc'>
+          <div className='row'>On This Page</div>
+          <div className='row'>
+            <div className='d-flex flex-column'>
           <Scrollspy items={ topics } currentClassName={styles.iscurrent} aria-current="true" offset={-150}>
             { topics.map((topic) => { 
                 let level = topicToLevel[topic] === "Scrollspy1"
@@ -22,8 +24,10 @@ export default function TOCscroll(topics, topicToLevel) {
             })
             }
           </Scrollspy>
-          </ReactBootStrap.Navbar.Collapse>
-        </ReactBootStrap.Navbar>
+          </div>
+          </div>
+        </div>
+        </div>
     )
 };
 

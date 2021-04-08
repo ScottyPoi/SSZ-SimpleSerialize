@@ -5,8 +5,6 @@ import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import toc from 'remark-toc';
 import slug from 'remark-slug';
-import Layout from '../components/layout';
-import * as ReactBootStrap from 'react-bootstrap';
 import IsolateTOC from '../components/isolateTOC';
 import SeparateSections from '../components/SeparateSections';
 import TOCscroll from '../components/TOCscroll';
@@ -33,12 +31,12 @@ export default function Specs({ MerkleProofsData }) {
         const sect = sections[i];
         const topic = topics[i];
         content.push(
-          <>
+          <div key={sect}>
           <section id={topic} />
           <section id={topic}>
-            <ReactMarkdown key={sect} plugins={[gfm, toc, slug]}>{`${sect}`}</ReactMarkdown>
+            <ReactMarkdown plugins={[gfm, toc, slug]}>{`${sect}`}</ReactMarkdown>
           </section>
-          </>
+          </div>
         )}
       return content 
     };
@@ -46,30 +44,29 @@ export default function Specs({ MerkleProofsData }) {
 
 
     return (
-                <Layout>
-                  <ReactBootStrap.Row>
-                    <ReactBootStrap.Col lg={8}>
-                      <ReactBootStrap.Row>
-                        <h1>Merkle Proofs</h1>
-                        <div><p>from Ethereum 2.0</p></div>
-                      </ReactBootStrap.Row>
-                      <ReactBootStrap.Row>
-                        {MerkleProofsBody(sections)}
-                      </ReactBootStrap.Row>
-                      
-                    </ReactBootStrap.Col>
-                    <ReactBootStrap.Col sm={4}>
-                    </ReactBootStrap.Col>
-                  </ReactBootStrap.Row>
-                    
-                  <ReactBootStrap.Row className='fixed-top' >
-                    <ReactBootStrap.Col lg={8}>
-                    </ReactBootStrap.Col>
-                    <ReactBootStrap.Col sm={4}>
-                      {scrollspy}
-                    </ReactBootStrap.Col>
-                  </ReactBootStrap.Row>
-                   
-                </Layout>
-            )
+      <div className='position-relative'>
+        <div className='row position-absolute top-0 start-0'>
+          <div className='col-7'>
+            <div className='row'>
+              <h1>Merkle Proofs</h1>
+              <div><p>from Ethereum 2.0</p></div>
+            </div>
+            <div className='row'>
+              {MerkleProofsBody(sections)}
+            </div>
+            
+          </div>
+          <div className='col-5'>
+          </div>
+        </div>
+          
+        <div className='row position-fixed top-0 start-50'>
+          <div className='col-9'>
+          </div>
+          <div className='col-3'>
+            {scrollspy}
+          </div>
+        </div>
+        </div>
+    )
 }

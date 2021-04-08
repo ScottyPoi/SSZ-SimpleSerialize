@@ -2,11 +2,12 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ReactMarkdown from 'react-markdown';
+import Layout from '../components/layout';
 
 export default function Introduction() {
 
     return (
-        <>
+        <Layout>
         <Row>
             <h2>Design</h2>
             <h4>The design choices for SSZ originate from the desire for:</h4>
@@ -20,6 +21,6 @@ export default function Introduction() {
             - **Fast data reads** by making full deserialization optional, data can be retrieved with a very minimal amount of operations, largely pre-computable at compile time.
             </ReactMarkdown>
         </Row>
-        </>
+        </Layout>
         )
 }
