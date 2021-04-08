@@ -15,7 +15,7 @@ export default function TOCscroll(topics, topicToLevel) {
                             ? styles.Scrollspy2
                             : styles.Scrollspy3
                 return (
-                  <ReactBootStrap.Nav.Link className={level} href={`#${topic}`}>
+                  <ReactBootStrap.Nav.Link key={topic} className={level} href={`#${topic}`}>
                     {`${topic}`}
                   </ReactBootStrap.Nav.Link>
                 )

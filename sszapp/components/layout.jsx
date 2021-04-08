@@ -50,7 +50,7 @@ export default function Layout({ children }) {
                   </nav>
 
                 </div>
-                <div className='d-flex col-2 justify-content-center p-5'>Table of Contents</div>
+                <div className='d-flex col-2 justify-content-start'>Table of Contents</div>
               </div>
 
             </div>

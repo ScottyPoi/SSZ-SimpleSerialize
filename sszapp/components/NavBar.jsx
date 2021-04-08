@@ -21,8 +21,8 @@ export default function NavBar({ ...props }) {
           {props.pages.map((page) => {
             if (!page.pages) {
               return (
-              <div className='d-flex flex-row'>
-                <li className='nav-link' href="#" key={page.name}>
+              <div key={page.name} className='d-flex flex-row'>
+                <li className='nav-link' href="#" >
                     {page.name}  
                 </li>
               </div>
@@ -30,8 +30,8 @@ export default function NavBar({ ...props }) {
               )
             }
             else { return (
-              <div className='d-flex flex-row'>
-              <li key={page.name}>
+              <div key={page.name} className='d-flex flex-row'>
+              <li>
                 <div className='row' >
                   <Link className='nav-link' href='#'>{page.name}</Link>
                       {page.pages.map((subpage) => {
