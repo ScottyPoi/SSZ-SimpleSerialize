@@ -1,4 +1,5 @@
-import { getAllOverviewIds, getOverviewPageData } from '../../lib/overview'
+import React from 'react';
+import { getAllOverviewIds, getOverviewPageData } from '../../lib/overviewpage'
 
 export async function getStaticPaths() {
   const paths = getAllOverviewIds()
@@ -15,12 +16,14 @@ export default function OverviewPage({ overviewPageData }) {
       {overviewPageData.id}
       <br />
       {overviewPageData.section}
+      <br />
+      <div dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
   </>)
 }
 
 
 export async function getStaticProps({ params }) {
-    const overviewPageData = getOverviewPageData(params.id)
+    const overviewPageData = await getOverviewPageData(params.id)
     return {
         props: {
             overviewPageData
