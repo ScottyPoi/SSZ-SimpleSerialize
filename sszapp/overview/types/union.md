@@ -1,4 +1,9 @@
-# Union
+---
+title: Union
+section: Types
+---
+
+## Union
 
 Type: `Union[type_0, type_1, ...]`
 

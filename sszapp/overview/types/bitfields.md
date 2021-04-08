@@ -1,4 +1,9 @@
-# Bitfields
+---
+title: Bitfields
+section: Types
+---
+
+## Bitfields
 
 Bitfields are collections of booleans, backed by sequences of bytes: a bit at sequence index `i` is put into byte `i // 8` and matches `1 << (i % 8)` within that byte.
 

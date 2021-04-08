@@ -1,4 +1,9 @@
-# Types
+---
+title: Types
+section: Types
+---
+
+## Types
 
 Types define how we interpret and interact with SSZ data.
 In addition to this they provide readability, and guard users from mixing up data or processing input beyond intended limits.

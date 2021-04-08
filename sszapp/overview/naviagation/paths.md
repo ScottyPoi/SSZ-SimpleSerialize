@@ -1,4 +1,9 @@
-# Paths
+---
+title: Paths
+section: Navigation
+---
+
+## Paths
 
 Paths are the human-readable variant of [Generalized Indices](./generalized_indices.md).
 To make paths human-readable, and derive SSZ properties like generalized indices, type information is required.

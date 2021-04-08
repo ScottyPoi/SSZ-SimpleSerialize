@@ -1,4 +1,9 @@
-# Subtree Merkleization
+---
+title: Subtree Merkleization
+section: Merkleization
+---
+
+## Subtree Merkleization
 
 Merkleization does not have to be irregular, many types are designed to map to a stable complete tree.
 

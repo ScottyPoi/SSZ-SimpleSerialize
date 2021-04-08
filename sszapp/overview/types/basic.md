@@ -1,4 +1,9 @@
-# Basic types
+---
+title: Basic Types
+section: Types
+---
+
+## Basic types
 
 The basic types all strictly follow the basic-type principles:
 

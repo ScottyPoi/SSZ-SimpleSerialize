@@ -1,4 +1,9 @@
-# Generalized Merkle tree index
+---
+title: Generalized Indices
+section: Navigation
+---
+
+## Generalized Merkle tree index
 
 The hash-tree-root of all SSZ types merkleizes the contents as a binary tree.
 In such a binary tree, the path to any node from the root can be described by a bitfield.

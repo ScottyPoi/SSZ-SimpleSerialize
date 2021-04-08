@@ -1,4 +1,9 @@
-# Summaries & Expansions
+---
+title: Summaries & Expansions
+section: Navigation
+---
+
+## Summaries & Expansions
 
 Let `A` be an object derived from another object `B` by replacing some of the (possibly nested) values of `B` by their `hash_tree_root`.
 Because of this substitution, `hash_tree_root(A) == hash_tree_root(B)`.

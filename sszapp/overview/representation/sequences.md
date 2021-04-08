@@ -1,4 +1,9 @@
-# Representation of sequences
+---
+title: Sequences
+section: Representation
+---
+
+## Representation of sequences
 
 Representation of sequences can be thought of as two parts: the fixed-size part, and the variable-size part.
 

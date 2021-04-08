@@ -1,4 +1,9 @@
-# Classic merkle proof backing
+---
+title: Classic Merkle Proof Backings
+section: Merkleization
+---
+
+## Classic merkle proof backing
 
 This format is not optimal for newer multi-proof use cases, but does offer:
 

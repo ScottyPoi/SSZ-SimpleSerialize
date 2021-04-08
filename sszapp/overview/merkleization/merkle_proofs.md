@@ -1,4 +1,9 @@
-# Merkle proofs
+---
+title: Merkle Proofs
+section: Merkleization
+---
+
+## Merkle proofs
 
 ## For beginners
 

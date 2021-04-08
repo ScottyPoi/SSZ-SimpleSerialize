@@ -1,4 +1,9 @@
-# Hashing
+---
+title: Hashing
+section: Merkleization
+---
+
+## Hashing
 
 SSZ utilizes the SHA-256 hash function.
 

@@ -1,4 +1,9 @@
-# Partials
+---
+title: Partials
+section: Partials
+---
+
+## Partials
 
 One of the main uses of multi-proofs are interactions with verifiable pre-states: a merkle multi-proof verifies the data, and the data is used in a computation.
 

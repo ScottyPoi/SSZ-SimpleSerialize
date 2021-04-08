@@ -1,4 +1,9 @@
-# Complex types
+---
+title: Complex Types
+section: Types
+---
+
+## Complex types
 
 Complex types are types that can hold multiple values at the same time, with usage similar to that of a `struct` in popular programming languages.
 

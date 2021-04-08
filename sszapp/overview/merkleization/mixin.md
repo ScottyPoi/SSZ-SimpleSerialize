@@ -1,4 +1,9 @@
-# Merkle Mix-ins
+---
+title: Merkle Mix-ins
+section: Merkleization
+---
+
+## Merkle Mix-ins
 
 Construct: `Mix(core, tag)`
 
