@@ -47,29 +47,28 @@ export default function Specs({ SpecsData }) {
 
     return (
                 <Layout>
-                  <ReactBootStrap.Row>
-                    <ReactBootStrap.Col lg={8}>
-                      <ReactBootStrap.Row>
+                  <div className='row position-absolute'>
+                    <div className='col-8'>
+                      <div className='row'>
                         <h1>Simple Serialize Specs</h1>
                         <div><p>from Ethereum 2.0</p></div>
-                      </ReactBootStrap.Row>
+                      </div>
                       <ReactBootStrap.Row>
                         {specsBody(sections)}
                       </ReactBootStrap.Row>
                       
-                    </ReactBootStrap.Col>
-                    <ReactBootStrap.Col sm={4}>
-                    </ReactBootStrap.Col>
-                  </ReactBootStrap.Row>
+                    </div>
+                    <div className='col-4'>
+                    </div>
+                  </div>
                     
-                  <ReactBootStrap.Row >
-                    <ReactBootStrap.Col lg={8}>
-                    </ReactBootStrap.Col>
-                    <ReactBootStrap.Col sm={4}>
+                  <div className='row position-fixed fixed-top align-items-stretch'>
+                    <div className='col-9'>
+                    </div>
+                    <div className='col-3'>
                       {scrollspy}
-                    </ReactBootStrap.Col>
-                  </ReactBootStrap.Row>
-                   
+                    </div>
+                  </div>
                 </Layout>
             )
 }
