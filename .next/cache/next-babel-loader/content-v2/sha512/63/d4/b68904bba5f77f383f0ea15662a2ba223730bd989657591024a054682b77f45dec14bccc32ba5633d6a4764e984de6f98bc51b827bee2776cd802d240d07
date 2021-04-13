@@ -1,1 +1,0 @@
-{"ast":null,"code":"import React from 'react';\nexport default function SplitSpecs(doc) {\n  const document = doc;\n  const split = document.split(\"<!-- /TOC -->\");\n  const TOC = split[0];\n  const specs = split[1]; // console.log(TOC);\n\n  return [specs, TOC];\n}","map":null,"metadata":{},"sourceType":"module"}
