@@ -1,1 +1,0 @@
-{"ast":null,"code":"import { jsx as _jsx } from \"react/jsx-runtime\";\nimport React from 'react';\nimport Button from 'react-bootstrap/Button';\nexport default function MenuButton(_ref) {\n  let args = Object.assign({}, _ref);\n  return /*#__PURE__*/_jsx(Button, {\n    children: args.foo\n  });\n}","map":null,"metadata":{},"sourceType":"module"}
