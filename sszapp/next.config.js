@@ -6,15 +6,6 @@ const slug = require('remark-slug')
 const sass = require("sass");
 const Fiber = require("fibers");
 
-sass.render({
-  file: "input.scss",
-  importer: function(url, prev, done) {
-    // ...
-  },
-  fiber: Fiber
-}, function(err, result) {
-  // ...
-});
 
 
 

@@ -1,0 +1,16 @@
+.scroll {
+  display: flex;
+  height: 50;
+  position: sticky;
+}
+
+.toc {
+  position: fixed;
+  display: flex;
+}
+
+.bottom {
+  position: fixed;
+}
+
+/*# sourceMappingURL=specs.module.css.map */

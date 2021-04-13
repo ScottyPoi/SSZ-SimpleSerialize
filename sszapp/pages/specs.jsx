@@ -8,6 +8,7 @@ import slug from 'remark-slug';
 import IsolateTOC from '../components/isolateTOC';
 import SeparateSections from '../components/SeparateSections';
 import TOCscroll from '../components/TOCscroll';
+import styles from '../styles/specs.module.css';
 
 export async function getStaticProps() {
   const SpecsData = fs.readFileSync('./eth2.0-specs/ssz/simple-serialize.md', 'utf8')
@@ -45,8 +46,8 @@ export default function Specs({ SpecsData }) {
 
     return (
       <div className='position-relative'>
-        <div className='row position-absolute top-0 start-0'>
-          <div className='col-8'>
+        <div className='d-flex inline-flex row position-absolute top-0 start-0'>
+          <div className='d-flex flex-column col-8'>
             <div className='row'>
               <h1>Simple Serialize Specs</h1>
               <div><p>from Ethereum 2.0</p></div>
@@ -56,17 +57,21 @@ export default function Specs({ SpecsData }) {
             </div>
             
           </div>
-          <div className='col-4'>
+          <div className='d-flex flex-column col-4'>
           </div>
-        </div>
+        </div> 
           
-        <div className='row position-fixed start-50'>
+        <div className={`row start-50 vh-100 overflow-y-scroll ${styles.toc}`}>
           <div className='col-10'>
           </div>
-          <div className='col-2'>
+          <div className={`col-2 ${styles.scroll}`}>
             {scrollspy}
           </div>
-        </div>
-        </div>
+        
+        
+        </div> 
+
+
+      </div>
     )
 }
