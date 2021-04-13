@@ -2,7 +2,7 @@ import React from 'react';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import ReactMarkdown from 'react-markdown';
-import Layout from '../components/layout';
+import Layout from '../../components/layout';
 
 export default function Introduction() {
 
