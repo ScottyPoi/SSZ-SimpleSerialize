@@ -1,15 +1,7 @@
 {
   "/_app": "pages/_app.js",
-  "/demo": "pages/demo.html",
-  "/": "pages/index.html",
-  "/introduction": "pages/introduction.html",
-  "/merkle-proofs": "pages/merkle-proofs.js",
-  "/overview/[id]": "pages/overview/[id].js",
-  "/specs": "pages/specs.js",
-  "/test2": "pages/test2.html",
-  "/typing": "pages/typing.js",
-  "/wtf": "pages/wtf.html",
   "/_error": "pages/_error.js",
   "/_document": "pages/_document.js",
-  "/404": "pages/404.html"
+  "/": "pages/index.js",
+  "/specs": "pages/specs.js"
 }
