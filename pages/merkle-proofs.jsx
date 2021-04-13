@@ -10,7 +10,7 @@ import SeparateSections from '../components/SeparateSections';
 import TOCscroll from '../components/TOCscroll';
 
 export async function getStaticProps() {
-  const MerkleProofsData = fs.readFileSync('../data/merkle-proofs.md', 'utf8')
+  const MerkleProofsData = fs.readFileSync('./data/merkle-proofs.md', 'utf8')
   return {
     props: {
       MerkleProofsData
