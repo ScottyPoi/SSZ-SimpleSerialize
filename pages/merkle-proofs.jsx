@@ -8,25 +8,24 @@ import slug from 'remark-slug';
 import IsolateTOC from '../components/isolateTOC';
 import SeparateSections from '../components/SeparateSections';
 import TOCscroll from '../components/TOCscroll';
-import styles from '../styles/specs.module.css';
 
 export async function getStaticProps() {
-  const SpecsData = fs.readFileSync('../data/simple-serialize.md', 'utf8')
+  const MerkleProofsData = fs.readFileSync('../data/merkle-proofs.md', 'utf8')
   return {
     props: {
-      SpecsData
+      MerkleProofsData
     }
   }
 }
 
 
-export default function Specs({ SpecsData }) {
-    const [body, TOC] = SplitSpecs(SpecsData);
+export default function Specs({ MerkleProofsData }) {
+    const [body, TOC] = SplitSpecs(MerkleProofsData);
     const topicToLevel = IsolateTOC(TOC);
     const sections = SeparateSections(body);
     const topics = Object.keys(topicToLevel);
     const scrollspy = TOCscroll(topics, topicToLevel);
-    const specsBody = (sections) => {
+    const MerkleProofsBody = (sections) => {
       let content = [];
       for (let i=0; i<sections.length; i++) {
         const sect = sections[i];
@@ -35,7 +34,7 @@ export default function Specs({ SpecsData }) {
           <div key={sect}>
           <section id={topic} />
           <section id={topic}>
-            <ReactMarkdown plugins={[slug, toc, gfm]}>{`${sect}`}</ReactMarkdown>
+            <ReactMarkdown plugins={[gfm, toc, slug]}>{`${sect}`}</ReactMarkdown>
           </section>
           </div>
         )}
@@ -46,32 +45,28 @@ export default function Specs({ SpecsData }) {
 
     return (
       <div className='position-relative'>
-        <div className='d-flex inline-flex row position-absolute top-0 start-0'>
-          <div className='d-flex flex-column col-8'>
+        <div className='row position-absolute top-0 start-0'>
+          <div className='col-7'>
             <div className='row'>
-              <h1>Simple Serialize Specs</h1>
+              <h1>Merkle Proofs</h1>
               <div><p>from Ethereum 2.0</p></div>
             </div>
             <div className='row'>
-              {specsBody(sections)}
+              {MerkleProofsBody(sections)}
             </div>
             
           </div>
-          <div className='d-flex flex-column col-4'>
+          <div className='col-5'>
           </div>
-        </div> 
+        </div>
           
-        <div className={`row start-50 vh-100 overflow-y-scroll ${styles.toc}`}>
-          <div className='col-10'>
+        <div className='row position-fixed top-0 start-50'>
+          <div className='col-9'>
           </div>
-          <div className={`col-2 ${styles.scroll}`}>
+          <div className='col-3'>
             {scrollspy}
           </div>
-        
-        
-        </div> 
-
-
-      </div>
+        </div>
+        </div>
     )
 }
