@@ -5,6 +5,7 @@ import { MainPage } from '../stories/TopHeader.stories';
 import NavBar from '../components/NavBar';
 import * as ReactBootStrap from 'react-bootstrap';
 import  pages  from '../data/site-pages.json';
+import OnThisPage from '../components/OnThisPage';
 
 
 
@@ -40,8 +41,8 @@ export default function Layout({ children }) {
             <Head> 
               <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> 
             </Head>
-            <div className='container'>
-              <div className='row fixed-top'>
+            <div className='d-flex'>
+              <div className='row fixed-top '>
                 <div className='col'>
                   <div className='row'>
                     <TopHeader { ...MainPage.args } />
@@ -49,15 +50,18 @@ export default function Layout({ children }) {
                 </div>
               </div>
             <div className="Content " style={contentStyle}>
-                <div className='row position-relative flex-row'>
-                  <div className='col-2 justify-content-center position-fixed top-10 start-0'>
-                    <nav className="nav align-items-stretch flex-column">
+                <div className='row position-relative'>
+                  <div className='col-2 justify-content-start position-fixed top-10 start-0'>
+                    <nav className="nav align-items-stretch">
                       <NavBar { ...MainPage.args } />
                     </nav>
                   </div>
+                  <div className='col-8'></div>
+                  <div className='col-2 position-fixed top-10 end-0'><OnThisPage></OnThisPage></div>
                 </div>
-                <div className='row justify-content-center'>
-                  <div className='col-10'>{children}</div>
+                <div className='d-flex row position-static justify-content-center'>
+                  <div className='col-8'>{children}</div>
+
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>
             </div>

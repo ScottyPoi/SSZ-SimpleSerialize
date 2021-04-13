@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import styles from './NavBar.module.css';
+import styles from './NavBar.module.scss';
 
 const navBarStyle = {
     backgroundColor: "red",
@@ -15,15 +15,17 @@ export default function NavBar({ ...props }) {
       <div >
         <div className='nav flex-column' id='navbarSupportedContent'>
           <div className='row justify-content-center'>Site Map</div>
-          <div className='row'>
-            <div className='d-flex flex-column'>
-          <ul className="navbar-nav">
+          <div className='row '>
+            <div className={`d-flex flex-column navbar-nav navbar-nav-scroll ${styles.nonavbar}`} style={{scrollbarWidth: 0}}>
+          <ul >
           {props.pages.map((page) => {
             if (!page.pages) {
               return (
-              <div key={page.name} className='d-flex flex-row'>
-                <li className='nav-link' href="#" >{page.name}  </li>
-              </div>
+              
+                <div key={page.name} className='d-flex flex-row'>
+                  <li className='nav-link' href="#" >{page.name}  </li>
+                </div>
+              
             )}
             else { return (
               <div key={page.name} className='d-flex flex-row'>
