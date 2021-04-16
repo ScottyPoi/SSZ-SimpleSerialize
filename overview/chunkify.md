@@ -3,9 +3,7 @@ title: Chunkify
 section: Merkleization
 ---
 
-## Chunkify
-
-`chunks` are `Bytes32` intermediate merkle values, used for e.g. [subtree merkleization](./subtree_merkleization.md) leafs.
+`chunks` are `Bytes32` intermediate merkle values, used for e.g. [subtree merkleization](./overview/subtree_merkleization.md) leafs.
 
 ## `chunkify`
 
@@ -20,7 +18,7 @@ To convert a homogeneously typed sequence of basic values or bits into chunks, t
 
 Chunkification of `elements` of a sequence type `T` is defined as following:
 
-#### For basic elements:
+#### For basic elements`:`
 
 Given ordered `elements` of the same basic type:
 

@@ -46,8 +46,8 @@ export default function Specs({ SpecsData }) {
 
     return (
       <div className='position-relative'>
-        <div className='d-flex inline-flex row position-absolute top-0 start-0'>
-          <div className='d-flex flex-column col-8'>
+        <div className={`row overflow-y-scroll top-0 start-50 ${styles.content}`}>
+          <div className='col-8'>
             <div className='row'>
               <h1>Simple Serialize Specs</h1>
               <div><p>from Ethereum 2.0</p></div>
@@ -57,13 +57,10 @@ export default function Specs({ SpecsData }) {
             </div>
             
           </div>
-          <div className='d-flex flex-column col-4'>
-          </div>
         </div> 
           
-        <div className={`row start-50 vh-100 overflow-y-scroll ${styles.toc}`}>
-          <div className='col-10'>
-          </div>
+        <div className={`row start-50 overflow-y-scroll ${styles.toc}`}>
+
           <div className={`col-2 ${styles.scroll}`}>
             {scrollspy}
           </div>

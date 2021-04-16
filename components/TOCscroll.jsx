@@ -6,8 +6,9 @@ export default function TOCscroll(topics, topicToLevel) {
     return (
       <div >
       <div className={`nav  flex-column ${styles.container}`} id='toc'>
-          <div className='row'>On This Page</div>
+          <br />
           <div className='row'>
+            <br />
             <div className={`d-flex flex-column navbar-nav-scroll ${styles.nonavbar}`} style={{scrollbarWidth: 0}}>
           <Scrollspy items={ topics } currentClassName={styles.iscurrent} aria-current="true" offset={-150}>
             { topics.map((topic) => { 

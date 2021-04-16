@@ -2,13 +2,16 @@ import { globalStyles } from '../shared/styles'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Layout from '../components/layout';
 
-const App = ({ Component, pageProps }) => (
+
+export default function MyApp({ Component, pageProps }) {
+  
+  
+  return (
   <>
     {globalStyles}
     <Layout>
-    <Component {...pageProps} />
+        <Component {...pageProps} />
     </Layout>
-  </>
-)
+  </>)
+}
 
-export default App

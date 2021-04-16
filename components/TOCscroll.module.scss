@@ -34,7 +34,9 @@ $colorPrimary: rgb(58, 226, 226);
 }
 
 .nonavbar {
-    overflow-y: scroll
+    overflow-y: scroll;
+    scrollbar-width: none;
+
     
 }
 .nonavbar::-webkit-scrollbar {

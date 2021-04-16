@@ -15,4 +15,4 @@ An object is considered **fixed-size** if it is:
 This fixed-size property breaks when e.g. there is a variable amount of elements,
 or the exact type of its serialization cannot be determined without reading data.
 
-An object is considered **variable-size** if and only if it is not fixed-size.
+- ### An object is considered **variable-size** if and only if it is not fixed-size

@@ -1,9 +1,8 @@
 import React from 'react';
 
-export default function OnThisPage({ children }) {
-
+export default function OverviewLayout({ children }) {
     return (
-        <div className='row'>
+        <div>
             {children}
         </div>
     )
