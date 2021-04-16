@@ -57,7 +57,7 @@ export default function Layout({ children }) {
                     </nav>
                   </div>
                   {/* <div className='col-8'></div> */}
-                  <div className='col-2 position-fixed top-10 end-0'><OnThisPage>On This Page</OnThisPage></div>
+                  <div className='col-2 position-fixed top-10 end-0'><OnThisPage></OnThisPage></div>
                 </div>
                 <div className='d-flex row position-static justify-content-center'>
                   <div className='d-flex col-8'>{children}</div>
