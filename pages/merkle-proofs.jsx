@@ -45,7 +45,7 @@ export default function Specs({ MerkleProofsData }) {
 
     return (
       <div className='position-relative'>
-        <div className='row position-absolute top-0 start-0'>
+        <div className='row position-fixed top-0 start-0'>
           <div className='col-7'>
             <div className='row'>
               <h1>Merkle Proofs</h1>

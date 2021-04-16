@@ -17,7 +17,7 @@ This separation of the typed interface and the multi-proof enables different abs
   - E.g. an aggregate proof can be verified first, and subsequent individual processes can be given a scoped interface to interact with the proof data.
 - The typing interface can be extended, and new proof-backings may be introduced in the future.
 
-Note that the concept of [Summaries and expansions](../navigation/summaries_expansions.md) is a subset of that of partials:
+Note that the concept of [Summaries and expansions](../overview/summaries_expansions.md) is a subset of that of partials:
 instead of summarizing a type nicely at the edges of the type (i.e. summarizing fields or elements),
 arbitrary subsets of an element can be summarised as a whole.
 
@@ -28,23 +28,23 @@ Deciding between a partial and a summary is not difficult:
 
 ## Core functionality
 
-### `PartialType(base_type: SSZType, paths: Set[Path])`
+- ### `PartialType(base_type: SSZType, paths: Set[Path])`
 
 The idiomatic syntax here differs strongly per implementation, as meta-programming is not a first-class citizen in every language.
-The core idea however, is to take an existing type, define the subset (e.g. a list of [ssz paths](../navigation/paths.md)) of information you need,
+The core idea however, is to take an existing type, define the subset (e.g. a list of [ssz paths](../overview/paths.md)) of information you need,
 and construct a type structure to interact with multi-proofs.
 
-### `interface(partial_type: PartialType, proof_backing: ProofBacking) -> Partial`
+- ### `interface(partial_type: PartialType, proof_backing: ProofBacking) -> Partial`
 
 Given a partial type structure, a proof-backing can be wrapped and create a partial.
 
-### `scope(partial_type: PartialType, paths: Set[Path]) -> PartialType`
+- ### `scope(partial_type: PartialType, paths: Set[Path]) -> PartialType`
 
 Since not every `base_type` can be provided in the same level of detail to create a partial-type
 (e.g. only select a specific set of indices of a list), additional changes to the scope should be possible to make.
 The scope may may also be implemented with language-specific features (e.g. annotations, struct-tags, etc.)
 
-### `compute_root(partial: Partial)`
+- ### `compute_root(partial: Partial)`
 
 Construct the hash-tree-root (or possibly signing-root); effectively computing the root of the proof-backing. Used for verification purposes.
 
@@ -53,4 +53,4 @@ A proof can also not back both a signing-root and hash-tree-root unless the last
 
 ## Read-only partials
 
-Some partials may not be meaningful to modify; in this case a proof-backing optimized for reads, and a read-only partial could be implemented.
+- Some partials may not be meaningful to modify; in this case a proof-backing optimized for reads, and a read-only partial could be implemented.

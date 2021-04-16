@@ -36,10 +36,4 @@ Or vice versa an expansion can be defined based on a summary type.
 Some details can also be summarized with a `signing_root`. An implementer has two options here:
 
 1. Ignore the final signature field, the root of this container in the summary type can be annotated to do this.
-2. Exclude the signature field from the expansion definition to begin with.
-
-### Example
-
-In the Eth2 beacon chain, a [`BeaconBlock`](https://github.com/ethereum/eth2.0-specs/blob/master/specs/core/0_beacon-chain.md#beaconblock)
-is an expansion type of [`BeaconBlockHeader`](https://github.com/ethereum/eth2.0-specs/blob/master/specs/core/0_beacon-chain.md#beaconblockheader).
-Note that a `BeaconBlockHeader` objects uniquely expands to a `BeaconBlock` object.
+2. Exclude the signature field from the expansion definition to begin with

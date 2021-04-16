@@ -1,22 +1,31 @@
 .sitemap1 {
-    font-size: 100%
+    font-size: 90%;
+    color: red
 }
 
 .sitemap2 {
-    font-size: 9%
+    font-size: 80%;
+    margin-left: 5px;
+    color: blue
 }
 
 .sitemap3 {
-    font-size: 60%
+    font-size: 60%;
+    margin-left: 20px;
+    color: green;
 }
 
 .sitemap4 {
-    font-size: 40%
+    font-size: 40%;
+    margin-left: 20px;
+    color:white;
+
 }
 
 .nonavbar {
     overflow-y: scroll;
     margin-right: 0px;
+    scrollbar-width: none;
 }
 .nonavbar::-webkit-scrollbar {
         display: none;

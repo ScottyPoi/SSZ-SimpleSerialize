@@ -1,6 +1,7 @@
 import React from 'react';
 import { getAllOverviewIds, getOverviewPageData } from '../../lib/overviewpage'
 import Head from 'next/head';
+import  OverviewLayout from '../../components/OverviewLayout';
 
 export async function getStaticPaths() {
   const paths = getAllOverviewIds()
@@ -18,7 +19,7 @@ export default function OverviewPage({ overviewPageData }) {
         {overviewPageData.id}
         {overviewPageData.section}
       </Head>
-      <div className='row fluid position-fixed bg-dark'>
+      <div className='row fluid  bg-dark'>
       <h1>{overviewPageData.section}:</h1>
       <h2>{overviewPageData.title}</h2>
       </div>
@@ -43,3 +44,5 @@ export async function getStaticProps({ params }) {
         }
     }
 }
+
+OverviewPage.pagemap = "fuck";

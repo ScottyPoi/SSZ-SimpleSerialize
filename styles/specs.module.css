@@ -7,10 +7,24 @@
 .toc {
   position: fixed;
   display: flex;
+  justify-content: flex-end;
 }
 
 .bottom {
   position: fixed;
+}
+
+.content {
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+  display: flex;
+  scrollbar-width: none;
+  justify-content: flex-start;
+}
+.content::-webkit-scrollbar {
+  display: none;
+  width: none;
 }
 
 /*# sourceMappingURL=specs.module.css.map */

@@ -30,7 +30,23 @@ export const globalStyles = (
       }
 
       h1 {
-        color: white;
+        color: green;
+      }
+
+      h2 {
+        color: yellow;
+      }
+
+      h3 {
+        color: orange;
+      }
+
+      li {
+        color: purple;
+      }
+
+      p {
+        color: blue;
       }
 
     `}

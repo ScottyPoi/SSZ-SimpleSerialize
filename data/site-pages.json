@@ -6,12 +6,12 @@
     },
     {
         "name": "Overview",
-        "url": "/overview",
+        "url": "/overview/overview",
         "title": "Overview",
         "pages": [
             {
                 "name": "Types",
-                "url": "/overview/types",
+                "url": "/overview/Types",
                 "title": "SSZ Overview - Types",
                 "pages": [
                     {
@@ -37,9 +37,9 @@
                 ]   
             },
             {
-                "name": "Representaion",
-                "url": "",
-                "title": "",
+                "name": "Representation",
+                "url": "/overview/representation",
+                "title": "SSZ Object Representation",
                 "pages": [
                     {
                         "name": "Fixed Variable Size",
@@ -60,7 +60,7 @@
             },
             {
                 "name": "Navigation",
-                "url": "",
+                "url": "/overview/navigation",
                 "title": "Navigation",
                 "pages": [
                     {
@@ -83,7 +83,7 @@
             },
             {
                 "name": "Merkleization",
-                "url": "",
+                "url": "/overview/merkleization",
                 "title": "Merkleization",
                 "pages": [
                     {
@@ -124,18 +124,18 @@
     },
     {
         "name": "Documentation",
-        "url": "/documentation",
+        "url": "/specs",
         "title": "Documentation",
         "pages": [
             {
                 "name": "Specs",
-                "url": "/documentation/specs",
+                "url": "/specs",
                 "title": "SSZ Specs"   
             },
             {
-                "name": "Wiki",
-                "url": "/documentation/wiki",
-                "title": "SSZ Wiki"   
+                "name": "Merkle Proofs",
+                "url": "/merkle-proofs",
+                "title": "SSZ Merkle Proofs"   
             }
         ]
     },
