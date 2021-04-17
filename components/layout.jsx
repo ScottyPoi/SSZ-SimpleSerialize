@@ -25,7 +25,7 @@ const contentStyle = {
 export default function Layout({ children }) {
     console.log('fuck everything')
     return (
-          <div className='Layout' style={layoutStyle}>
+          <div className='d-flex container fluid'>
             <Head>
               <meta charSet="utf-8" />
             </Head>
@@ -59,8 +59,8 @@ export default function Layout({ children }) {
                   {/* <div className='col-8'></div> */}
                   <div className='col-2 position-fixed top-10 end-0'><OnThisPage></OnThisPage></div>
                 </div>
-                <div className='d-flex row position-static justify-content-center'>
-                  <div className='d-flex col-8'>{children}</div>
+                <div className='row position-static justify-content-end'>
+                  <div className='col-10'>{children}</div>
 
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>

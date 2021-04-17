@@ -33,7 +33,6 @@ export default function Specs({ SpecsData }) {
         const topic = topics[i];
         content.push(
           <div key={sect}>
-          <section id={topic} />
           <section id={topic}>
             <ReactMarkdown plugins={[slug, toc, gfm]}>{`${sect}`}</ReactMarkdown>
           </section>
@@ -42,11 +41,12 @@ export default function Specs({ SpecsData }) {
       return content 
     };
 
-
+    console.log(topicToLevel)
 
     return (
-      <div className='position-relative'>
-        <div className={`row overflow-y-scroll top-0 start-50 ${styles.content}`}>
+      <div className='row position-relative'>
+      <div className='col'>
+        <div className='row'>
           <div className='col-8'>
             <div className='row'>
               <h1>Simple Serialize Specs</h1>
@@ -59,16 +59,15 @@ export default function Specs({ SpecsData }) {
           </div>
         </div> 
           
-        <div className={`row start-50 overflow-y-scroll ${styles.toc}`}>
-
-          <div className={`col-2 ${styles.scroll}`}>
+        <div className={`row justify-content-end fixed-top overflow-y-scroll ${styles.toc}`}>
+          <div className={`col-4 position-fixed ${styles.scroll}`}>
+            
             {scrollspy}
           </div>
-        
-        
         </div> 
 
 
       </div>
+    </div>
     )
 }

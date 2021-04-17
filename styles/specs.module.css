@@ -1,13 +1,11 @@
 .scroll {
   display: flex;
   height: 50;
-  position: sticky;
+  margin-top: 100px;
 }
 
 .toc {
-  position: fixed;
   display: flex;
-  justify-content: flex-end;
 }
 
 .bottom {

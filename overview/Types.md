@@ -2,23 +2,25 @@
 title: Types
 section: Types
 ---
+<div align='center'>
 
-## Types
+# Types
+
 
 Types define how we interpret and interact with SSZ data.
 In addition to this they provide readability, and guard users from mixing up data or processing input beyond intended limits.
 
-## Readability
+#### Readability
 
 Types can be aliased to more specific types, good use of type aliasing can make a data-structure much clearer.
 E.g. `BLSSignature` instead of `Vector[byte, 96]`.
 
-## Default values
+#### Default values
 
 Part of the promise of types is that data structures have defaults, avoiding `null` (a.k.a. "the billion dollar mistake").
 Default values are recursive; elements in composite types such as containers are initialized with their respective default initializations.
 
-## Merkle proofs
+#### Merkle proofs
 
 Every type deterministically describes the shape of the Merkle tree representing the type:
 reasoning about the shape of a proof is abstracted away by the typing layer.
@@ -38,7 +40,7 @@ Do note that some different types may merkleize to the same root:
   Or more exceptionally, a `Container` with 4 `Bytes32` fields can have the same root as a `Vector[uint64, 16]`.
   Hence, typing is essential to consuming a proof for data, and should not be chosen arbitrarily by another actor (if a different type has any meaning to the application of the proof).
 
-## Representation
+#### Representation
 
 Mapping _valid_ instances of the same type to a byte sequence is bijective:
 

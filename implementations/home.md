@@ -1,0 +1,24 @@
+---
+title: implementations home
+---
+
+Below is a list of known implementatios of SSZ:
+
+### Implementations
+
+
+
+| Language | Project | Maintainer | License | Status | Features / Notes | Implementation |
+|:-------------|:-------------------|:-----------------------------------|:--------------------|:--------------------|:---------------------------------|:----------------|
+| Nim         | Nimbus            | Status                            | MIT and Apache-2.0 | Active             | In-place decode, Caching        |[`status-im/nim-beacon-chain/ssz.nim`](https://github.com/status-im/nim-beacon-chain/blob/master/beacon_chain/ssz.nim) |
+| Python      | Trinity           | Ethereum Foundation               | MIT                | Active             | Pyrsistent, partial caching     |[`ethereum/py-ssz`](https://github.com/ethereum/py-ssz) |
+| Python      | Pyspec / Eth2.py  | Diederik Loerakker (@protolambda) | MIT                | Active             | Datasharing, caching, streaming |[`protolambda/remerkleable`](https://github.com/protolambda/remerkleable) |
+| Rust        | Lighthouse        | Sigma Prime                       | Apache-2.0         | Active             | Partial caching, fast           |[`sigp/lighthouse/ssz`](https://github.com/sigp/lighthouse/tree/master/eth2/utils/ssz) |
+| Typescript  | Lodestar          | Chainsafe Systems                 | LGPL-v3.0          | Active             | Both Tree & structural, caching |[`ChainSafe/lodestar/ssz`](https://github.com/ChainSafe/lodestar/tree/master/packages/ssz) |
+| C#          | Cortex            | Sly Gryphon (@sgryphon)           | LGPL-v3.0          | Under construction | Experimental                    |[`sgryphon/cortex-ssz`](https://github.com/sgryphon/cortex-ssz) |
+| Go          | Prysm             | Prysmatic Labs                    | MIT                | Deprecated         | Generic, reflection, known bugs |[`prysmaticlabs/go-ssz`](https://github.com/prysmaticlabs/go-ssz) |
+| Java        | Harmony           | Harmony                           | Apache-2.0         | Deprecated         | Partially merged into Teku      |[`harmony-dev/beacon-chain-java/ssz`](https://github.com/harmony-dev/beacon-chain-java/tree/develop/ssz) |
+| TypeScript  | Lodestar          | ChainSafe Systems                 | Apache-2.0         | Archived           | See new Lodestar SSZ            |[`ChainSafe/ssz-js`](https://github.com/ChainSafe/ssz-js) |
+| Rust        | Shasper           | ParityTech                        | GPL-3.0            | Discontinued       | No updates                      |[`paritytech/shasper/ssz`](https://github.com/paritytech/shasper/tree/master/utils/ssz) |
+| Swift       | Yeeth             | Dean Eigenmann (@decanus, @yeeth) | MIT                | Discontinued       | Incomplete                      |[`yeeth/SimpleSerialize.swift`](https://github.com/yeeth/SimpleSerialize.swift) |
+| Java        | Cava              | ConsenSys                         | Apache-2.0         | Discontinued       | Outdated, incomplete            |[`ConsenSys/cava/ssz`](https://www.github.com/ConsenSys/cava/tree/master/ssz) |
