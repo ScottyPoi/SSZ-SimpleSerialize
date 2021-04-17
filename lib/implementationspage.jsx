@@ -1,3 +1,4 @@
+import React from 'react';
 import fs from 'fs';
 import path from 'path';
 import matter from 'gray-matter';
@@ -5,9 +6,9 @@ import remark from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
 
-const overviewDirectory = path.join(process.cwd(), 'overview')
-export function getAllOverviewIds() {
-    const fileNames = fs.readdirSync(overviewDirectory)
+const implementationsDirectory = path.join(process.cwd(), 'implementations')
+export function getAllImplementationsIds() {
+    const fileNames = fs.readdirSync(implementationsDirectory)
     return fileNames.map(fileName => {
       return {
         params: {
@@ -17,8 +18,8 @@ export function getAllOverviewIds() {
     })
   }
   
-  export async function getOverviewPageData(id) {
-    const fullPath = path.join(overviewDirectory, `${id}.md`)
+  export async function getImplementationsPageData(id) {
+    const fullPath = path.join(implementationsDirectory, `${id}.md`)
     const fileContents = fs.readFileSync(fullPath, 'utf8')
   
     // Use gray-matter to parse the post metadata section
@@ -26,8 +27,8 @@ export function getAllOverviewIds() {
 
      // Use remark to convert markdown into HTML string
     const processedContent = await remark()
-    .use(gfm)
     .use(html)
+    .use(gfm)
     .process(matterResult.content)
     const contentHtml = processedContent.toString()
   

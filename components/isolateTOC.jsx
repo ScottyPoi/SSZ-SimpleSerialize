@@ -14,7 +14,7 @@ export default function IsolateTOC(toc) {
     const tableByLinesNoEmpties = tableByLines.filter(line => line !== "" && line !== "\r")
     const tblneAsString = `${tableByLinesNoEmpties}`
     const removedSeparaters = tblneAsString.replace(/ /g, "").replace(/,/g, "").replace(/-/g, "").replace(/]/g, '').replace(/\[/g, "").replace(/\)/g, "(").replace(/\(/g, ",").replace(/\`/g,"")
-    const removedSeparatersWithLevels = tblneAsString.replace(/,/g, "").replace(/]/g, '').replace(/\)/g, "(").replace(/\(/g, ",").replace(/\`/g,"")
+    const removedSeparatersWithLevels = tblneAsString.replace(/,/g, "").replace(/]/g, '').replace(/\)/g, "(").replace(/\(/g, ",").replace(/\`/g,"").replace(/\r/g, "")
     const cleanList = removedSeparaters.split(',');
     const cleanListWithLevels = removedSeparatersWithLevels.split(',');
     cleanList.pop();
@@ -33,14 +33,19 @@ export default function IsolateTOC(toc) {
 
     const topicToLevel = {};
     Object.keys(topicToTWL).map((topic) => {
-        topicToLevel[topic] = topicToTWL[topic][0] === "-"
+        return topicToLevel[topic] = topicToTWL[topic][0] === "-"
             ? "Scrollspy1"
-            : topicToTWL[topic][2] === "-"
+            : topicToTWL[topic][1] === "-"
             ? "Scrollspy2"
-            : topicToTWL[topic][4] === "-"
+            : topicToTWL[topic][3] === "-"
             ? `Scrollspy3`
             : 4
     })
+
+    Object.keys(topicToLevel).map((topic) => {
+        return topic.replace(/r/g, "")
+    })
+
 
     return topicToLevel
 

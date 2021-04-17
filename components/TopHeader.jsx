@@ -1,11 +1,9 @@
 import React from 'react';
-import * as ReactBootStrap from 'react-bootstrap';
-import Head from 'next/head'
-
+import Link from 'next/link';
 export default function TopHeader({...props}) {
     return (
     <>
-            <ReactBootStrap.Col md={12}>
+            <div className='col-12'>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark" collapseonselect="true" expand="lg" bg="dark" variant="dark">
                     <div className='container-fluid'>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -18,7 +16,7 @@ export default function TopHeader({...props}) {
                                 if (!page.pages) {
                                 return (
                                     <li key={page.name} className='nav-item'>
-                                        <a className='nav-link' href={`#${page.name}`} >{page.name}</a>
+                                        <a className='nav-link' href={`${page.url}`}>{page.name}</a>
                                     </li>
                                     )}
                                 else { return (
@@ -27,7 +25,7 @@ export default function TopHeader({...props}) {
                                         <ul className='dropdown-menu' aria-labelledby={page.name}>
                                             {page.pages.map((subpage) => {
                                                 return (
-                                                    <li key={subpage.name} ><a className='dropdown-item' href='#'> {subpage.name}</a></li>
+                                                    <li key={subpage.name} ><Link className='dropdown-item' href={`${subpage.url}`}><a> {subpage.name}</a></Link></li>
                                                 )})}
                                         </ul>
                                     </li>
@@ -38,7 +36,7 @@ export default function TopHeader({...props}) {
                         </div>
                     </div>
                 </nav>
-            </ReactBootStrap.Col>
+            </div>
             </>
     )
 }

@@ -49,6 +49,14 @@ export const globalStyles = (
         color: blue;
       }
 
+      td {
+        color: white;
+      }
+
+      th {
+        color: blue;
+      }
+
     `}
   />
 )
