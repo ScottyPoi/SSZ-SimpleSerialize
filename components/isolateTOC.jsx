@@ -35,16 +35,13 @@ export default function IsolateTOC(toc) {
     Object.keys(topicToTWL).map((topic) => {
         return topicToLevel[topic] = topicToTWL[topic][0] === "-"
             ? "Scrollspy1"
-            : topicToTWL[topic][1] === "-"
+            : topicToTWL[topic][2] === "-"
             ? "Scrollspy2"
-            : topicToTWL[topic][3] === "-"
+            : topicToTWL[topic][4] === "-"
             ? `Scrollspy3`
             : 4
     })
 
-    Object.keys(topicToLevel).map((topic) => {
-        return topic.replace(/r/g, "")
-    })
 
 
     return topicToLevel

@@ -24,7 +24,9 @@ export default function Specs({ SpecsData }) {
     const [body, TOC] = SplitSpecs(SpecsData);
     const topicToLevel = IsolateTOC(TOC);
     const sections = SeparateSections(body);
-    const topics = Object.keys(topicToLevel);
+    let topics = Object.keys(topicToLevel);
+    topics = topics.map((topic) => {return topic.replace(/\r/, "")})
+    console.log(topics)
     const scrollspy = TOCscroll(topics, topicToLevel);
     const specsBody = (sections) => {
       let content = [];
@@ -44,7 +46,7 @@ export default function Specs({ SpecsData }) {
     console.log(topicToLevel)
 
     return (
-      <div className='row position-relative'>
+      <div className='row '>
       <div className='col'>
         <div className='row'>
           <div className='col-8'>
@@ -52,7 +54,7 @@ export default function Specs({ SpecsData }) {
               <h1>Simple Serialize Specs</h1>
               <div><p>from Ethereum 2.0</p></div>
             </div>
-            <div className='row'>
+            <div className='row position-relative'>
               {specsBody(sections)}
             </div>
             
@@ -60,8 +62,7 @@ export default function Specs({ SpecsData }) {
         </div> 
           
         <div className={`row justify-content-end fixed-top overflow-y-scroll ${styles.toc}`}>
-          <div className={`col-4 position-fixed ${styles.scroll}`}>
-            
+          <div className={`col-4 position-fixed ${styles.scroll}`}>         
             {scrollspy}
           </div>
         </div> 

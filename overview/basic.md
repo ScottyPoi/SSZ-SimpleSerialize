@@ -1,9 +1,12 @@
 ---
 title: Basic Types
 section: Types
+toc: ['Basic Types', 'Unsigned Integers', 'Booleans']
 ---
 
-## Basic Types
+# Basic Types
+
+<div id='Basic%20Types'>
 
 The basic types all strictly follow the basic-type principles:
 
@@ -11,7 +14,10 @@ The basic types all strictly follow the basic-type principles:
 - A power of 2 bytes long, for packing/alignment purposes. See [chunkification](../overview/chunkify.md).
 - [Fixed length](../overview/fixed_variable_size.md)
 
-## Unsinged integers
+</div>
+<div id='Unsigned%20Integers'>
+
+## Unsinged Integers
 
 Type: `uintN`, where `N` can be: `8, 16, 32, 64, 128, 256`.
 
@@ -37,6 +43,9 @@ Note:
 
 `size_of(uintN): N / 8`
 
+</div>
+<div id='Booleans'>
+
 ## Booleans
 
 Type: `boolean`
@@ -58,3 +67,5 @@ The boolean represented as byte is merkleized exactly like `byte`, including the
 - ### Size (Boolean)
 
 `size_of(bool): 1`
+
+</div>

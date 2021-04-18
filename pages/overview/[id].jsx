@@ -2,7 +2,9 @@ import React from 'react';
 import { getAllOverviewIds, getOverviewPageData } from '../../lib/overviewpage'
 import Head from 'next/head';
 import  OverviewLayout from '../../components/OverviewLayout';
-import Link from 'next/link'
+import Link from 'next/link';
+import PageTOC from '../../components/PageTOC';
+import { useRouter } from 'next/router';
 
 export async function getStaticPaths() {
   const paths = getAllOverviewIds()
@@ -13,6 +15,20 @@ export async function getStaticPaths() {
 }
 
 export default function OverviewPage({ overviewPageData }) {
+
+  const router = useRouter();
+  const  foo  = router.query.id
+  console.log( foo )
+
+
+  const toc = overviewPageData.toc
+  const Template = (args) => <PageTOC {...args} />;
+  const Sections = Template.bind({});
+  Sections.args = {
+    toc,
+    foo
+  }
+
   return (
   <div >
       <Head>
@@ -20,7 +36,7 @@ export default function OverviewPage({ overviewPageData }) {
         {overviewPageData.id}
         {overviewPageData.section}
       </Head>
-      <div className='d-flex row justify-content-start'>
+      <div className='d-flex row justify-content-start '>
         <div className='col-8' dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
       </div>
       <div className='d-flex row justify-content-between'>
@@ -30,6 +46,13 @@ export default function OverviewPage({ overviewPageData }) {
           <div className='d-flex col-2'>
             <Link href='#'><a>Next</a></Link>
           </div>
+      </div>
+      <div className='d-flex row justify-content-end position-fixed fixed-top top-50'>
+        <div className='d-flex col-4'>
+          <div className='row'>
+            <PageTOC { ...Sections.args } />
+          </div>
+        </div>
       </div>
   </div>)
 }
