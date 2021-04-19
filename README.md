@@ -55,3 +55,21 @@
 ```
 npx create-next-app ssz-simpleserialize --use-npm --example "https://github.com/ScottyPoi/SSZ-SimpleSerialize/tree/main"
 ```
+
+Inside that directory, you can run several commands:
+
+  - npm run dev
+    - Starts the development server.
+
+  - npm run build
+    - Builds the app for production.
+
+  - npm start
+    - Runs the built app in production mode.
+
+### We suggest that you begin by typing:
+```
+  cd ssz-simpleserialize
+
+  npm run dev
+```
