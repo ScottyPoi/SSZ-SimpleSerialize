@@ -1,22 +1,22 @@
 <p align="center">
-  <a href="https://SSZ.SimpleSerialize">
+  <a href="https://github.com/scottypoi/ssz-simpleserialize">
     <img src="https://ethereum.org/static/810eb64d89629231aa4d8c7fe5f20ee5/31987/developers-eth-blocks.png" height="128">
     <h1 align="center">SSZ SimpleSerialize</h1>
   </a>
 </p>
 
 <p align="center">
-  <a aria-label="Vercel logo" href="https://vercel.com">
-    <img src="https://img.shields.io/badge/MADE%20BY%20Vercel-000000.svg?style=for-the-badge&logo=Vercel&labelColor=000">
+  <a aria-label="ESP Logo" href="https://esp.ethereum.foundation/en/">
+    <img src='./esplogoandbrand28.png'>
   </a>
   <a aria-label="NPM version" href="https://www.npmjs.com/package/next">
-    <img alt="" src="https://img.shields.io/npm/v/next.svg?style=for-the-badge&labelColor=000000">
+    <img alt="" src="https://img.shields.io/badge/NPM-V6.1.3-blue">
   </a>
   <a aria-label="License" href="https://github.com/vercel/next.js/blob/canary/license.md">
     <img alt="" src="https://img.shields.io/npm/l/next.svg?style=for-the-badge&labelColor=000000">
   </a>
-  <a aria-label="Join the community on GitHub" href="https://github.com/vercel/next.js/discussions">
-    <img alt="" src="https://img.shields.io/badge/Join%20the%20community-blueviolet.svg?style=for-the-badge&logo=Next.js&labelColor=000000&logoWidth=20">
+  <a aria-label="Join the community on GitHub" href="https://github.com/scottypoi/ssz-simpleserialize/discussions">
+    <img alt="" src="https://img.shields.io/badge/Collaborate%20on%20this%20project-blue.svg?style=for-the-badge&logo=github&labelColor=000000&logoWidth=20">
   </a>
 </p>
 
