@@ -45,4 +45,11 @@
 
 
 ### To install this project locally:
-  - 
+  
+  - If you don’t have Node.js installed, install it from [here]('https://nodejs.org/en/'). You’ll need Node.js version 10.13 or later.
+  
+  - ### Create a Next.js app
+    
+    - To create a Next.js app, open your terminal, cd into the directory you’d like to create the app in, and run the following command:
+
+    npx create-next-app sszcopy2 --use-npm --example "https://github.com/ScottyPoi/SSZ-SimpleSerialize/tree/main"
