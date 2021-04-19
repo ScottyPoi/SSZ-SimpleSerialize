@@ -31,9 +31,9 @@ export default function OverviewPage({ overviewPageData }) {
 
   return (
   <div className='container'>
-      <div className='row justify-content-start '>
+      <div className='row'>
         <div className='col-8 ' dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
-      </div>
+      </div> 
       <div className='row justify-content-between'>
           <div className='col-2'>
             <Link href='#'><a>Previous</a></Link>
