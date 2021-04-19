@@ -6,7 +6,13 @@ export default function Hello() {
         <div className='container'>
             <div className='d-flex row justify-content-center'>
                 <div className='d-flex col-4'>
-                    <Image src='/SSZicon.jpg' alt='ssz logo' width="256" height="256"/>
+                    <Image 
+                    src='/developers-eth-blocks.png'
+                    alt='ethereum building blocks'
+                    height={300}
+                    width={500}
+                    
+                    />
                 </div>
             </div>
             <br />
