@@ -52,4 +52,6 @@
     
     - To create a Next.js app, open your terminal, cd into the directory you’d like to create the app in, and run the following command:
 
-    npx create-next-app sszcopy2 --use-npm --example "https://github.com/ScottyPoi/SSZ-SimpleSerialize/tree/main"
+```
+npx create-next-app ssz-simpleserialize --use-npm --example "https://github.com/ScottyPoi/SSZ-SimpleSerialize/tree/main"
+```
