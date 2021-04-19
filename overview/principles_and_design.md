@@ -4,9 +4,23 @@ section: Overview
 toc: []
 ---
 
+# Design and Priciples
+
+## SSZ provides the following functionalities:
+
+### Serialize: 
+    encode data structures as sequences of bytes, and
+    
+### Deserialize: 
+    decode sequences of bytes to reconstruct a given data structure.
+
+### Validate:
+    
+    Given an object O, its serialized version, serialize(O), is a finite sequence of bytes. Conversely, given a finite sequence of bytes xs, and a data structure's type Type, deserialize(xs) should reconstruct, when possible, an object of type Type from the given sequence of bytes.
+
 ## Design
 
-The design choices for SSZ originate from the desire for:
+### The design choices for SSZ originate from the desire for:
 
 - **Efficiency and Elegance** in proof structures with binary trees, and a design that separates opinionated sparse structures from merkleization, learning from issues in ETH 1.0.
 - **Consistency** in a wide range of use-cases for minimal and efficient encoding and proofs in the core of ETH 2.0, as well as the layers being built on top.
@@ -16,7 +30,7 @@ The design choices for SSZ originate from the desire for:
 
 ## Principles of SSZ
 
-To describe design choices in SSZ as a short list of properties,
+### To describe design choices in SSZ as a short list of properties,
 loosely based on the desires outlined above
 
 - Simple
@@ -31,7 +45,7 @@ but do not make SSZ principally different from other encodings.
 The main use-case of SSZ is to provide a consistent encoding and merkleization framework for the core of the Eth2 protocol.
 However, use outside of the core protocol, such as in smart contracts or layer-2 solutions, is also considered and factored into the design.
 
-### Simple
+- ### Simple
 
 SSZ is meant to map well to common raw datatypes, and avoid twiddling with bits or nibbles in serialization.
 
@@ -42,7 +56,7 @@ SSZ is meant to map well to common raw datatypes, and avoid twiddling with bits 
 And compared to RLP, an encoding previously used in Ethereum:
 RLP had some simplicity, but lacks in typing and merkleization features, making it more difficult to use than desired.
 
-### Bijective
+- ### Bijective
 
 This property expands to two conditions:
 
@@ -61,7 +75,7 @@ However, this is not maintained between different types:
 - Expansions, summaries and partials can be thought of as different types because of their differences in completeness,
   so they may also break bijective. By definition, they break hash-tree-root the beijective property.
 
-### Compact
+- ### Compact
 
 SSZ achieves aims for compactness in both serialization, as merkle-proofs.
 
@@ -80,7 +94,7 @@ For merkleization, a binary tree backs every merkle structure. Since the branchi
 And on the application level, an arbitrary key-value store is avoided, since a `List` can be packed together better, and have a smaller key depth,
 thus more efficiency in multi-proofs and avoiding the cost of unbalanced tree shapes.
 
-### Merkle-first
+- ### Merkle-first
 
 The intention of having a custom type system is also to give anything that can be interpreted by the protocol a sound single generalized merkle-root.
 
@@ -90,7 +104,7 @@ and make it as flexible as possible to build and interpret proofs for a data-str
 This merkle-first also enables advanced features such as [summaries and expansions](./overview/summaries_expansions.md),
 [partials](./overview/partials.md), [generalized indices](./overview/generalized_indices.md) and [multi-proofs](./overview/merkle_proofs.md).
 
-### Efficient to traverse
+- ### Efficient to traverse
 
 Efficient traversal is a feature that was later introduced into SSZ with the creation
 of [Simple Offset Serialization (SOS)](https://gist.github.com/karalabe/3a25832b1413ee98daad9f0c47be3632).

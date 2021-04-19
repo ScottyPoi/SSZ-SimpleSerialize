@@ -1,14 +1,20 @@
 ---
-title: Bitfields
+title: BitVector
 section: Types
-toc: ['Bitfields', 'Collections', 'Bitvector']
+toc: ['BitVectors', 'Collections', 'Bitvector']
 ---
 
-# Bitfields
+# BitList / BitVector
 
-<div id='Bitfields'>
+<div id='BitVectors'>
+
+A bitlist is a list of `Boolean` values.  The main idea in the serialization part is to encode a bitlist in a sequence of bytes by chopping it into chunks of size 8 (the number of bits in a byte). 
+
+However, a bitlist may not have a size that is a multiple of 8, so it is necessary to somehow encode the actual size or last element of the list in the serialisation.
 
 Bitfields are collections of booleans, backed by sequences of bytes: a bit at sequence index `i` is put into byte `i // 8` and matches `1 << (i % 8)` within that byte.
+
+<img src='/bitlist-sedes.jpg' alt='bitlistsedes' class='img-fluid'/>
 
 ## Bitfields vs Collections
 
@@ -65,6 +71,8 @@ This delimiting `1` bit is put in what would effectively be the bitfield index `
 Note that for an empty bitlist that would be the first bit at index 0: A single zeroed byte, or empty bytes, is illegal as bitlist representation.
 
 Because of this delimiting bit, the total byte length for serialization purposes is: `(((N + 1) + 7) // 8) == ((N // 8) + 1)`
+
+
 
 - ### Merkleization (bitfields)
 

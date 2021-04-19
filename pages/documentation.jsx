@@ -29,7 +29,7 @@ export default function documentation() {
                                 </h2>
                                 </a>
                             </Link>
-                            <p>Defines the constants, the typesystem, and the serialization, merkelization, and deserialization system</p>
+                            <p>Defines Constants, Types, Serialization, Deserialization, and Merkleization</p>
                             
                             
                         </div>
@@ -43,8 +43,8 @@ export default function documentation() {
                                 </a>
                             </Link>
                             <p>
-                                    Provides a guide to implementing merkle proofs and manipulating SSZ trees
-                                </p>
+                                Specifies Merkle Proof formats, including merkle multiproofs and sevral helper functions
+                            </p>
                                                     
                         </div>
                     </div>

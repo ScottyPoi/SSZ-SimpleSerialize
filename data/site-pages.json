@@ -25,8 +25,8 @@
                         "title": "Complex Types"
                     },
                     {
-                        "name": "Bitfields",
-                        "url": "/overview/bitfields",
+                        "name": "Bitlists",
+                        "url": "/overview/bitvectors",
                         "title": "Bitfields"
                     },
                     {
@@ -37,8 +37,8 @@
                 ]   
             },
             {
-                "name": "Representation",
-                "url": "/overview/representation",
+                "name": "Serialization",
+                "url": "/overview/serialization",
                 "title": "SSZ Object Representation",
                 "pages": [
                     {
@@ -81,6 +81,46 @@
                 "url": "/overview/merkleization",
                 "title": "Merkleization",
                 "pages": [
+                    {
+                        "name": "hash_tree_root",
+                        "url": "overview/hash_tree_root",
+                        "title": "hash_tree_root"
+                    },
+                    {
+                        "name": "size_of",
+                        "url": "overview/hash_tree_root",
+                        "title": "hash_tree_root"
+                    },
+                    {
+                        "name": "chunk_count",
+                        "url": "overview/",
+                        "title": "chunk_count"
+                    },
+                    {
+                        "name": "pack",
+                        "url": "overview/pack",
+                        "title": "pack"
+                    },
+                    {
+                        "name": "next_pow_of_two",
+                        "url": "overview/next_pow_of_two",
+                        "title": "next_pow_of_two"
+                    },
+                    {
+                        "name": "_merkleize",
+                        "url": "overview/_merkleize",
+                        "title": "_merkleize"
+                    },
+                    {
+                        "name": "mix_in_length",
+                        "url": "overview/mix_in_length",
+                        "title": "mix_in_length"
+                    },
+                    {
+                        "name": "mix_in_type",
+                        "url": "overview/mix_in_type",
+                        "title": "mix_in_type"
+                    },
                     {
                         "name": "Hahsing",
                         "url": "/overview/hashing",
