@@ -1,6 +1,7 @@
 ---
 title: Summaries & Expansions
 section: Navigation
+toc: []
 ---
 
 ## Summaries & Expansions

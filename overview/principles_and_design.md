@@ -1,6 +1,7 @@
 ---
 title: Design and Principles
 section: Overview
+toc: []
 ---
 
 ## Design

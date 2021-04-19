@@ -54,11 +54,6 @@
                 ]
             },
             {
-                "name": "Partials",
-                "url": "/overview/partials",
-                "title": "Partials"
-            },
-            {
                 "name": "Navigation",
                 "url": "/overview/navigation",
                 "title": "Navigation",
@@ -118,6 +113,11 @@
                     }
                 ]
 
+            },
+            {
+                "name": "Partials",
+                "url": "/overview/partials",
+                "title": "Partials"
             }
 
         ]
@@ -141,7 +141,7 @@
     },
     {
         "name": "Implementations",
-        "url": "/implementations",
+        "url": "/implementations/home",
         "title": "SSZ Implementations",
         "pages": [
             {

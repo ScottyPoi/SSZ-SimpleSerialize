@@ -1,6 +1,7 @@
 ---
 title: Partials
 section: Partials
+toc: []
 ---
 
 ## Partials

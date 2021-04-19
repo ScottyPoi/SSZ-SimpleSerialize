@@ -1,6 +1,7 @@
 ---
 title: Merkle Proofs
 section: Merkleization
+toc: []
 ---
 
 ## Merkle proofs

@@ -9,10 +9,10 @@ export const globalStyles = (
         padding: 3rem 1rem;
         margin: 0;
         min-height: 100%;
-        background-color: black;
-        color: gray;
+        background-color: rgb(20,20,20);
+        color: pink;
         font-family: Roboto, Helvetica, Arial, sans-serif;
-        font-size: 24px;
+        font-size: 1rem;
      
       }
 
@@ -30,23 +30,23 @@ export const globalStyles = (
       }
 
       h1 {
-        color: green;
+        color: rgb(200,200,200);
       }
 
       h2 {
-        color: yellow;
+        color: rgb(150,150,0);
       }
 
       h3 {
-        color: orange;
+        color: rgb(200,100,50);
       }
 
       li {
-        color: purple;
+        color: rgb(200,150,200);
       }
 
       p {
-        color: blue;
+        color: rgb(200,200,200);
       }
 
       td {
@@ -54,7 +54,7 @@ export const globalStyles = (
       }
 
       th {
-        color: blue;
+        color: rgb(50,100,250);
       }
 
     `}

@@ -1,6 +1,7 @@
 ---
 title: Generalized Indices
 section: Navigation
+toc: []
 ---
 
 ## Generalized Merkle tree index

@@ -1,6 +1,7 @@
 ---
 title: Classic Merkle Proof Backings
 section: Merkleization
+toc: []
 ---
 
 ## Classic merkle proof backing

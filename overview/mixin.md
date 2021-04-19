@@ -1,6 +1,7 @@
 ---
 title: Merkle Mix-ins
 section: Merkleization
+toc: []
 ---
 
 ## Merkle Mix-ins

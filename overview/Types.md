@@ -1,24 +1,36 @@
 ---
 title: Types
 section: Types
+toc: ['Types', 'Readibility', 'Default Values','Merkle Proofs', 'Representation']
 ---
 <div align='center'>
 
-# Types
+<div id='Types'>
 
+# Types
 
 Types define how we interpret and interact with SSZ data.
 In addition to this they provide readability, and guard users from mixing up data or processing input beyond intended limits.
+
+<div>
+<div id='Readibility'>
 
 #### Readability
 
 Types can be aliased to more specific types, good use of type aliasing can make a data-structure much clearer.
 E.g. `BLSSignature` instead of `Vector[byte, 96]`.
 
+
+</div>
+<div id='Default Values'>
+
 #### Default values
 
 Part of the promise of types is that data structures have defaults, avoiding `null` (a.k.a. "the billion dollar mistake").
 Default values are recursive; elements in composite types such as containers are initialized with their respective default initializations.
+
+</div>
+<div id='Merkle Proofs'>
 
 #### Merkle proofs
 
@@ -40,6 +52,10 @@ Do note that some different types may merkleize to the same root:
   Or more exceptionally, a `Container` with 4 `Bytes32` fields can have the same root as a `Vector[uint64, 16]`.
   Hence, typing is essential to consuming a proof for data, and should not be chosen arbitrarily by another actor (if a different type has any meaning to the application of the proof).
 
+
+</div>
+<div id='Representation'>
+
 #### Representation
 
 Mapping _valid_ instances of the same type to a byte sequence is bijective:
@@ -57,3 +73,7 @@ Mapping _any_ instance of a type to any byte sequence is _injective and non-surj
   - delimiters (See [bitlists](./overview/bitfields.md#bitlist))
   - selectors (See [union](./overview/union.md))
   - more, this is not an exhaustive list.
+
+
+</div>
+</div>

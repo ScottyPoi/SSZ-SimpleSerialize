@@ -1,3 +1,9 @@
+---
+title: Overview
+section: Overview
+toc: []
+---
+
 # SSZ Overview
 
 ## This is an overview of the SSZ Specification.

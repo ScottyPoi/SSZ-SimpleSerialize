@@ -8,6 +8,7 @@ import slug from 'remark-slug';
 import IsolateTOC from '../components/isolateTOC';
 import SeparateSections from '../components/SeparateSections';
 import TOCscroll from '../components/TOCscroll';
+import styles from '../styles/specs.module.css'
 
 export async function getStaticProps() {
   const MerkleProofsData = fs.readFileSync('./data/merkle-proofs.md', 'utf8')
@@ -23,7 +24,9 @@ export default function Specs({ MerkleProofsData }) {
     const [body, TOC] = SplitSpecs(MerkleProofsData);
     const topicToLevel = IsolateTOC(TOC);
     const sections = SeparateSections(body);
-    const topics = Object.keys(topicToLevel);
+    let topics = Object.keys(topicToLevel);
+    topics = topics.map((topic) => {return topic.replace(/\r/, "")})
+    console.log(topics)
     const scrollspy = TOCscroll(topics, topicToLevel);
     const MerkleProofsBody = (sections) => {
       let content = [];
@@ -32,7 +35,6 @@ export default function Specs({ MerkleProofsData }) {
         const topic = topics[i];
         content.push(
           <div key={sect}>
-          <section id={topic} />
           <section id={topic}>
             <ReactMarkdown plugins={[gfm, toc, slug]}>{`${sect}`}</ReactMarkdown>
           </section>
@@ -44,29 +46,28 @@ export default function Specs({ MerkleProofsData }) {
 
 
     return (
-      <div className='position-relative'>
-        <div className='row position-fixed top-0 start-0'>
-          <div className='col-7'>
+    <div className='row '>
+      <div className='col'>
+        <div className='row'>
+          <div className='col-8'>
             <div className='row'>
               <h1>Merkle Proofs</h1>
               <div><p>from Ethereum 2.0</p></div>
             </div>
-            <div className='row'>
+            <div className='row position-relative'>
               {MerkleProofsBody(sections)}
             </div>
-            
+
+            </div>
           </div>
-          <div className='col-5'>
-          </div>
-        </div>
-          
-        <div className='row position-fixed top-0 start-50'>
-          <div className='col-9'>
-          </div>
-          <div className='col-3'>
+
+        <div className={`row justify-content-end fixed-top overflow-y-scroll ${styles.toc}`}>
+          <div className={`col-4 position-fixed ${styles.scroll}`}>         
             {scrollspy}
           </div>
-        </div>
-        </div>
+        </div> 
+    
+      </div>
+    </div>
     )
 }

@@ -1,6 +1,7 @@
 ---
 title: Sequences
 section: Representation
+toc: []
 ---
 
 ## Representation of sequences

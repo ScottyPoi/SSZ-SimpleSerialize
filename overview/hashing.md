@@ -1,6 +1,7 @@
 ---
 title: Hashing
 section: Merkleization
+toc: []
 ---
 
 ## Hashing

@@ -1,6 +1,7 @@
 ---
 title: Subtree Merkleization
 section: Merkleization
+toc: []
 ---
 
 ## Subtree Merkleization
