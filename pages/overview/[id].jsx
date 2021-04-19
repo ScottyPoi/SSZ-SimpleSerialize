@@ -30,25 +30,21 @@ export default function OverviewPage({ overviewPageData }) {
   }
 
   return (
-  <div >
-      <Head>
-        {overviewPageData.title}
-        {overviewPageData.id}
-        {overviewPageData.section}
-      </Head>
-      <div className='d-flex row justify-content-start '>
-        <div className='col-8' dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
+  <div className='container'>
+      <div className='row justify-content-start '>
+        <div className='col-8 ' dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
       </div>
-      <div className='d-flex row justify-content-between'>
-          <div className='d-flex col-2'>
+      <div className='row justify-content-between'>
+          <div className='col-2'>
             <Link href='#'><a>Previous</a></Link>
           </div>
-          <div className='d-flex col-2'>
+          <div className='col-2'>
             <Link href='#'><a>Next</a></Link>
           </div>
       </div>
-      <div className='d-flex row justify-content-end position-fixed fixed-top top-50'>
-        <div className='d-flex col-4'>
+      <div className='row justify-content-end position-fixed fixed-top'>
+        <div className='col-2'>
+        <br /><br /><br /><br />
           <div className='row'>
             <PageTOC { ...Sections.args } />
           </div>

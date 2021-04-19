@@ -1,13 +1,19 @@
 ---
 title: Bitfields
 section: Types
+toc: ['Bitfields', 'Collections', 'Bitvector']
 ---
 
 # Bitfields
 
+<div id='Bitfields'>
+
 Bitfields are collections of booleans, backed by sequences of bytes: a bit at sequence index `i` is put into byte `i // 8` and matches `1 << (i % 8)` within that byte.
 
 ## Bitfields vs Collections
+
+</div>
+<div id='Collections'>
 
 Bitfields represent boolean data in a packed form, as opposed to lists or vectors of booleans that do not efficiently utilize space.
 
@@ -15,6 +21,9 @@ E.g. the representation of a `Bitvector[N]` is 8 times smaller than a `Vector[bo
 And because of [chunkification](../merkleization/chunkify.md) adapting to bitfields better than boolean collections, the Merkle tree is also 8 times smaller.
 
 ## Bitvector
+
+</div>
+<div id='Bitvector'>
 
 Type: `Bitvector[N]`
 
@@ -36,6 +45,9 @@ see [`merkle_subtree`](../merkleization/subtree_merkleization.md), [`chunkify`](
 Note: A bitvector is merkleized the same as serializing it, and then merkleizing it as a `Vector[byte, ((N + 7) // 8)]`.
 
 ## Bitlist
+
+</div>
+<div id='Bitlist'>
 
 Type: `Bitlist[N]`
 

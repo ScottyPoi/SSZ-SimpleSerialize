@@ -1,6 +1,7 @@
 ---
 title: Paths
 section: Navigation
+toc: []
 ---
 
 ## Paths

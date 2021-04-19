@@ -1,11 +1,16 @@
 ---
 title: Chunkify
 section: Merkleization
+toc: ['Chunkify', 'Chunk_count']
 ---
+
+<div id='Chunkify'>
+
+
+# Chunkify
 
 `chunks` are `Bytes32` intermediate merkle values, used for e.g. [subtree merkleization](./overview/subtree_merkleization.md) leafs.
 
-## `chunkify`
 
 ### Complex sequences
 
@@ -34,7 +39,10 @@ Given ordered `elements` of the same basic type:
 - Right-pad the serialized bytes to a multiple of 32.
 - Partition into chunks: split the bytes into groups of consecutive `32` bytes
 
-## `chunk_count`
+## Chunk_count
+
+</div>
+<div id='Chunk_count'>
 
 `chunk_count(type)`: calculate the amount of leafs for merkleization of the type.
 

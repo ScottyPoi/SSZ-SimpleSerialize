@@ -13,7 +13,7 @@ export default function NavBar({ ...props }) {
 
     return (
       <div >
-        <div className='nav flex-column' id='navbarSupportedContent'>
+        <div className='nav flex-column nav-expand-lg' id='navbarSupportedContent'>
           <div className='row justify-content-center'>Site Map</div>
           <div className='row '>
             <div className={`d-flex flex-column  navbar-nav-scroll ${styles.nonavbar}`} style={{scrollbarWidth: 0}}>

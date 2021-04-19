@@ -1,6 +1,7 @@
 ---
 title: Union
 section: Types
+toc: []
 ---
 
 ## Union

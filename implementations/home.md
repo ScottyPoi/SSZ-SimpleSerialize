@@ -8,14 +8,14 @@ title: implementations home
 
 ## Implementations
 
-- ### Python
+- ### [Python](./python)
   - [Trinity](https://github.com/ethereum/py-ssz)
   - [Eth2.py](https://github.com/protolambda/remerkleable)
-- ### TypeScript
+- ### [TypeScript](./typescript)
   - [Lodestar](https://github.com/ChainSafe/lodestar/tree/master/packages/ssz)
-- ### C#
+- ### [C#](./csharp)
   - [Cortex](https://github.com/sgryphon/cortex-ssz)
-- ### Rust
+- ### [Rust](./rust)
   - [Lighthouse](https://github.com/sigp/lighthouse/tree/master/eth2/utils/ssz)
-- ### Nim
-  - [Nimbus]([status-im/nim-beacon-chain/ssz.nim](https://github.com/status-im/nim-beacon-chain/blob/master/beacon_chain/ssz.nim))
+- ### [Nim](./nim)
+  - [Nimbus](https://github.com/status-im/nim-beacon-chain/blob/master/beacon_chain/ssz.nim)

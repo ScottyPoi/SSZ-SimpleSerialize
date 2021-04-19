@@ -1,6 +1,7 @@
 ---
 title: Fixed Variable Size
 section: Representation
+toc: []
 ---
 
 ## Fixed-size and variable-size

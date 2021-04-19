@@ -3,9 +3,9 @@ import Link from 'next/link';
 export default function TopHeader({...props}) {
     return (
     <>
-            <div className='col-12'>
+            <div className='container-fluid'>
                 <nav className="navbar navbar-expand-lg navbar-dark bg-dark" collapseonselect="true" expand="lg" bg="dark" variant="dark">
-                    <div className='container-fluid'>
+                    <div className='row'>
                         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                             <span className="navbar-toggler-icon"></span>
                         </button>

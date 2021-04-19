@@ -1,6 +1,7 @@
 ---
 title: Complex Types
 section: Types
+toc: []
 ---
 
 ## Complex types
