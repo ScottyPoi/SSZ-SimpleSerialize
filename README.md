@@ -46,7 +46,7 @@
 
 ### To install this project locally:
   
-  - If you don’t have Node.js installed, install it from [here]('https://nodejs.org/en/'). You’ll need Node.js version 10.13 or later.
+  - If you don’t have Node.js installed, install it from <a href='https://nodejs.org/en/' >here</a>. You’ll need Node.js version 10.13 or later.
   
   - ### Create a Next.js app
     
