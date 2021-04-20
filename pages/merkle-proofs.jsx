@@ -11,7 +11,7 @@ import TOCscroll from '../components/TOCscroll';
 import styles from '../styles/specs.module.css'
 
 export async function getStaticProps() {
-  const MerkleProofsData = fs.readFileSync('./data/merkle-proofs.md', 'utf8')
+  const MerkleProofsData = fs.readFileSync('./eth2sszspecs/merkle-proofs.md', 'utf8')
   return {
     props: {
       MerkleProofsData
