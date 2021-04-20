@@ -11,7 +11,7 @@ import TOCscroll from '../components/TOCscroll';
 import styles from '../styles/specs.module.css';
 
 export async function getStaticProps() {
-  const SpecsData = fs.readFileSync('./data/simple-serialize.md', 'utf8')
+  const SpecsData = fs.readFileSync('./eth2sszspecs/simple-serialize.md', 'utf8')
   return {
     props: {
       SpecsData
