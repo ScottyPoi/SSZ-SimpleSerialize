@@ -12,7 +12,7 @@ title: implementations home
   - [Trinity](https://github.com/ethereum/py-ssz)
   - [Eth2.py](https://github.com/protolambda/remerkleable)
 - ### [TypeScript](./typescript)
-  - [Lodestar](https://github.com/ChainSafe/lodestar/tree/master/packages/ssz)
+  - [Lodestar](https://github.com/chainsafe/ssz)
 - ### [C#](./csharp)
   - [Cortex](https://github.com/sgryphon/cortex-ssz)
 - ### [Rust](./rust)
