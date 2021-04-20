@@ -3,14 +3,28 @@ title: SSZ Object Serialization
 section: Serialization
 toc: []
 ---
+<div align='center'>
 
 # Serialization
 
+<br />
+
+- #### The simpleserialize method for serialization follows simple byte conversion, making it effective and efficient for encoding and decoding.
+
+- #### The decoding requires knowledge of the data type and the order of the serialization.
+
+
+  - When performing decoding on an entire serialized string, it also requires knowledge of what order the objects have been serialized in.
+
+
+<br />
 An object that can be serialized is of type Serializable in SSZ (Serializable can be thought of as a trait.) Given a type T, we write T <: Serializable if T extends (or "inherits" or "is a") Serializable.
 
 Each type T <: Serialiable should offer the two functionalities described above:
 
-    serialize<T> : T --> seq<bytes>, a total function that returns a sequence of bytes when applied to an object of type T,
+```
+serialize<T> : T --> seq<bytes>, a total function that returns a sequence of bytes when applied to an object of type T,
+```
 
 and 
     
