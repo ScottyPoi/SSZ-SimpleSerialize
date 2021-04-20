@@ -48,6 +48,12 @@ export default function documentation() {
                                                     
                         </div>
                     </div>
+                    <br />
+                    <div className='row'>
+                        <h4>
+                        Simple Serialize (SSZ) is a standard for the encoding and merkleization of structured data <br /> Designed for ETH 2.0
+                        </h4>
+                    </div>
 
                 </div>
             </div>

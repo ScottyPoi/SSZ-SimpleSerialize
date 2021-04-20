@@ -1,6 +1,6 @@
 # SSZ in RUST
 
-## From **Lighthouse**:
+## From **[Lighthouse](https://github.com/sigp/lighthouse)**:
 
 
 Provides encoding (serialization) and decoding (deserialization) in the SimpleSerialize (SSZ)

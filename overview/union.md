@@ -1,28 +1,45 @@
 ---
-title: Union
+title: Unions
 section: Types
-toc: []
+toc: [Unions, Representation, Merkleization]
 ---
 
-## Union
+<div align='center'>
+<div id='Unions'>
 
-    Type: `Union[type_0, type_1, ...]`
+# Unions
 
-    Default: `default(type_0)`
+<br />
 
-A [`Union`](https://en.wikipedia.org/wiki/Union_type) provides the ability to represent a set of predetermined types in the same tree and serialization position.
+**Type**: `Union[type_0, type_1, ...]`
+
+**Default**: `default(type_0)`
+
+<br />
+
+**[`Unions`](https://en.wikipedia.org/wiki/Union_type)** provide the ability to represent a set of predetermined types in the same tree and serialization position.
 
 A special `null` type may be used as first type parameter to emulate an `Option`, any other type parameter than the first MUST not be `null`.
 A `null` as a standalone type is illegal.
 
-An Union is considered to have a dynamic encoding-size, even if all the selectable options have the same type or happen to have the same serialized byte length.
+A Union is considered to have a dynamic encoding-size, even if all the selectable options have the same type or happen to have the same serialized byte length.
 
-- ### Representation
+<br />
+<div id='Representation'>
 
-Serialization is defined as an `uint32` for the type index, followed by the serialization of the selected option.
+### Representation
+
+<br />
+
+**`Serialization`** is defined as an `uint32` for the type index, followed by the serialization of the selected option.
 
 `null` is represented as an empty byte sequence (i.e. remaining scope after the type_index is 0).
 
-- ### Merkleization
+<br />
+<div id='Merkleization'>
 
-Merkleization is defined as `mix_in_num(x, i)` where `x` is the root of the selected option with index `i` (right-padded to 32 bytes, effectively an `uint256`).
+### Merkleization
+
+<br />
+
+**`Merkleization`** is defined as `mix_in_num(x, i)` where `x` is the root of the selected option with index `i` (right-padded to 32 bytes, effectively an `uint256`).
