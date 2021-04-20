@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://github.com/scottypoi/ssz-simpleserialize">
-    <img src="https://ethereum.org/static/810eb64d89629231aa4d8c7fe5f20ee5/31987/developers-eth-blocks.png" height="128">
+    <img src="/public/developers-eth-blocks.png" height="128">
     <h1 align="center">SSZ SimpleSerialize</h1>
   </a>
 </p>
