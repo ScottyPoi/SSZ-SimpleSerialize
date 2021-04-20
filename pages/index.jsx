@@ -1,0 +1,34 @@
+import React from 'react';
+import Image from 'next/image';
+import Link from 'next/link'
+export default function Hello() {
+
+    return (
+        <div className='container'>
+            <div className='row justify-content-center'>
+                <div className='col-8'>
+                    <Image 
+                    src='/developers-eth-blocks.png'
+                    alt='ethereum building blocks'
+                    height={300}
+                    width={500}
+                    
+                    />
+                </div>
+            </div>
+            <br />
+            <div className='d-flex row justify-content-center'>
+                <div className='d-flex col-12'>
+                    <ul>
+                    <div><h4 className='text-center'>Welcome to the unofficial Guide to SSZ - SimpleSerialize</h4></div><br />
+                    <div><h6 className='text-center'>Visit the <Link href='/documentation'><a>Documentation</a></Link> section to view the current specifications for SSZ Serialization and Merkle Proofs from Eth2.0</h6></div><br />
+                    <div><h6 className='text-center'>Visit the <Link href='/overview/home' ><a>Overview</a></Link>  section for a thourough guide to understaning SSZ</h6></div><br />
+                    <div><h6 className='text-center'>Check out some of the known <Link href='/implementations/home'><a>Implementations</a></Link> of SSZ in a few different programming languages</h6></div><br />
+                    <div><p className='text-center'>*TRY IT OUT* <p> interactive playground coming soon!</p></p></div>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+    )
+}

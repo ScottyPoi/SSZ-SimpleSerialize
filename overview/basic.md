@@ -8,6 +8,10 @@ toc: ['Basic Types', 'Unsigned Integers', 'Booleans']
 
 <div id='Basic%20Types'>
 
+### SSZ support two basic Types:
+- `Unisigned Integer`
+- `Boolean`
+
 The basic types all strictly follow the basic-type principles:
 
 - 1 to 32 bytes long, for merkleization purposes.
@@ -30,6 +34,10 @@ A `N`-bit unsigned integer.
 - ### Representation
 
 The integers have a little-endian representation, and represented in their respective byte sizes.
+
+The `serialization` of `uintN` is defined using the Python version of `int.to_bytes`, little-endian.
+
+
 
 - ### Merkleization
 
@@ -56,7 +64,9 @@ Default value: `False`
 
 - ### Representation (Boolean)
 
-A single byte: 1 (i.e. `0b00000001`) for `True`, and 0 (i.e. `0b00000000`) for `False`.
+Booleans are the simplest Type to serialise and deserialise. The Boolean value true (resp. false) is serialized into a byte of value 1 (resp. 0). Note that this implies that the co-domain of serialize<Booleans> is the set of bytes {0,1}. As a result the domain of deserialize<Booleans> must be {0,1}.
+
+    A single byte: 1 (i.e. `0b00000001`) for `True`, and 0 (i.e. `0b00000000`) for `False`.
 
 To have a one-to-one correspondence from value to serialized byte, the non-utilized bits of the byte MUST all be zero bits.
 

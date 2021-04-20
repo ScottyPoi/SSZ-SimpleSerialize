@@ -10,14 +10,14 @@ export const globalStyles = (
         margin: 0;
         min-height: 100%;
         background-color: rgb(20,20,20);
-        color: pink;
+        color: grey;
         font-family: Roboto, Helvetica, Arial, sans-serif;
         font-size: 1rem;
      
       }
 
       a {
-        color: rgb(150,150,150);
+        color: white;
         text-decoration: none;
       }
 

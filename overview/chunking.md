@@ -1,13 +1,13 @@
 ---
 title: Chunkify
 section: Merkleization
-toc: ['Chunkify', 'Chunk_count']
+toc: ['Chunking', 'Chunk_count']
 ---
 
-<div id='Chunkify'>
+<div id='Chunking'>
 
 
-# Chunkify
+# Chunking
 
 `chunks` are `Bytes32` intermediate merkle values, used for e.g. [subtree merkleization](./overview/subtree_merkleization.md) leafs.
 
