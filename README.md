@@ -1,13 +1,13 @@
 <p align="center">
   <a href="https://github.com/scottypoi/ssz-simpleserialize">
-    <img src="/public/developers-eth-blocks.png" height="128">
+    <img src="https://ethereum.org/static/810eb64d89629231aa4d8c7fe5f20ee5/31987/developers-eth-blocks.png" height="128">
     <h1 align="center">SSZ SimpleSerialize</h1>
   </a>
 </p>
 
 <p align="center">
   <a aria-label="ESP Logo" href="https://esp.ethereum.foundation/en/">
-    <img src='./esplogoandbrand28.png'>
+    <img src='./public/esplogoandbrand28.png'>
   </a>
   <a aria-label="NPM version" href="https://www.npmjs.com/package/next">
     <img alt="" src="https://img.shields.io/badge/NPM-V6.1.3-blue">
