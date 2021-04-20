@@ -32,7 +32,7 @@ export default function OverviewPage({ overviewPageData }) {
   return (
   <div className='container'>
       <div className='row'>
-        <div className='col-8 ' dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
+        <div className='col-8' dangerouslySetInnerHTML={{ __html: overviewPageData.contentHtml}} />
       </div> 
       <div className='row justify-content-between'>
           <div className='col-2'>
@@ -42,10 +42,10 @@ export default function OverviewPage({ overviewPageData }) {
             <Link href='#'><a>Next</a></Link>
           </div>
       </div>
-      <div className='row justify-content-end position-fixed fixed-top'>
-        <div className='col-2'>
+      <div className='d-flex row justify-content-end position-fixed fixed-top'>
+        <div className='col-4'>
         <br /><br /><br /><br />
-          <div className='row'>
+          <div className='row d-none d-sm-block'>
             <PageTOC { ...Sections.args } />
           </div>
         </div>

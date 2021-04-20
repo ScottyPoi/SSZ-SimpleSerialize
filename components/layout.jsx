@@ -49,9 +49,9 @@ export default function Layout({ children }) {
                   </div>
                 </div>
               </div>
-            <div className="Content " style={contentStyle}>
-                <div className='d-flex row justify-content-between position-relative'>
-                  <div className='col-2 justify-content-start position-fixed top-10 start-0'>
+            <div className="container-fluid Content" style={contentStyle}>
+                <div className='d-flex row justify-content-between position-relative d-none d-sm-block'>
+                  <div className='col-2 justify-content-start position-fixed top-10 start-0 '>
                     <nav className="nav align-items-stretch">
                       <NavBar { ...MainPage.args } />
                     </nav>
@@ -59,7 +59,7 @@ export default function Layout({ children }) {
                   {/* <div className='col-8'></div> */}
                   <div className='col-2 position-fixed top-10 end-0'><OnThisPage></OnThisPage></div>
                 </div>
-                <div className='row position-static justify-content-end'>
+                <div className='row position-static justify-content-around'>
                   <div className='col-10'>{children}</div>
 
                 </div>
