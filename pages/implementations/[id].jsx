@@ -17,8 +17,8 @@ export default function ImplementationsPage({ implementationsPageData }) {
             {implementationsPageData.title}
             {implementationsPageData.id}
         </Head>
-            <div className='d-flex row justify-content-start'>
-                <div className='d-flex col-9'>
+            <div className='d-flex row justify-content-center'>
+                <div className='d-flex col-12'>
                     <div dangerouslySetInnerHTML={{ __html: implementationsPageData.contentHtml}} />
                 </div>
             </div>

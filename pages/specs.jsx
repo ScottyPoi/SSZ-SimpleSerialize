@@ -48,8 +48,8 @@ export default function Specs({ SpecsData }) {
     return (
       <div className='row '>
       <div className='col'>
-        <div className='row'>
-          <div className='col-8'>
+        <div className='row justify-content-center'>
+          <div className='col-12 col-sm-10'>
             <div className='row'>
               <h1>Simple Serialize Specs</h1>
               <div><p>from Ethereum 2.0</p></div>
@@ -62,7 +62,7 @@ export default function Specs({ SpecsData }) {
         </div> 
           
         <div className={`row justify-content-end fixed-top overflow-y-scroll ${styles.toc}`}>
-          <div className={`col-4 position-fixed ${styles.scroll}`}>         
+          <div className={`col-3 d-none d-sm-block position-fixed ${styles.scroll}`}>         
             {scrollspy}
           </div>
         </div> 
