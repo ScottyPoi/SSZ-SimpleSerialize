@@ -1,11 +1,11 @@
 ---
-title: Merkleization Overview
-sectoin: Merkleization
+title: Merkleize
+section: Merkleization
 toc: []
 ---
 
 
-# Merkleization in SSZ
+# Merkleize
 
 
 ### `Merkleize` provides `hash_tree_root` for
@@ -17,7 +17,7 @@ toc: []
 - and `Unions` 
   
 
-### To implement hash_tree_root a number of helper functions are required, including
+### To implement `hash_tree_root` a number of helper functions are required, including
 
 - `size_of`
 - `chunk_count`
