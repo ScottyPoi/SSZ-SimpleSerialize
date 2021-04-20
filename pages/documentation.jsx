@@ -18,8 +18,8 @@ export default function documentation() {
             </div>
             <div className='row justify-content-center'>
                 <div className='col-12 text-center'>
-                    <h3>SSZ Exists</h3>
-                    <p>Officially as a pair of documents in the Eth2.0 specs</p>
+                    <h3>SSZ</h3>
+                    <p>Exists <code>officially</code> as a pair of documents in the Eth2.0 specs</p>
                     <div className='row justify-content-between'>
                         <div className='col-4 text-center'>
                             <Link href='/specs' >

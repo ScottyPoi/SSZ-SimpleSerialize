@@ -21,9 +21,9 @@ export default function Hello() {
                 <div className='d-flex col-12'>
                     <ul>
                     <div><h4 className='text-center'>Welcome to the unofficial Guide to SSZ - SimpleSerialize</h4></div><br />
-                    <div><h6 className='text-center'>Visit the <Link href='/documentation'><a>Documentation</a></Link> section to view the current specifications for SSZ Serialization and Merkle Proofs from Eth2.0</h6></div><br />
-                    <div><h6 className='text-center'>Visit the <Link href='/overview/home' ><a>Overview</a></Link>  section for a thourough guide to understaning SSZ</h6></div><br />
-                    <div><h6 className='text-center'>Check out some of the known <Link href='/implementations/home'><a>Implementations</a></Link> of SSZ in a few different programming languages</h6></div><br />
+                    <div><h6 className='text-center'>Visit the <Link href='/documentation'><a>Documentation</a></Link> section to view up-to-date specifications for SSZ Serialization and Merkle Proofs from the Eth2.0 specs</h6></div><br />
+                    <div><h6 className='text-center'>Visit the <Link href='/overview/home' ><a>Overview</a></Link>  section for a guide to understanding SSZ</h6></div><br />
+                    <div><h6 className='text-center'>Check out some working <Link href='/implementations/home'><a>Implementations</a></Link> of SSZ in a few different programming languages</h6></div><br />
                     <div><p className='text-center'>*TRY IT OUT* <p> interactive playground coming soon!</p></p></div>
                     </ul>
                 </div>

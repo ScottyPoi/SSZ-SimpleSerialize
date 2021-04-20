@@ -50,6 +50,19 @@ export default function Specs({ MerkleProofsData }) {
       <div className='col'>
         <div className='row justify-content-center'>
           <div className='col-12 col-sm-10'>
+          <div className='row'>
+            <ul class="nav nav-tabs">
+              <li class="nav-item">
+                <a class="nav-link"  href="/specs">SimpleSerialize.md</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link active" aria-current="page" href="/merkle-proofs">Merkle-Proofs.md</a>
+              </li>
+            </ul>
+            </div>              
+              <br />
+              <br />
+              <br />
             <div className='row'>
               <h1>Merkle Proofs</h1>
               <div><p>from Ethereum 2.0</p></div>
