@@ -23,7 +23,7 @@ const contentStyle = {
 };
 
 export default function Layout({ children }) {
-    console.log('fuck everything')
+    console.log('twerkleizing...')
     return (
           <div className='container'>
             <Head>

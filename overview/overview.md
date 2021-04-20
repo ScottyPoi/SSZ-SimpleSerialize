@@ -1,9 +1,9 @@
 ---
 title: Overview
 section: Overview
-toc: []
+toc: ['SSZ Overview', 'Table of Contents']
 ---
-<div align='center'>
+<div align='center' id='SSZ%20Overview'>
 
 # SSZ Overview
 
@@ -16,6 +16,8 @@ toc: []
 - ### Clarifications? Corrections? Insight to offer? Please collaborate on this project at our [GitHub](#https://www.github.com/scottypoi/ssz-simpleserialize) repository
 
 # Table of contents`:`
+
+<div id='Table%20of%20Contents'>
 
 ## Introduction`:` [Principles and Design](./overview/principles_and_design)
 
