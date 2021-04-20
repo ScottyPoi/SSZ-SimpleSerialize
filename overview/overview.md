@@ -3,6 +3,7 @@ title: Overview
 section: Overview
 toc: []
 ---
+<div align='center'>
 
 # SSZ Overview
 
