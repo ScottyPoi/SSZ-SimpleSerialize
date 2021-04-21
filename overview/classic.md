@@ -1,33 +1,33 @@
 ---
 title: Classic Merkle Proof Backings
 section: Merkleization
-toc: []
+toc: [Classic Merkle Proof Backing, Description, Helper Indices, Leaf Indices, Leaf Data, Witness Data, Verification]
 ---
 
-## Classic merkle proof backing
+<div align="center">
+<div id='Classic Merkle Proof Backing'>
 
-This format is not optimal for newer multi-proof use cases, but does offer:
+# Classic Merkle Proof Backing
 
-- Simplicity
-- Backwards compatibility
-- Consistency with regular single-leaf merkle proofs
+<br />
 
-## Contents
+<div id='Description'>
 
-- Description: Generalized indices of the leaves `[optional]`
-- Leaf data: Leaf chunks `[optional]`
-- Witness data: Witness chunks
+## Description
 
-The separation of content types, and the order of the chunks in the witness data, makes a the backing encoding compatible with a standard single leaf merkle proof. top-to-bottom branch
-
-### Description
+<br />
 
 The description of contents is kept separate from the actual witness data, and an optional part of the format:
 if the both the proof producing party and and proof consuming part have the same expectation of contents, there is no need to repeat it in communication.
 
 Also this fits with the existing convention for Merkle proofs where the index is separate from the proof.
 
-#### Helper indices
+<br />
+<div id='Helper Indices'>
+
+## Helper Indices
+
+<br />
 
 The generalized indices of the witness data (the "helper indices") can be derived from those of the leaves, and are thus not encoded.
 The below Python code demonstrates how this can be done:
@@ -71,10 +71,16 @@ def get_helper_indices(indices: Sequence[GeneralizedIndex]) -> Sequence[Generali
 
     return sorted(all_helper_indices.difference(all_path_indices), reverse=True)
 ```
+<br />
+<div id='Leaf Indices'>
 
-#### Leaf Indices
+## Leaf Indices
+
+<br />
 
 The positions of the leaves are encoded in bit-alphabetical left-to-right order:
+
+<br />
 
 ```python
 def split_by_root(ints, depth):
@@ -110,19 +116,34 @@ Tree:
 Note that not all generalized indices would be encoded, only those of the leaves the proof is targetting.
 Those that do get encoded will be ordered correctly for a single-pass left-to-right tree traversal for verification.
 
-### Leaf data
+<br />
+<div id='Leaf Data'>
+
+## Leaf Data
+
+<br />
 
 The leaf data is optional because in some cases the leaf data may also be known by both parties, or encoded elsewhere outside of the proof.
 
 The 32 byte chunks of data are ordered the same as the leaf indices of the description part are.
 
-### Witness data
+<br />
+<div id='Witness data'>
+
+## Witness data
+
+<br />
 
 Witness data is the essential part of the proof, and kept separate from the leaf data.
 
 Like leaf data, witness data is also sorted in bit-alphabetical left-to-right order (in respect to the generalized indices matching the chunks).
 
+<br />
+<div id='Verification'>
+
 ## Verification
+
+<br />
 
 ```python
 def calculate_multi_merkle_root(leaves: Sequence[Bytes32],
@@ -157,6 +178,4 @@ def verify_merkle_multiproof(leaves: Sequence[Bytes32],
     return calculate_multi_merkle_root(leaves, proof, indices) == root
 ```
 
-A challenge for the reader now, but planned as appendix to this spec,
-is to write an optimized single-pass stack based merkleization alternative.
-Since even for a multi-proof, it is not necessary to buffer too much at once.
+

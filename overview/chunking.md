@@ -9,21 +9,34 @@ toc: ['Chunking', 'Chunk_count']
 
 # Chunking
 
+<br/>
+
 `chunks` are `Bytes32` intermediate merkle values, used for e.g. [subtree merkleization](./overview/subtree_merkleization.md) leafs.
 
+<br/>
 
 ### Complex sequences
+
+<br/>
 
 Sequences that are not homogeneously typed, or not of basic values or bits, are not packed.
 Instead, the `chunks` are the `hash_tree_root`s for each of the values.
 
+<br/>
+
 ### Basic sequences / bitfields
+
+<br/>
 
 To convert a homogeneously typed sequence of basic values or bits into chunks, the values are packed.
 
 Chunkification of `elements` of a sequence type `T` is defined as following:
 
+<br/>
+
 #### For basic elements`:`
+
+<br/>
 
 Given ordered `elements` of the same basic type:
 
@@ -32,14 +45,22 @@ Given ordered `elements` of the same basic type:
 - Serialize the elements in each partition, and tightly pack the partition into a chunk (no padding between elements).
   - If the last-partition is not full, it is right-padded with zero bytes.
 
+<br/>
+
 #### For bitfields
+
+<br/>
 
 - Serialize the Bitlist or bitvector.
 - The length-delimiting bit for bitlists is excluded: bitlists mix-in the bit-length and do not need the delimiting bit.
 - Right-pad the serialized bytes to a multiple of 32.
 - Partition into chunks: split the bytes into groups of consecutive `32` bytes
 
+<br/>
+
 ## Chunk_count
+
+<br/>
 
 </div>
 <div id='Chunk_count'>

@@ -1,15 +1,18 @@
 ---
 title: Generalized Indices
 section: Navigation
-toc: []
+toc: [Generalized Merkle Tree Index, Combination and Slicing, Flat Indexing, Representation]
 ---
 
-## Generalized Merkle tree index
+<div align='center'>
+<div id='Generalized%20Merkle%20Tree%20Index'>
 
-The hash-tree-root of all SSZ types merkleizes the contents as a binary tree.
-In such a binary tree, the path to any node from the root can be described by a bitfield.
+# Generalized Merkle tree Index
 
-This bitfield can also be expressed as an integer, called a "generalized index" in SSZ.
+The `hash-tree-root` of all SSZ types merkleizes the contents as a binary tree.
+In such a binary tree, the path to any node from the root can be described by a `bitfield`
+
+This `bitfield` can also be expressed as an integer, called a **`generalized index`** in SSZ.
 The generalized index value for a node in a binary tree is `2**depth + index`, starting with a 1 for the root.
 Visually, this looks as follows:
 
@@ -20,10 +23,16 @@ Visually, this looks as follows:
    ...
 ```
 
+
 Like the bitfield form that is extended with a `0` or `1` for each child,
 the generalized index has the convenient property that the two children of node `k` are `2k` and `2k+1`.
 
+<br/>
+<div id='Combination%20and%20Slicing'>
+
 ## Combination and slicing
+
+<br />
 
 To navigate from `A` to `B` to `C`, where `B` is in the subtree of `A` and `C` in the subtree of `B`, the generalized indices can be composed and sliced:
 
@@ -32,7 +41,12 @@ A generalized index is composed of a leading bit `1` for the root, and the remai
 These navigation parts `AB` and `BC` can be concatenated to get the navigation part `AC`: `AB ++ BC <-> AC`.
 And then a `1` is prepended again to delimit the exact length of the path and represent the root.
 
-## Flat indexing
+<br />
+<div id='Flat%20Indexing'>
+
+## Flat Indexing
+
+<br />
 
 For implementation purposes, the generalized index matches the position of a node in the linear representation of the Merkle tree, as computed by this function:
 
@@ -45,12 +59,17 @@ def merkle_tree(leaves: Sequence[Bytes32]) -> Sequence[Bytes32]:
     return o
 ```
 
+<br />
+<div id='Representation'>
+
 ## Representation
+
+<br />
 
 In the SSZ spec, a generalized index is represented as a custom integer type: `GeneralizedIndex` (of arbitrary bitlength).
 It can be also be represented as a Bitvector/Bitlist object.
 
-Note that for bitfields, the root bit is not encoded in SSZ:
+Note that for `bitfields`, the root bit is not encoded in SSZ:
 
-- bitlists: SSZ already naturally appends 1 to the serialized bits, to make a difference in bitlengths.
-- bitvectors: vectors are of fixed length, and do not need the delimiting bit.
+- **`bitlists`**: SSZ already naturally appends 1 to the serialized bits, to make a difference in bitlengths.
+- **`bitvectors`**: vectors are of fixed length, and do not need the delimiting bit.
