@@ -1,29 +1,26 @@
 import React, {useEffect, useState} from 'react';
-import '../styles/GridNode.css';
+import styles from  '../styles/GridNode.module.css';
 
-export default function GridNode(props) {
+export default function GridNode({ ...props }) {
     const [on, setOn] = useState(false);
     const [visited, setVisited] = useState(false)
 
-    let value = props.value;
-    const row = props.row;
-    const col = props.col;
+    let nodevalue = props.nodevalue;
     let mousePressed = props.mousePressed;
-    let edges = props.edges;
 
     const addEdge = (node) => {
         edges[node] = true;
     }
     
     const extraClassName = visited
-        ? 'grid-node-visited'
+        ? styles.visited
         : on 
-        ? 'grid-node-on' 
-        : "grid-node-off"
+        ? styles.on
+        : styles.off
     return (
         <div 
-        className={`grid-node unselectable ${extraClassName}`}
-        id={`grid-node-${row + 32*col}`}
+        className={`${styles.gridnode} ${extraClassName} text-center`}
+        id={'0'}
         onMouseEnter={() => !mousePressed 
                             ? setOn(true)
                             : mousePressed && !visited && !deleter
@@ -33,9 +30,8 @@ export default function GridNode(props) {
                             : setOn(true) }
         onMouseLeave={() => setOn(false)}
         onMouseDown={() => !visited ? setVisited(true) : setVisited(false)}
-        value={nodeValue}
-        edges={edges}
-        >{nodeValue}
+        nodevalue={nodevalue}
+        ><h4 className='text-center'>{nodevalue}</h4>
         </div>
     )
 
