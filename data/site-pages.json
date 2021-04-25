@@ -10,9 +10,27 @@
         "title": "Overview",
         "pages": [
             {
-                "name": "Types",
-                "url": "/overview/Types",
-                "title": "SSZ Overview - Types",
+                "name": "Introduction",
+                "url": "/overview/overview",
+                "title": "Overview",
+                "pages": [
+                    {
+                        "name": "SSZ in Eth2",
+                        "url": "/sszineth2",
+                        "title": "SSZ in Eth2"
+                    },
+                    {
+                        "name": "design and principles",
+                        "url": "/overview/principles_and_design",
+                        "title": "SSZ Home Page"
+                    }
+                    
+                ]
+            },
+            {
+                "name": "Typing",
+                "url": "/overview/Typing",
+                "title": "SSZ Overview - Typing",
                 "pages": [
                     {
                         "name": "Basic Types",

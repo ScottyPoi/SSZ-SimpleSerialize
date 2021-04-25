@@ -4,7 +4,8 @@ import matter from 'gray-matter';
 import remark from 'remark';
 import html from 'remark-html';
 import gfm from 'remark-gfm';
-import slug from 'remark-slug';
+import styles from '../styles/overview.module.css'
+
 
 const overviewDirectory = path.join(process.cwd(), 'overview')
 export function getAllOverviewIds() {
