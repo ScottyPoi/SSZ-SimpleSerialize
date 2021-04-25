@@ -32,8 +32,12 @@ The SSZ specs describe 4 **complex types**:
 - ###### **[Union]($Unions)**
   - `A "Union Type" containing SSZ Types`
 
-##### These types are distinguised by their **size** (`fixed` or `variable`)  
-##### And whether their contents are `homogeneous` or `heterogeneous`  
+<br />
+
+##### These types are distinguised by their **size** (`fixed` or `variable`)
+
+##### And whether their contents are `homogeneous` or `heterogeneous` 
+
 <br/>
 
 ###### A complex object is considered `fixed size` if:
@@ -44,10 +48,11 @@ The SSZ specs describe 4 **complex types**:
 <br/>
 
 
-###### A sequence is `homogeneous` if 
+###### A complex object is `homogeneous` if 
 
 - its contents are all of one **type** 
- ##### A secquence is `heterogeneous` if 
+ 
+###### A complex object is `heterogeneous` if 
  
 - it contains multiple **types**.
 <br/>
@@ -56,7 +61,9 @@ The SSZ specs describe 4 **complex types**:
 </div>
 <div align='center'>
 
-#### Complex types are all serialized as [Sequences](../overview/sequences.md).
+##### Complex types are all serialized as [Sequences](../overview/sequences.md)
+
+
 
 <br/>
 </div>

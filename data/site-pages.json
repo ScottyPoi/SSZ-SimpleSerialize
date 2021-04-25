@@ -56,17 +56,17 @@
             },
             {
                 "name": "Serialization",
-                "url": "/overview/serialization",
+                "url": "/overview/Serialization",
                 "title": "SSZ Object Representation",
                 "pages": [
                     {
-                        "name": "Fixed Variable Size",
-                        "url": "/overview/fixed_variable_size",
+                        "name": "Fixed Size",
+                        "url": "/overview/Fixed_Size",
                         "title": "Fixed Variable Size"
                     },
                     {
-                        "name": "Sequences",
-                        "url": "/overview/sequences",
+                        "name": "Variable Size",
+                        "url": "/overview/Variable_Size",
                         "title": "Sequences"
                     }
                 ]
