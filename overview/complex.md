@@ -3,9 +3,8 @@ title: Complex Types
 section: Types
 toc: ['Complex Types', 'Vectors', 'Lists', 'Containers', 'Unions']
 ---
-<div align='center'>
 
-<div id='Complex%20Types'>
+<div id='Complex%20Types' align='center'>
 
 
 # Complex types
@@ -16,41 +15,81 @@ toc: ['Complex Types', 'Vectors', 'Lists', 'Containers', 'Unions']
 **Complex Types** are types that can hold multiple values at the same time, with usage similar to that of a `struct` in popular programming languages.
 
 <br/>
+</div>
+<div align='start'>
 
+The SSZ specs describe 4 **complex types**:
 
-### Complex types are all serialized like [Sequences](../overview/sequences.md).
+- ###### **[Vectors](#Vectors)**
+  - `"Fixed Length" sequence of elements of same **Type**`
+  - `(homogeneous)`
+- ###### **[Lists](#Lists)**
+  - `"Variable Length" sequence of elements of the same **Type** `
+  - `(homogenous)`
+- ###### **[Containers](#Containers)**
+  - `Ordered collection of elements`
+  - `Hetrogeneous`
+- ###### **[Union]($Unions)**
+  - `A "Union Type" containing SSZ Types`
+
+##### These types are distinguised by their **size** (`fixed` or `variable`)  
+##### And whether their contents are `homogeneous` or `heterogeneous`  
+<br/>
+
+###### A complex object is considered `fixed size` if:
+
+- all of the contained elements are `fixed size`
+- `type` has a `fixed element count` (e.g. `Lists` cannot be `fixed size`)
 
 <br/>
 
 
-A complex object is considered `fixed size` if all of the contained elements are `fixed size`, and `type` has a `fixed element count` (e.g. `Lists` cannot be `fixed size`)
+###### A sequence is `homogeneous` if 
 
-Elements can be read and written in `O(1)`, as they are indexed (using an [offsets prologue](../overview/sequences.md#offsets) if `T` is `variable size`)
-
-<div id='Vectors'>
-
+- its contents are all of one **type** 
+ ##### A secquence is `heterogeneous` if 
+ 
+- it contains multiple **types**.
 <br/>
 
+
+</div>
+<div align='center'>
+
+#### Complex types are all serialized as [Sequences](../overview/sequences.md).
+
+<br/>
+</div>
+<div id='Vectors' align='center'>
+<br/>
 
 ## Vectors
 
 <br/>
 
+</div>
+<div align='start'>
 
-    Type: `Vector[T, N]`
+- ###### Type: 
+  - `Vector[T, N]`
 
-    Default value: `[default(T)] * N`, i.e. all elements set to their default value.
+- ###### Default value: 
+  - `[default(T)] * N`
+  - All elements set to their `default value`
+
+- ###### Empty Vectors:
+  - Empty vectors (`N = 0`) are `illegal types`, even if the element type `T` is `dynamic length`.
+  - This is to avoid `fixed-length types` of `0 length`, which break various size assumptions in deserialization.
 
 <br/>
-
+</div>
+<div align='center'>
 
 ### A **Vector** is a sequence of elements, all of the same type `T`, and of fixed length `N`.
 
 <br/>
 
 
-Empty vectors (`N = 0`) are `illegal types`, even if the element type `T` is `dynamic length`.
-This is to avoid `fixed-length types` of `0 length`, which break various size assumptions in deserialization.
 
 <br/>
 
