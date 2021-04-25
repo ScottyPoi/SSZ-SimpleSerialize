@@ -1,6 +1,6 @@
 ---
-title: Fixed Variable Size
-section: Representation
+title: Simple Objects
+section: Serialization
 toc: [Fixed Size and Variable Size]
 ---
 

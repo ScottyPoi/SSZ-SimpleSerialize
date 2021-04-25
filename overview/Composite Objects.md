@@ -1,11 +1,10 @@
 ---
-title: Variable Size
+title: Composite Objects
 section: Serialization
 toc: []
 ---
 
-## Serialization of Sequences
-
+## Serialization of Composite Objects
 
 
 Representation of sequences can be thought of as two parts: the fixed-size part, and the variable-size part.

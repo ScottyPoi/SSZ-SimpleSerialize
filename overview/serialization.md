@@ -9,12 +9,18 @@ toc: []
 
 <br />
 
-### **The simpleserialize method for serialization follows simple byte conversion, making it effective and efficient for encoding and decoding**
+</div>
+<div align='start'>
 
-- **The decoding requires knowledge of the data type and the order of the serialization**
+#### **The simpleserialize method for serialization follows simple byte conversion, making it effective and efficient for encoding and decoding**
+
+##### **The decoding requires knowledge of the data type and the order of the serialization**
 
 
-- **When performing decoding on an entire serialized string, it also requires knowledge of what order the objects have been serialized in**
+##### **When performing decoding on an entire serialized string, it also requires knowledge of the order in which the objects have been serialized**
+
+</div>
+<div align='start' id='type%0serializable'>
 
 
 <br />
