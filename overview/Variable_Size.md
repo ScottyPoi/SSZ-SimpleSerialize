@@ -1,10 +1,12 @@
 ---
-title: Sequences
-section: Representation
+title: Variable Size
+section: Serialization
 toc: []
 ---
 
-## Representation of sequences
+## Serialization of Sequences
+
+
 
 Representation of sequences can be thought of as two parts: the fixed-size part, and the variable-size part.
 
