@@ -38,7 +38,7 @@ export const globalStyles = (
       }
 
       h3 {
-        color: rgb(200,100,50);
+        color: rgb(0,100,100);
       }
 
       li {
