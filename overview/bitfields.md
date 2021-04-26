@@ -3,41 +3,37 @@ title: BitFields
 section: Types
 toc: ['BitVectors', 'Collections', 'Bitvector']
 ---
-<div align='center'>
-
-<div id='BitVectors'>
+<div align='center' id='BitVectors'>
 
 # Bitfields
 
+##### Bitfields are collections of booleans
+
 ## Bitvector / Bitlist
 
+</div>
+<div align='start'>
 <br/>
 
-**boolean** values (true/false, 0/1, yes/no) are each exactly 1 bit.  For efficiency, they can be packed together tightly into special ***Vectors*** or ***Lists*** called **Bitfields**
+##### **boolean** values (true/false, 0/1, yes/no) are each exactly 1 bit.  For efficiency, they can be packed together tightly into special ***Vectors*** or ***Lists*** called **Bitfields**
 
-A **Bitvector** is a **Vector** of `type boolean` values, with a `fixed size` of `N`
+##### A **Bitvector** is a **Vector** of `type boolean` values, with a `fixed size` of `N`
 
-A **Bitlist** is a **List** of `boolean` values, with a `limit` of `N`
+##### A **Bitlist** is a **List** of `boolean` values, with a `limit` of `N`
 
 While these *could* be treated as Vector[boolean, N] and List[boolean, N], SSZ offers a more efficient method for serializing ***bitfields***
 
-  
+Bitfields are collections of booleans, backed by sequences of bytes:
 
-<!-- 
-
-The main idea in the serialization part is to encode a bitlist in a sequence of bytes by chopping it into chunks of size 8 (the number of bits in a byte). 
-
-However, a bitlist may not have a size that is a multiple of 8, so it is necessary to somehow encode the actual size or last element of the list in the serialisation.
-
-Bitfields are collections of booleans, backed by sequences of bytes: . -->
+</div>
+<div align='center' id='Bitvector'>
 
 <img src='/bitlist-sedes.jpg' alt='bitlistsedes' class='img-fluid'/>
 
-
-<div id='Bitvector'>
-
 ## Bitvector
 
+</div>
+<div align='start'>
 <br/>
 
 - ###### Type: 
@@ -60,12 +56,14 @@ Bitfields are collections of booleans, backed by sequences of bytes: . -->
 <br />
 
 </div>
-<div id='Bitlist'>
+<div id='Bitlist' align='center'>
 
 ## Bitlist
 
-A bitlist is a **`dynamic-length sequence`**, with a limit of `N` bits, packed into bytes.
+##### A bitlist is a **`dynamic-length sequence`**, with a limit of `N` bits, packed into bytes.
 
+</div>
+<div align='start'>
 <br />
 
 - ###### Type: 
