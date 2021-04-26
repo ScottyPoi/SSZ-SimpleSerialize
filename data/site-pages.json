@@ -43,8 +43,8 @@
                         "title": "Composite Types"
                     },
                     {
-                        "name": "Bitlists",
-                        "url": "/overview/bitvectors",
+                        "name": "Bitfields",
+                        "url": "/overview/bitfields",
                         "title": "Bitfields"
                     }
                 ]   

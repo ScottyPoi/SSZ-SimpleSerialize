@@ -72,7 +72,7 @@ The SSZ specs describe 4 **composite types**:
 
 <br/>
 
-### A **Vector** is a sequence of elements, all of the same type `T`, and of fixed length `N`.
+#### A **Vector** is a sequence of elements, all of the same type `T`, and of fixed length `N`.
 
 </div>
 <div align='start'>
@@ -92,7 +92,7 @@ The SSZ specs describe 4 **composite types**:
   - Serialized and deserialized like a [Sequence](../overview/composite_objects.md) of the `values`, all of type `T`.
 
 - ###### Merkleization
-  - `root = merkle_subtree(chunkify(values))`, see [`merkle_subtree`](../merkleization/subtree_merkleization.md) and [`chunkify`](../merkleization/chunkify.md)
+  - `root = merkle_subtree(chunkify(values))`, see [`merkle_subtree`](../merkleization/subtree_merkleization.md) and [`chunkify`](../merkleization/chunking.md)
 
 <br/>
 </div>
@@ -120,13 +120,6 @@ The SSZ specs describe 4 **composite types**:
   - This limit is preset for two primary reasons:
     1. Stable merkleization: there are no variable numbers in the hash-tree-root definition.
     2. Strong guarantees on inputs: lists should never contain more elements than their limit states it was designed for.
-
-- ###### Allocation
-  - For small list limits, the limit type information may help to optimize for a single allocation of full list capacity.
-  - However, list limits can be arbitrarily high as the cost for serialization and merkleization is `O(n)`:
-    - the limit is not padded to in serialization
-    - `O(log(N))` [zero-hashes](../merkleization/hashing.md#zero-hashes) may need to be merged during merkleization.
-  - Hence, lists should not be allocated to their full limit for larger numbers.
 
 - ###### Serialization
   - Serialized and deserialized like a [Sequence](../representation/sequences.md) of the `values`, all of type `T`.
@@ -187,20 +180,18 @@ The SSZ specs describe 4 **composite types**:
 - ###### Type:
   - `Union[type_0, type_1, ...]`
   - e.g. `union[null, uint64]`
-
 - ###### Default Value:
   - Default value of `type_0`
-
-- ###### 'Null' Types:
+- ###### `Null` Types:
   - A special `null` type may be used as first type parameter to emulate an `Option`, any other type parameter than the first MUST not be `null`.
   - A `null` as a standalone type is illegal.
-
 - ###### Size:
   - A Union is considered to have a `dynamic` encoding-size, even if all the selectable options have the same type or happen to have the same serialized byte length.
-
-- ###### Serialization and 
-  - **`Serialization`** is defined as an `uint32` for the type index, followed by the serialization of the selected option.
-  - `null` is represented as an empty byte sequence (i.e. remaining scope after the type_index is 0).
-   
+- ###### Serialization
+  -  `uint32` for the type index
+  -  Followed by the serialization of the selected option.
+  - `null` is represented as an empty byte sequence 
 - ###### Merkleization
-  - **`Merkleization`** is defined as `mix_in_num(x, i)` where `x` is the root of the selected option with index `i` (right-padded to 32 bytes, effectively a `uint256`).
+  -  `mix_in_num(x, i)` 
+     -  where `x` is the root of the selected option with index `i` 
+     -  Right-padded to 32 bytes, effectively a `uint256`
