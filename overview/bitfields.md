@@ -1,34 +1,29 @@
 ---
 title: BitFields
 section: Types
-toc: ['BitVectors', 'Collections', 'Bitvector']
+toc: ['Bitfields', 'BitVectors', 'BitLists']
 ---
-<div align='center' id='BitVectors'>
+<div align='center' id='Bitfields'>
 
 # Bitfields
 
-##### Bitfields are collections of booleans
+##### `Bitfields` are collections of `booleans`
 
-## Bitvector / Bitlist
+###### **`boolean`** values (`true/false`, `0/1`, `yes/no`) are each exactly `1 bit`.  For efficiency, they can be packed together tightly into special ***`Vectors`*** or ***`Lists`*** called **`Bitfields`**
 
+<br/>
 </div>
 <div align='start'>
-<br/>
 
-##### **boolean** values (true/false, 0/1, yes/no) are each exactly 1 bit.  For efficiency, they can be packed together tightly into special ***Vectors*** or ***Lists*** called **Bitfields**
+### Bitvector / Bitlist
 
-##### A **Bitvector** is a **Vector** of `type boolean` values, with a `fixed size` of `N`
+- ##### A **`Bitvector`** is a **`Vector`** of `boolean` values, with a `fixed size` of `N`
+- ##### A **`Bitlist`** is a **`List`** of `boolean` values, with a `limit` of `N`
+- While these *could* be treated as `Vector[boolean, N]` and `List[boolean, N]`, SSZ offers a more efficient method for serializing ***`bitfields`***
 
-##### A **Bitlist** is a **List** of `boolean` values, with a `limit` of `N`
-
-While these *could* be treated as Vector[boolean, N] and List[boolean, N], SSZ offers a more efficient method for serializing ***bitfields***
-
-Bitfields are collections of booleans, backed by sequences of bytes:
 
 </div>
-<div align='center' id='Bitvector'>
-
-<img src='/bitlist-sedes.jpg' alt='bitlistsedes' class='img-fluid'/>
+<div align='center' id='BitVectors'>
 
 ## Bitvector
 
@@ -49,14 +44,13 @@ Bitfields are collections of booleans, backed by sequences of bytes:
   - A fixed-length sequence of `N` bits, packed into `(N + 7) // 8` bytes.
   - a bit at sequence index `i` is put into byte `i // 8` and matches `1 << (i % 8)` within that byte
   - If `N` is not a multiple of 8, the last byte is packed with zeroes 
-
-### Merkleization
+- ###### Merkleization
   - A bitvector is merkleized by serializing it, and then merkleizing it as a `Vector[byte, ((N + 7) // 8)]`
 
 <br />
 
 </div>
-<div id='Bitlist' align='center'>
+<div id='BitLists' align='center'>
 
 ## Bitlist
 
@@ -80,3 +74,6 @@ Bitfields are collections of booleans, backed by sequences of bytes:
 - ###### Merkleization
   - For merkleization, the length of the bitlist is mixed in with the root, and hence the delimiting bit is not used for merkleization.
   - Similarly to a `List`, the subtree is padded to fit the limit of the bitlist.
+
+
+<img src='/bitlist-sedes.jpg' alt='bitlistsedes' class='img-fluid'/>

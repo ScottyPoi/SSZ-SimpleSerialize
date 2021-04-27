@@ -56,42 +56,36 @@
                 "pages": [
                     {
                         "name": "Simple Objects",
-                        "url": "/overview/Fixed_Size",
+                        "url": "/overview/Simple_Objects",
                         "title": "Fixed Variable Size"
                     },
                     {
                         "name": "Composite Objects",
-                        "url": "/overview/Variable_Size",
+                        "url": "/overview/Composite_Objects",
                         "title": "Sequences"
                     }
                 ]
             },
             {
-                "name": "Navigation",
-                "url": "/overview/navigation",
-                "title": "Navigation",
+                "name": "Deserialization",
+                "url": "/overview/Deserialization",
+                "title": "Deserialization",
                 "pages": [
                     {
-                        "name": "Generalized Indices",
-                        "url": "/overview/generalized_indices",
-                        "title": "Generalized Indices"
+                        "name": "Fixed-Size Objects",
+                        "url": "/overview/Fixed_Size_Objects",
+                        "title": "Deserialize Simple Objects"
                     },
                     {
-                        "name": "Paths",
-                        "url": "/overview/paths",
-                        "title": "Paths"
-                    },
-                    {
-                        "name": "Summaries and Expansions",
-                        "url": "/overview/summaries_expansions",
-                        "title": "Summaries and Expansions"
+                        "name": "Variable-Size Objects",
+                        "url": "/overview/Variable_Size_Objects",
+                        "title": "Deserialize Variable-Size Objects"
                     }
-
-                ]   
+                ]
             },
             {
                 "name": "Merkleization",
-                "url": "/overview/merkleization",
+                "url": "/overview/Merkleization",
                 "title": "Merkleization",
                 "pages": [
                     {
@@ -106,17 +100,17 @@
                     },
                     {
                         "name": "Merkleize",
-                        "url": "overview/_merkleize",
+                        "url": "/overview/merkleize",
                         "title": "merkleize"
                     },
                     {
                         "name": "Merkleize Helper Functions",
-                        "url": "overview/merkleize_helper_functions",
+                        "url": "/overview/merkleize_helper_functions",
                         "title": "Helper Functions"
                     },
                     {
                         "name": "hash_tree_root",
-                        "url": "overview/hash_tree_root",
+                        "url": "/overview/hash_tree_root",
                         "title": "hash_tree_root"
                     },
                     {
@@ -141,6 +135,29 @@
                     }
                 ]
 
+            },
+            {
+                "name": "Navigation",
+                "url": "/overview/navigation",
+                "title": "Navigation",
+                "pages": [
+                    {
+                        "name": "Generalized Indices",
+                        "url": "/overview/generalized_indices",
+                        "title": "Generalized Indices"
+                    },
+                    {
+                        "name": "Paths",
+                        "url": "/overview/paths",
+                        "title": "Paths"
+                    },
+                    {
+                        "name": "Summaries and Expansions",
+                        "url": "/overview/summaries_expansions",
+                        "title": "Summaries and Expansions"
+                    }
+
+                ]   
             },
             {
                 "name": "Partials",
