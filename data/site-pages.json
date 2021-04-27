@@ -1,239 +1,239 @@
 [
-    {
-      "name": "Home",
-      "url": "/",
-      "title": "SSZ Home Page"
-    },
-    {
-      "name": "Overview",
-      "url": "/overview/overview",
-      "title": "Overview",
-      "pages": [
-        {
-          "name": "Introduction",
-          "url": "/overview/overview",
-          "title": "Overview",
-          "pages": [
-            {
-              "name": "SSZ in Eth2",
-              "url": "/sszineth2",
-              "title": "SSZ in Eth2"
-            },
-            {
-              "name": "design and principles",
-              "url": "/overview/principles_and_design",
-              "title": "SSZ Home Page"
-            }
-          ]
-        },
-        {
-          "name": "Typing",
-          "url": "/overview/Typing",
-          "title": "SSZ Overview - Typing",
-          "pages": [
-            {
-              "name": "Basic Types",
-              "url": "/overview/basic",
-              "title": "Basic Types"
-            },
-            {
-              "name": "Composite Types",
-              "url": "/overview/Composite_Types",
-              "title": "Composite Types"
-            },
-            {
-              "name": "Bitfields",
-              "url": "/overview/bitfields",
-              "title": "Bitfields"
-            }
-          ]
-        },
-        {
-          "name": "Serialization",
-          "url": "/overview/Serialization",
-          "title": "SSZ Object Representation",
-          "pages": [
-            {
-              "name": "Simple Objects",
-              "url": "/overview/Simple_Objects",
-              "title": "Fixed Variable Size"
-            },
-            {
-              "name": "Composite Objects",
-              "url": "/overview/Composite_Objects",
-              "title": "Sequences"
-            }
-          ]
-        },
-        {
-          "name": "Deserialization",
-          "url": "/overview/Deserialization",
-          "title": "Deserialization",
-          "pages": [
-            {
-              "name": "Fixed-Size Objects",
-              "url": "/overview/Fixed_Size_Objects",
-              "title": "Deserialize Simple Objects"
-            },
-            {
-              "name": "Variable-Size Objects",
-              "url": "/overview/Variable_Size_Objects",
-              "title": "Deserialize Variable-Size Objects"
-            }
-          ]
-        },
-        {
-          "name": "Merkleization",
-          "url": "/overview/Merkleization",
-          "title": "Merkleization",
-          "pages": [
-            {
-              "name": "Hashing",
-              "url": "/overview/hashing",
-              "title": "Hashing"
-            },
-            {
-              "name": "Chunking",
-              "url": "/overview/chunking",
-              "title": "Chunking"
-            },
-            {
-              "name": "Merkleize",
-              "url": "/overview/merkleize",
-              "title": "merkleize"
-            },
-            {
-              "name": "Merkleize Helper Functions",
-              "url": "/overview/merkleize_helper_functions",
-              "title": "Helper Functions"
-            },
-            {
-              "name": "hash_tree_root",
-              "url": "/overview/hash_tree_root",
-              "title": "hash_tree_root"
-            }
-          ]
-        },
-        {
-          "name": "Merkle Proofs",
-          "url": "/overview/merkle",
-          "pages": [
-            {
-              "name": "Merkle Proof Helper Functions",
-              "url": "/overview/merkle_proof_helper_functions",
-              "title": "Merkle Proof Helper Functions"
-            },
-            {
-              "name": "Generalized Merkle Tree Indices",
-              "url": "/overview/generalized_indices",
-              "title": "Generalized Merkle Tree Indices"
-            },
-            {
-              "name": "SSZ object to index",
-              "url": "/overview/ssz_object_to_index",
-              "title": "SSZ Object to Index"
-            },
-            {
-              "name": "Subtree Merkleization",
-              "url": "/overview/subtree_merkleization",
-              "title": "Subtree Merkleization"
-            },
-            {
-              "name": "Classic Merkle Proof Backings",
-              "url": "/overview/classic",
-              "title": "Classic Merkle Proof Backings"
-            },
-            {
-              "name": "Paths",
-              "url": "/overview/paths",
-              "title": "Paths"
-            },
-            {
-              "name": "Summaries and Expansions",
-              "url": "/overview/summaries_expansions",
-              "title": "Summaries and Expansions"
-            },
-            {
-              "name": "Partials",
-              "url": "/overview/partials",
-              "title": "Partials"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "name": "Documentation",
-      "url": "/documentation",
-      "title": "Documentation",
-      "pages": [
-        {
-          "name": "Specs",
-          "url": "/specs",
-          "title": "SSZ Specs"
-        },
-        {
-          "name": "Merkle Proofs",
-          "url": "/merkle-proofs",
-          "title": "SSZ Merkle Proofs"
-        }
-      ]
-    },
-    {
-      "name": "Implementations",
-      "url": "/implementations/home",
-      "title": "SSZ Implementations",
-      "pages": [
-        {
-          "name": "Python",
-          "url": "/implementations/python",
-          "title": "SSZ Implementations - Python"
-        },
-        {
-          "name": "TypeScript",
-          "url": "/implementations/typescript",
-          "title": "SSZ Implementations - Typescript"
-        },
-        {
-          "name": "Go",
-          "url": "/implementations/go",
-          "title": "SSZ Implementations - Go"
-        },
-        {
-          "name": "Dafny",
-          "url": "/implementations/dafny",
-          "title": "SSZ Implementations - Dafny"
-        },
-        {
-          "name": "Java",
-          "url": "/implementations/java",
-          "title": "SSZ Implementations - Java"
-        },
-        {
-          "name": "Nim",
-          "url": "/implementations/nim",
-          "title": "SSZ Implementations - Nim"
-        },
-        {
-          "name": "C#",
-          "url": "/implementations/csharp",
-          "title": "SSZ Implementations - C#"
-        },
-        {
-          "name": "Zig",
-          "url": "/implementations/zig",
-          "title": "SSZ Implementations - Zig"
-        },
-        {
-          "name": "Rust",
-          "url": "/implementations/rust",
-          "title": "SSZ Implementations - Rust"
-        },
-        {
-          "name": "Swift",
-          "url": "/implementations/swift",
-          "title": "SSZ Implementations - Swift"
-        }
-      ]
-    }
-  ]
+  {
+    "name": "Home",
+    "url": "/",
+    "title": "SSZ Home Page"
+  },
+  {
+    "name": "Overview",
+    "url": "/overview/overview",
+    "title": "Overview",
+    "pages": [
+      {
+        "name": "Introduction",
+        "url": "/overview/overview",
+        "title": "Overview",
+        "pages": [
+          {
+            "name": "SSZ in Eth2",
+            "url": "/sszineth2",
+            "title": "SSZ in Eth2"
+          },
+          {
+            "name": "design and principles",
+            "url": "/overview/principles_and_design",
+            "title": "SSZ Home Page"
+          }
+        ]
+      },
+      {
+        "name": "Typing",
+        "url": "/overview/Typing",
+        "title": "SSZ Overview - Typing",
+        "pages": [
+          {
+            "name": "Basic Types",
+            "url": "/overview/basic",
+            "title": "Basic Types"
+          },
+          {
+            "name": "Composite Types",
+            "url": "/overview/Composite_Types",
+            "title": "Composite Types"
+          },
+          {
+            "name": "Bitfields",
+            "url": "/overview/bitfields",
+            "title": "Bitfields"
+          }
+        ]
+      },
+      {
+        "name": "Serialization",
+        "url": "/overview/Serialization",
+        "title": "SSZ Object Representation",
+        "pages": [
+          {
+            "name": "Simple Objects",
+            "url": "/overview/Simple_Objects",
+            "title": "Fixed Variable Size"
+          },
+          {
+            "name": "Composite Objects",
+            "url": "/overview/Composite_Objects",
+            "title": "Sequences"
+          }
+        ]
+      },
+      {
+        "name": "Deserialization",
+        "url": "/overview/Deserialization",
+        "title": "Deserialization",
+        "pages": [
+          {
+            "name": "Fixed-Size Objects",
+            "url": "/overview/Fixed_Size_Objects",
+            "title": "Deserialize Simple Objects"
+          },
+          {
+            "name": "Variable-Size Objects",
+            "url": "/overview/Variable_Size_Objects",
+            "title": "Deserialize Variable-Size Objects"
+          }
+        ]
+      },
+      {
+        "name": "Merkleization",
+        "url": "/overview/Merkleization",
+        "title": "Merkleization",
+        "pages": [
+          {
+            "name": "Hashing",
+            "url": "/overview/hashing",
+            "title": "Hashing"
+          },
+          {
+            "  name": "Chunking",
+            "url": "/overview/chunking",
+            "title": "Chunking"
+          },
+          {
+            "name": "Merkleize",
+            "url": "/overview/merkleize",
+            "title": "merkleize"
+          },
+          {
+            "name": "Merkleize Helper Functions",
+            "url": "/overview/merkleize_helper_functions",
+            "title": "Helper Functions"
+          },
+          {
+            "name": "hash_tree_root",
+            "url": "/overview/hash_tree_root",
+            "title": "hash_tree_root"
+          }
+        ]
+      },
+      {
+        "name": "Merkle Proofs",
+        "url": "/overview/merkle",
+        "pages": [
+          {
+            "name": "Merkle Proof Helper Functions",
+            "url": "/overview/merkle_proof_helper_functions",
+            "title": "Merkle Proof Helper Functions"
+          },
+          {
+            "name": "Generalized Merkle Tree Indices",
+            "url": "/overview/generalized_indices",
+            "title": "Generalized Merkle Tree Indices"
+          },
+          {
+            "name": "SSZ object to index",
+            "url": "/overview/ssz_object_to_index",
+            "title": "SSZ Object to Index"
+          },
+          {
+            "name": "Subtree Merkleization",
+            "url": "/overview/subtree_merkleization",
+            "title": "Subtree Merkleization"
+          },
+          {
+            "name": "Classic Merkle Proof Backings",
+            "url": "/overview/classic",
+            "title": "Classic Merkle Proof Backings"
+          },
+          {
+            "name": "Paths",
+            "url": "/overview/paths",
+            "title": "Paths"
+          },
+          {
+            "name": "Summaries and Expansions",
+            "url": "/overview/summaries_expansions",
+            "title": "Summaries and Expansions"
+          },
+          {
+            "name": "Partials",
+            "url": "/overview/partials",
+            "title": "Partials"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "Documentation",
+    "url": "/documentation",
+    "title": "Documentation",
+    "pages": [
+      {
+        "name": "Specs",
+        "url": "/specs",
+        "title": "SSZ Specs"
+      },
+      {
+        "name": "Merkle Proofs",
+        "url": "/merkle-proofs",
+        "title": "SSZ Merkle Proofs"
+      }
+    ]
+  },
+  {
+    "name": "Implementations",
+    "url": "/implementations/home",
+    "title": "SSZ Implementations",
+    "pages": [
+      {
+        "name": "Python",
+        "url": "/implementations/python",
+        "title": "SSZ Implementations - Python"
+      },
+      {
+        "name": "TypeScript",
+        "url": "/implementations/typescript",
+        "title": "SSZ Implementations - Typescript"
+      },
+      {
+        "name": "Go",
+        "url": "/implementations/go",
+        "title": "SSZ Implementations - Go"
+      },
+      {
+        "name": "Dafny",
+        "url": "/implementations/dafny",
+        "title": "SSZ Implementations - Dafny"
+      },
+      {
+        "name": "Java",
+        "url": "/implementations/java",
+        "title": "SSZ Implementations - Java"
+      },
+      {
+        "name": "Nim",
+        "url": "/implementations/nim",
+        "title": "SSZ Implementations - Nim"
+      },
+      {
+        "name": "C#",
+        "url": "/implementations/csharp",
+        "title": "SSZ Implementations - C#"
+      },
+      {
+        "name": "Zig",
+        "url": "/implementations/zig",
+        "title": "SSZ Implementations - Zig"
+      },
+      {
+        "name": "Rust",
+        "url": "/implementations/rust",
+        "title": "SSZ Implementations - Rust"
+      },
+      {
+        "name": "Swift",
+        "url": "/implementations/swift",
+        "title": "SSZ Implementations - Swift"
+      }
+    ]
+  }
+]
