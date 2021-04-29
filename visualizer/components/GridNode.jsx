@@ -30,7 +30,7 @@ export default function GridNode({ ...props }) {
       onMouseDown={() => (!visited ? setVisited(true) : setVisited(false))}
       nodevalue={nodevalue}
     >
-      <h4 className="text-center">{nodevalue.slice(0, 6)}</h4>
+      <h4 className="text-center">{nodevalue.slice(0, 7)}</h4>
     </div>
   );
 }
