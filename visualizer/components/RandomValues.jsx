@@ -15,6 +15,8 @@ export default function getRandomValue(type) {
     return getRandomUint128();
   } else if (type === "uint256") {
     return getRandomUint256();
+  } else if (type === "boolean") {
+    return getRandomBoolean();
   }
 }
 
@@ -100,4 +102,13 @@ function getRandomUint8() {
     bn: bn,
     type: "uint8",
   };
+}
+
+function getRandomBoolean() {
+  let rand = Math.floor(Math.random());
+  if (rand == 1) {
+    return true;
+  } else {
+    return false;
+  }
 }
