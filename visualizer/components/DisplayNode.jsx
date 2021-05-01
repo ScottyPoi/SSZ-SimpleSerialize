@@ -1,28 +1,25 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/GridNode.module.css";
 
-export default function GridNode({ ...props }) {
+export default function DisplayNode({ ...props }) {
   const [on, setOn] = useState(false);
   const [visited, setVisited] = useState(false);
 
   let nodevalue = props.nodevalue;
   let mousePressed = props.mousePressed;
 
-  const addEdge = (node) => {
-    edges[node] = true;
-  };
-
   const extraClassName = visited ? styles.visited : on ? styles.on : styles.off;
+
   return (
     <div
+      id={props.id}
       className={`${styles.gridnode} ${extraClassName} text-center`}
-      id={"0"}
       onMouseEnter={() =>
         !mousePressed
           ? setOn(true)
-          : mousePressed && !visited && !deleter
+          : mousePressed && !visited
           ? setVisited(true)
-          : mousePressed && visited && deleter
+          : mousePressed && visited
           ? setVisited(false)
           : setOn(true)
       }
@@ -30,7 +27,7 @@ export default function GridNode({ ...props }) {
       onMouseDown={() => (!visited ? setVisited(true) : setVisited(false))}
       nodevalue={nodevalue}
     >
-      <h4 className="text-center">{nodevalue.slice(0, 7)}</h4>
+      <p className="text-center">{nodevalue}</p>
     </div>
   );
 }

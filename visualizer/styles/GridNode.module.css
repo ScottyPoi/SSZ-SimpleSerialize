@@ -8,13 +8,14 @@
   }
   
   .gridnode {
-    margin-right: 7px;
-    margin-left: 7px;
-    width: 40px;
+    margin-right: 1px;
+    margin-left: 1px;
+    width: 80px;
     height: 40px;
     outline: 1px solid rgb(180, 4, 4);
-    display: inline-block;
+    display: inline-flex;
     background-color: teal;
+    overflow-x: hidden;
   }
   
   .on {

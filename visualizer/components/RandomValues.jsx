@@ -25,13 +25,15 @@ function getRandomUint256() {
   const string = `0x${value.toString("hex")}`;
   const bigInt = BigInt(`0x${value.toString("hex")}`);
   const bn = new BN(value.toString("hex"), 16);
-  return {
-    value: value,
-    string: string,
-    bigInt: bigInt,
-    bn: bn,
-    type: "uint256",
-  };
+  return [
+    {
+      value: value,
+      string: string,
+      bigInt: bigInt,
+      bn: bn,
+      type: "uint256",
+    },
+  ];
 }
 
 function getRandomUint128() {
@@ -39,13 +41,15 @@ function getRandomUint128() {
   const string = `0x${value.toString("hex")}`;
   const bigInt = BigInt(`0x${value.toString("hex")}`);
   const bn = new BN(value.toString("hex"), 16);
-  return {
-    value: value,
-    string: string,
-    bigInt: bigInt,
-    bn: bn,
-    type: "uint128",
-  };
+  return [
+    {
+      value: value,
+      string: string,
+      bigInt: bigInt,
+      bn: bn,
+      type: "uint128",
+    },
+  ];
 }
 
 function getRandomUint64() {
@@ -53,13 +57,15 @@ function getRandomUint64() {
   const string = `0x${value.toString("hex")}`;
   const bigInt = BigInt(`0x${value.toString("hex")}`);
   const bn = new BN(value.toString("hex"), 16);
-  return {
-    value: value,
-    string: string,
-    bigInt: bigInt,
-    bn: bn,
-    type: "uint64",
-  };
+  return [
+    {
+      value: value,
+      string: string,
+      bigInt: bigInt,
+      bn: bn,
+      type: "uint64",
+    },
+  ];
 }
 
 function getRandomUint32() {
@@ -67,13 +73,15 @@ function getRandomUint32() {
   const string = `0x${value.toString("hex")}`;
   const bigInt = BigInt(`0x${value.toString("hex")}`);
   const bn = new BN(value.toString("hex"), 16);
-  return {
-    value: value,
-    string: string,
-    bigInt: bigInt,
-    bn: bn,
-    type: "uint32",
-  };
+  return [
+    {
+      value: value,
+      string: string,
+      bigInt: bigInt,
+      bn: bn,
+      type: "uint32",
+    },
+  ];
 }
 
 function getRandomUint16() {
@@ -81,13 +89,15 @@ function getRandomUint16() {
   const string = `0x${value.toString("hex")}`;
   const bigInt = BigInt(`0x${value.toString("hex")}`);
   const bn = new BN(value.toString("hex"), 16);
-  return {
-    value: value,
-    string: string,
-    bigInt: bigInt,
-    bn: bn,
-    type: "uint16",
-  };
+  return [
+    {
+      value: value,
+      string: string,
+      bigInt: bigInt,
+      bn: bn,
+      type: "uint16",
+    },
+  ];
 }
 
 function getRandomUint8() {
@@ -95,13 +105,15 @@ function getRandomUint8() {
   const string = `0x${value.toString("hex")}`;
   const bigInt = BigInt(`0x${value.toString("hex")}`);
   const bn = new BN(value.toString("hex"), 16);
-  return {
-    value: value,
-    string: string,
-    bigInt: bigInt,
-    bn: bn,
-    type: "uint8",
-  };
+  return [
+    {
+      value: value,
+      string: string,
+      bigInt: bigInt,
+      bn: bn,
+      type: "uint8",
+    },
+  ];
 }
 
 function getRandomBoolean() {

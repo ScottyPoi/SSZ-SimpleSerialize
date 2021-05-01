@@ -1,10 +1,11 @@
 import Hasher from "./hasher";
 import getRandomValue from "./RandomValues";
+import { useState } from "react";
 
 const types = ["uint256", "uint128", "uint64", "uint32", "uint16", "uint8"];
 
 export default function RandomDataSet() {
-  return {
+  const dataSet = {
     Values: Values,
     Serialized: Serialized,
     Leaves: Leaves,
@@ -12,6 +13,8 @@ export default function RandomDataSet() {
     level1: level1,
     root: root,
   };
+
+  return dataSet;
 }
 
 function getRandomType() {
@@ -24,11 +27,10 @@ const Serialized = [];
 const Leaves = [];
 const level2 = [];
 const level1 = [];
-const root = [];
 
 for (let i = 0; i < 8; i++) {
   let type = getRandomType();
-  let value = getRandomValue(type);
+  let value = getRandomValue(type)[0];
   Values.push(value);
 }
 
@@ -56,10 +58,12 @@ for (let i = 0; i < 4; i += 2) {
   level1.push(value);
 }
 
-for (let i = 0; i < 2; i += 2) {
-  let left = level1[i];
-  let right = level1[i + 1];
+function getHashRoot() {
+  let left = level1[0];
+  let right = level1[1];
   let concat = left + right;
   let value = Hasher(concat);
-  root.push(value);
+  return value;
 }
+
+const root = getHashRoot();
