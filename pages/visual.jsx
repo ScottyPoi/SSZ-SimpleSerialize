@@ -1,115 +1,138 @@
 import React from "react";
-import GridNode from "../visualizer/components/GridNode";
-import RandomDataSet from "../visualizer/components/RandomDataSet";
+import DisplayNode from "../visualizer/components/DisplayNode";
+import MakeRandomTree from "../visualizer/components/MakeRandomTree";
 
-export default function Visual({ children }) {
-  const { Values, Serialized, Leaves, level2, level1, root } = RandomDataSet();
+export default function Visual() {
+  const {
+    treeValues,
+    treeSerialized,
+    treeLeaves,
+    treeLevel2,
+    treeLevel1,
+    treeRoot,
+  } = MakeRandomTree();
+
+  const tree = MakeRandomTree();
+  console.log(tree);
 
   return (
-    <div className="container ">
-      <br />
-      <div className="row p-3 justify-content-center">
-        <GridNode nodevalue={root[0]} mousePressed={false} />
-      </div>
-      <div className="row p-3 row-cols-auto g-1 justify-content-around ">
-        {level1.map((value) => {
-          return (
-            <div className="col">
-              <GridNode nodevalue={value} mousePressed={false} />
-            </div>
-          );
-        })}
-      </div>
-      <div className="row p-3 row-cols-auto g-1 justify-content-around">
-        {level2.map((value) => {
-          return (
-            <div className="col">
-              <GridNode nodevalue={value} mousePressed={false} />
-            </div>
-          );
-        })}
-      </div>
-      <div className="row p-3 row-cols g-1 justify-content-around">
-        <div className="col">
-          <div className="container">
-            <div className="row row-cols-auto g-1 justify-content-between ">
-              {Leaves.map((value) => {
+    <div className="row">
+      <div className="col">
+        <br />
+        <div className="row p-3 justify-content-center">
+          <DisplayNode id="0" nodevalue={"ROOT"} mousePressed={false} />
+        </div>
+        <div className="row p-3 g-1 justify-content-around">
+          <div className="col">
+            <div className="row row-cols-2 g-1 justify-content-around">
+              {treeLevel1.map((value) => {
                 return (
-                  <GridNode
-                    className="col"
-                    nodevalue={value}
+                  <DisplayNode
+                    key={value.index}
+                    id={value.index}
+                    nodevalue={value.index}
                     mousePressed={false}
-                  ></GridNode>
+                  />
                 );
               })}
             </div>
           </div>
         </div>
-      </div>
-      <br />
-      <div className="row p-3 row-2-cols g-1 justify-content-around">
-        <div className="col">
-          <div className="container">
-            <div className="row row-cols-auto g-1 justify-content-between">
-              {Values.map((value) => {
+        <br />
+
+        <div className="row p-3 row-cols g-1 justify-content-around">
+          <div className="col">
+            <div className="row row-cols-4 g-1 justify-content-around">
+              {treeLevel2.map((value) => {
                 return (
-                  <GridNode
-                    className="col"
+                  <DisplayNode
+                    key={value.index}
+                    id={value.index}
+                    nodevalue={value.index}
+                    mousePressed={false}
+                  ></DisplayNode>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+
+        <br />
+
+        <div className="row p-3 row-cols g-1 justify-content-around">
+          <div className="col">
+            <div className="row row-cols-auto g-1 justify-content-between ">
+              {treeLeaves.map((value) => {
+                return (
+                  <DisplayNode
+                    key={value.index}
+                    id={value.index}
+                    nodevalue={value.index}
+                    mousePressed={false}
+                  ></DisplayNode>
+                );
+              })}
+            </div>
+          </div>
+        </div>
+        {/* <br />
+        <div className="row p-3 row-2-cols g-1 justify-content-around">
+          <div className="col">
+            <div className="row row-cols-8 g-1 justify-content-between">
+              {treeLeaves.map((value) => {
+                return (
+                  <DisplayNode
                     nodevalue={"Hash"}
                     mousePressed={false}
-                  ></GridNode>
+                  ></DisplayNode>
                 );
               })}
             </div>
           </div>
-        </div>
-      </div>
-      <div className="row p-3 row-cols g-1 justify-content-around">
-        <div className="col">
-          <div className="container">
-            <div className="row row-cols-auto g-1 justify-content-between ">
-              {Serialized.map((value) => {
+        </div> */}
+        <br />
+        <div className="row p-3 row-cols g-1 justify-content-around">
+          <div className="col">
+            <div className="row row-cols-8 g-1 justify-content-between ">
+              {treeSerialized.map((value) => {
                 return (
-                  <GridNode
-                    className="col"
-                    nodevalue={value}
+                  <DisplayNode
+                    key={value.index}
+                    id={value.index}
+                    nodevalue={value.index}
                     mousePressed={false}
-                  ></GridNode>
+                  ></DisplayNode>
                 );
               })}
             </div>
           </div>
         </div>
-      </div>
-      <br />
-      <div className="row p-3 row-2-cols g-1 justify-content-around">
-        <div className="col">
-          <div className="container">
+        <br />
+        {/* <div className="row p-3 row-2-cols g-1 justify-content-around">
+          <div className="col">
             <div className="row row-cols-auto g-1 justify-content-between">
-              {Values.map((value) => {
+              {treeValues.map((value) => {
                 return (
-                  <GridNode
-                    className="col"
+                  <DisplayNode
                     nodevalue={"toBytes"}
                     mousePressed={false}
-                  ></GridNode>
+                  ></DisplayNode>
                 );
               })}
             </div>
           </div>
-        </div>
-      </div>
-      <div className="row p-3 row-2-cols g-1 justify-content-around">
-        <div className="col">
-          <div className="container">
+        </div> */}
+        <div className="row p-3 row-2-cols g-1 justify-content-around">
+          <div className="col">
             <div className="row row-cols-auto g-1 justify-content-between">
-              {Values.map((value) => {
+              {treeValues.map((value) => {
                 return (
-                  <GridNode
-                    className="col"
+                  <DisplayNode
+                    key={value.index}
+                    id={value.index}
                     nodevalue={value.type}
                     mousePressed={false}
-                  ></GridNode>
+                  ></DisplayNode>
                 );
               })}
             </div>
