@@ -3,6 +3,7 @@ import BN from "bn.js";
 
 export default function getRandomValue(type) {
   // assert type is basic ssz type
+
   if (type === "uint8") {
     return getRandomUint8();
   } else if (type === "uint16") {
@@ -119,8 +120,16 @@ function getRandomUint8() {
 function getRandomBoolean() {
   let rand = Math.floor(Math.random());
   if (rand == 1) {
-    return true;
+    return {
+      value: true,
+      string: `0x${true.toString("hex")}`,
+      type: "boolean",
+    };
   } else {
-    return false;
+    return {
+      value: false,
+      string: `0x${false.toString("hex")}`,
+      type: "boolean",
+    };
   }
 }

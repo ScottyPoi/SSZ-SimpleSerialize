@@ -1,7 +1,9 @@
+import useSWR from "swr";
 import { useEffect, useState } from "react";
 import DisplayNode from "../visualizer/components/DisplayNode";
 import MakeRandomTree from "../visualizer/components/MakeRandomTree";
 import NodeInfo from "../visualizer/components/NodeInfo";
+
 export async function getStaticProps() {
   let {
     treeValues,
@@ -52,7 +54,7 @@ export default function Visual({ ...props }) {
       treeLevel1,
       treeRoot,
     } = newData;
-    console.log("fuck it");
+    console.log("changing data set");
     setValues(treeValues);
     setSerialized(treeSerialized);
     setLeaves(treeLeaves);
