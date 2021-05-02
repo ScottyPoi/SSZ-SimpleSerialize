@@ -1,7 +1,7 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import DisplayNode from "../visualizer/components/DisplayNode";
 import MakeRandomTree from "../visualizer/components/MakeRandomTree";
-
+import NodeInfo from "../visualizer/components/NodeInfo";
 export async function getStaticProps() {
   let {
     treeValues,
@@ -24,7 +24,6 @@ export async function getStaticProps() {
 }
 
 export default function Visual({ ...props }) {
-  const [data, setData] = useState(MakeRandomTree());
   const [Values, setValues] = useState(props.treeValues);
   const [Serialized, setSerialized] = useState(props.treeSerialized);
   const [Leaves, setLeaves] = useState(props.treeLeaves);
@@ -32,30 +31,35 @@ export default function Visual({ ...props }) {
   const [Level1, setLevel1] = useState(props.treeLevel1);
   const [Root, setRoot] = useState(props.treeRoot);
 
-  // setValues(treeValues);
-  // setSerialized(treeSerialized);
-  // setLeaves(treeLeaves);
-  // setLevel2(treeLevel2);
-  // setLevel1(treeLevel1);
-  // setRoot(treeRoot);
+  useEffect(() => {
+    console.log("yay");
+  }, [Values, Serialized, Leaves, Level2, Level1, Root]);
 
-  function changeData() {
-    setData(MakeRandomTree());
+  // setValues(props.treeValues);
+  // setSerialized(props.treeSerialized);
+  // setLeaves(props.treeLeaves);
+  // setLevel2(props.treeLevel2);
+  // setLevel1(props.treeLevel1);
+  // setRoot(props.treeRoot);
+
+  const changeData = () => {
+    let newData = MakeRandomTree();
     let {
-      newValues,
-      newSerialized,
-      newLeaves,
-      newLevel2,
-      newLevel1,
-      newRoot,
+      treeValues,
+      treeSerialized,
+      treeLeaves,
+      treeLevel2,
+      treeLevel1,
+      treeRoot,
     } = newData;
-    setValues(newValues);
-    setSerialized(newSerialized);
-    setLeaves(newLeaves);
-    setLevel2(newLevel2);
-    setLevel1(newLevel1);
-    setRoot(newRoot);
-  }
+    console.log("fuck it");
+    setValues(treeValues);
+    setSerialized(treeSerialized);
+    setLeaves(treeLeaves);
+    setLevel2(treeLevel2);
+    setLevel1(treeLevel1);
+    setRoot(treeRoot);
+  };
 
   return (
     <div className="row">
@@ -191,14 +195,12 @@ export default function Visual({ ...props }) {
           </div>
         </div>
         <div className="row">
-          <button onClick={() => changeData()}>Random Data Set</button>
+          <button onClick={changeData}>Random Data Set</button>
         </div>
       </div>
       <div className="col-2">
         <div className="row">Click on a node to see info</div>
-        <div className="row">Role (value, serial, hash, parent, root)</div>
-        <div className="row">For value: see ssz process and merkle proof</div>
-        <div className="row">for complex types be able to expand subtree</div>
+        <NodeInfo />
       </div>
     </div>
   );

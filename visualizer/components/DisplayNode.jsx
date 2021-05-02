@@ -1,9 +1,13 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/GridNode.module.css";
 
-export default function DisplayNode({ ...props }) {
+export default function DisplayNode({ children, ...props }) {
   const [on, setOn] = useState(false);
   const [visited, setVisited] = useState(false);
+
+  useEffect(() => {
+    console.log("pushed", [on]);
+  });
 
   let nodevalue = props.nodevalue;
   let mousePressed = props.mousePressed;
