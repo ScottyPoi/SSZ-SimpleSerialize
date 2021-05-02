@@ -1,9 +1,9 @@
-import React from "react";
+import { useState } from "react";
 import DisplayNode from "../visualizer/components/DisplayNode";
 import MakeRandomTree from "../visualizer/components/MakeRandomTree";
 
-export default function Visual() {
-  const {
+export async function getStaticProps() {
+  let {
     treeValues,
     treeSerialized,
     treeLeaves,
@@ -11,9 +11,51 @@ export default function Visual() {
     treeLevel1,
     treeRoot,
   } = MakeRandomTree();
+  return {
+    props: {
+      treeValues,
+      treeSerialized,
+      treeLeaves,
+      treeLevel2,
+      treeLevel1,
+      treeRoot,
+    },
+  };
+}
 
-  const tree = MakeRandomTree();
-  console.log(tree);
+export default function Visual({ ...props }) {
+  const [data, setData] = useState(MakeRandomTree());
+  const [Values, setValues] = useState(props.treeValues);
+  const [Serialized, setSerialized] = useState(props.treeSerialized);
+  const [Leaves, setLeaves] = useState(props.treeLeaves);
+  const [Level2, setLevel2] = useState(props.treeLevel2);
+  const [Level1, setLevel1] = useState(props.treeLevel1);
+  const [Root, setRoot] = useState(props.treeRoot);
+
+  // setValues(treeValues);
+  // setSerialized(treeSerialized);
+  // setLeaves(treeLeaves);
+  // setLevel2(treeLevel2);
+  // setLevel1(treeLevel1);
+  // setRoot(treeRoot);
+
+  function changeData() {
+    setData(MakeRandomTree());
+    let {
+      newValues,
+      newSerialized,
+      newLeaves,
+      newLevel2,
+      newLevel1,
+      newRoot,
+    } = newData;
+    setValues(newValues);
+    setSerialized(newSerialized);
+    setLeaves(newLeaves);
+    setLevel2(newLevel2);
+    setLevel1(newLevel1);
+    setRoot(newRoot);
+  }
 
   return (
     <div className="row">
@@ -22,7 +64,7 @@ export default function Visual() {
         <div className="row p-3 justify-content-center">
           <DisplayNode
             id="0"
-            nodevalue={treeRoot[0].index}
+            nodevalue={Root[0].index}
             mousePressed={false}
             type="root"
           />
@@ -30,7 +72,7 @@ export default function Visual() {
         <div className="row p-3 g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-2 g-1 justify-content-around">
-              {treeLevel1.map((value) => {
+              {Level1.map((value) => {
                 return (
                   <DisplayNode
                     key={value.index}
@@ -49,7 +91,7 @@ export default function Visual() {
         <div className="row p-3 row-cols g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-4 g-1 justify-content-around">
-              {treeLevel2.map((value) => {
+              {Level2.map((value) => {
                 return (
                   <DisplayNode
                     key={value.index}
@@ -69,7 +111,7 @@ export default function Visual() {
         <div className="row p-3 row-cols g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-auto g-1 justify-content-between ">
-              {treeLeaves.map((value) => {
+              {Leaves.map((value) => {
                 return (
                   <DisplayNode
                     key={value.index}
@@ -87,7 +129,7 @@ export default function Visual() {
         <div className="row p-3 row-2-cols g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-8 g-1 justify-content-between">
-              {treeLeaves.map((value) => {
+              {Leaves.map((value) => {
                 return (
                   <DisplayNode
                     nodevalue={"Hash"}
@@ -102,7 +144,7 @@ export default function Visual() {
         <div className="row p-3 row-cols g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-8 g-1 justify-content-between ">
-              {treeSerialized.map((value) => {
+              {Serialized.map((value) => {
                 return (
                   <DisplayNode
                     key={value.index}
@@ -120,7 +162,7 @@ export default function Visual() {
         {/* <div className="row p-3 row-2-cols g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-auto g-1 justify-content-between">
-              {treeValues.map((value) => {
+              {Values.map((value) => {
                 return (
                   <DisplayNode
                     nodevalue={"toBytes"}
@@ -134,7 +176,7 @@ export default function Visual() {
         <div className="row p-3 row-2-cols g-1 justify-content-around">
           <div className="col">
             <div className="row row-cols-auto g-1 justify-content-between">
-              {treeValues.map((value) => {
+              {Values.map((value) => {
                 return (
                   <DisplayNode
                     key={value.index}
@@ -148,6 +190,15 @@ export default function Visual() {
             </div>
           </div>
         </div>
+        <div className="row">
+          <button onClick={() => changeData()}>Random Data Set</button>
+        </div>
+      </div>
+      <div className="col-2">
+        <div className="row">Click on a node to see info</div>
+        <div className="row">Role (value, serial, hash, parent, root)</div>
+        <div className="row">For value: see ssz process and merkle proof</div>
+        <div className="row">for complex types be able to expand subtree</div>
       </div>
     </div>
   );

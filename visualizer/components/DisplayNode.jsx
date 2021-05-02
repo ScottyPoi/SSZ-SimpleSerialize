@@ -18,16 +18,14 @@ export default function DisplayNode({ ...props }) {
       ? styles.gridnodehashoff
       : styles.gridnoderootoff;
 
-  const extraClassName = visited
-    ? styles.gridnodevisited
-    : on
-    ? styles.gridnodevalueon
-    : nodetype;
+  const extraClassName = on ? styles.gridnodevalueon : nodetype;
+
+  const active = visited ? styles.gridnodevisited : "";
 
   return (
     <div
       id={props.id}
-      className={`${styles.gridnode} ${extraClassName} text-center`}
+      className={`${styles.gridnode} ${extraClassName} ${active} text-center`}
       onMouseEnter={() =>
         !mousePressed
           ? setOn(true)

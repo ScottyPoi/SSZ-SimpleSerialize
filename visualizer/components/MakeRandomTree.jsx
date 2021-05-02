@@ -19,10 +19,10 @@ const treeValues = Values.map((value) => {
   let newNode = {
     index: valueIndex,
     type: value.type,
-    value: value.value,
+    // value: value.value,
     string: value.string,
-    bigInt: value.bigInt,
-    bn: value.bn,
+    // bigInt: value.bigInt,
+    // bn: value.bn,
     isRoot: false,
     children: null,
     parent: valueIndex - 8,
