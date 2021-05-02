@@ -20,7 +20,12 @@ export default function Visual() {
       <div className="col">
         <br />
         <div className="row p-3 justify-content-center">
-          <DisplayNode id="0" nodevalue={"ROOT"} mousePressed={false} />
+          <DisplayNode
+            id="0"
+            nodevalue={treeRoot[0].index}
+            mousePressed={false}
+            type="root"
+          />
         </div>
         <div className="row p-3 g-1 justify-content-around">
           <div className="col">
@@ -32,6 +37,7 @@ export default function Visual() {
                     id={value.index}
                     nodevalue={value.index}
                     mousePressed={false}
+                    type="parent"
                   />
                 );
               })}
@@ -50,6 +56,7 @@ export default function Visual() {
                     id={value.index}
                     nodevalue={value.index}
                     mousePressed={false}
+                    type="parent"
                   ></DisplayNode>
                 );
               })}
@@ -69,6 +76,7 @@ export default function Visual() {
                     id={value.index}
                     nodevalue={value.index}
                     mousePressed={false}
+                    type="hash"
                   ></DisplayNode>
                 );
               })}
@@ -99,8 +107,9 @@ export default function Visual() {
                   <DisplayNode
                     key={value.index}
                     id={value.index}
-                    nodevalue={value.index}
+                    nodevalue={value.data}
                     mousePressed={false}
+                    type="serial"
                   ></DisplayNode>
                 );
               })}
@@ -132,6 +141,7 @@ export default function Visual() {
                     id={value.index}
                     nodevalue={value.type}
                     mousePressed={false}
+                    type="value"
                   ></DisplayNode>
                 );
               })}

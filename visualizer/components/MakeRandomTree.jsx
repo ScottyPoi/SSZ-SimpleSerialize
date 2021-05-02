@@ -83,4 +83,4 @@ for (let i = 0; i < level1.length; i++) {
   treeLevel1.push(newNode);
 }
 
-const treeRoot = [root, "root"];
+const treeRoot = [{ data: root, type: "root", index: 0 }];

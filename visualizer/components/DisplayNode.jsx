@@ -7,8 +7,22 @@ export default function DisplayNode({ ...props }) {
 
   let nodevalue = props.nodevalue;
   let mousePressed = props.mousePressed;
+  const nodetype =
+    props.type == "value"
+      ? styles.gridnodevalueoff
+      : props.type == "serial"
+      ? styles.gridnodeserialoff
+      : props.type == "parent"
+      ? styles.gridnodeparentoff
+      : props.type == "hash"
+      ? styles.gridnodehashoff
+      : styles.gridnoderootoff;
 
-  const extraClassName = visited ? styles.visited : on ? styles.on : styles.off;
+  const extraClassName = visited
+    ? styles.gridnodevisited
+    : on
+    ? styles.gridnodevalueon
+    : nodetype;
 
   return (
     <div
