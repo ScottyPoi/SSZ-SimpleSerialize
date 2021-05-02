@@ -19,3 +19,9 @@ const withMDX = require('@next/mdx')({
 module.exports = withMDX({
   pageExtensions: ['js', 'jsx', 'md', 'mdx']
 })
+
+module.exports = {
+  future: {
+    webpack5: true,
+  },
+}

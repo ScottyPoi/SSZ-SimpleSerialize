@@ -1,19 +1,35 @@
 import React, { useEffect, useState } from "react";
 import styles from "../styles/GridNode.module.css";
 
-export default function DisplayNode({ ...props }) {
+export default function DisplayNode({ children, ...props }) {
   const [on, setOn] = useState(false);
   const [visited, setVisited] = useState(false);
 
+  useEffect(() => {
+    console.log("pushed", [on]);
+  });
+
   let nodevalue = props.nodevalue;
   let mousePressed = props.mousePressed;
+  const nodetype =
+    props.type == "value"
+      ? styles.gridnodevalueoff
+      : props.type == "serial"
+      ? styles.gridnodeserialoff
+      : props.type == "parent"
+      ? styles.gridnodeparentoff
+      : props.type == "hash"
+      ? styles.gridnodehashoff
+      : styles.gridnoderootoff;
 
-  const extraClassName = visited ? styles.visited : on ? styles.on : styles.off;
+  const extraClassName = on ? styles.gridnodevalueon : nodetype;
+
+  const active = visited ? styles.gridnodevisited : "";
 
   return (
     <div
       id={props.id}
-      className={`${styles.gridnode} ${extraClassName} text-center`}
+      className={`${styles.gridnode} ${extraClassName} ${active} text-center`}
       onMouseEnter={() =>
         !mousePressed
           ? setOn(true)
