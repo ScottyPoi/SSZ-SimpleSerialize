@@ -7,21 +7,29 @@
   {
     "name": "Overview",
     "url": "/overview/overview",
+    "previous": "",
+    "next": "",
     "title": "Overview",
     "pages": [
       {
         "name": "Introduction",
         "url": "/overview/overview",
         "title": "Overview",
+        "previous": "",
+        "next": "",
         "pages": [
           {
             "name": "Design",
             "url": "/overview/design",
+            "previous": "",
+            "next": "",
             "title": "SSZ Design"
           },
           {
             "name": "SSZ in Eth2",
             "url": "/sszineth2",
+            "previous": "",
+            "next": "",
             "title": "SSZ in Eth2"
           }
         ]
@@ -29,21 +37,29 @@
       {
         "name": "Typing",
         "url": "/overview/Typing",
+        "previous": "",
+        "next": "",
         "title": "SSZ Overview - Typing",
         "pages": [
           {
             "name": "Basic Types",
             "url": "/overview/basic",
+            "previous": "",
+            "next": "",
             "title": "Basic Types"
           },
           {
             "name": "Composite Types",
             "url": "/overview/Composite_Types",
+            "previous": "",
+            "next": "",
             "title": "Composite Types"
           },
           {
             "name": "Bitfields",
             "url": "/overview/bitfields",
+            "previous": "",
+            "next": "",
             "title": "Bitfields"
           }
         ]
@@ -51,16 +67,22 @@
       {
         "name": "Serialization",
         "url": "/overview/Serialization",
+        "previous": "",
+        "next": "",
         "title": "SSZ Object Representation",
         "pages": [
           {
             "name": "Simple Objects",
             "url": "/overview/Simple_Objects",
+            "previous": "",
+            "next": "",
             "title": "Fixed Variable Size"
           },
           {
             "name": "Composite Objects",
             "url": "/overview/Composite_Objects",
+            "previous": "",
+            "next": "",
             "title": "Sequences"
           }
         ]
@@ -68,16 +90,22 @@
       {
         "name": "Deserialization",
         "url": "/overview/Deserialization",
+        "previous": "",
+        "next": "",
         "title": "Deserialization",
         "pages": [
           {
             "name": "Fixed-Size Objects",
             "url": "/overview/Fixed_Size_Objects",
+            "previous": "",
+            "next": "",
             "title": "Deserialize Simple Objects"
           },
           {
             "name": "Variable-Size Objects",
             "url": "/overview/Variable_Size_Objects",
+            "previous": "",
+            "next": "",
             "title": "Deserialize Variable-Size Objects"
           }
         ]
@@ -85,31 +113,43 @@
       {
         "name": "Merkleization",
         "url": "/overview/Merkleization",
+        "previous": "",
+        "next": "",
         "title": "Merkleization",
         "pages": [
           {
             "name": "Hashing",
             "url": "/overview/hashing",
+            "previous": "",
+            "next": "",
             "title": "Hashing"
           },
           {
             "  name": "Chunking",
             "url": "/overview/chunking",
+            "previous": "",
+            "next": "",
             "title": "Chunking"
           },
           {
             "name": "Merkleize",
             "url": "/overview/merkleize",
+            "previous": "",
+            "next": "",
             "title": "merkleize"
           },
           {
             "name": "Merkleize Helper Functions",
             "url": "/overview/merkleize_helper_functions",
+            "previous": "",
+            "next": "",
             "title": "Helper Functions"
           },
           {
             "name": "hash_tree_root",
             "url": "/overview/hash_tree_root",
+            "previous": "",
+            "next": "",
             "title": "hash_tree_root"
           }
         ]
@@ -117,45 +157,63 @@
       {
         "name": "Merkle Proofs",
         "url": "/overview/merkle",
+        "previous": "",
+        "next": "",
         "pages": [
           {
             "name": "Merkle Proof Helper Functions",
             "url": "/overview/merkle_proof_helper_functions",
+            "previous": "",
+            "next": "",
             "title": "Merkle Proof Helper Functions"
           },
           {
             "name": "Generalized Merkle Tree Indices",
             "url": "/overview/generalized_indices",
+            "previous": "",
+            "next": "",
             "title": "Generalized Merkle Tree Indices"
           },
           {
             "name": "SSZ object to index",
             "url": "/overview/ssz_object_to_index",
+            "previous": "",
+            "next": "",
             "title": "SSZ Object to Index"
           },
           {
             "name": "Subtree Merkleization",
             "url": "/overview/subtree_merkleization",
+            "previous": "",
+            "next": "",
             "title": "Subtree Merkleization"
           },
           {
             "name": "Classic Merkle Proof Backings",
             "url": "/overview/classic",
+            "previous": "",
+            "next": "",
             "title": "Classic Merkle Proof Backings"
           },
           {
             "name": "Paths",
             "url": "/overview/paths",
+            "previous": "",
+            "next": "",
             "title": "Paths"
           },
           {
             "name": "Summaries and Expansions",
             "url": "/overview/summaries_expansions",
+            "previous": "",
+            "next": "",
             "title": "Summaries and Expansions"
           },
           {
             "name": "Partials",
             "url": "/overview/partials",
+            "previous": "",
+            "next": "",
             "title": "Partials"
           }
         ]
