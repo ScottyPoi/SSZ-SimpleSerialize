@@ -4,4 +4,4 @@ section: Deserialization
 toc: [Basic Objects]
 ---
 
-TODO
+"The deserialization of basic objects is easy"
