@@ -2,6 +2,8 @@
 title: Partials
 section: Partials
 toc: []
+prev: summaries_and_expansions
+next: #
 ---
 
 ## Partials

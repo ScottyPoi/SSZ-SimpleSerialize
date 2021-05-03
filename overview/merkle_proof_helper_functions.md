@@ -1,6 +1,8 @@
 ---
 title: hash_tree_root helper functions
 toc: [get_power_of_two_ceil, get_power_of_two_floor]
+prev: merkle_proofs
+next: generalized_indices
 ---
 
 <div align='center' id='helper%20functions'>

@@ -2,6 +2,8 @@
 title: Generalized Indices
 section: Navigation
 toc: [Generalized Merkle Tree Index, Combination and Slicing, Flat Indexing, Representation]
+prev: merkle_proof_helper_functions
+next: ssz_object_to_index
 ---
 
 <div align='center'>

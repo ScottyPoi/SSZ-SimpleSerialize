@@ -2,6 +2,7 @@
 title: Overview
 section: Overview
 toc: ['SSZ Overview', 'Table of Contents']
+next: design
 ---
 <div align='center' id='SSZ%20Overview'>
 

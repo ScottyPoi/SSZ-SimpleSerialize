@@ -2,6 +2,8 @@
 title: Classic Merkle Proof Backings
 section: Merkleization
 toc: [Classic Merkle Proof Backing, Description, Helper Indices, Leaf Indices, Leaf Data, Witness Data, Verification]
+prev: subtree_merkleization
+next: paths
 ---
 
 <div align="center">

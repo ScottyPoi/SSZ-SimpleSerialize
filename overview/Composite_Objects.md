@@ -2,6 +2,8 @@
 title: Composite Objects
 section: Serialization
 toc: [Fixed Size and Variable Size]
+prev: Simple_Objects
+next: Deserialization
 ---
 
 <div align='center' id='Fixed%and%Variable%Size'>

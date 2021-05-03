@@ -1,6 +1,8 @@
 ---
 title: SSZ in Eth2
 toc: []
+prev: design
+next: Typing
 ---
 
 

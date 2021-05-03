@@ -1,6 +1,8 @@
 ---
 title: hash_tree_root
 toc: [hash_tree_root, Basic Objects, BitVectors, List(Basic), Bitlist, Vector, List(Composite), Union]
+prev: merkleize_helper_functions
+next: merkle_proofs
 ---
 
 <div align='center'>

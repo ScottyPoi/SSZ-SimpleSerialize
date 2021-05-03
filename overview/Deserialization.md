@@ -2,6 +2,8 @@
 title: Deserialization
 section: Deserialization
 toc: [Deserialization]
+prev: Composite_Objects
+next: Fixed_Size_Objects
 ---
 
 <div align='center' id='Deserialization'>

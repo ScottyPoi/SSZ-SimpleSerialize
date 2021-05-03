@@ -2,6 +2,8 @@
 title: Merkle Proofs
 section: Merkleization
 toc: []
+prev: hash_tree_root
+next: merkle_proof_helper_functions
 ---
 
 ## Merkle proofs

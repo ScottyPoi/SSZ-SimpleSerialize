@@ -2,6 +2,8 @@
 title: Design
 section: Overview
 toc: []
+prev: overview
+next: sszineth2
 ---
 
 # Design

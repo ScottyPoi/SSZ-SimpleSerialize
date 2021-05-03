@@ -1,6 +1,8 @@
 ---
 title: 'Merkleize Helper Functions'
 toc: ['merkleize_helper_function', 'size_of', 'chunk_count', 'pack', 'pack_bits', 'next_pow_of_two', 'merkleize', 'mix_in_length', 'mix_in_type']
+prev: Merkleize
+next: hash_tree_root
 ---
 
 <div align='center'>

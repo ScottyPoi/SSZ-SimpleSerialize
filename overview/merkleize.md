@@ -2,6 +2,8 @@
 title: Merkleize
 section: Merkleization
 toc: [Merkleize]
+prev: Hashing
+next: merkleize_helper_functions
 ---
 
 <div id='Merkelize' align='center'>

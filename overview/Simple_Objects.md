@@ -2,6 +2,8 @@
 title: Serialize Simple Objects
 section: Serialization
 toc: [Simple Objects]
+prev: serialization
+next: Composite_Objects
 ---
 
 <div align='center' id='Simple%Objects'>
