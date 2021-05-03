@@ -2,6 +2,8 @@
 title: Summaries & Expansions
 section: Navigation
 toc: []
+prev: paths
+next: partials
 ---
 
 ## Summaries & Expansions

@@ -2,6 +2,8 @@
 title: Basic Types
 section: Types
 toc: ['Basic Types', 'Unsigned Integers', 'Booleans']
+prev: Typing
+next: Composite_Types
 ---
 <div align='center'id='Basic%20Types'>
 

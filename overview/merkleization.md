@@ -2,6 +2,8 @@
 title: merkleization overview
 section: merkleization
 toc: [Merkleization, The Merkle Tree,]
+prev: Variable-Size_Objects
+next: Hashing
 ---
 
 <div align='center' id='Merkleization'>

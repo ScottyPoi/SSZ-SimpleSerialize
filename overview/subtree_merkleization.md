@@ -2,6 +2,8 @@
 title: Subtree Merkleization
 section: Merkleization
 toc: []
+prev: ssz_object_to_index
+next: classic
 ---
 
 ## Subtree Merkleization

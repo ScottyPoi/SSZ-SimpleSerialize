@@ -2,6 +2,8 @@
 title: Hashing
 section: Merkleization
 toc: [Hashing]
+prev: Merkleization
+next: Merkelize
 ---
 
 <div id='Hashing' align='center'>

@@ -2,6 +2,8 @@
 title: Deserialize Variable-Size Objects
 section: Deserialization
 toc: [Variable-Size Objects]
+prev: Fixed_Size_Objects
+next: Merkleization
 ---
 
 <div align='center' id='Variable-Size%20Objects'>

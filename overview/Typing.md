@@ -2,6 +2,8 @@
 title: Typing
 section: Typing
 toc: ['Types', 'Aliases', 'Default Values','Merkle Proofs', 'Representation']
+prev: sszineth2
+next: basic
 ---
 <div align='center' id='Types'>
 

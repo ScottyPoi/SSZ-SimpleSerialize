@@ -2,6 +2,8 @@
 title: SSZ Object Serialization
 section: Serialization
 toc: []
+prev: bitfields
+next: Simple_Objects
 ---
 <div align='center'>
 

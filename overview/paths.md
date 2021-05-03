@@ -2,6 +2,8 @@
 title: Paths
 section: Navigation
 toc: []
+prev: classic
+next: summaries_and_expansions
 ---
 
 ## Paths
