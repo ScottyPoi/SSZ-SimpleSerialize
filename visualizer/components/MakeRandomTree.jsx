@@ -14,22 +14,24 @@ export default function MakeRandomTree() {
 
 const { Values, Serialized, Leaves, level2, level1, root } = RandomDataSet();
 
-let valueIndex = 24;
-const treeValues = Values.map((value) => {
+let treeValues = [];
+let valueIndex = 0;
+for (let i = 0; i < Values.length; i++) {
+  let value = Values[i];
   let newNode = {
     index: valueIndex,
     type: value.type,
     // value: value.value,
     string: value.string,
-    // bigInt: value.bigInt,
+    bigInt: value.bigInt,
     // bn: value.bn,
     isRoot: false,
     children: null,
     parent: valueIndex - 8,
   };
   valueIndex += 1;
-  return newNode;
-});
+  treeValues.push(newNode);
+}
 
 const treeSerialized = [];
 for (let i = 0; i < Values.length; i++) {

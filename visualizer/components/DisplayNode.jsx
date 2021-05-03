@@ -3,47 +3,52 @@ import styles from "../styles/GridNode.module.css";
 
 export default function DisplayNode({ children, ...props }) {
   const [on, setOn] = useState(false);
-  const [visited, setVisited] = useState(false);
+  const [active, setActive] = useState(false);
+  const [type, setType] = useState(props.type);
+  const [nodevalue, setNodeValue] = useState(props.nodevalue);
+  const [selected, setSelected] = useState(false);
 
-  useEffect(() => {
-    console.log("pushed", [on]);
-  });
-
-  let nodevalue = props.nodevalue;
   let mousePressed = props.mousePressed;
+  // const activate = props.activate;
+  // const deactivate = props.deactivate;
+
   const nodetype =
-    props.type == "value"
+    type == "value"
       ? styles.gridnodevalueoff
-      : props.type == "serial"
+      : type == "serial"
       ? styles.gridnodeserialoff
-      : props.type == "parent"
+      : type == "parent"
       ? styles.gridnodeparentoff
-      : props.type == "hash"
+      : type == "hash"
       ? styles.gridnodehashoff
       : styles.gridnoderootoff;
 
-  const extraClassName = on ? styles.gridnodevalueon : nodetype;
+  const extraClassName = on && !active ? styles.gridnodevalueon : nodetype;
 
-  const active = visited ? styles.gridnodevisited : "";
+  const activated = active ? styles.gridnodeactive : "";
+  const select = selected ? styles.gridnodeselected : "";
 
   return (
     <div
       id={props.id}
-      className={`${styles.gridnode} ${extraClassName} ${active} text-center`}
+      className={`${styles.gridnode} ${extraClassName} ${activated} ${select} text-center`}
       onMouseEnter={() =>
         !mousePressed
           ? setOn(true)
-          : mousePressed && !visited
-          ? setVisited(true)
-          : mousePressed && visited
-          ? setVisited(false)
+          : mousePressed && !active
+          ? setActive(true)
+          : mousePressed && active
+          ? setActive(false)
           : setOn(true)
       }
       onMouseLeave={() => setOn(false)}
-      onMouseDown={() => (!visited ? setVisited(true) : setVisited(false))}
+      onMouseDown={() => (!selected ? setSelected(true) : setSelected(false))}
+      onDoubleClick={() => (!active ? setActive(true) : setActive(false))}
       nodevalue={nodevalue}
+      activate={() => setActive(true)}
+      deactivate={() => setActive(false)}
     >
-      <p className="text-center">{nodevalue}</p>
+      <p className="text-center">{children}</p>
     </div>
   );
 }

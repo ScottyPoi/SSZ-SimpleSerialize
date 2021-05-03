@@ -30,7 +30,7 @@ function getRandomUint256() {
     {
       value: value,
       string: string,
-      bigInt: bigInt,
+      bigInt: bigInt.toString(10),
       bn: bn,
       type: "uint256",
     },
@@ -46,7 +46,7 @@ function getRandomUint128() {
     {
       value: value,
       string: string,
-      bigInt: bigInt,
+      bigInt: bigInt.toString(10),
       bn: bn,
       type: "uint128",
     },
@@ -62,7 +62,7 @@ function getRandomUint64() {
     {
       value: value,
       string: string,
-      bigInt: bigInt,
+      bigInt: bigInt.toString(10),
       bn: bn,
       type: "uint64",
     },
@@ -78,7 +78,7 @@ function getRandomUint32() {
     {
       value: value,
       string: string,
-      bigInt: bigInt,
+      bigInt: bigInt.toString(10),
       bn: bn,
       type: "uint32",
     },
@@ -94,7 +94,7 @@ function getRandomUint16() {
     {
       value: value,
       string: string,
-      bigInt: bigInt,
+      bigInt: bigInt.toString(10),
       bn: bn,
       type: "uint16",
     },
@@ -110,7 +110,7 @@ function getRandomUint8() {
     {
       value: value,
       string: string,
-      bigInt: bigInt,
+      bigInt: bigInt.toString(10),
       bn: bn,
       type: "uint8",
     },

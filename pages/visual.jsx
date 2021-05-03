@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import DisplayNode from "../visualizer/components/DisplayNode";
 import MakeRandomTree from "../visualizer/components/MakeRandomTree";
 import NodeInfo from "../visualizer/components/NodeInfo";
+import MerkleMap from "../visualizer/components/MerkleMap";
 
 export async function getStaticProps() {
   let {
@@ -32,20 +33,18 @@ export default function Visual({ ...props }) {
   const [Level2, setLevel2] = useState(props.treeLevel2);
   const [Level1, setLevel1] = useState(props.treeLevel1);
   const [Root, setRoot] = useState(props.treeRoot);
+  const [data, setData] = useState(MakeRandomTree());
+  const [treemap, setTreemap] = useState(<MerkleMap>{{ props }}</MerkleMap>);
 
+  console.log(`props: ${Object.values(props)}`);
+  console.log(`data: ${data}`);
+  console.log(`treemap: ${treemap}`);
   useEffect(() => {
-    console.log("yay");
-  }, [Values, Serialized, Leaves, Level2, Level1, Root]);
+    setData(MakeRandomTree());
+    setTreemap(data);
+  });
 
-  // setValues(props.treeValues);
-  // setSerialized(props.treeSerialized);
-  // setLeaves(props.treeLeaves);
-  // setLevel2(props.treeLevel2);
-  // setLevel1(props.treeLevel1);
-  // setRoot(props.treeRoot);
-
-  const changeData = () => {
-    let newData = MakeRandomTree();
+  function changeData() {
     let {
       treeValues,
       treeSerialized,
@@ -53,7 +52,7 @@ export default function Visual({ ...props }) {
       treeLevel2,
       treeLevel1,
       treeRoot,
-    } = newData;
+    } = data;
     console.log("changing data set");
     setValues(treeValues);
     setSerialized(treeSerialized);
@@ -61,7 +60,8 @@ export default function Visual({ ...props }) {
     setLevel2(treeLevel2);
     setLevel1(treeLevel1);
     setRoot(treeRoot);
-  };
+    setData(MakeRandomTree());
+  }
 
   return (
     <div className="row">
@@ -73,7 +73,9 @@ export default function Visual({ ...props }) {
             nodevalue={Root[0].index}
             mousePressed={false}
             type="root"
-          />
+          >
+            {Root[0].data.slice(0, 7)}
+          </DisplayNode>
         </div>
         <div className="row p-3 g-1 justify-content-around">
           <div className="col">
@@ -86,7 +88,9 @@ export default function Visual({ ...props }) {
                     nodevalue={value.index}
                     mousePressed={false}
                     type="parent"
-                  />
+                  >
+                    {value.index}
+                  </DisplayNode>
                 );
               })}
             </div>
@@ -105,7 +109,9 @@ export default function Visual({ ...props }) {
                     nodevalue={value.index}
                     mousePressed={false}
                     type="parent"
-                  ></DisplayNode>
+                  >
+                    {value.index}
+                  </DisplayNode>
                 );
               })}
             </div>
@@ -125,7 +131,9 @@ export default function Visual({ ...props }) {
                     nodevalue={value.index}
                     mousePressed={false}
                     type="hash"
-                  ></DisplayNode>
+                  >
+                    {value.index}
+                  </DisplayNode>
                 );
               })}
             </div>
@@ -155,10 +163,12 @@ export default function Visual({ ...props }) {
                   <DisplayNode
                     key={value.index}
                     id={value.index}
-                    nodevalue={value.data}
+                    nodevalue={value.data.slice(0, 7)}
                     mousePressed={false}
                     type="serial"
-                  ></DisplayNode>
+                  >
+                    {value.data}
+                  </DisplayNode>
                 );
               })}
             </div>
@@ -190,7 +200,13 @@ export default function Visual({ ...props }) {
                     nodevalue={value.type}
                     mousePressed={false}
                     type="value"
-                  ></DisplayNode>
+                  >
+                    {`Value ${value.index}`}
+                    <br />
+                    {value.type}
+                    <br />
+                    {value.bigInt.slice(0, 7)}
+                  </DisplayNode>
                 );
               })}
             </div>
