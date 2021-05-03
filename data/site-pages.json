@@ -15,14 +15,14 @@
         "title": "Overview",
         "pages": [
           {
+            "name": "Design",
+            "url": "/overview/design",
+            "title": "SSZ Design"
+          },
+          {
             "name": "SSZ in Eth2",
             "url": "/sszineth2",
             "title": "SSZ in Eth2"
-          },
-          {
-            "name": "design and principles",
-            "url": "/overview/principles_and_design",
-            "title": "SSZ Home Page"
           }
         ]
       },
