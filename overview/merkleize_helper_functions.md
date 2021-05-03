@@ -3,7 +3,11 @@ title: 'Merkleize Helper Functions'
 toc: ['merkleize_helper_function', 'size_of', 'chunk_count', 'pack', 'pack_bits', 'next_pow_of_two', 'merkleize', 'mix_in_length', 'mix_in_type']
 ---
 
+<div align='center'>
+
 # Merkelize Helper Functions:
+</div>
+<div align='start' id='merkleize_helper_function' >
 
   - [size_of](#size_of)
   - [chunk_count](#chunk_count)
@@ -15,7 +19,8 @@ toc: ['merkleize_helper_function', 'size_of', 'chunk_count', 'pack', 'pack_bits'
   - [mix_in_type](#mix_in_type)
 
 
-<div id='merkleize_helper_function' >
+
+
 </div>
 
 <div id='size_of'>
@@ -91,10 +96,11 @@ The output of the `pack` function is therefore a series of 32 byte chunks and we
 
 ## pack_bits
 
+`pack_bits(bits)` 
+> - Given the bits of bitlist or bitvector, get bitfield_bytes by packing them in bytes and aligning to the start. 
+> - The length-delimiting bit for bitlists is excluded. 
+> - Then return `pack(bitfield_bytes)`
 
-```
-pack_bits(bits): Given the bits of bitlist or bitvector, get bitfield_bytes by packing them in bytes and aligning to the start. The length-delimiting bit for bitlists is excluded. Then return pack(bitfield_bytes).
-```
 The `pack_bits` function is analogous to the `pack` function with the output being a series of 32 byte chunks that willget used in the merkleization process.
 
 In this case the input comprises the bits of a `bitvector` or `bitlist`. It can be distinguished from the `pack` function because the bits get packed into bytes with no delimiting bit; noting that when a `bitlist` is serialized the bits are also packed into bytes but a delimitng bit is appended. It is therefore almost the same as the `pack` function but in the case of a `bitlist`, the serialization differs to exclude the use of a delimiting bit.
@@ -114,9 +120,9 @@ len(pack(values)) == chunk_count(type)
 
 ## next_pow_of_two
 
-```
-next_pow_of_two(i): get the next power of 2 of i, if not already a power of 2, with 0 mapping to 1. Examples: 0->1, 1->1, 2->2, 3->4, 4->4, 6->8, 9->16
-```
+`next_pow_of_two(i)`: 
+> - Get the next power of 2 of i, if not already a power of 2, with 0 mapping to 1. 
+>   - Examples: 0->1, 1->1, 2->2, 3->4, 4->4, 6->8, 9->16
 
 The next_pow_of_two function is a helper function for the merkleize function and is used to ensure that the number of leaves being merkleised is a power of 2.
 
@@ -141,17 +147,15 @@ is_power2(next_pow_of_two(i)) == true
 
 ## merkleize
 
-```
-merkleize(chunks, limit=None): Given ordered BYTES_PER_CHUNK-byte chunks, merkleize the chunks, and return the root:
-
-    The merkleization depends on the effective input, which must be padded/limited:
-        if no limit: pad the chunks with zeroed chunks to next_pow_of_two(len(chunks)) (virtually for memory efficiency).
-        if limit >= len(chunks), pad the chunks with zeroed chunks to next_pow_of_two(limit) (virtually for memory efficiency).
-        if limit < len(chunks): do not merkleize, input exceeds limit. Raise an error instead.
-    Then, merkleize the chunks (empty input is padded to 1 zero chunk):
-        If 1 chunk: the root is the chunk itself.
-        If > 1 chunks: merkleize as binary tree.
-```
+`merkleize(chunks, limit=None)`
+> - Given ordered BYTES_PER_CHUNK-byte chunks, merkleize the chunks, and return the root:
+> - The merkleization depends on the effective input, which must be padded/limited:
+>    - if no limit: pad the chunks with zeroed chunks to next_pow_of_two(len(chunks)) (virtually for memory efficiency).
+>    - if limit >= len(chunks), pad the chunks with zeroed chunks to next_pow_of_two(limit) (virtually for memory efficiency).
+>    - if limit < len(chunks): do not merkleize, input exceeds limit. Raise an error instead.
+> - Then, merkleize the chunks (empty input is padded to 1 zero chunk):
+>    - If 1 chunk: the root is the chunk itself.
+>    - If > 1 chunks: merkleize as binary tree.  
 
 The merkleize function takes a series of 32 byte chunks and a limit parameter.
 
@@ -169,11 +173,10 @@ This second step completes the processing: if we have 1 chunk then that is the r
 ## mix_in_length
 
 
-```
-mix_in_length: Given a Merkle root root and a length length ("uint256" little-endian serialization) return hash(root + length).
-```
+`mix_in_length`: 
+> - Given a Merkle root `root` and a length `length` (`uint256` little-endian serialization) return `hash(root + length)`
 
-This function is used for variable length types i.e. where the length of the value may be less than the maximum specified. The maximum is encoded into the binary merkle tree be the provision of sufficient leaves to store a value of this maximum length, however the actual length must also be represented and is done so through the mix_in_length function. The merkle root generated from the merkleize function is concatenated with the actual length (i.e. where length is represented as a uint256 using little-endian serialization) and then hashed.
+This function is used for variable length types i.e. where the length of the value may be less than the maximum specified. The maximum is encoded into the binary merkle tree be the provision of sufficient leaves to store a value of this maximum length, however the actual length must also be represented and is done so through the `mix_in_length` function. The merkle root generated from the merkleize function is concatenated with the actual length (i.e. where length is represented as a `uint256` using little-endian serialization) and then hashed.
 
 
 <div id='mix_in_type' >
@@ -182,8 +185,6 @@ This function is used for variable length types i.e. where the length of the val
 ## mix_in_type
 
 
-```
-mix_in_type: Given a Merkle root root and a type_index type_index ("uint256" little-endian serialization) return hash(root + type_index).
-```
-
-This function is used for Union types
+`mix_in_type` 
+> - Given a Merkle root `root` and a type_index `type_index` (`uint256` little-endian serialization) return `hash(root + type_index)`
+> - This function is used for Union types
