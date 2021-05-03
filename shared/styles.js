@@ -10,7 +10,7 @@ export const globalStyles = (
         margin: 0;
         min-height: 100%;
         background-color: rgb(20,20,20);
-        color: grey;
+        color: rgb(200,200,200);
         font-family: Roboto, Helvetica, Arial, sans-serif;
         font-size: 1rem;
      
@@ -25,30 +25,45 @@ export const globalStyles = (
         color: white;
       }
 
+      text {
+        color: rbg(200, 200, 250)
+      }
+
       section {
         padding: 1rem;
       }
 
       h1 {
-        color: rgb(200,200,200);
+        color: rgb(250,250,250);
       }
 
       h2 {
-        color: rgb(150,150,0);
+        color: rgb(220,220,230);
       }
 
       h3 {
-        color: rgb(200,100,50);
+        color: rgb(210,210,230);
       }
 
-      li {
-        color: rgb(200,150,200);
+      h4 {
+        color: rgb(190,190,220);
+      }
+
+      h5 {
+        color: rgb(190,190,195);
+      }
+
+      h6 {
+        color: rgb(200,200,220);
       }
 
       p {
-        color: rgb(200,200,200);
+        color: rgb(210,210,240);
       }
-
+      
+      li {
+        color: rgb(220,220,230);
+      }
       td {
         color: white;
       }
