@@ -2,13 +2,13 @@
 title: Design
 section: Overview
 toc: []
-prev: overview
+prev: introduction
 next: sszineth2
 ---
 
 <div align='center'>
 
-# Introduction
+# Design
 
 ## SSZ provides the following functionalities:
 
@@ -30,7 +30,6 @@ next: sszineth2
 </div>
 <div align='center'>
 
-## Design
 
 ### The design choices for SSZ originate from the desire for:
 
