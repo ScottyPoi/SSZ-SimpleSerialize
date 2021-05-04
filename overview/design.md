@@ -58,7 +58,7 @@ loosely based on the desires outlined above
 </div>
 <div align='start'>
 
-- ### Simple
+- ***Simple***
 
   - SSZ is meant to map well to common raw datatypes, and avoid twiddling with bits or nibbles in serialization.
     - It has common basic data types
