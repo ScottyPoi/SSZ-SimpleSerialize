@@ -75,29 +75,31 @@ loosely based on the desires outlined above
       - A `Container` with a `Vector[uint32, 8]` and `uint64` field has the same merkleization structure as a `List[uint64, 4]`.
 
 - **Compact**
-
-  - SSZ achieves aims for compactness in both serialization, as merkle-proofs.
-  - In general in the serialization or merkleization, no information that can be determined from the type already is embedded.
-    - E.g. the names of container fields are not part of the serialized data, unlike a format such as JSON.
-    - This means that the reader of the data has to know the type, but this is almost a given, since input data is untrusted, and validated and parsed using a pre-determined type before further processing.
-  - For serialization of fixed-length types, the elements are packed together, and do not result in any extra bytes when used as elements in dynamic types such as lists.
-    - A good example of this is the validator registry in the Eth2 `BeaconState`: hundreds of thousands of unique validators can be packed into a big list, with 0 overhead.
-  - For serialization of dynamic types, it is more of a trade-off with traversal speed, but 4-byte offsets were adopted as a way to enable fast random access of list elements, while keeping the size relatively low. Offsets are only used for dynamic-length element types, whose contents are often significantly bigger than 4 bytes.
-  - For merkleization, a binary tree backs every merkle structure. Since the branching factor is lower than the previously used Merkle Patricia Tree, less nodes are required to reach into a leaf of a merkle tree.
-And on the application level, an arbitrary key-value store is avoided, since a `List` can be packed together better, and have a smaller key depth,
-thus more efficiency in multi-proofs and avoiding the cost of unbalanced tree shapes.
+  - Fixed Length Types
+    - The elements are packed together, and do not result in any extra bytes when used as elements in dynamic types such as lists.
+  - Dynamic types
+    -  4-byte offsets were adopted as a way to enable fast random access of list elements, while keeping the size relatively low. Offsets are only used for dynamic-length element types, whose contents are often significantly bigger than 4 bytes.
+  - Merkleization 
+    - A binary tree backs every merkle structure. 
+    - Since the branching factor is lower than the previously used Merkle Patricia Tree, less nodes are required to reach into a leaf of a merkle tree.
+  - On the application level
+    - An arbitrary key-value store is avoided, since a `List` can be packed together better, and have a smaller key depth, thus more efficiency in multi-proofs and avoiding the cost of unbalanced tree shapes.
 
 - **Merkle-first**
 
-  - The intention of having a custom type system is also to give anything that can be interpreted by the protocol a sound single generalized merkle-root.
+  - The intention of having a custom type system is also to give anything that can be interpreted by the protocol a sound single generalized `merkle-root`.
 
-  - And not just a merkle-root, but also features that make proofs small, avoid complexity in merkleization, and make it as flexible as possible to build and interpret proofs for a data-structure.
+  - And not *just* a `merkle-root`, but also features that: 
+    - make proofs small,
+    - avoid complexity in merkleization 
+    - make it as flexible as possible to build and interpret proofs for a data-structure.
 
 
 - **Efficient to traverse**
 
   - Efficient traversal is a feature that was later introduced into SSZ with the creation of [Simple Offset Serialization (SOS)](https://gist.github.com/karalabe/3a25832b1413ee98daad9f0c47be3632).
     - This guarantees a `O(log(N))` lookup speed for deeply nested structures. And offsets even enable `O(1)` random access in lists of dynamic-length elements.
-  - The merkle tree is also efficient for lookups, compared to other trees, even though it is a binary tree:
+  - The merkle tree is also efficient for lookups
     - [generalized indices](./overview/generalized_merkle_tree_indices.md) can statically describe the tree node location of any element path.
-    - This allows any merkle-node lookup to be optimized to a `O(log(N))` operation where `N` is the abstract data size (SSZ does not force a uniform data-structure),and where `log(N)` matches the length of the generalized index. And the purely static parts of the path can even be computed at compile time, to improve lookup speeds without writing specialized verbose manual lookup routines.
+    - This allows any merkle-node lookup to be optimized to a `O(log(N))` operation where `N` is the abstract data size (SSZ does not force a uniform data-structure),and where `log(N)` matches the length of the generalized index. 
+    - And the purely static parts of the path can even be computed at compile time, to improve lookup speeds without writing specialized verbose manual lookup routines.
