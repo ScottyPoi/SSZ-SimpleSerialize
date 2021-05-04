@@ -182,6 +182,13 @@
             "title": "SSZ Object to Index"
           },
           {
+            "name": "Helpers for generalized_indices",
+            "url": "/overview/helpers_for_generalized_incides",
+            "previous": "",
+            "next": "",
+            "title": "Helpers for generalized_indices"
+          },
+          {
             "name": "Subtree Merkleization",
             "url": "/overview/subtree_merkleization",
             "previous": "",
