@@ -2,6 +2,8 @@
 title: Complsite Types
 section: Types
 toc: ['Composite Types', 'Vectors', 'Lists', 'Containers', 'Unions']
+prev: basic
+next: bitfields
 ---
 
 <div id='Composite%20Types' align='center'>
