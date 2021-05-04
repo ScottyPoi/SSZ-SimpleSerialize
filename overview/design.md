@@ -58,14 +58,14 @@ loosely based on the desires outlined above
 </div>
 <div align='start'>
 
-- ***Simple***
+- **Simple**
 
   - SSZ is meant to map well to common raw datatypes, and avoid twiddling with bits or nibbles in serialization.
     - It has common basic data types
     - It has fixed-length types to avoid unnecessary lengths/offsets
     - Types to describe the structure
 
-- ### Bijective
+- **Bijective**
   - No two different representations can exist for the same value of a single type.
   - No two different values of the same type can be have the same representation.
   - Different types may still have overlapping representations in merkleization or serialization.
@@ -74,7 +74,7 @@ loosely based on the desires outlined above
     - Merkleization example: 
       - A `Container` with a `Vector[uint32, 8]` and `uint64` field has the same merkleization structure as a `List[uint64, 4]`.
 
-- ### Compact
+- **Compact**
 
   - SSZ achieves aims for compactness in both serialization, as merkle-proofs.
   - In general in the serialization or merkleization, no information that can be determined from the type already is embedded.
@@ -87,14 +87,14 @@ loosely based on the desires outlined above
 And on the application level, an arbitrary key-value store is avoided, since a `List` can be packed together better, and have a smaller key depth,
 thus more efficiency in multi-proofs and avoiding the cost of unbalanced tree shapes.
 
-- ### Merkle-first
+- **Merkle-first**
 
   - The intention of having a custom type system is also to give anything that can be interpreted by the protocol a sound single generalized merkle-root.
 
   - And not just a merkle-root, but also features that make proofs small, avoid complexity in merkleization, and make it as flexible as possible to build and interpret proofs for a data-structure.
 
 
-- ### Efficient to traverse
+- **Efficient to traverse**
 
   - Efficient traversal is a feature that was later introduced into SSZ with the creation of [Simple Offset Serialization (SOS)](https://gist.github.com/karalabe/3a25832b1413ee98daad9f0c47be3632).
     - This guarantees a `O(log(N))` lookup speed for deeply nested structures. And offsets even enable `O(1)` random access in lists of dynamic-length elements.
