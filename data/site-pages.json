@@ -5,6 +5,23 @@
     "title": "SSZ Home Page"
   },
   {
+    "name": "Documentation",
+    "url": "/documentation",
+    "title": "Documentation",
+    "pages": [
+      {
+        "name": "Specs",
+        "url": "/specs",
+        "title": "SSZ Specs"
+      },
+      {
+        "name": "Merkle Proofs",
+        "url": "/merkle-proofs",
+        "title": "SSZ Merkle Proofs"
+      }
+    ]
+  },
+  {
     "name": "Overview",
     "url": "/overview/overview",
     "previous": "",
@@ -199,23 +216,6 @@
             "title": "Summaries and Expansions"
           }
         ]
-      }
-    ]
-  },
-  {
-    "name": "Documentation",
-    "url": "/documentation",
-    "title": "Documentation",
-    "pages": [
-      {
-        "name": "Specs",
-        "url": "/specs",
-        "title": "SSZ Specs"
-      },
-      {
-        "name": "Merkle Proofs",
-        "url": "/merkle-proofs",
-        "title": "SSZ Merkle Proofs"
       }
     ]
   },
