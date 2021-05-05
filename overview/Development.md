@@ -1,12 +1,12 @@
 ---
 title: SSZ Development
 section: Overview
-toc: [Purpose, Design, Properties]
+toc: [Function, Design, Properties]
 prev: introduction
 next: sszineth2
 ---
 
-<div align='center' id='Functions'>
+<div align='center' id='Function'>
 
 # Development of SSZ
 
@@ -32,6 +32,7 @@ Eth2 developers designed SSZ to improve the storage and retrieval of data in the
 </div>
 <div align='center' id='Design'>
 
+<br/>
 
 ### Design
 
@@ -64,6 +65,7 @@ Eth2 developers designed SSZ to improve the storage and retrieval of data in the
     - It has common basic data types
     - It has fixed-length types to avoid unnecessary lengths/offsets
     - Types to describe the structure
+<br/>
 
 - **Bijective**
   - No two different representations can exist for the same value of a single type.
@@ -73,6 +75,7 @@ Eth2 developers designed SSZ to improve the storage and retrieval of data in the
       - `Vector[uint16, 4]`, `Vector[uint32, 2]`, `Vector[uint64, 1]`, `uint64` are all fixed-length and 8 bytes.
     - Merkleization example: 
       - A `Container` with a `Vector[uint32, 8]` and `uint64` field has the same merkleization structure as a `List[uint64, 4]`.
+<br/>
 
 - **Compact**
   - Fixed Length Types
@@ -84,16 +87,16 @@ Eth2 developers designed SSZ to improve the storage and retrieval of data in the
     - Since the branching factor is lower than the previously used Merkle Patricia Tree, less nodes are required to reach into a leaf of a merkle tree.
   - On the application level
     - An arbitrary key-value store is avoided, since a `List` can be packed together better, and have a smaller key depth, thus more efficiency in multi-proofs and avoiding the cost of unbalanced tree shapes.
+<br/>
 
 - **Merkle-first**
-
   - The intention of having a custom type system is also to give anything that can be interpreted by the protocol a sound single generalized `merkle-root`.
-
   - And not *just* a `merkle-root`, but also features that: 
     - make proofs small,
     - avoid complexity in merkleization 
     - make it as flexible as possible to build and interpret proofs for a data-structure.
 
+<br/>
 
 - **Efficient to traverse**
 
