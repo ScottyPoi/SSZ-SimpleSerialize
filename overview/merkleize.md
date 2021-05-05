@@ -8,19 +8,20 @@ toc: [Merkleize]
 
 # Merkleize
 
-The function `merkleize(value)` builds a ***Merkle Tree***, and returns a `Bytes32`  ***Hash Tree Root***
+The function `merkleize(value)` builds a ***Merkle Tree***  
+and returns the `Bytes32`  ***Hash Tree Root***
 
 </div>
 <div align='start'>
 
 
-### `Merkleize` provides `hash_tree_root` for
+### `merkleize(value)` provides `hash_tree_root` for
 
 - `Basic types` i.e. `unsigned integers` of `N bytes`, known as `uintN`s, as well as `Booleans`
 - `List` and `vectors` of `bits`, known as `BitLists` and `BitVectors`
 - `Lists` and `vectors` of `Serializable` i.e. either basic or composite types
 - `Containers` with `Serializable` fields
-- and `Unions` 
+- `Unions` 
   
 
 ### To implement `hash_tree_root` a number of helper functions are required, including
