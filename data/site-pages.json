@@ -19,11 +19,10 @@
         "next": "",
         "pages": [
           {
-            "name": "Design",
-            "url": "/overview/design",
+            "name": "Development",
+            "url": "/overview/Development",
             "previous": "",
-            "next": "",
-            "title": "SSZ Design"
+            "next": ""          
           },
           {
             "name": "SSZ in Eth2",
@@ -189,11 +188,8 @@
             "title": "Helpers for generalized_indices"
           },
           {
-            "name": "Subtree Merkleization",
-            "url": "/overview/subtree_merkleization",
-            "previous": "",
-            "next": "",
-            "title": "Subtree Merkleization"
+            "name": "Merkle Multiproofs",
+            "url": "/overview/merkle_multiproofs"
           },
           {
             "name": "Classic Merkle Proof Backings",
