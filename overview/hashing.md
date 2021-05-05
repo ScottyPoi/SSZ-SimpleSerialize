@@ -17,24 +17,9 @@ The standard specification for SHA-256 can be found in [FIPS 180-4](https://csrc
 <div align='start'>
 <br/>
 
-### Hashing primitive for binary trees
+##### Hashing primitive for binary trees:
 
 `H(a: bytes32, b: bytes32) -> SHA_256(a ++ b)`
 
-Where `++` is concatenation, i.e. tightly packing `a` and `b` into 64 bytes.
-And `SHA_256` is run on the standard unmodified pre-state, and returns the digest after writing and processing the above 64 bytes.
-
-### Zero-hashes
-
-A common occurrence in merkleization in SSZ is `H(X, H(0, 0)), H(X, H(H(0, 0), H(0, 0))), H(X, H(H(H(...`
-
-The right-hand side here would be costly to merkleize leaf by leaf, but is efficiently precomputed, and referred to as a "zero hash" of some order N, starting from 0 being a bare zeroed `bytes32`:
-
-```
-Z[0]: 000000....   # a zeroed bytes32
-Z[1]: H(Z[0], Z[0])
-Z[2]: H(Z[1], Z[1])
-Z[2]: H(Z[1], Z[1])
-Z[3]: H(Z[2], Z[2])
-...
-```
+- Where `++` is concatenation, i.e. tightly packing `a` and `b` into 64 bytes.
+- And `SHA_256` is run on the standard unmodified pre-state, and returns the digest after writing and processing the above 64 bytes.
