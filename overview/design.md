@@ -1,16 +1,18 @@
 ---
-title: Design
+title: SSZ Development
 section: Overview
-toc: []
+toc: [Purpose, Design, Properties]
 prev: introduction
 next: sszineth2
 ---
 
-<div align='center'>
+<div align='center' id='Functions'>
 
-# Design
+# Development of SSZ
 
-### Function of SSZ:
+Eth2 developers designed SSZ to improve the storage and retrieval of data in the blockchain
+
+### Function
 
 </div>
 <div align='start'>
@@ -28,7 +30,7 @@ next: sszineth2
 - ##### `make proofs and multiproofs for elements in the data structure`
 
 </div>
-<div align='center'>
+<div align='center' id='Design'>
 
 
 ### Design
@@ -48,9 +50,9 @@ next: sszineth2
   - by making full deserialization optional, data can be retrieved with a very minimal amount of operations, largely pre-computable at compile time.
 
 </div>
-<div align='center'>
+<div align='center' id='Properties'>
 
-### Properties of SSZ
+### Properties
 
 
 </div>
