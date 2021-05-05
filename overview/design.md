@@ -10,28 +10,28 @@ next: sszineth2
 
 # Design
 
-## SSZ provides the following functionalities:
+### Function of SSZ:
 
 </div>
 <div align='start'>
 
-### Serialize: 
-- #### `encode data structures as sequences of bytes`
+#### `Serialize`: 
+- ##### `encode data structures as sequences of bytes`
     
-### Deserialize: 
-- #### `decode sequences of bytes to reconstruct a given data structure`
+#### `Deserialize`: 
+- ##### `decode sequences of bytes to reconstruct a given data structure`
 
-### Merkleize:
-- #### `store data as a binary merkle-tree`
+#### `Merkleize`:
+- ##### `reduce data structure to merkle-root`
 
-### Validate:
-- #### `Given an object O, its serialized version, serialize(O), is a finite sequence of bytes. Conversely, given a finite sequence of bytes xs, and a data structure's type Type, deserialize(xs) should reconstruct, when possible, an object of type Type from the given sequence of bytes`
+#### `Validate`:
+- ##### `make proofs and multiproofs for elements in the data structure`
 
 </div>
 <div align='center'>
 
 
-### The design choices for SSZ originate from the desire for:
+### Design
 
 </div>
 <div align='start'>
@@ -50,10 +50,8 @@ next: sszineth2
 </div>
 <div align='center'>
 
-## Principles of SSZ
+### Properties of SSZ
 
-### To describe design choices in SSZ as a short list of properties,
-loosely based on the desires outlined above
 
 </div>
 <div align='start'>
