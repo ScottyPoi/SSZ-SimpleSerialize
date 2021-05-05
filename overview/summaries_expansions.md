@@ -20,3 +20,4 @@ the detail of the summary is a strict subset of that of the expansion and the di
 A summary `type` can be defined by taking the expansion and substituting the types of the elements to summarize with `Bytes32` to reflect their `hash_tree_root`.
 Or vice versa an expansion can be defined based on a summary type.
 
+
