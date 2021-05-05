@@ -182,7 +182,7 @@
           },
           {
             "name": "Helpers for generalized_indices",
-            "url": "/overview/helpers_for_generalized_incides",
+            "url": "/overview/helpers_for_generalized_indices",
             "previous": "",
             "next": "",
             "title": "Helpers for generalized_indices"
@@ -190,13 +190,6 @@
           {
             "name": "Merkle Multiproofs",
             "url": "/overview/merkle_multiproofs"
-          },
-          {
-            "name": "Classic Merkle Proof Backings",
-            "url": "/overview/classic",
-            "previous": "",
-            "next": "",
-            "title": "Classic Merkle Proof Backings"
           },
           {
             "name": "Paths",
