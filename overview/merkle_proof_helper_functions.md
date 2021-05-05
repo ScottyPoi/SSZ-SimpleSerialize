@@ -9,11 +9,10 @@ next: generalized_indices
 
 # Merkle Proof Helper Functions
 
+<br/>
 </div>
 <div align='start' id='get_power_of_two_ceil'>
-
-### Helper functions:
-
+<br/>
 
 - ##### `get_power_of_two_ceil(x)`
   - Get the power of 2 for given input, or the closest higher power of 2 if the input is not a power of 2.
