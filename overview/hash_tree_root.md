@@ -9,7 +9,7 @@ next: merkle_proofs
 
 # hash_tree_root
 
-The `hash_tree_root` function for Eth2.0 is based on the construction of a binary merkle tree in which the serialised form of the value becomes the leaves of the tree.
+The `hash_tree_root` function is based on the construction of a binary merkle tree in which the serialized form of the value becomes the leaves of the tree.
 
 However, the derivation of the final 32 bytes root hash does also depend on the type of a value and for some cases additional information relating to the type or length of a value is incorporated.
 
