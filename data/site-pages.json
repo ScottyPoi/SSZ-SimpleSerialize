@@ -160,7 +160,7 @@
         "next": "",
         "pages": [
           {
-            "name": "Merkle Proof Helper Functions",
+            "name": "Helper Functions",
             "url": "/overview/merkle_proof_helper_functions",
             "previous": "",
             "next": "",
@@ -192,25 +192,11 @@
             "url": "/overview/merkle_multiproofs"
           },
           {
-            "name": "Paths",
-            "url": "/overview/paths",
-            "previous": "",
-            "next": "",
-            "title": "Paths"
-          },
-          {
             "name": "Summaries and Expansions",
             "url": "/overview/summaries_expansions",
             "previous": "",
             "next": "",
             "title": "Summaries and Expansions"
-          },
-          {
-            "name": "Partials",
-            "url": "/overview/partials",
-            "previous": "",
-            "next": "",
-            "title": "Partials"
           }
         ]
       }
