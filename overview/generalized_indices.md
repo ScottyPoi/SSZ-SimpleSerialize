@@ -6,10 +6,13 @@ prev: merkle_proof_helper_functions
 next: ssz_object_to_index
 ---
 
-<div align='center'>
-<div id='Generalized%20Merkle%20Tree%20Index'>
+<div id='Generalized%20Merkle%20Tree%20Index' align='center'>
 
 # Generalized Merkle tree Index
+
+<br/>
+</div>
+<div align='start'>
 
 The `hash-tree-root` of all SSZ types merkleizes the contents as a binary tree.
 In such a binary tree, the path to any node from the root can be described by a `bitfield`
@@ -18,23 +21,31 @@ This `bitfield` can also be expressed as an integer, called a **`generalized ind
 The generalized index value for a node in a binary tree is `2**depth + index`, starting with a 1 for the root.
 Visually, this looks as follows:
 
+
+
 ```
     1
  2     3
 4 5   6 7
    ...
 ```
-
+TODO: VISUALIZE GENERALIZED MERKLE TREE INDEX
 
 Like the bitfield form that is extended with a `0` or `1` for each child,
 the generalized index has the convenient property that the two children of node `k` are `2k` and `2k+1`.
 
 <br/>
-<div id='Combination%20and%20Slicing'>
+</div>
+<div id='Combination%20and%20Slicing' align='center'>
 
 ## Combination and slicing
 
+
+</div>
+<div align='start'>
 <br />
+
+
 
 To navigate from `A` to `B` to `C`, where `B` is in the subtree of `A` and `C` in the subtree of `B`, the generalized indices can be composed and sliced:
 
@@ -44,11 +55,15 @@ These navigation parts `AB` and `BC` can be concatenated to get the navigation p
 And then a `1` is prepended again to delimit the exact length of the path and represent the root.
 
 <br />
-<div id='Flat%20Indexing'>
+</div>
+<div id='Flat%20Indexing' align='center>
 
 ## Flat Indexing
 
 <br />
+
+</div>
+<div align='start'>
 
 For implementation purposes, the generalized index matches the position of a node in the linear representation of the Merkle tree, as computed by this function:
 
@@ -62,10 +77,14 @@ def merkle_tree(leaves: Sequence[Bytes32]) -> Sequence[Bytes32]:
 ```
 
 <br />
-<div id='Representation'>
+</div>
+<div id='Representation' align='center'>
 
 ## Representation
 
+
+</div>
+<div align='start'>
 <br />
 
 In the SSZ spec, a generalized index is represented as a custom integer type: `GeneralizedIndex` (of arbitrary bitlength).

@@ -19,10 +19,12 @@ next: basic
 </div>
 <div align='start'>
 
+- ##### Basic Types: 
   - ###### **Unisigned Integer**
     -  `Uint8, Uint16, Uint32, Uint64, Uint128, Uint256`
   - ###### **Boolean**
     - `Bit, 0 or 1, True or False`
+- ##### Composite Types
   - ###### **Vector**
     - `"Fixed Length" sequence of elements of same **Type** (homogeneous)`
   - ###### **List**
@@ -49,7 +51,7 @@ E.g. `BLSSignature` instead of `Vector[byte, 96]`.
 <br/>
 
 </div>
-<div id='Default%20Values' align='center>
+<div id='Default%20Values' align='center'>
 
 ## Default values
 

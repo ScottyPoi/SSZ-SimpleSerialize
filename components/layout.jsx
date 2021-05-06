@@ -9,17 +9,12 @@ import OnThisPage from '../components/OnThisPage';
 
 
 
-const layoutStyle = {
-  display: "flex",
-  flexDirection: "column",
-  height: "100%",
-  width: "100%"
+const Z = {
+  zIndex: 0
 };
 
-const contentStyle = {
-  flex: 1,
-  display: "flex",
-  flexDirection: "column"
+const Y = {
+  zIndex: 1
 };
 
 export default function Layout({ children }) {
@@ -51,14 +46,14 @@ export default function Layout({ children }) {
               </div>
             <div className="container">
                 <div className='d-flex row justify-content-between position-relative d-none d-sm-block'>
-                  <div className='col-2 justify-content-start position-fixed top-10 start-0 '>
+                  <div className='col-2 justify-content-start position-fixed top-10 start-0 ' style={Y}>
                     <nav className="nav align-items-stretch">
                       <NavBar { ...MainPage.args } />
                     </nav>
                   </div>
                 </div>
                 <div className='d-flex row position-static justify-content-xs-start justify-content-sm-around'>
-                  <div className='col-12 col-sm-10'>{children}</div>
+                  <div className='col-12 col-sm-10' style={Z}>{children}</div>
 
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>

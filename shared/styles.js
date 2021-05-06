@@ -11,7 +11,7 @@ export const globalStyles = (
         min-height: 100%;
         background-color: rgb(20,20,20);
         color: rgb(200,200,200);
-        font-family: Roboto, Helvetica, Arial, sans-serif;
+        font-family: sans-serif;
         font-size: 1rem;
      
       }
