@@ -10,6 +10,7 @@ export default function BitvectorForm() {
   const [asBytes, setAsBytes] = useState("0x00");
   const [padded, setPadded] = useState("0x00000000000000000000000000000000");
   const [asHash, setAsHash] = useState(null);
+  const [bitSet, setBitSet] = useState(["0"]);
 
   useEffect(() => {
     const byte = Number(value).toString(16);
@@ -30,6 +31,11 @@ export default function BitvectorForm() {
     setAsHash(hashed);
   }, [padded]);
 
+  useEffect(() => {
+    const newSet = BitvectorFiller(size);
+    setBitSet(newSet); 
+  }, [size])
+  
   const changeValue = (event) => {
     setSize(event.target.value);
   };
@@ -41,7 +47,7 @@ export default function BitvectorForm() {
       <input value={size} type="number" min={0} onChange={changeValue} />
     </div>
         <div className="col-3">
-        <BitvectorFiller size={size} />
+        BitSet: {bitSet}
       </div>
       <div className="col-3">
         in action
