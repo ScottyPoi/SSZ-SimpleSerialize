@@ -1,9 +1,10 @@
 import { useState } from "react";
 import Listform from "./Listform";
 import Basicform from './BasicForm';
+import BitfieldsForm from "./BitfieldsForm";
 export default function Serializer() {
   const [value, setValue] = useState(0);
-  const [type, setType] = useState("uint8");
+  const [type, setType] = useState("basic");
   const [asBytes, setAsBytes] = useState("0x00");
   const [padded, setPadded] = useState("0x00000000000000000000000000000000");
   const [asHash, setAsHash] = useState("sha256")
@@ -24,11 +25,11 @@ export default function Serializer() {
           <label>
             <select value={type} onChange={changeType}>
               <option value="basic">Basic</option>
-              <option value="list">List</option>
+              <option value="bitfields">Bitfields</option>
             </select>
           </label>
         </form>
-        {type == "basic" ? <Basicform /> : null}
+        {type === "basic" ? <Basicform /> : type === "bitfields" ? <BitfieldsForm /> : null }
       </div>
     </div>
   );

@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 const { createHash } = require("crypto");
-import BooleanForm from './BooleanForm';
-export default function BasicForm() {
+import BitlistForm from "./BitlistForm";
+import BitvectorForm from "./BitvectorForm";
+import BitlistFiller from './BitlistFiller';
+export default function BitfieldsForm() {
   const [value, setValue] = useState(0);
   const [type, setType] = useState("uint8");
   const [asBytes, setAsBytes] = useState("0x00");
@@ -57,39 +59,23 @@ export default function BasicForm() {
       : null;
 
   return (
+      <>
     <div className="row">
-      <div className="col">
+      <div className="col-3">
         <p>Type:</p>
         <form>
           <label>
             <select value={type} onChange={changeType}>
-              <option value="boolean">Boolean</option>
-              <option value="uint8">Uint8</option>
-              <option value="uint16">Uint16</option>
-              <option value="uint32">Uint32</option>
-              <option value="uint64">Uint64</option>
-              <option value="uint128">Uint128</option>
-              <option value="uint256">Uint256</option>
+              <option value="bitlist">Bitlist</option>
+              <option value="bitvector">Bitvector</option>
             </select>
           </label>
         </form>
-
-        <p>Value:</p>
-          <input
-            value={value}
-            type="number"
-            min={0}
-            max={range}
-            onChange={changeValue}
-          />
-      </div>
-      <div className="col">
-        <div>SSZ Type: {type}</div>
-        <div>Value: {value}</div>
-        <div>As Bytes: {asBytes}</div>
-        <div>Padded: {padded}</div>
-        <div>As Hash: {asHash}</div>
+        </div>
+        <div className='row'>
+        {type === "bitvector" ? <BitvectorForm /> : <BitlistForm />}
       </div>
     </div>
+    </>
   );
 }
