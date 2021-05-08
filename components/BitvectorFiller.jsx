@@ -4,17 +4,17 @@ export default function BitvectorFiller(vectorSize) {
 
 
     const size = vectorSize
-    const array = new BitSet;
+    const array = [];
     for (let i=0; i<size; i++) {
         let rand = Math.floor(Math.random() * 2)
         while (rand === 2) {
             rand = Math.floor(Math.random() * 2)
         }
-        array.set(i, rand)
+        array.push(rand)
     }
     const str = array.toString()
     const char = Array.from(str)
-    return char
+    return array
 }
 
 {/* <div>
