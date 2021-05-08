@@ -31,12 +31,12 @@ export default function BitlistSerializer() {
   }, [padded]);
 
   useEffect(() => {
-    const newSet = BitvectorFiller(limit);
+    const newSet = BitlistFiller(limit);
     setBitSet(newSet);
   }, [limit]);
 
   useEffect(() => {
-    const newChunks = BitVectorChunker(bitSet, limit);
+    const newChunks = BitListChunker(bitSet, limit);
     setChunks(newChunks);
   }, [bitSet]);
 
@@ -53,7 +53,7 @@ export default function BitlistSerializer() {
       </div>
       <div className="col-3 text-break">BitSet: {bitSet}</div>
       <div className="col-3 text-break">
-        BitVector:
+        BitList:
         {chunks.map((chunk, index) => {
           return (
             <div key={index}>
@@ -74,15 +74,15 @@ export default function BitlistSerializer() {
   );
 }
 
-function BitVectorChunker(bitVector, vectorLimit) {
-  let limit = vectorLimit;
+function BitListChunker(bitList, listLimit) {
+  let limit = listLimit;
   let chunk_count = Math.floor((limit + 7) / 8);
   let packedChunks = (chunk_count - 1) * 8;
   let unpackedChunks = -1 * (limit - packedChunks);
   const bytes = [];
   const bv = [];
   for (let i = 0; i < limit; i++) {
-    bv.push(bitVector[i]);
+    bv.push(bitList[i]);
   }
 
   bv.push("1");
@@ -102,8 +102,8 @@ function BitVectorChunker(bitVector, vectorLimit) {
   return bytes;
 }
 
-function BitvectorFiller(vectorLimit) {
-  const limit = vectorLimit;
+function BitlistFiller(listLimit) {
+  const limit = listLimit;
   const array = [];
   for (let i = 0; i < limit; i++) {
     let rand = Math.floor(Math.random() * 2);
