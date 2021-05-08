@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 const { createHash } = require("crypto");
 
-export default function BitvectorForm() {
-  const [size, setSize] = useState(1);
+export default function BitlistSerializer() {
+  const [limit, setLimit] = useState(1);
   const [value, setValue] = useState(0);
   const [type, setType] = useState("uint8");
   const [asBytes, setAsBytes] = useState("0x00");
@@ -31,25 +31,25 @@ export default function BitvectorForm() {
   }, [padded]);
 
   useEffect(() => {
-    const newSet = BitvectorFiller(size);
+    const newSet = BitvectorFiller(limit);
     setBitSet(newSet);
-  }, [size]);
+  }, [limit]);
 
   useEffect(() => {
-    const newChunks = BitVectorChunker(bitSet, size);
+    const newChunks = BitVectorChunker(bitSet, limit);
     setChunks(newChunks);
   }, [bitSet]);
 
   const changeValue = (event) => {
-    setSize(event.target.value);
+    setLimit(event.target.value);
   };
 
 
   return (
     <>
       <div className="col-3">
-        <p>Size:</p>
-        <input value={size} type="number" min={1} onChange={changeValue} />
+        <p>Limit:</p>
+        <input value={limit} type="number" min={1} onChange={changeValue} />
       </div>
       <div className="col-3 text-break">BitSet: {bitSet}</div>
       <div className="col-3 text-break">
@@ -74,14 +74,14 @@ export default function BitvectorForm() {
   );
 }
 
-function BitVectorChunker(bitVector, vectorSize) {
-  let size = vectorSize;
-  let chunk_count = Math.floor((size + 7) / 8);
+function BitVectorChunker(bitVector, vectorLimit) {
+  let limit = vectorLimit;
+  let chunk_count = Math.floor((limit + 7) / 8);
   let packedChunks = (chunk_count - 1) * 8;
-  let unpackedChunks = -1 * (size - packedChunks);
+  let unpackedChunks = -1 * (limit - packedChunks);
   const bytes = [];
   const bv = [];
-  for (let i = 0; i < size; i++) {
+  for (let i = 0; i < limit; i++) {
     bv.push(bitVector[i]);
   }
 
@@ -89,8 +89,8 @@ function BitVectorChunker(bitVector, vectorSize) {
 
   const string = bv.join("");
 
-  if (size > 8) {
-    for (let i=0; i<(Math.floor(size/8)+1); i++) {
+  if (limit > 8) {
+    for (let i=0; i<(Math.floor(limit/8)+1); i++) {
       let fullChunk = string.slice(i*8, i*8+8).padEnd(8, "0").split("").reverse();
       bytes.push(fullChunk);
     }
@@ -102,10 +102,10 @@ function BitVectorChunker(bitVector, vectorSize) {
   return bytes;
 }
 
-function BitvectorFiller(vectorSize) {
-  const size = vectorSize;
+function BitvectorFiller(vectorLimit) {
+  const limit = vectorLimit;
   const array = [];
-  for (let i = 0; i < size; i++) {
+  for (let i = 0; i < limit; i++) {
     let rand = Math.floor(Math.random() * 2);
     while (rand === 2) {
       rand = Math.floor(Math.random() * 2);

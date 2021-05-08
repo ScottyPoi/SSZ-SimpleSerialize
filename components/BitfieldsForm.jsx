@@ -1,8 +1,7 @@
 import { useState, useEffect } from "react";
 const { createHash } = require("crypto");
-import BitlistForm from "./BitlistForm";
-import BitvectorForm from "./BitvectorForm";
-import BitlistFiller from './BitlistFiller';
+import BitlistSerializer from "./BitlistSerializer";
+import BitvectorSerializer from "./BitvectorSerializer";
 export default function BitfieldsForm() {
   const [value, setValue] = useState(0);
   const [type, setType] = useState("uint8");
@@ -73,7 +72,7 @@ export default function BitfieldsForm() {
         </form>
         </div>
         <div className='row'>
-        {type === "bitvector" ? <BitvectorForm /> : <BitlistForm />}
+        {type === "bitvector" ? <BitvectorSerializer /> : <BitlistSerializer />}
       </div>
     </div>
     </>
