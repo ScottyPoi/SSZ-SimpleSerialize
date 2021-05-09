@@ -3,6 +3,7 @@ const { createHash } = require("crypto");
 
 export default function BitlistSerializer() {
   const [limit, setLimit] = useState(1);
+  const [numBits, setnumBits] = useState(1);
   const [value, setValue] = useState(0);
   const [type, setType] = useState("uint8");
   const [asBytes, setAsBytes] = useState("0x00");
@@ -44,20 +45,27 @@ export default function BitlistSerializer() {
     setLimit(event.target.value);
   };
 
+  const changeNumBits = (event) => {
+    setnumBits(event.target.value)
+  };
+
 
   return (
     <>
       <div className="col-3">
         <p>Limit:</p>
         <input value={limit} type="number" min={1} onChange={changeValue} />
+        <br/>
+        <p>Number of Bits:</p>
+        <input value={numBits} type="number" min={1} max={limit} onChange={changeNumBits} />
       </div>
-      <div className="col-3 text-break">BitSet: {bitSet}</div>
+      <div className="col-3 text-break">BitList: [{`${bitSet}`.split("")}]</div>
       <div className="col-3 text-break">
-        BitList:
+        As Bytes:
         {chunks.map((chunk, index) => {
           return (
             <div key={index}>
-              {chunk.toString()}
+              [{chunk.toString()}]
               <br />
             </div>
           );
