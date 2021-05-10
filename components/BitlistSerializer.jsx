@@ -11,6 +11,8 @@ export default function BitlistSerializer() {
   const [asHash, setAsHash] = useState(null);
   const [bitSet, setBitSet] = useState([]);
   const [chunks, setChunks] = useState(["00000000"]);
+  const [chunkStrings, setChunkStrings] = useState([]);
+  const [chunkValues, setChunkValues] = useState([]);
 
   useEffect(() => {
     const byte = Number(value).toString(16);
@@ -41,6 +43,23 @@ export default function BitlistSerializer() {
     setChunks(newChunks);
   }, [bitSet]);
 
+  useEffect(() => {
+    const newChunkStrings = chunks.map((chunk) => {
+      return chunk.toString().replace(/,/g,"")
+    })
+    setChunkStrings(newChunkStrings);
+  }, [chunks])
+
+  useEffect(() => {
+    const newchunkValues = chunkStrings.map((chunk) => {
+      return parseInt(chunk, 2);
+    })
+    const chunkhexvalues = newchunkValues.map((chunk) => {
+      return Number(chunk).toString(16);
+    })
+    setChunkValues(chunkhexvalues)
+  }, [chunkStrings])
+
   const changeValue = (event) => {
     setLimit(event.target.value);
   };
@@ -48,6 +67,8 @@ export default function BitlistSerializer() {
   const changeNumBits = (event) => {
     setnumBits(event.target.value)
   };
+
+
 
 
   return (
@@ -61,14 +82,22 @@ export default function BitlistSerializer() {
       </div>
       <div className="col-3 text-break">BitList: [{`${bitSet}`.split("")}]</div>
       <div className="col-3 text-break">
-        As Bytes:
-        {chunks.map((chunk, index) => {
+        As Byte Chunks:
+        {chunkStrings.map((chunk, index) => {
           return (
             <div key={index}>
-              [{chunk.toString()}]
+              [{chunk}]
               <br />
             </div>
           );
+        })}
+        <br/>
+        {chunkValues.map((chunk, index) => {
+          return (
+            <div key={index}>
+              0x{chunk}
+            </div>
+          )
         })}
       </div>
       <div className="col-3">

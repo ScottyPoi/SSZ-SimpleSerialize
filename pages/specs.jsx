@@ -51,12 +51,12 @@ export default function Specs({ SpecsData }) {
         <div className='row justify-content-center'>
           <div className='col-12 col-sm-10 '>
             <div className='row'>
-            <ul class="nav nav-tabs">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">SimpleSerialize.md</a>
+            <ul className="nav nav-tabs">
+              <li className="nav-item">
+                <a className="nav-link active" aria-current="page" href="#">SimpleSerialize.md</a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/merkle-proofs">Merkle-Proofs.md</a>
+              <li className="nav-item">
+                <a className="nav-link" href="/merkle-proofs">Merkle-Proofs.md</a>
               </li>
             </ul>
             </div>              
