@@ -37,8 +37,8 @@ Alternatively you can set this field to `true` to enable SSH endpoints for deplo
 
     ssh-key: # optional
     # This option defaults to the repository scoped GitHub Token.  However if you need more permissions for things such as deploying to another repository, you can add a Personal Access Token (PAT) here.  This should be stored in the `secrets / with` menu **as a secret**.
-We recommend using a service account with the least permissions neccersary and when generating a new PAT that you select the least permission scopes required.
-[Learn more about creating and using encrypted secrets here.](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
+# We recommend using a service account with the least permissions neccersary and when generating a new PAT that you select the least permission scopes required.
+# [Learn more about creating and using encrypted secrets here.](https://help.github.com/en/actions/automating-your-workflow-with-github-actions/creating-and-using-encrypted-secrets)
 
     token: ${{ github.token }}
     # This is the branch you wish to deploy to, for example gh-pages or docs.
