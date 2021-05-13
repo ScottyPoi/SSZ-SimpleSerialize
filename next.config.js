@@ -7,4 +7,5 @@ module.exports = {
     loader: 'cloudinary',
     path:'http://res.cloudinary.com/ssz'
   },
+  assetPrefix: '/SSZ-SimpleSerialize/'
 }
