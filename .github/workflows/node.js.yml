@@ -67,3 +67,4 @@ We recommend using a service account with the least permissions neccersary and w
     single-commit: # optional
     # Silences the action output preventing it from displaying git messages.
     silent: # optional
+
