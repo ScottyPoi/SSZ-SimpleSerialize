@@ -8,6 +8,6 @@ module.exports = {
     loader: 'cloudinary',
     path:'http://res.cloudinary.com/ssz/'
   },
-  basePath: '/ssz-simpleserialize'
+  basePath: '/ssz-simpleserialize',
   assetPrefix: '/ssz-simpleserialize/'
 }
