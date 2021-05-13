@@ -1,5 +1,4 @@
-
-const debug = process.env.NODE_ENV !== "production";
+const ghPages = process.env.DEPLOY_TARGET === 'gh-pages';
 
 module.exports = {
   future: {
@@ -8,6 +7,6 @@ module.exports = {
   images: {
   loader: 'cloudinary'
   },
-  assetPrefix: !debug ? '/SSZ-SimpleSerialize' : '',
+  assetPrefix: ghPages ? '/SSZ-SimpleSerialize' : ''
 
 }
