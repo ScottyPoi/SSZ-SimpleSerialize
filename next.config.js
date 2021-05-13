@@ -4,7 +4,6 @@ module.exports = {
     webpack5: true,
   },
   images: {
-    loader: 'cloudinary',
     domains: ["res.cloudinary.com"],
   },
 }
