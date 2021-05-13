@@ -26,7 +26,10 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: npm run build 
+    - run: npm run build
+      env:
+        CI: true
+        DEPLOY_TARGET: gh-pages
     - run: touch ./out/.nojekyll
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.3
