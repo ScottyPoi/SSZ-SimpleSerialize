@@ -1,4 +1,5 @@
 
+
 module.exports = {
   future: {
     webpack5: true,
@@ -7,4 +8,5 @@ module.exports = {
     loader: 'cloudinary',
     path:'http://res.cloudinary.com/ssz/'
   },
+  assetPrefix: `${basePath}`
 }
