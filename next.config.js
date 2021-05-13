@@ -5,6 +5,6 @@ module.exports = {
   },
   images: {
     loader: 'cloudinary',
-    path:'https://res.cloudinary.com/ssz/image/upload/'
+    path:'http://res.cloudinary.com/ssz'
   },
 }
