@@ -1,5 +1,9 @@
 import {byteType, booleanType, ByteVectorType, BigIntUintType, number32Type, NumberUintType} from "@chainsafe/ssz";
 
+
+
+
+
 // Interface is defined in the return of getPrimitiveTypes(), to de-duplicate info
 // To add a new type, create and return it in the body of getPrimitiveTypes()
 export type PrimitiveSSZTypes = ReturnType<typeof getPrimitiveTypes>;
