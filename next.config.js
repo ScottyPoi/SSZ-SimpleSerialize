@@ -5,7 +5,6 @@ module.exports = {
   },
   images: {
     loader: 'cloudinary',
-    path:'http://res.cloudinary.com/ssz'
+    path:'http://res.cloudinary.com/ssz/'
   },
-  assetPrefix: '/SSZ-SimpleSerialize/'
 }
