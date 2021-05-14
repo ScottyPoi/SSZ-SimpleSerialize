@@ -28,8 +28,8 @@ jobs:
     - run: npm ci
     - run: npm run build
       env:
-        CI: true
-        DEPLOY_TARGET: gh-pages
+        ci: true
+        depoly_target: gh-pages
     - run: touch ./out/.nojekyll
     - name: Deploy
       uses: JamesIves/github-pages-deploy-action@4.1.3
