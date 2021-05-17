@@ -7,7 +7,7 @@ export default function Hello() {
         <div className='container'>
             <div className='row justify-content-center'>
                 <div className='col-8'>
-                    <Image 
+                    <img 
                     src='/developers-eth-blocks.png'
                     alt='ethereum building blocks'
                     height={300}
