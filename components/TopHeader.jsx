@@ -65,24 +65,20 @@ export default function TopHeader({ ...props }) {
                               </li>
                             );
                           })}
+                                            
+
                         </ul>
                       </li>
                     );
                   }
                 })}
-                <a
+                <li>
+                <a className='nav-link'
                   href="https://github.com/scottypoi/ssz-simpleserialize"
-                  style={{ position: "absolute", right: 0, top: 0 }}
                 >
-                  <img
-                    width="149"
-                    height="149"
-                    src="https://github.blog/wp-content/uploads/2008/12/forkme_right_orange_ff7600.png?resize=149%2C149"
-                    className="attachment-full size-full"
-                    alt="Fork me on GitHub"
-                    data-recalc-dims="1"
-                  />
+                  GitHub
                 </a>
+                </li>
               </ul>
             </div>
           </div>
