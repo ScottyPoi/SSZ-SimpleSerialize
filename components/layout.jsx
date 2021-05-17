@@ -10,15 +10,15 @@ import OnThisPage from '../components/OnThisPage';
 
 
 const Z = {
-  zIndex: 0
-};
-
-const Y = {
   zIndex: 1
 };
 
-const X = {
+const Y = {
   zIndex: 2
+};
+
+const X = {
+  zIndex: 0
 }
 
 export default function Layout({ children }) {
