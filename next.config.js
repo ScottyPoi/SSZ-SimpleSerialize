@@ -5,7 +5,8 @@ module.exports = {
     webpack5: true,
   },
   images: {
-  loader: 'cloudinary'
+  loader: 'cloudinary',
+  path: 'http://res.cloudinary.com/ssz'
   },
   assetPrefix: ghPages ? '/SSZ-SimpleSerialize' : ''
 
