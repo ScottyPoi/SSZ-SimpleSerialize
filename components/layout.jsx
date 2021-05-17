@@ -17,6 +17,10 @@ const Y = {
   zIndex: 1
 };
 
+const X = {
+  zIndex: 2
+}
+
 export default function Layout({ children }) {
     console.log('twerkleizing...')
     return (
@@ -37,7 +41,7 @@ export default function Layout({ children }) {
               <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> 
             </Head>
             <div className='d-flex'>
-              <div className='row fixed-top '>
+              <div className='row fixed-top' style={X}>
                 <div className='col'>
                   <div className='row'>
                     <TopHeader { ...MainPage.args } />
