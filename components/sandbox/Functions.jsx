@@ -1,14 +1,19 @@
 import { CopyBlock, dracula } from "react-code-blocks";
-import { useState } from "react";
-import { sample, TopBar, getpoweroftwoceil} from "./components";
+import { useState, useEffect } from "react";
+import { sample, TopBar, getpoweroftwoceil, getpoweroftwofloor} from "./components";
 
 
 export default function Functions() {
 
-  const [language, changeLanguage] = useState("javascript");
-  const [funct, changeFunct] = useState(getpoweroftwoceil)
-  const [languageDemo, changeDemo] = useState(getpoweroftwoceil["javascript"]);
+  const [language, changeLanguage] = useState("python");
+  const [funct, changeFunct] = useState(getpoweroftwofloor)
+  const [languageDemo, changeDemo] = useState(getpoweroftwofloor["python"]);
   const [lineNumbers, toggleLineNumbers] = useState(true);
+
+  useEffect(() => {
+    changeDemo(funct["python"])
+  }, [funct]);
+
   return (
     <div>
       <TopBar

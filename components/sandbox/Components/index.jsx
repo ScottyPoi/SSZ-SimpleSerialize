@@ -44,3 +44,4 @@ export { default as sample } from './codeblocks';
 export { default as getpoweroftwoceil } from '../functions/Get_power_of_two_ceil';
 export { default as Select } from './Select';
 export { default as TopBar } from './TopBar';
+export { default as getpoweroftwofloor } from '../functions/get_power_of_two_floor'
