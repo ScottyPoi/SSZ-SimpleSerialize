@@ -32,6 +32,7 @@
     "node": "^16.0.0",
     "react": "^17.0.1",
     "react-bootstrap": "^1.5.2",
+    "react-code-blocks": "^0.0.8",
     "react-dom": "^17.0.1",
     "react-markdown": "^5.0.3",
     "react-overlays": "^5.0.0",
