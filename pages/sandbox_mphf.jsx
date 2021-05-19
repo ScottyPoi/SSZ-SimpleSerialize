@@ -1,8 +1,8 @@
-import Functions from '../components/sandbox/Functions';
+import DisplayFunctions from '../components/sandbox/DisplayFunctions';
 export default function sandbox_mphf() {
     return (
         <>
-        <Functions />
+        <DisplayFunctions />
         <br/>
         </>
     )
