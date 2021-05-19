@@ -15,5 +15,5 @@ export default {
             return 2 * get_power_of_two_floor(x // 2)
     `,
     javascript: `TODO`,
-    typescript: `TODO`,
+    typescript: `TODO`
 }
