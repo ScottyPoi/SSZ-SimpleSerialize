@@ -8,7 +8,9 @@ next: merkle_proof_helper_functions
 
 ## Merkle proofs
 
-## For beginners
+TODO: VISUALIZE MERKLE PROOF
+
+<!-- ## For beginners
 
 Merkle proofs enable users to efficiently prove specific details of some data-structure that is known by a given hash.
 
@@ -121,4 +123,4 @@ For lower level usage, most of the complexity (and implementation freedom) is tr
 
 `compute_root(proof_backing) -> root`
 
-`verify(proof_backing, root) -> bool: return compute_root(proof_backing) == root`
+`verify(proof_backing, root) -> bool: return compute_root(proof_backing) == root` -->
