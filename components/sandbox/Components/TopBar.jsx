@@ -1,11 +1,15 @@
 import React from "react";
 import Select from "./Select";
-
-export default function TopBar({ select, toggle, language }) {
+import ChangeFunction from './ChangeFunction';
+export default function TopBar({ language, selectfunction, children }) {
   return (
     <div className="list-reset flex flex-wrap items-center justify-between my-2">
+      <div>
       <Select {...language} />
-      {/* <Select {...select} /> */}
+      </div>
+      <div>
+      <Select {...selectfunction}>{children}</Select>
+      </div>
     </div>
   );
 }
