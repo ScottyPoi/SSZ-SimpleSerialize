@@ -50,7 +50,7 @@ export default function TopHeader({ ...props }) {
                           {page.name}
                         </a>
                         <ul
-                          className="dropdown-menu"
+                          className="dropdown-menu dropdown-menu-dark"
                           aria-labelledby={page.name}
                         >
                           {page.pages.map((subpage) => {
