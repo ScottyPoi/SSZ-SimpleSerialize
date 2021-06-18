@@ -24,6 +24,8 @@
     "@next/mdx": "^10.0.9",
     "autoprefixer": "^10.2.5",
     "bootstrap": "^5.0.0-beta3",
+    "bootstrap-icons": "^1.5.0",
+    "crypto": "^1.0.1",
     "doctoc": "^2.0.0",
     "gray-matter": "^4.0.2",
     "mdb-react-ui-kit": "^1.0.0-beta1",
