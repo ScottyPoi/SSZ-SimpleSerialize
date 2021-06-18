@@ -5,11 +5,6 @@
     "title": "SSZ Home Page"
   },
   {
-    "name": "Visualizer ",
-    "url": "/simulator",
-    "title": "SSZ Visualizer"
-  },
-  {
     "name": "Documentation",
     "url": "/documentation",
     "title": "Documentation",
