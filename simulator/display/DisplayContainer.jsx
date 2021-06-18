@@ -1,12 +1,12 @@
-import HashRootText from "../graphics/text/HashRootText"
-import BuildTree from "../graphics/trees/BuildTree"
-import { merkleize } from "../../ssz/src/util/merkleize";
+import HashRootText from "../text/HashRootText"
+import BuildTree from "../trees/BuildTree"
+import { merkleize } from "../ssz/util/merkleize";
 import { createHash } from "crypto";
-import VectorText from "../graphics/text/VectorText";
-import ContainerText from "../graphics/text/ContainerText";
-import * as NumberUintType from "../../ssz/src/types/basic/NumberUintType";
-import BuildVectorTree from "../graphics/trees/BuildVectorTree";
-import BuildContainerTree from "../graphics/trees/BuildContainerTree";
+import VectorText from "../text/VectorText";
+import ContainerText from "../text/ContainerText";
+import * as NumberUintType from "../ssz/types/basic/NumberUintType";
+import BuildVectorTree from "../trees/BuildVectorTree";
+import BuildContainerTree from "../trees/BuildContainerTree";
 
 function toHexString(byteArray) {
     return Array.prototype.map

@@ -1,12 +1,12 @@
-import BuildTree from "../graphics/trees/BuildTree";
-import VectorText from "../graphics/text/VectorText";
-import * as NumberUintType from "../../ssz/src/types/basic/NumberUintType";
-import HashRootText from "../graphics/text/HashRootText";
-import { merkleize } from "../../ssz/src/util/merkleize";
+import BuildTree from "../trees/BuildTree";
+import VectorText from "../text/VectorText";
+import * as NumberUintType from "../ssz/types/basic/NumberUintType";
+import HashRootText from "../text/HashRootText";
+import { merkleize } from "../ssz/util/merkleize";
 import { createHash } from "crypto";
-import BuildVectorTree from "../graphics/trees/BuildVectorTree";
+import BuildVectorTree from "../trees/BuildVectorTree";
 
-export function DisplayVector(props) {
+export default function DisplayVector(props) {
   let serialized = props.serialized;
   let values = props.values;
   let length = props.length;

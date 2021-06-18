@@ -1,7 +1,7 @@
-import ListText from '../graphics/text/ListText'
-import styles from '../graphics/styles/UintText.module.css';
-import BuildListTree from '../graphics/trees/BuildListTree'
-import { serialize } from '../../ssz/src/types/basic/NumberUintType';
+import ListText from '../text/ListText'
+import styles from '../styles/UintText.module.css';
+import BuildListTree from '../trees/BuildListTree'
+import { serialize } from '../ssz/types/basic/NumberUintType';
 export default function DisplayList(props) {
 let serialized = props.serialized;
 let valuesPerChunk = props.valuesPerChunk;

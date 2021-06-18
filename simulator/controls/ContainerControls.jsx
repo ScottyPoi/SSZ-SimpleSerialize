@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import DisplayContainer from "../display/DisplayContainer";
-import BuildHashTree from "../graphics/trees/BuildHashTree";
+import BuildHashTree from "../trees/BuildHashTree";
 
 const examples = [
   {

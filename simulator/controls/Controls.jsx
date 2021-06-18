@@ -1,4 +1,4 @@
-import BooleanControls from "./booleanControls";
+import BooleanControls from "./BooleanControls";
 import UintNControls from "./uintNControls";
 import ListControls from "./ListControls";
 import VectorControls from "./VectorControls";

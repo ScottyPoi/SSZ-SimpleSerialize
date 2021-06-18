@@ -1,7 +1,7 @@
-import BitListText from '../graphics/text/BitListText'
-import styles from '../graphics/styles/UintText.module.css';
-import BuildListTree from '../graphics/trees/BuildListTree'
-import { serialize } from '../../ssz/src/types/basic/NumberUintType';
+import BitListText from '../text/BitListText'
+import styles from '../styles/UintText.module.css';
+import BuildListTree from '../trees/BuildListTree'
+import { serialize } from '../ssz/types/basic/NumberUintType';
 export default function DisplayBitList(props) {
 let serialized = props.serialized;
 let limit = props.limit;

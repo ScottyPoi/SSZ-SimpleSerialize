@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import * as NumberUintType from "../../ssz/src/types/basic/NumberUintType";
+import * as NumberUintType from "../ssz/types/basic/NumberUintType";
 import DisplayList from "../display/DisplayList";
-import BuildHashTree from "../graphics/trees/BuildHashTree";
+import BuildHashTree from "../trees/BuildHashTree";
 
 
 export default function ListControls(props) {

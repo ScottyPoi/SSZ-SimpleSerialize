@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import DisplayVector from "../display/DisplayVector";
-import * as NumberUintType from "../../ssz/src/types/basic/NumberUintType";
-import BuildHashTree from "../graphics/trees/BuildHashTree";
+import * as NumberUintType from "../ssz/types/basic/NumberUintType";
+import BuildHashTree from "../trees/BuildHashTree";
 
-let _valueSet = [];
+export const _valueSet = [];
 for (let i = 0; i < 16 * 256; i++) {
   let val = Math.floor(Math.random() * 255);
   _valueSet.push(val);
@@ -129,9 +129,7 @@ export default function VectorControls(props) {
           <DisplayVector
             serialized={serialized}
             values={values}
-            length={length}
-            type={elementType}
-            size={size}
+            length={length}            size={size}
           >
             {props.children}
           </DisplayVector>

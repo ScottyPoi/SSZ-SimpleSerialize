@@ -1,8 +1,7 @@
-TODO
 import { useEffect, useState } from "react";
-import * as BooleanType from "../../ssz/src/types/basic/boolean";
+import * as BooleanType from '../ssz/types/basic/Boolean';
 import DisplayBitList from "../display/DisplayBitList";
-import BuildHashTree from "../graphics/trees/BuildHashTree";
+import BuildHashTree from "../trees/BuildHashTree";
 
 let valueSet = [];
 for (let i = 0; i < 256 * 16; i++) {

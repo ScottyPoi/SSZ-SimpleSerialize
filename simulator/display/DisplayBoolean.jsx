@@ -1,8 +1,8 @@
-import BooleanText from "../graphics/text/BooleanText";
-import BuildTree from "../graphics/trees/BuildTree";
+import BooleanText from "../text/BooleanText";
+import BuildTree from "../trees/BuildTree";
 import { createHash } from "crypto";
-import styles from "../graphics/styles/UintText.module.css";
-import HashRootText from "../graphics/text/HashRootText";
+import styles from "../styles/UintText.module.css";
+import HashRootText from "../text/HashRootText";
 export default function BooleanDisplay(props) {
   function toHexString(byteArray) {
     return Array.prototype.map

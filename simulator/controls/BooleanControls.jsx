@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import * as BooleanType from "../../ssz/src/types/basic/boolean";
-import DisplayBoolean from "../display/BooleanDisplay";
-import Node from "../graphics/nodes/Node";
+import * as BooleanType from "../ssz/types/basic/Boolean";
+import DisplayBoolean from "../display/DisplayBoolean";
+import Node from "../nodes/Node";
 
 export function toHexString(byteArray) {
   return Array.prototype.map

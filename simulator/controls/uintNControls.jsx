@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
-import * as NumberUintType from "../../ssz/src/types/basic/NumberUintType";
-import * as BigIntUintType from "../../ssz/src/types/basic/BigIntUintType";
+import * as NumberUintType from "../ssz/types/basic/NumberUintType";
+import * as BigIntUintType from "../ssz/types/basic/BigIntUintType";
 import UintNDisplay from "../display/DisplayUintN";
-import Node from "../graphics/nodes/Node";
+import Node from "../nodes/Node";
 
 export function toHexString(byteArray) {
   return Array.prototype.map

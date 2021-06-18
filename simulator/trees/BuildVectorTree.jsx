@@ -1,8 +1,6 @@
 import Node from "../nodes/Node";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
-import { formatDiagnosticsWithColorAndContext } from "typescript";
-
 export default function BuildVectorTree(props) {
   const [selected, setSelected] = useState(0);
   const [rootActivated, setRootActivated] = useState(false);

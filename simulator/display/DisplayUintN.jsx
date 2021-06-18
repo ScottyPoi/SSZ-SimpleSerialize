@@ -1,12 +1,12 @@
 import { useState } from "react";
 import UintNControls from "../controls/uintNControls";
 // import TreeValue from '../../ssz/src/backings/tree/treeValue'
-import * as NumberUintType from "../../ssz/src/types/basic/NumberUintType";
-import UintText from "../graphics/text/UintText";
-import BuildTree from "../../components/graphics/trees/BuildTree";
+import * as NumberUintType from "../ssz/types/basic/NumberUintType";
+import UintText from "../text/UintText";
+import BuildTree from "../trees/BuildTree";
 import { createHash } from "crypto";
-import styles from "../graphics/styles/UintText.module.css";
-import HashRootText from "../graphics/text/HashRootText";
+import styles from "../styles/UintText.module.css";
+import HashRootText from "../text/HashRootText";
 export function toHexString(byteArray) {
   return Array.prototype.map
     .call(byteArray, function (byte) {
