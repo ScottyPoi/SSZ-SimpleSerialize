@@ -1,1 +1,102 @@
-TODO
+.node {
+    display: inline-block;
+    width: 25px;
+    overflow-x: hidden;
+    height: auto;
+}
+
+.empty {
+
+    background-color: gray;
+}
+
+.length {
+    outline: solid pink;
+    background-color: black;
+    color: pink;
+}
+
+.leaf {
+    outline: solid black
+}
+
+.demo {
+    background-color: green;
+    color: gold;
+}
+
+.merkle {
+    background-color: lime;
+    outline: solid red;
+}
+
+.branch {
+    outline: solid blue;
+    background-color: rgb(0, 168, 154);
+}
+
+.root {
+    outline: solid rgb(0, 0, 0);
+    background-color: gold;
+}
+
+.red {
+    background-color: hotpink;
+}
+
+.green {
+    background-color: green;
+    color: gold
+}
+
+.blue {
+    background-color: blue;
+    color: gold
+}
+
+.limit {
+    background-color: red;
+    outline: solid black
+}
+
+.selected {
+    transform: scale(1.5);
+}
+
+.deactivated {
+    box-shadow: none;
+}
+
+.activated {
+    animation-name: activatedAnimation;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-out;
+    animation-delay: 0;
+    animation-direction: alternate;
+    animation-iteration-count: infinite;
+    animation-fill-mode: forwards;
+    animation-play-state: running;
+}
+
+
+@keyframes activatedAnimation {
+    0% {
+      transform: scale(0.3);
+      background-color: rgba(0, 0, 66, 0.75);
+      border-radius: 100%;
+    }
+  
+    50% {
+      background-color: rgba(17, 104, 217, 0.75);
+    }
+  
+    75% {
+      transform: scale(1.2);
+      background-color: rgba(0, 217, 159, 0.75);
+    }
+  
+    100% {
+      transform: scale(1);
+      background-color: rgba(0, 190, 218, 0.75);
+    }
+  }
