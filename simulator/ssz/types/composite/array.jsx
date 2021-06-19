@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/camelcase */
 import Type from "../type";
-import BasicType from "../basic";
+import BasicType from "../basic/BasicType";
 import CompositeType from "./abstract";
 import {SszErrorPath} from "../../util/errorPath";
 import {
@@ -13,7 +13,7 @@ import {
   subtreeFillToContents,
   toGindex,
   Tree,
-} from "../../../../e-z-serialize/persistent";
+} from "../../../e-z-serialize/persistent";
 import {createTreeBacked, isTreeBacked} from "../../backings/tree/treeValue/treeValue";
 import React from 'react';
 

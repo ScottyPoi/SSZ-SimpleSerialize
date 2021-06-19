@@ -10,6 +10,7 @@ export default function BuildHashTree(props) {
   let numberOfValues = props.NUMBER_OF_VALUES;
   let numberLeaves = getNextPowerOfTwo(numberOfValues);
   let numberPadded = props.red
+  let emptyLeaves = props.emptyLeaves
   let list = props.list;
   return build(numberLeaves, list, numberOfValues, numberPadded);
 }
@@ -139,7 +140,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
   return row;
 }
 
-function rowOfNodes(number, type, level, empty=false, pad=false) {
+function rowOfNodes(number, type, level, empty=false, pad=false, numberOfValues) {
   //   let leaves = getNextPowerOfTwo(number);
   let row = [];
   for (let i = 0; i < number; i++) {
@@ -148,10 +149,10 @@ function rowOfNodes(number, type, level, empty=false, pad=false) {
         <Node
           idx={i + 1}
           type={type}
-          empty={empty}
+          empty={i>=numberOfValues}
           level={level}
           chunkIdx={i}
-          numChunks={number}
+          numChunks={numberOfValues}
         />
       </div>
     );
@@ -224,7 +225,7 @@ function displayTreeNodes(number, empty = false) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="H"
+              type=""
               empty={empty}
               level="branch"
               chunkIdx={i}
@@ -234,7 +235,7 @@ function displayTreeNodes(number, empty = false) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 2}
-              type="H"
+              type=""
               empty={empty}
               level="branch"
               chunkIdx={i + 1}
@@ -315,7 +316,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(numberOfValues, "", "leaf")}
+                {rowOfNodes(numberOfValues, "", "leaf", false, false, numberOfValues)}
 
               </div>
             </div>
@@ -350,7 +351,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(leaves, "", "leaf")}
+                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
               </div>
             </div>
             <div className="col p-1 ">
@@ -394,7 +395,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 className="row row-cols-auto justify-content-around"
               >
                 {rowOfNodes(numberOfValues, "", "leaf")}
-                {rowOfNodes(numberEmpty, "", "limit")}
+                {rowOfNodes(numberEmpty, "", "limit", true)}
 
               </div>
             </div>
@@ -429,7 +430,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(leaves, "LA", "leaf")}
+                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
 
               </div>
             </div>
@@ -497,7 +498,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="H"
+              type=""
               empty={false}
               level="branch"
               chunkIdx={i}
@@ -507,7 +508,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 2}
-              type="H"
+              type=""
               empty={false}
               level="branch"
               chunkIdx={i + 1}
@@ -542,11 +543,11 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="L"
-              empty={false}
+              type="LK"
+              empty={i>=numberOfValues}
               level="leaf"
               chunkIdx={i}
-              numChunks={leaves}
+              numChunks={numberOfValues}
             />
           </div>
           <div className="d-flex flex-col">
@@ -555,7 +556,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="H"
+              type=""
               empty={false}
               level="branch"
               chunkIdx={i}
@@ -582,7 +583,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(numberOfValues, "L", "leaf")}
+                {rowOfNodes(numberOfValues, "L1", "leaf")}
               </div>
             </div>
             <div className="col p-1 ">
@@ -616,7 +617,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(leaves, "L", "leaf")}
+                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
               </div>
             </div>
             <div className="col p-1 ">
@@ -784,8 +785,8 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={Math.floor(i / 2) + 1}
-              type="T"
+              idx={i/2 + 4}
+              type=""
               empty={false}
               level="tree"
               // chunkIdx={i}
@@ -807,11 +808,11 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="L"
-              empty={false}
+              type=""
+              empty={i>=numberOfValues}
               level="leaf"
               chunkIdx={i}
-              numChunks={leaves}
+              numChunks={numberOfValues}
             />
           </div>
           <div className="d-flex flex-col">
@@ -820,7 +821,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="H"
+              type=""
               empty={false}
               level="branch"
               chunkIdx={i}
@@ -847,7 +848,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(leaves, "L", "leaf")}
+                {rowOfNodes(leaves, "L3", "leaf")}
               </div>
             </div>
             <div className="col p-1 ">
@@ -881,7 +882,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(leaves, "L", "leaf")}
+                {rowOfNodes(leaves, "L4", "leaf", false, false, numberOfValues)}
               </div>
             </div>
             <div className="col p-1 ">
@@ -918,7 +919,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
         <div className="d-flex flex-col p-1">
           <Node
             // idx={i + 1}
-            type="L"
+            type="LJ"
             empty={false}
             level="length"
             // chunkIdx={i}

@@ -9,7 +9,7 @@ import {
   subtreeFillToLength,
   Tree,
   zeroNode,
-} from "../../../../e-z-serialize/persistent";
+} from "../../../e-z-serialize/persistent";
 
 import * as abstract from "./abstract";
 import * as array from "./array";

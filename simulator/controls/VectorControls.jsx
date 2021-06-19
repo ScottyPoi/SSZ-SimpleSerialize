@@ -173,7 +173,7 @@ export default function VectorControls(props) {
                         </button>
 
                         <div
-                          className="offcanvas offcanvas-end"
+                          className="offcanvas offcanvas-end" data-bs-backdrop="false"
                           tabIndex="-1"
                           id="merkleTree"
                           aria-labelledby="merkleTreeLabel"
@@ -350,6 +350,8 @@ export default function VectorControls(props) {
             <div>
               <div
                 className="offcanvas offcanvas-bottom"
+                data-bs-backdrop="false"
+
                 tabindex="-1"
                 id="offcanvasValues"
                 aria-labelledby="offcanvasValuesLabel"

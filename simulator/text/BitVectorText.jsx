@@ -1,6 +1,6 @@
 import styles from "../styles/UintText.module.css";
-import * as BitVector from "../../../ssz/src/types/composite/bitVector";
-import * as BigInt from "../../../ssz/src/types/basic/BigIntUintType";
+// import * as BitVector from "../../ssz/src/types/composite/bitVector";
+// import * as BigInt from "../../../ssz/src/types/basic/BigIntUintType";
 export default function BitVectorText(props) {
   let _chunk = props.chunk;
   let _length = props.length;

@@ -142,7 +142,7 @@ export default function ContainerControls(props) {
                       </button>
 
                       <div
-                        className="offcanvas offcanvas-end"
+                        className="offcanvas offcanvas-end" data-bs-backdrop="false"
                         tabIndex="-1"
                         id="merkleTree"
                         aria-labelledby="merkleTreeLabel"

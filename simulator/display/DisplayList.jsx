@@ -2,6 +2,9 @@ import ListText from '../text/ListText'
 import styles from '../styles/UintText.module.css';
 import BuildListTree from '../trees/BuildListTree'
 import { serialize } from '../ssz/types/basic/NumberUintType';
+import HashRootText from '../text/HashRootText';
+import { merkleize } from "../ssz/util/merkleize";
+import { createHash } from "crypto";
 export default function DisplayList(props) {
 let serialized = props.serialized;
 let valuesPerChunk = props.valuesPerChunk;
@@ -105,7 +108,13 @@ function color(color) {
   return `rgb(${r},${g},${b})`
 }
 
+let _leaves = serialized.map((chunk) => {
+  let hash = createHash("sha256");
+  hash.update(chunk);
+  return hash.digest();
+});
 
+let hashRoot = merkleize(_leaves);
     
 
     return (
@@ -113,6 +122,10 @@ function color(color) {
             <div className="container">
             <div className='row'>
           <div className='col-10'>
+          <div className="row justify-content-center">
+              <HashRootText hash={hashRoot} displaySize={numberOfLeaves == 1 ? 'xx-large' : 'large'} width={'100%'} list={true}/>
+            </div>
+            <div className="row">
       <BuildListTree 
       limit={limit}
       chunks={numberOfChunks}
@@ -121,6 +134,7 @@ function color(color) {
       numberofLeaves={numberOfLeaves}
       
       />
+      </div>
       
       <div className={`row row-cols-${numberOfLeaves}`}>
       {numberOfChunks < 5 ? ( 
@@ -139,6 +153,8 @@ function color(color) {
 
           <div
             className="offcanvas offcanvas-bottom"
+            data-bs-backdrop="false"
+
             tabindex="-1"
             id="offcanvasBottom"
             aria-labelledby="offcanvasBottomLabel"

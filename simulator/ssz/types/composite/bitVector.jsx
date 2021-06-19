@@ -1,9 +1,9 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { BasicVectorType, VectorType } from "./vector";
-import { booleanType } from "../basic";
+import BooleanType from '../basic/Boolean'
 import { isTypeOf, Type } from "../type";
 import { fromHexString, toHexString, getByteBits } from "../../util/byteArray";
-import { Tree } from "../../../../e-z-serialize/persistent";
+// import { Tree } from "../../../../e-z-serialize/persistent";
 import React from "react";
 import * as vector from "./vector";
 import * as boolean from "../basic/boolean";

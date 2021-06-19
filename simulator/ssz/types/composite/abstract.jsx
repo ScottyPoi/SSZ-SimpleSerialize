@@ -1,18 +1,18 @@
 /* eslint-disable @typescript-eslint/camelcase */
 /* eslint-disable @typescript-eslint/member-ordering */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import {BackedValue, createTreeBacked, isBackedValue, Path, TreeBacked} from "../../backings";
+// import {BackedValue, createTreeBacked, isBackedValue, Path, TreeBacked} from "../../backings";
 import {IJsonOptions, isTypeOf, Type} from "../type";
-import {
-  concatGindices,
-  countToDepth,
-  Gindex,
-  Node,
-  Proof,
-  ProofType,
-  toGindex,
-  Tree,
-} from "../../../../e-z-serialize/persistent";
+// import {
+//   concatGindices,
+//   countToDepth,
+//   Gindex,
+//   Node,
+//   Proof,
+//   ProofType,
+//   toGindex,
+//   Tree,
+// } from "../../../../e-z-serialize/persistent";
 import {merkleize} from "../../util/compat";
 import {byteArrayEquals} from "../../util/byteArray";
 import React from 'react';
@@ -27,6 +27,10 @@ export const COMPOSITE_TYPE = Symbol.for("ssz/CompositeType");
  *
  */
 export default function CompositeType(props) {
+
+  function isBackedValue(...args) {
+    return true
+  }
 
   const _typeSymbols = props._typeSymbols.add(COMPOSITE_TYPE);
 

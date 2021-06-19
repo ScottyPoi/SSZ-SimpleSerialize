@@ -239,7 +239,7 @@ export default function ListControls(props) {
                         </h5>
                         <button className="btn btn-primary" type="button" data-bs-toggle="offcanvas" data-bs-target="#merkleTree" aria-controls="merkleTree">Show Merkle Tree Details</button>
 
-<div className="offcanvas offcanvas-end" tabIndex="-1" id="merkleTree" aria-labelledby="merkleTreeLabel">
+<div className="offcanvas offcanvas-end" data-bs-backdrop="false" tabIndex="-1" id="merkleTree" aria-labelledby="merkleTreeLabel">
   <div className="offcanvas-header">
     <h5 id="merkleTreeLabel">Merkle Tree Details</h5>
     <button type="button" className="btn-close text-reset" data-bs-dismiss="offcanvas" aria-label="Close" onClick={() => setDemoTree(<BuildHashTree NUMBER_OF_VALUES={numChunks} list={true} red={numEmpty}/>)}></button>
@@ -462,6 +462,8 @@ export default function ListControls(props) {
                   <div>
                     <div
                       className="offcanvas offcanvas-bottom"
+                      data-bs-backdrop="false"
+
                       tabindex="-1"
                       id="offcanvasValues"
                       aria-labelledby="offcanvasValuesLabel"

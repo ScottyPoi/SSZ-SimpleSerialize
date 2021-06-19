@@ -6,10 +6,12 @@ export default function HashRootText(props) {
     let hash = props.hash
     let fontSize = props.displaySize ? props.displaySize : 'xx-large'
     let width = props.width ? props.width : `50%`
+    let color = props.list ? 'lightgreen' : 'gold';
+    let border = props.list ? 'red' : 'black'
 
     let style = {
-        border: `solid black`,
-        backgroundColor: `gold`,
+        border: `solid ${border}`,
+        backgroundColor: color,
         display: `inline-block`,
         height: `auto`,
         width: width,

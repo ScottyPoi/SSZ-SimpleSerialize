@@ -161,6 +161,8 @@ export default function DisplayVector(props) {
 
                   <div
                     className="offcanvas offcanvas-bottom"
+                    data-bs-backdrop="false"
+
                     tabindex="-1"
                     id="offcanvasBottom"
                     aria-labelledby="offcanvasBottomLabel"

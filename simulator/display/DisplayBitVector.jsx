@@ -2,19 +2,19 @@ import BitVectorText from "../text/BitVectorText";
 import styles from "../styles/UintText.module.css";
 import BuildVectorTree from "../trees/BuildVectorTree";
 import BuildHashTree from "../trees/BuildHashTree";
-import * as BitVector from "../../ssz/src/types/composite/bitVector.jsx";
-import * as BigUInt from "../../ssz/src/types/basic/BigIntUintType";
+import * as BitVector from "../ssz/types/composite/bitVector.jsx";
+import * as BigUInt from "../ssz/types/basic/BigIntUintType";
 import HashRootText from "../text/HashRootText";
-import hash from "../../e-z-serialize/persistent/hash";
 import { createHash } from "crypto";
 import { useState } from "react";
-import { merkleize } from "../../ssz/src/util/merkleize";
+import { merkleize } from "../ssz/util/merkleize";
 
 export default function DisplayBitVector(props) {
   let serialized = props.serialized;
   let values = props.values;
   let length = props.length;
-  let NUMBER_OF_VALUES = Math.floor(length / 256 + 1);
+  let limit = props.limit
+  let NUMBER_OF_VALUES = Math.floor((length / 256) + 1);
 
   const [_chunks, setChunks] = useState();
 
@@ -167,6 +167,8 @@ export default function DisplayBitVector(props) {
 
                   <div
                     className="offcanvas offcanvas-bottom"
+                    data-bs-backdrop="false"
+
                     tabIndex="-1"
                     id="offcanvasBottom"
                     aria-labelledby="offcanvasBottomLabel"
