@@ -36,21 +36,21 @@ export default function BooleanControls(props) {
   }
 
   return (
-    <div className="row">
+    <div className="row" >
       <div className="col">
         <DisplayBoolean value={value} serialized={serialized} bytes32={bytes32}>
           {props.children}
         </DisplayBoolean>
       </div>
-      <div className="col">
+      <div className="col" >
         <div className="row justify-content-center ">
           <div className="col">
-            <div className="card">
+            <div className="card bg-dark">
               <div className="card-body" style={{ textAlign: "center" }}>
-                <h5 className="card-title">Boolean Type</h5>
+            <h5 className="card-title">Boolean Type</h5>
                 <h5 className="card-title">1 BIT</h5>
 
-                <p className="card-text">
+                <p className="card-text" >
                   <div className="container">
                     <div className="row text-break">
                       <h3>
@@ -59,6 +59,8 @@ export default function BooleanControls(props) {
                             border: "solid black 2px",
                             display: "inline-block",
                             width: "auto",
+                            color: 'black',
+                          backgroundColor: 'lightgreen'
                           }}
                         >
                           0x
@@ -118,6 +120,7 @@ export default function BooleanControls(props) {
                       <br />
                       <span
                         style={{
+                          color: 'black',
                           width: "auto",
                           display: "inline-block",
                           border: "solid green 1px",
@@ -131,6 +134,7 @@ export default function BooleanControls(props) {
                       <br />
                       <span
                         style={{
+                          color: 'black',
                           width: "auto",
                           display: "inline-block",
                           border: "solid black 1px",
@@ -148,7 +152,7 @@ export default function BooleanControls(props) {
                     <div className="col-9 mx-2">
                       <h4>hash_tree_root:</h4>
                     </div>
-                    <div className="col-3 mx-2">
+                    <div className="col-3 mx-2 text-dark">
                       <Node chunkIdx={0} numChunks={1} level="root" type="R" />
                     </div>
                     <br></br>

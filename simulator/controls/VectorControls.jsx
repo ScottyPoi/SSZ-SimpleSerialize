@@ -137,7 +137,7 @@ export default function VectorControls(props) {
         <div className="col">
           <div className="row justify-content-center ">
             <div className="col">
-              <div className="card">
+              <div className="card bg-dark">
                 <div className="card-body" style={{ textAlign: "center" }}>
                   <h4 className="card-title">
                     Vector[{elementType}, {length}]
@@ -312,11 +312,12 @@ export default function VectorControls(props) {
             </div>
           </div>
           <label for="length" className="form-label">
-            <h3>
+            <h3 style={{color: 'black'}}>
               Type: {elementType} Length: {length}
             </h3>
           </label>
           <input
+          style={{border: 'solid black', backgroundColor: 'darkgray'}}
             type="range"
             value={length}
             className="form-range"

@@ -1,10 +1,10 @@
-import BitVectorText from "../graphics/text/BitVectorText";
-import styles from "../graphics/styles/UintText.module.css";
-import BuildVectorTree from "../graphics/trees/BuildVectorTree";
-import BuildHashTree from "../graphics/trees/BuildHashTree";
+import BitVectorText from "../text/BitVectorText";
+import styles from "../styles/UintText.module.css";
+import BuildVectorTree from "../trees/BuildVectorTree";
+import BuildHashTree from "../trees/BuildHashTree";
 import * as BitVector from "../../ssz/src/types/composite/bitVector.jsx";
 import * as BigUInt from "../../ssz/src/types/basic/BigIntUintType";
-import HashRootText from "../graphics/text/HashRootText";
+import HashRootText from "../text/HashRootText";
 import hash from "../../e-z-serialize/persistent/hash";
 import { createHash } from "crypto";
 import { useState } from "react";

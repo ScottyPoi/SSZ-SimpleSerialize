@@ -95,6 +95,33 @@ export default function BuildVectorTree(props) {
     return row;
   }
 
+  function rowOfEmptyNodes(number, type, level, empty = true) {
+    //   let leaves = getNextPowerOfTwo(number);
+    let row = [];
+    for (let i = totalNodes; i < totalNodes + number; i++) {
+      row.push(
+        <div
+          onClick={() => toggleSelected(`${i + NUMBER_OF_VALUES}`)}
+          key={`${type}node${i}`}
+          id={`${type}node${i}`}
+          className={"col p-1"}
+        >
+          <Node
+            idx={i - totalNodes + NUMBER_OF_VALUES}
+            type={type}
+            empty={empty}
+            level={level}
+            chunkIdx={i - totalNodes + NUMBER_OF_VALUES}
+            numChunks={NUMBER_OF_VALUES}
+            selected={isSelected(`${i + NUMBER_OF_VALUES}`)}
+          />
+        </div>
+      );
+    }
+    return row;
+  }
+
+
   function rowOfHashNodes(number, type, level, empty = false) {
     //   let leaves = getNextPowerOfTwo(number);
     let row = [];
@@ -224,8 +251,8 @@ export default function BuildVectorTree(props) {
         id={"leaves"}
         className="row row-cols-auto justify-content-around"
       >
-        {rowOfNodes(number + empties, "", "leaf")}
-        {/* {rowOfNodes(empties, "", "leaf", true)} */}
+        {rowOfNodes(number, "", "leaf")}
+        {rowOfEmptyNodes(empties, "", "leaf", true)}
       </div>
     );
     return tree;

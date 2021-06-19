@@ -2,8 +2,14 @@ import { useEffect, useState } from "react";
 import * as NumberUintType from "../ssz/types/basic/NumberUintType";
 import DisplayList from "../display/DisplayList";
 import BuildHashTree from "../trees/BuildHashTree";
+import * as styles from '../styles/controls.module.css';
 
-
+export const _valueSet = [];
+for (let i = 0; i < 256 * 16; i++) {
+  let val = Math.random();
+  let bool = val > 0.5 ? false : true;
+  _valueSet.push(bool);
+}
 export default function ListControls(props) {
   const [elementType, setElementType] = useState("Uint8");
   const [length, setLength] = useState(0);
@@ -16,7 +22,7 @@ export default function ListControls(props) {
   const [fullChunks, setFullChunks] = useState(1);
   const [size, setSize] = useState(8);
   const [serialized, setSerialized] = useState([]);
-  const [valueSet, setValueSet] = useState([]);
+  const [valueSet, setValueSet] = useState(_valueSet);
   const [demoTree, setDemoTree] = useState(<BuildHashTree NUMBER_OF_VALUES={1} list={true} red={0} />)
 
 
@@ -211,7 +217,7 @@ export default function ListControls(props) {
         <div className="col">
           <div className="row justify-content-center ">
             <div className="col">
-              <div className="card">
+              <div className="card bg-dark">
                 <div className="card-body" style={{ textAlign: "center" }}>
                   <h4 className="card-title">
                     List[{elementType}, {limit}]
@@ -390,7 +396,7 @@ export default function ListControls(props) {
               </button>
             </div>
             <div className="d-flex flex-col p-3">
-              <h3>Max Length (Limit): {limit}</h3>
+              <h3 style={{color: 'black'}}>Max Length (Limit): {limit}</h3>
             </div>
             <div className="d-flex flex-col">
               <button
@@ -421,14 +427,14 @@ export default function ListControls(props) {
           </div>
           <div className="d-flex flex-row justify-content-center">
             <div className="d-flex flex-col">
-              <h3>VARIABLE LENGTH: {length}</h3>
+              <h3 style={{color: 'black'}}>VARIABLE LENGTH: {length}</h3>
             </div>
           </div>
           <div className="row">
             <input
               type="range"
               value={length}
-              className="form-range"
+              className={`form-range bg-secondary`}
               onChange={(e) => setLength(e.target.value)}
               min={0}
               max={limit - 1}

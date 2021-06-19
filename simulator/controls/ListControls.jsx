@@ -211,7 +211,7 @@ export default function ListControls(props) {
         <div className="col">
           <div className="row justify-content-center ">
             <div className="col">
-              <div className="card">
+              <div className="card bg-dark">
                 <div className="card-body" style={{ textAlign: "center" }}>
                   <h4 className="card-title">
                     List[{elementType}, {limit}]
@@ -390,7 +390,7 @@ export default function ListControls(props) {
               </button>
             </div>
             <div className="d-flex flex-col p-3">
-              <h3>Max Length (Limit): {limit}</h3>
+              <h3 style={{color: 'black'}}>Max Length (Limit): {limit}</h3>
             </div>
             <div className="d-flex flex-col">
               <button
@@ -421,11 +421,12 @@ export default function ListControls(props) {
           </div>
           <div className="d-flex flex-row justify-content-center">
             <div className="d-flex flex-col">
-              <h3>VARIABLE LENGTH: {length}</h3>
+              <h3 style={{color: 'black'}}>VARIABLE LENGTH: {length}</h3>
             </div>
           </div>
           <div className="row">
             <input
+            style={{border: 'solid black', backgroundColor: 'darkgray'}}
               type="range"
               value={length}
               className="form-range"

@@ -3,11 +3,11 @@ import * as BooleanType from '../ssz/types/basic/Boolean';
 import DisplayBitList from "../display/DisplayBitList";
 import BuildHashTree from "../trees/BuildHashTree";
 
-let valueSet = [];
+export const _valueSet = [];
 for (let i = 0; i < 256 * 16; i++) {
   let val = Math.random();
   let bool = val > 0.5 ? false : true;
-  valueSet.push(bool);
+  _valueSet.push(bool);
 }
 export default function BitListControls(props) {
   const [length, setLength] = useState(0);
@@ -16,7 +16,7 @@ export default function BitListControls(props) {
   const [numEmpty, setNumEmpty] = useState(0);
   const [serialized, setSerialized] = useState([]);
   const [numChunks, setNumChunks] = useState(1);
-  const [valueSet, setValueSet] = useState([])
+  const [valueSet, setValueSet] = useState(_valueSet)
   const [demoTree, setDemoTree] = useState(<BuildHashTree NUMBER_OF_VALUES={1} list={true}/>)
 
 
@@ -128,7 +128,7 @@ export default function BitListControls(props) {
         <div className="col">
           <div className="row justify-content-center ">
             <div className="col">
-              <div className="card">
+              <div className="card bg-dark text-light">
                 <div className="card-body" style={{ textAlign: "center" }}>
                   <h4 className="card-title">
                     BitList[{limit}]
@@ -214,7 +214,7 @@ export default function BitListControls(props) {
               </button>
             </div>
             <div className="d-flex flex-col p-3">
-              <h3>Max Length (Limit): {limit}</h3>
+              <h3 style={{color: 'black'}}>Max Length (Limit): {limit}</h3>
             </div>
             <div className="d-flex flex-col">
               <button
@@ -245,14 +245,14 @@ export default function BitListControls(props) {
           </div>
           <div className="d-flex flex-row justify-content-center">
             <div className="d-flex flex-col">
-              <h3>VARIABLE LENGTH: {length}</h3>
+              <h3 style={{color: 'black'}}>VARIABLE LENGTH: {length}</h3>
             </div>
           </div>
           <div className="row">
             <input
               type="range"
               value={length}
-              className="form-range"
+              className="form-range bg-secondary"
               onChange={(e) => handleChangeLength(e.target.value)}
               min={0}
               max={limit - 1}
@@ -269,62 +269,6 @@ export default function BitListControls(props) {
       <br />
 
       
-      <div className="d-flex flex-row justify-content-center p-3">
-            <div className="d-flex flex-col">
-              <button
-                className="btn btn-primary"
-                type="submit"
-                onClick={handleLimitDecrease}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-chevron-double-left"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M8.354 1.646a.5.5 0 0 1 0 .708L2.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    d="M12.354 1.646a.5.5 0 0 1 0 .708L6.707 8l5.647 5.646a.5.5 0 0 1-.708.708l-6-6a.5.5 0 0 1 0-.708l6-6a.5.5 0 0 1 .708 0z"
-                  />
-                </svg>
-              </button>
-            </div>
-            <div className="d-flex flex-col p-3">
-              <h3>Max Length (Limit): {limit}</h3>
-            </div>
-            <div className="d-flex flex-col">
-              <button
-                value={limit}
-                className="btn btn-primary"
-                type="submit"
-                onClick={handleLimitIncrease}
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="16"
-                  height="16"
-                  fill="currentColor"
-                  className="bi bi-chevron-double-right"
-                  viewBox="0 0 16 16"
-                >
-                  <path
-                    fillRule="evenodd"
-                    d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"
-                  />
-                  <path
-                    fillRule="evenodd"
-                    d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"
-                  />
-                </svg>
-              </button>
-            </div>
-          </div>
           
       <div className={`row row-cols-${numChunks} text-break`}>
                 {numChunks < 5 ? 

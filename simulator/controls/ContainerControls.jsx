@@ -63,7 +63,7 @@ export default function ContainerControls(props) {
       <div className="col">
         <div className="row justify-content-center ">
           <div className="col">
-            <div className="card">
+            <div className="card bg-dark">
               <div className="card-body" style={{ textAlign: "center" }}>
                 <h4 className="card-title">Container</h4>
                 <h4 className="card-title">
@@ -72,7 +72,7 @@ export default function ContainerControls(props) {
 
                 <div className="card-text">
                   <div className="container">
-                    <div className="row" style={{ border: "solid black" }}>
+                    <div className="row" style={{ border: "solid black", backgroundColor: 'lightgray' }}>
                       <div className="col text-start">
                         <span>
                           {`type BeaconBlockHeader = {`} <br />

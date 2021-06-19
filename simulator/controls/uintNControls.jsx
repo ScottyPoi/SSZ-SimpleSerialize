@@ -94,7 +94,7 @@ export default function UintNControls(props) {
 
   return (
     <div className="row">
-      <div className="col">
+      <div className="col " style={{border: 'solid black'}}>
         <UintNDisplay
           type={NumberUintType.NUMBER_UINT_TYPE}
           value={getvalue()}
@@ -108,14 +108,14 @@ export default function UintNControls(props) {
       <div className="col">
         <div className="row justify-content-center ">
           <div className="col">
-            <div className="card">
-              <div className="card-body" style={{ textAlign: "center" }}>
+            <div className="card bg-dark">
+              <div className="card-body" style={{ textAlign: "center", color: 'black' }}>
                 <h4 className="card-title">Uint{size_of()}</h4>
                 <h4 className="card-title">{size_of()} Bytes</h4>
 
                 <div className="card-text">
                   <div className="container">
-                    <div className="row justify-content-center text-break">
+                    <div className="row justify-content-center text-break" >
                       <h5>
                         0x
                         {new Array(size_of() / 4).fill(0).map((o) => {
@@ -127,7 +127,9 @@ export default function UintNControls(props) {
                           style={{
                             border: "solid black 2px",
                             display: "inline-block",
-                            width: "300px",
+                            backgroundColor: 'lightgreen',
+                            display: 'inline-block',
+                            color: 'black'
                           }}
                         >
                           0x
@@ -158,6 +160,7 @@ export default function UintNControls(props) {
                             display: "inline-block",
                             border: "solid green 1px",
                             backgroundColor: "lightgreen",
+                            color: 'black'
                           }}
                         >
                           Bytes32 (Padded) Chunk
@@ -167,6 +170,7 @@ export default function UintNControls(props) {
                         <br />
                         <span
                           style={{
+                            color: 'black',
                             width: "auto",
                             display: "inline-block",
                             border: "solid black 1px",
@@ -224,26 +228,6 @@ export default function UintNControls(props) {
             <div className="row">
               <div className="col">
                 <div className="d-flex flex-row">
-                  {/* <div className="d-flex flex-col align-items-center">
-                    <h1>Uint[</h1>
-                  </div>
-                  <div className="d-flex flex-col align-items-center">
-                    <select
-                      className="form-select"
-                      size={6}
-                      aria-label="Select Byte Size"
-                      onChange={(e) => setBytes(e)}
-                      style={{ scrollbarWidth: "none", fontWeight: "bold" }}
-                    >
-                      <option selected>8</option>
-                      <option value="16">16</option>
-                      <option value="32">32</option>
-                      <option value="64">64</option>
-                      <option value="128">128</option>
-                      <option value="256">256</option>
-                    </select>
-                    <h1>]</h1>
-                  </div> */}
                   <div className="col">
                     <div className="row">
                       <button className="btn" style={{boxShadow:"none"}} onClick={() => sizeUp()}>
@@ -262,13 +246,13 @@ export default function UintNControls(props) {
                         </svg>
                       </button>
                     </div>
-                    <div className="d-flex flex-row justify-content-center">
+                    <div  className="d-flex flex-row justify-content-center">
                       <div className="d-flex flex-col">
-                        <h1>Uint[{uintSize}]</h1>
+                        <h1 style={{color: 'black'}}>Uint[{uintSize}]</h1>
                       </div>
                     </div>
                     <div className="row">
-                      <button className="btn" style={{boxShadow:"none"}} onClick={() => sizeDown()}>
+                      <button className="btn" style={{boxShadow:"none",}} onClick={() => sizeDown()}>
                         <svg
                           xmlns="http://www.w3.org/2000/svg"
                           width="auto"
@@ -289,44 +273,26 @@ export default function UintNControls(props) {
                 <div className="d-flex flex-row justify-content-center">
                   <div className="d-flex flex-col">
                     <button
-                    style={{boxShadow:"none"}}
+                    style={{boxShadow:"none",}}
                       className="btn-success"
                       onClick={() => randomValue(size_of())}
                     >
-                      <h5>Change Value</h5>
+                      <h5 style={{color: 'white'}}>Change Value</h5>
                     </button>
                   </div>
                 </div>
                 <br />
                 <div className="d-flex flex-row justify-content-center align-items-center">
                   <div className="flex-col p-2">
-                    <h3>Value:</h3>
+                    <h3 style={{color: 'black'}}>Value:</h3>
                   </div>
                   <div
-                    style={{ border: "solid green 2px" }}
+                    style={{ border: "solid green 2px", }}
                     className="flex-col text-break "
                   >
-                    <h3>{getvalue().toString()}</h3>
+                    <h3 style={{color: 'black'}}>{getvalue().toString()}</h3>
                   </div>
                 </div>
-                {/* <div className="row text-break">
-                  <h3>
-                    toBytes:
-                    <br />
-                    <span
-                      style={{
-                        border: "solid black 2px",
-                        display: "inline-block",
-                        width: "300px",
-                      }}
-                    >
-                      0x
-                      <span style={{ color: "green" }}>
-                        {toHexString(serialized()).slice(0, uintSize / 4)}
-                      </span>
-                    </span>
-                  </h3>
-                </div> */}
               </div>
             </div>
           </div>
