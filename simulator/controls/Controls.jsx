@@ -49,6 +49,8 @@ export default function Controls({ ...props }) {
                 UintN
               </button>
             </li>
+
+
             <li key='bitvector-tab' className="nav-item" role="presentation">
               <button
               
@@ -63,6 +65,21 @@ export default function Controls({ ...props }) {
                 onClick={() => setType("BitVector")}
               >
                 BitVector
+              </button>
+            </li>
+            <li key='vector-tab' className="nav-item" role="presentation">
+              <button
+                id="vector-tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="true"
+                className="nav-link"
+                data-bs-toggle="tab"
+                data-bs-target="#vector"
+                onClick={() => setType("Vector")}
+              >
+                Vector
               </button>
             </li>
             <li key='bitlist-tab' className="nav-item" role="presentation">
@@ -95,21 +112,7 @@ export default function Controls({ ...props }) {
                 List
               </button>
             </li>
-            <li key='vector-tab' className="nav-item" role="presentation">
-              <button
-                id="vector-tab"
-                type="button"
-                role="tab"
-                aria-selected="false"
-                aria-controls="true"
-                className="nav-link"
-                data-bs-toggle="tab"
-                data-bs-target="#vector"
-                onClick={() => setType("Vector")}
-              >
-                Vector
-              </button>
-            </li>
+
             <li key='container-tab' className="nav-item" role="presentation">
               <button
                 id="container-tab"

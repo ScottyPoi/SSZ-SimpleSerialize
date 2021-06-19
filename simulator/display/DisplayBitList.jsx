@@ -125,6 +125,7 @@ export default function DisplayBitList(props) {
               limit={limit}
               chunks={serialized.length}
               length={length}
+              valuesPerChunk={256}
             />
             </div>
 

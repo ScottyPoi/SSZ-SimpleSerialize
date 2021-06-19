@@ -11,7 +11,7 @@ export default function BuildtListTree(props) {
   const chunks = props.chunks;
   const length = props.length;
   const valuesPerChunk = props.valuesPerChunk;
-  let activeChunk = Math.floor(length / valuesPerChunk) + 1;
+  const activeChunk = Math.floor((length / valuesPerChunk) + 1);
 
   let numberLeaves = getNextPowerOfTwo(chunks);
   let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
@@ -88,7 +88,35 @@ export default function BuildtListTree(props) {
           <Node
             idx={i - totalNodes}
             type={type}
-            empty={empty}
+            empty={false}
+            level={level}
+            chunkIdx={i - totalNodes}
+            numChunks={activeChunk}
+            limit={chunks}
+            selected={isSelected(`${i}`)}
+
+          />
+        </div>
+      );
+    }
+    return row;
+  }
+
+  function rowOfEmptyNodes(number, type, level, empty = false) {
+    //   let leaves = getNextPowerOfTwo(number);
+    let row = [];
+    for (let i = totalNodes; i < totalNodes + number; i++) {
+      row.push(
+        <div
+          onClick={() => toggleSelected(`${i}`)}
+          key={`${type}node${i}`}
+          id={`${type}node${i}`}
+          className="col p-1"
+        >
+          <Node
+            idx={i - totalNodes}
+            type={type}
+            empty={true}
             level={level}
             chunkIdx={i}
             numChunks={activeChunk}
@@ -278,8 +306,8 @@ export default function BuildtListTree(props) {
         id={"leaves"}
         className="row row-cols-auto justify-content-around"
       >
-        {rowOfNodes(number + empties, "", "leaf")}
-        {/* {rowOfNodes(empties, "EL", 'leaf', true)} */}
+        {rowOfNodes(number, "", "leaf")}
+        {rowOfEmptyNodes(empties, "EL", 'leaf', true)}
       </div>
     );
     return tree;

@@ -543,7 +543,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           <div className="d-flex flex-col p-1">
             <Node
               idx={i + 1}
-              type="LK"
+              type=""
               empty={i>=numberOfValues}
               level="leaf"
               chunkIdx={i}
@@ -583,7 +583,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(numberOfValues, "L1", "leaf")}
+                {rowOfNodes(numberOfValues, "L1", "leaf", false, false, numberOfValues)}
               </div>
             </div>
             <div className="col p-1 ">
@@ -882,7 +882,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
                 id={"hash"}
                 className="row row-cols-auto justify-content-around"
               >
-                {rowOfNodes(leaves, "L4", "leaf", false, false, numberOfValues)}
+                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
               </div>
             </div>
             <div className="col p-1 ">
