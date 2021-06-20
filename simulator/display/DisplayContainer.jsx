@@ -67,13 +67,13 @@ export default function DisplayContainer(props) {
     let length = props.length;
     let size = 256;
   
-    let numberOfChunks = Math.floor(length / (256 / size)) + 1;
+    let numberOfChunks = length;
   
-    let NUMBER_OF_VALUES = 5;
+    let NUMBER_OF_VALUES = length;
   
-    let numberOfLeaves = 8;
+    let numberOfLeaves = getNextPowerOfTwo(length);
   
-    let emptyLeaves = 3;
+    let emptyLeaves = numberOfLeaves-length;
   
 
     function chunks() {
@@ -86,11 +86,11 @@ export default function DisplayContainer(props) {
   
         return (
           <ContainerText
-            numberOfLeaves={8}
-            emptyLeaves={3}
+            numberOfLeaves={numberOfLeaves}
+            emptyLeaves={emptyLeaves}
             id={`chunk${idx}`}
             chunk={_chunked}
-            length={5}
+            length={length}
             size={256}
             idx={idx}
             numberOfChunks={numberOfChunks}
@@ -145,7 +145,7 @@ export default function DisplayContainer(props) {
               />
             </div>
             <div className="row">
-              <BuildContainerTree NUMBER_OF_VALUES={5} />
+              <BuildContainerTree NUMBER_OF_VALUES={length} />
             </div>
             <div className={`row row-cols-${numberOfLeaves} text-break`}>
                 {_values()}

@@ -113,9 +113,6 @@ export default function DisplayVector(props) {
             <div className="row">
               <BuildVectorTree NUMBER_OF_VALUES={NUMBER_OF_VALUES} />
             </div>
-            <div className="row">
-              Click on a Leaf to see its Merkle Proof
-            </div>
             <div className={`row row-cols-${numberOfLeaves} text-break`}>
               {numberOfLeaves < 5 ? (
                 chunks()

@@ -2,29 +2,7 @@ import { useEffect, useState } from "react";
 import DisplayContainer from "../display/DisplayContainer";
 import BuildHashTree from "../trees/BuildHashTree";
 
-const examples = [
-  {
-    BeaconBlockHeader: {
-      slot: { type: "Uint64", value: "3" },
-      proposerIndex: { type: "Uint64", value: "2" },
-      parentRoot: {
-        type: "Root",
-        value:
-          "0x41485c23d68c1f592677d77c034ad2256f88b1220af2e105fa966baeae9a87b9",
-      },
-      stateRoot: {
-        type: "Root",
-        value:
-          "0xcbcd6d7f1f0bde6c8ad85efc3941ed5fc0f1663f1adf03209c07e471186adaf8",
-      },
-      bodyRoot: {
-        type: "Root",
-        value:
-          "0xeaeb8b1728c07a9fb10ad2b61aa2ce8f1b4a17dfab81db49a9729ad1cdbbac40",
-      },
-    },
-  },
-];
+
 
 export function getNextPowerOfTwo(number) {
   if (number <= 1) {
@@ -42,7 +20,8 @@ export function getNextPowerOfTwo(number) {
 }
 
 export default function ContainerControls(props) {
-  const [example, setExample] = useState(examples[0].BeaconBlockHeader);
+  const [exampleIdx, setExampleIdx] = useState(0)
+  const [example, setExample] = useState(Object.values(examples[0])[0]);
   const [length, setLength] = useState(5);
   const [demoTree, setDemoTree] = useState(<BuildHashTree NUMBER_OF_VALUES={5} />);
   const [leaves, setLeaves] = useState(8)
@@ -52,6 +31,12 @@ export default function ContainerControls(props) {
     setDemoTree(<BuildHashTree NUMBER_OF_VALUES={length} />)
     setLeaves(getNextPowerOfTwo(length))
   }, [example])
+
+  function changeExample() {
+    let newIdx = (exampleIdx + 1) % examples.length;
+    setExampleIdx(newIdx);
+    setExample(Object.values(examples[newIdx])[0])
+  }
 
   return (
     <div className="row">
@@ -67,70 +52,56 @@ export default function ContainerControls(props) {
               <div className="card-body" style={{ textAlign: "center" }}>
                 <h4 className="card-title">Container</h4>
                 <h4 className="card-title">
-                  Example: {Object.keys(examples[0])}
+                  Example: {Object.keys(examples[exampleIdx])}
                 </h4>
-
+<button className='btn' onClick={() => changeExample()}>NEXT</button>
                 <div className="card-text">
                   <div className="container">
-                    <div className="row" style={{ border: "solid black", backgroundColor: 'lightgray' }}>
+                    <div className="row" style={{ border: "solid black", backgroundColor: 'lightgray', color: 'black' }}>
                       <div className="col text-start">
                         <span>
-                          {`type BeaconBlockHeader = {`} <br />
-                          slot: Uint64; <br />
-                          proposerIndex: Uint64; <br />
-                          parentRoot: Root;
-                          <br />
-                          stateRoot: Root;
-                          <br />
-                          bodyRoot: Root;
-                          <br />
+                          {`type ${Object.keys(examples[exampleIdx])} =`} <br />{`{ `}
+                          {Object.values(examples[exampleIdx]).map((data) => {
+                            return Object.entries(data).map((line) => {
+
+                                    return (
+                                    <div className='row'>
+                                    {line[0]}: {Object.values(line[1])[0]}
+                                    </div>
+                                  )
+                                })}
+                            
+                          )}
+
                           {`}`}
                         </span>
                       </div>
                       <div className="col">
-                        <div className="d-flex flex-row text-break text-start">
-                          <div className="flex-col">
-                            <div className="row">
-                              let x: BeaconBlockHeader = {`{`}
+                        <div className="row ">
+                          <div className="col">
+                            <div className="row text-start" style={{color: 'green'}}>
+                              let x: {Object.keys(examples[exampleIdx])}  <br/>{` = {`}
                             </div>
-                            <div className="row" style={{color: "blue"}}>
-                              <div className="col">slot:</div>
-                              <div className="col">3</div>
-                            </div>
-                            <div className="row" style={{color: "magenta"}}>
-                              <div className="col">proposerIndex:</div>
-                              <div className="col">2</div>
-                            </div>
-                            <div className="row" style={{color: "blue"}}>
-                              <div className="col">parentRoot:</div>
-                              <div className="col">
-                                0x41485c23d68c1f592677d77c034ad2256f88b1220af2e105fa966baeae9a87b9;
-                              </div>
-                            </div>
-                            <div className="row" style={{color: "magenta"}}>
-                              <div className="col">stateRoot:</div>
-                              <div className="col">
-                                0xcbcd6d7f1f0bde6c8ad85efc3941ed5fc0f1663f1adf03209c07e471186adaf8;
-                              </div>
-                            </div>
-                            <div className="row" style={{color: "green"}}>
-                              <div className="col">bodyRoot:</div>
-                              <div className="col">
-                                0xeaeb8b1728c07a9fb10ad2b61aa2ce8f1b4a17dfab81db49a9729ad1cdbbac40;
-                              </div>
-                            </div>
-                            <div className="row">
-                              {`}`}
-                            </div>
+                            {Object.values(examples[exampleIdx]).map((data) => {
+                            return Object.entries(data).map((line, idx) => {
+                                    let color = idx + 1 == Object.entries(data).length ? 'green' : idx % 2 == 0 ? "blue" : "magenta"
+                                    return (
+                                      <div className="row" style={{color: color}}>
+                                      <div className="col text-start">{line[0]}:</div>
+                                      <div className="col text-end text-break">{Object.values(line[1])[1]}</div>
+                                    </div>
+                                )}
+                            
+                          )})}
+                            
+                            
+                            
                           </div>
                         </div>
                       </div>
                     </div>
 
                     <div className="row justify-content-center text-break">
-                      <h5>
-                        MerkleTree - Depth 4
-                      </h5>
                       <button
                         className="btn btn-primary"
                         type="button"
@@ -156,7 +127,7 @@ export default function ContainerControls(props) {
                             aria-label="Close"
                             onClick={() =>
                               setDemoTree(
-                                <BuildHashTree NUMBER_OF_VALUES={5} />
+                                <BuildHashTree NUMBER_OF_VALUES={length} />
                               )
                             }
                           ></button>
@@ -181,3 +152,36 @@ export default function ContainerControls(props) {
     </div>
   );
 }
+
+
+
+export const examples = [
+  {
+    BeaconBlockHeader: {
+      slot: { type: "Uint64", value: "3" },
+      proposerIndex: { type: "Uint64", value: "2" },
+      parentRoot: {
+        type: "Uint256",
+        value:
+          "0x41485c23d68c1f592677d77c034ad2256f88b1220af2e105fa966baeae9a87b9",
+      },
+      stateRoot: {
+        type: "Uint256",
+        value:
+          "0xcbcd6d7f1f0bde6c8ad85efc3941ed5fc0f1663f1adf03209c07e471186adaf8",
+      },
+      bodyRoot: {
+        type: "Uint256",
+        value:
+          "0xeaeb8b1728c07a9fb10ad2b61aa2ce8f1b4a17dfab81db49a9729ad1cdbbac40",
+      },
+    },
+  },
+  {
+    Checkpoint: {
+      epoch: {type: "Uint64", value: '3'},
+root: {type: "Uint256", value: '0x49e21ba6fbe660d8aac793f1e168cdbf860a3b5b1791bdab188ba1c4b094b813'}
+
+    }
+  }
+];
