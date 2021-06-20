@@ -122,7 +122,7 @@ export default function BitVectorControls(props) {
   return (
     <>
       <div className="row">
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
           <DisplayBitVector
             serialized={serialized}
             values={values}
@@ -131,7 +131,7 @@ export default function BitVectorControls(props) {
             {props.children}
           </DisplayBitVector>
         </div>
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
           <div className="row justify-content-center ">
             <div className="col">
               <div className="card bg-dark text-light">
@@ -226,7 +226,7 @@ export default function BitVectorControls(props) {
             </div>
           </div>
           <div className={`row row-cols-${numChunks}`}>
-            {numChunks < 5 && numChunks !== 1 ? (
+            {numChunks < 5 ? (
               _values().map((valueChunk, idx) => {
                 let red =
                   idx + 1 == _values().length ? 0 : idx % 2 == 1 ? 256 : 0;
@@ -242,7 +242,7 @@ export default function BitVectorControls(props) {
                   </div>
                 );
               })
-            ) : numChunks !== 1 ? (
+            ) : (
               <div>
                 <button
                   className="btn btn-primary"
@@ -311,9 +311,7 @@ export default function BitVectorControls(props) {
                   </div>
                 </div>
               </div>
-            ) : (
-              <></>
-            )}
+            ) }
           </div>
         </div>
         <div className="row">

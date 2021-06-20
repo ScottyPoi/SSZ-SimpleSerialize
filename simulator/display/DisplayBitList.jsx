@@ -46,7 +46,7 @@ export default function DisplayBitList(props) {
       let _output = `${toHexString(chunk)}`;
 
       return (
-        <div key={`chunk${idx}`} className="col" key={idx} id={`chunk${idx}`}>
+        <div key={`chunk${idx}`} className="col" key={idx} id={`chunk${idx}`} style={{border: 'solid black'}}>
           <BitListText
             chunk={_output}
             limit={limit}

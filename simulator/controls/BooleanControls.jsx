@@ -37,15 +37,15 @@ export default function BooleanControls(props) {
 
   return (
     <div className="row" >
-      <div className="col">
+      <div className="col p-2" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
         <DisplayBoolean value={value} serialized={serialized} bytes32={bytes32}>
           {props.children}
         </DisplayBoolean>
       </div>
-      <div className="col" >
+      <div className="col p-2" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
         <div className="row justify-content-center ">
-          <div className="col">
-            <div className="card bg-dark">
+          <div className="col" >
+            <div className="card bg-dark"  style={{border: 'solid lightgray'}}>
               <div className="card-body" style={{ textAlign: "center" }}>
             <h5 className="card-title">Boolean</h5>
                 <h5 className="card-title">1 BIT</h5>

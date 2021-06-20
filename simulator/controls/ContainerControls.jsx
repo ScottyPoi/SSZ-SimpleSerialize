@@ -55,12 +55,12 @@ export default function ContainerControls(props) {
 
   return (
     <div className="row">
-      <div className="col-6">
+      <div className="col-6" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
         <div className='row'>
                   <DisplayContainer example={example} length={length} />
         </div>
       </div>
-      <div className="col">
+      <div className="col" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
         <div className="row justify-content-center ">
           <div className="col">
             <div className="card bg-dark text-light">

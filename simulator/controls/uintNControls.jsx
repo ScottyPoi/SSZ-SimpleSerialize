@@ -94,7 +94,7 @@ export default function UintNControls(props) {
 
   return (
     <div className="row">
-      <div className="col " style={{border: 'solid black'}}>
+      <div className="col " style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
         <UintNDisplay
           type={NumberUintType.NUMBER_UINT_TYPE}
           value={getvalue()}
@@ -105,7 +105,7 @@ export default function UintNControls(props) {
           {props.children}
         </UintNDisplay>
       </div>
-      <div className="col">
+      <div className="col" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
         <div className="row justify-content-center ">
           <div className="col">
             <div className="card bg-dark">
@@ -222,7 +222,7 @@ export default function UintNControls(props) {
 
         <div className="d-flex flex-row"></div>
       </div>
-      <div className="col">
+      <div className="col" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
         <div className="row">
           <div className="col">
             <div className="row">

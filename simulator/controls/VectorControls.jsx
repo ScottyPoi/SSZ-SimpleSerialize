@@ -125,7 +125,7 @@ export default function VectorControls(props) {
   return (
     <>
       <div className="row">
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
           <DisplayVector
             serialized={serialized}
             values={values}
@@ -134,7 +134,7 @@ export default function VectorControls(props) {
             {props.children}
           </DisplayVector>
         </div>
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
           <div className="row justify-content-center ">
             <div className="col">
               <div className="card bg-dark">

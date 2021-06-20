@@ -116,7 +116,7 @@ export default function BitListControls(props) {
   return (
     <>
       <div className="row">
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
           <DisplayBitList
             serialized={serialized}
             limit={limit}
@@ -127,7 +127,7 @@ export default function BitListControls(props) {
             {props.children}
           </DisplayBitList>
         </div>
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
           <div className="row justify-content-center ">
             <div className="col">
               <div className="card bg-dark text-light">

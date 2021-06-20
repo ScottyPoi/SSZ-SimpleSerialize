@@ -11,12 +11,12 @@ export default function Controls({ ...props }) {
   const [Type, setType] = useState("Boolean");
 
   return (
-    <div className="container">
+    <div className="col">
     
-      <div className="d-flex flex-row ">
-        <div className="col">
-          <ul className="nav nav-tabs bg-secondary" id="typeTab" role="tablist">
-            <li className="nav-item" role="presentation">
+      <div  className="row "  >
+        <div className="col" style={{border: 'solid #6666ff'}}>
+          <ul className="nav nav-tabs bg-secondary" id="typeTab" role="tablist" style={{outline: 'solid black', border: 'solid black'}}>
+            <li  className="nav-item" role="presentation">
               <button
                 key="boolean-tab"
                 id="boolean-tab"
@@ -142,7 +142,7 @@ export default function Controls({ ...props }) {
           </ul>
         </div>
       </div>
-      <div className="row">
+      <div className="row" style={{border: 'solid black'}}>
         <div>
           {Type === "UintN" ? (
             <UintNControls />

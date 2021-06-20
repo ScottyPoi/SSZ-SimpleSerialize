@@ -12,13 +12,13 @@ export default function Simulator() {
   return (
     <div className="container p-0">
       
-      <div className="row justify-content-center">
-        <div className="col-8">
+      <div className="d-flex flex-row justify-content-center">
+        <div className="d-flex flex-col">
           <img
             src="/developers-eth-blocks.png"
             alt="ethereum building blocks"
-            height={300}
-            width={500}
+            height={200}
+            width={300}
           />
         </div>
       </div>
@@ -30,10 +30,10 @@ export default function Simulator() {
           <h3><div className="row justify-content-center">
             Explore SSZ Types and Merkle Trees
           </div></h3>
-          <div className="row justify-content-center">
+          <div className="row p-3 justify-content-center">
             <button
               className={`btn btn-dark col-6`}
-              style={{ border: "solid black" }}
+              style={{ border: "solid white" }}
             >
               <h2><Link href='./visualizer'>START</Link></h2>
             </button>

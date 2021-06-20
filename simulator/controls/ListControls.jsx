@@ -193,7 +193,7 @@ export default function ListControls(props) {
   return (
     <>
       <div className="row">
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'lightgray', border: 'solid gray'}}>
           <DisplayList
             serialized={serialized}
             valuesPerChunk={valuesPerChunk}
@@ -208,7 +208,7 @@ export default function ListControls(props) {
         </div>
         
         
-        <div className="col">
+        <div className="col" style={{backgroundColor: 'gray', border: 'solid #e1ddfd'}}>
           <div className="row justify-content-center ">
             <div className="col">
               <div className="card bg-dark">
