@@ -54,7 +54,7 @@ export default function ContainerControls(props) {
                 <h4 className="card-title">
                   Example: {Object.keys(examples[exampleIdx])}
                 </h4>
-<button className='btn' onClick={() => changeExample()}>NEXT</button>
+<button className='btn btn-secondary' onClick={() => changeExample()}>NEXT</button>
                 <div className="card-text">
                   <div className="container">
                     <div className="row" style={{ border: "solid black", backgroundColor: 'lightgray', color: 'black' }}>
