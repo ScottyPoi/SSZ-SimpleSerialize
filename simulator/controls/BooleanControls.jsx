@@ -47,13 +47,13 @@ export default function BooleanControls(props) {
           <div className="col">
             <div className="card bg-dark">
               <div className="card-body" style={{ textAlign: "center" }}>
-            <h5 className="card-title">Boolean Type</h5>
+            <h5 className="card-title">Boolean</h5>
                 <h5 className="card-title">1 BIT</h5>
 
                 <p className="card-text" >
                   <div className="container">
                     <div className="row text-break">
-                      <h3>
+                      <h3><h5>let x: Boolean ={`  `}</h5>
                         <span
                           style={{
                             border: "solid black 2px",

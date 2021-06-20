@@ -122,7 +122,7 @@ export default function UintNControls(props) {
                           return `X`;
                         })}
                       </h5>
-                      <h4>
+                      <h4><h5>let x: Uint{`${uintSize}`} ={`  `}</h5>
                         <span
                           style={{
                             border: "solid black 2px",

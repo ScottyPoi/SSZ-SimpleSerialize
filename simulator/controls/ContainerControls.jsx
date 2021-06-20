@@ -63,7 +63,7 @@ export default function ContainerControls(props) {
       <div className="col">
         <div className="row justify-content-center ">
           <div className="col">
-            <div className="card bg-dark">
+            <div className="card bg-dark text-light">
               <div className="card-body" style={{ textAlign: "center" }}>
                 <h4 className="card-title">Container</h4>
                 <h4 className="card-title">

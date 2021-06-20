@@ -138,7 +138,7 @@ export default function BitVectorControls(props) {
                 <div className="card-body" style={{ textAlign: "center" }}>
                   <h4 className="card-title">BitVector</h4>
                   <h4 className="card-title">Fixed Length: {length}</h4>
-
+                  <h5>let x: BitVector[{length}] = {`[...]`}</h5>
                   <div className="card-text">
                     <div className="container">
                       <div className="row justify-content-center text-break">

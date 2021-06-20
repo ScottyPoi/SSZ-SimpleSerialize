@@ -143,6 +143,15 @@ export default function DisplayBitList(props) {
                   >
                     Show Chunks
                   </button>
+                  <div className='row p-2'> <button
+                        className="btn btn-primary"
+                        type="button"
+                        data-bs-toggle="offcanvas"
+                        data-bs-target="#offcanvasValues"
+                        aria-controls="offcanvasValues"
+                      >
+                        Show Values
+                      </button></div>
 
                   <div
                     className="offcanvas offcanvas-bottom"

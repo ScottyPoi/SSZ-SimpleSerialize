@@ -12,7 +12,8 @@ export default function BuildHashTree(props) {
   let numberPadded = props.red
   let emptyLeaves = props.emptyLeaves
   let list = props.list;
-  return build(numberLeaves, list, numberOfValues, numberPadded);
+  let object = props.object ? props.object : "x"
+  return build(numberLeaves, list, numberOfValues, numberPadded, object);
 }
 
 export function getNextPowerOfTwo(number) {
@@ -142,6 +143,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
 
 function rowOfNodes(number, type, level, empty=false, pad=false, numberOfValues) {
   //   let leaves = getNextPowerOfTwo(number);
+  
   let row = [];
   for (let i = 0; i < number; i++) {
     row.push(
@@ -178,7 +180,7 @@ function displayTreeNodes(number, empty = false) {
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={i + 1}
+              idx={i + 2}
               type=""
               empty={empty}
               level="branch"
@@ -188,7 +190,7 @@ function displayTreeNodes(number, empty = false) {
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={i + 2}
+              idx={i + 3}
               type=""
               empty={empty}
               level="branch"
@@ -224,20 +226,20 @@ function displayTreeNodes(number, empty = false) {
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={i + 1}
+              idx={i + 2}
               type=""
               empty={empty}
-              level="branch"
+              level="intermediate"
               chunkIdx={i}
               numChunks={number}
             />
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={i + 2}
+              idx={i + 3}
               type=""
               empty={empty}
-              level="branch"
+              level="intermediate"
               chunkIdx={i + 1}
               numChunks={number}
             />
@@ -247,10 +249,10 @@ function displayTreeNodes(number, empty = false) {
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={Math.floor(i / 2) + 1}
-              type="T"
+              idx={Math.floor(i / 2) + 2}
+              type="TA"
               empty={empty}
-              level="tree"
+              level="intermediate"
               chunkIdx={i}
               numChunks={number}
             />
@@ -263,7 +265,7 @@ function displayTreeNodes(number, empty = false) {
   return row;
 }
 
-function build(leaves, list, numberOfValues, numberEmpty) {
+function build(leaves, list, numberOfValues, numberEmpty, object) {
   let _tree = [];
   if (leaves == 1) {
     _tree = [];
@@ -308,20 +310,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(numberOfValues, "", "leaf", false, false, numberOfValues)}
-
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node
@@ -343,19 +332,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node type="R" level="root" />){" "}
@@ -386,21 +363,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(numberOfValues, "", "leaf")}
-                {rowOfNodes(numberEmpty, "", "limit", true)}
-
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node
@@ -422,20 +385,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
-
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node type="R" level="root" />){" "}
@@ -453,20 +403,20 @@ function build(leaves, list, numberOfValues, numberEmpty) {
         </div>
         <div className="d-flex flex-col p-1">
           <Node
-            idx={1}
-            type="T"
+            idx={2}
+            type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={0}
             numChunks={leaves}
           />
         </div>
         <div className="d-flex flex-col p-1">
           <Node
-            idx={2}
-            type="T"
+            idx={3}
+            type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={1}
             numChunks={leaves}
           />
@@ -520,10 +470,10 @@ function build(leaves, list, numberOfValues, numberEmpty) {
           </div>
           <div className="d-flex flex-col p-1">
             <Node
-              idx={Math.floor(i / 2) + 1}
-              type="T"
+              idx={Math.floor(i / 2) + 2}
+              type=""
               empty={false}
-              level="tree"
+              level="intermediate"
               // chunkIdx={i}
               numChunks={leaves}
             />
@@ -575,19 +525,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(numberOfValues, "L1", "leaf", false, false, numberOfValues)}
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node
@@ -609,19 +547,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node type="R" level="root" />){" "}
@@ -641,7 +567,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={2}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={0}
             numChunks={leaves}
           />
@@ -651,7 +577,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={3}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={1}
             numChunks={leaves}
           />
@@ -681,7 +607,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={4}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={0}
             numChunks={leaves}
           />
@@ -691,7 +617,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={5}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={1}
             numChunks={leaves}
           />
@@ -704,7 +630,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={2}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             // chunkIdx={i}
             numChunks={leaves}
           />
@@ -721,7 +647,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={6}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={0}
             numChunks={leaves}
           />
@@ -731,7 +657,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={7}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             chunkIdx={1}
             numChunks={leaves}
           />
@@ -744,7 +670,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             idx={3}
             type=""
             empty={false}
-            level="tree"
+            level="intermediate"
             // chunkIdx={i}
             numChunks={leaves}
           />
@@ -788,7 +714,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
               idx={i/2 + 4}
               type=""
               empty={false}
-              level="tree"
+              level="intermediate"
               // chunkIdx={i}
               numChunks={leaves}
             />
@@ -840,19 +766,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(leaves, "L3", "leaf")}
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node
@@ -874,19 +788,7 @@ function build(leaves, list, numberOfValues, numberEmpty) {
             style={{ border: "solid black" }}
           >
             <div className="col p-1 align-items-center">
-              <h4>merkleize (</h4>
-            </div>
-            <div className="col p-1 align-items-center">
-              <div
-                key={"hash"}
-                id={"hash"}
-                className="row row-cols-auto justify-content-around"
-              >
-                {rowOfNodes(leaves, "", "leaf", false, false, numberOfValues)}
-              </div>
-            </div>
-            <div className="col p-1 ">
-              <h4>) =</h4>
+              <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
               <Node type="R" level="root" />){" "}

@@ -137,6 +137,7 @@ export default function BitListControls(props) {
 
                   <h4 className="card-title">Max Length (Limit): {limit}</h4>
                   <h4 className="card-title">Variable Length: {length}</h4>
+                  <h5 className="card-title">let x: BitList[{limit}] = [...]</h5>
 
                   <div className="card-text">
                     <div className="container">
@@ -310,15 +311,7 @@ export default function BitListControls(props) {
           })
         ) : (
           <div>
-            <button
-              className="btn btn-primary"
-              type="button"
-              data-bs-toggle="offcanvas"
-              data-bs-target="#offcanvasValues"
-              aria-controls="offcanvasValues"
-            >
-              Show Values
-            </button>
+
             <div
               className="offcanvas offcanvas-bottom"
               data-bs-backdrop="false"

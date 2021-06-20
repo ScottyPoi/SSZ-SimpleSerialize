@@ -102,7 +102,7 @@ export default function BuildtListTree(props) {
     return row;
   }
 
-  function rowOfEmptyNodes(number, type, level, empty = false) {
+  function rowOfEmptyNodes(number, type, level, empty = false, fulls) {
     //   let leaves = getNextPowerOfTwo(number);
     let row = [];
     for (let i = totalNodes; i < totalNodes + number; i++) {
@@ -114,14 +114,14 @@ export default function BuildtListTree(props) {
           className="col p-1"
         >
           <Node
-            idx={i - totalNodes}
+            idx={i + fulls - totalNodes}
             type={type}
             empty={true}
             level={level}
-            chunkIdx={i}
+            chunkIdx={i + fulls - totalNodes}
             numChunks={activeChunk}
             limit={chunks}
-            selected={isSelected(`${i}`)}
+            selected={isSelected(`${i + fulls - totalNodes}`)}
 
           />
         </div>
@@ -140,7 +140,7 @@ export default function BuildtListTree(props) {
             idx={i + numberLeaves}
             type={type}
             empty={empty}
-            level={level}
+            level={"branch"}
             chunkIdx={i}
             numChunks={activeChunk}
             limit={chunks}
@@ -163,7 +163,7 @@ export default function BuildtListTree(props) {
             idx={i + 2 ** level}
             type={type}
             empty={empty}
-            level={level}
+            level={"intermediate"}
             chunkIdx={i}
             numChunks={activeChunk}
             limit={chunks}
@@ -307,7 +307,7 @@ export default function BuildtListTree(props) {
         className="row row-cols-auto justify-content-around"
       >
         {rowOfNodes(number, "", "leaf")}
-        {rowOfEmptyNodes(empties, "EL", 'leaf', true)}
+        {rowOfEmptyNodes(empties, "", 'leaf', true, number)}
       </div>
     );
     return tree;

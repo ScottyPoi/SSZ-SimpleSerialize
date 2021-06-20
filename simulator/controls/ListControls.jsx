@@ -213,13 +213,17 @@ export default function ListControls(props) {
             <div className="col">
               <div className="card bg-dark">
                 <div className="card-body" style={{ textAlign: "center" }}>
-                  <h4 className="card-title">
-                    List[{elementType}, {limit}]
+                <h4 className="card-title">
+                    List
                   </h4>
                   <h4 className="card-title">Type: {elementType}</h4>
 
                   <h4 className="card-title">Max Length (Limit): {limit}</h4>
                   <h4 className="card-title">Variable Length: {length}</h4>
+                  <h5 className="card-title">
+                    let x: List[{elementType}, {limit}] = [...]
+                  </h5>
+
 
                   <p className="card-text">
                     <div className="container">

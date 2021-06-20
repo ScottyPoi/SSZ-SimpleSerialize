@@ -22,11 +22,11 @@ export default function VectorControls(props) {
   const [maxLength, setMaxLength] = useState(32 * 16 - 1);
   const [valueSet, setValueSet] = useState(_valueSet);
   const [demoTree, setDemoTree] = useState(
-    <BuildHashTree NUMBER_OF_VALUES={1} />
+    <BuildHashTree object={`Vector[${elementType}, ${length}]`} NUMBER_OF_VALUES={1} />
   );
 
   useEffect(() => {
-    setDemoTree(<BuildHashTree NUMBER_OF_VALUES={numChunks} />);
+    setDemoTree(<BuildHashTree object={`Vector[${elementType}, ${length}]`} NUMBER_OF_VALUES={numChunks} />);
   }, [numChunks]);
 
   useEffect(() => {
@@ -187,7 +187,7 @@ export default function VectorControls(props) {
                               aria-label="Close"
                               onClick={() =>
                                 setDemoTree(
-                                  <BuildHashTree NUMBER_OF_VALUES={numChunks} />
+                                  <BuildHashTree object={`Vector[${elementType}, ${length}]`} NUMBER_OF_VALUES={numChunks} />
                                 )
                               }
                             ></button>

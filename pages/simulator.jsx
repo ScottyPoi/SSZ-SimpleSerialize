@@ -1,9 +1,17 @@
 import React from "react";
 import Image from "next/image";
 import Link from "next/link";
+import BuildVectorTree from "../simulator/trees/BuildVectorTree";
+import BuildDemoTree from "../simulator/trees/BuildDemoTree";
 export default function Simulator() {
+
+  let v = 32
+
+
+
   return (
-    <div className="container">
+    <div className="container p-0">
+      
       <div className="row justify-content-center">
         <div className="col-8">
           <img
@@ -27,16 +35,14 @@ export default function Simulator() {
               className={`btn btn-dark col-6`}
               style={{ border: "solid black" }}
             >
-              <h2>START</h2>
+              <h2><Link href='./visualizer'>START</Link></h2>
             </button>
           </div>
-{/* <h5>          <div className="row justify-content-center">
-            Learn more about SSZ SimpleSerialize at{" "}
-          </div></h5>
-          <div className="row justify-content-center">
-            <div className='col-3 text-center'><h3><a href="https://www.ssz.dev">www.ssz.dev</a></h3></div>
-          </div> */}
         </div>
+      </div>
+      <div className='row p-0'>
+        <BuildDemoTree NUMBER_OF_VALUES={v} animate={true}/><br/>
+        <h5 className='text-center'>*click to see merkle-proofs!*</h5>
       </div>
     </div>
   );

@@ -12,13 +12,13 @@ export default function Controls({ ...props }) {
 
   return (
     <div className="container">
+    
       <div className="d-flex flex-row ">
         <div className="col">
-          <ul className="nav nav-tabs" id="typeTab" role="tablist">
-
-            <li  className="nav-item" role="presentation">
+          <ul className="nav nav-tabs bg-secondary" id="typeTab" role="tablist">
+            <li className="nav-item" role="presentation">
               <button
-              key='boolean-tab'
+                key="boolean-tab"
                 id="boolean-tab"
                 type="button"
                 role="tab"
@@ -35,8 +35,6 @@ export default function Controls({ ...props }) {
             <li key="uintn-tab" className="nav-item" role="presentation">
               <button
                 id="uintn-tab"
-                
-
                 type="button"
                 role="tab"
                 aria-selected="true"
@@ -50,10 +48,8 @@ export default function Controls({ ...props }) {
               </button>
             </li>
 
-
-            <li key='bitvector-tab' className="nav-item" role="presentation">
+            <li key="bitvector-tab" className="nav-item" role="presentation">
               <button
-              
                 id="bitvector-tab"
                 type="button"
                 role="tab"
@@ -67,7 +63,7 @@ export default function Controls({ ...props }) {
                 BitVector
               </button>
             </li>
-            <li key='vector-tab' className="nav-item" role="presentation">
+            <li key="vector-tab" className="nav-item" role="presentation">
               <button
                 id="vector-tab"
                 type="button"
@@ -82,7 +78,7 @@ export default function Controls({ ...props }) {
                 Vector
               </button>
             </li>
-            <li key='bitlist-tab' className="nav-item" role="presentation">
+            <li key="bitlist-tab" className="nav-item" role="presentation">
               <button
                 id="bitlist-tab"
                 type="button"
@@ -97,7 +93,7 @@ export default function Controls({ ...props }) {
                 BitList
               </button>
             </li>
-            <li key='list-tab' className="nav-item" role="presentation">
+            <li key="list-tab" className="nav-item" role="presentation">
               <button
                 id="list-tab"
                 type="button"
@@ -113,7 +109,7 @@ export default function Controls({ ...props }) {
               </button>
             </li>
 
-            <li key='container-tab' className="nav-item" role="presentation">
+            <li key="container-tab" className="nav-item" role="presentation">
               <button
                 id="container-tab"
                 type="button"
@@ -128,7 +124,7 @@ export default function Controls({ ...props }) {
                 Container
               </button>
             </li>
-            <li key='union-tab' className="nav-item" role="presentation">
+            <li key="union-tab" className="nav-item" role="presentation">
               <button
                 id="union-tab"
                 type="button"
@@ -164,7 +160,9 @@ export default function Controls({ ...props }) {
             <ContainerControls />
           ) : Type === "Union" ? (
             <UnionControls />
-          ) : <BooleanControls />}
+          ) : (
+            <BooleanControls />
+          )}
         </div>
       </div>
     </div>

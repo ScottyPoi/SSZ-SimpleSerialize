@@ -1,12 +1,13 @@
 import Node from "../nodes/Node";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
-export default function BuildVectorTree(props) {
+export default function BuildDemoTree(props) {
   const [selected, setSelected] = useState(0);
   const [rootActivated, setRootActivated] = useState(false);
   const [selections, setSelections] = useState([]);
+  const animate = props.animate;
 
-  const NUMBER_OF_VALUES = props.NUMBER_OF_VALUES;
+  const NUMBER_OF_VALUES = 32;
 
   function rootActive() {
     return rootActivated;
@@ -20,49 +21,46 @@ export default function BuildVectorTree(props) {
     return selections.includes(node);
   }
 
-  let numberLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
-  let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
-  let numberEmpty = numberLeaves - NUMBER_OF_VALUES;
-  let tree = build(NUMBER_OF_VALUES);
+  let numberLeaves = 32;
+  let totalNodes = 64;
+  let numberEmpty = 0;
 
   function toggleSelected(node) {
     selected !== node ? setSelected(node) : setSelected(0);
   }
 
+  function iterate() {
+          setSelected(Math.floor((Math.random() * 64)+32))
+    }
+
+    function start() {
+        setInterval(() => setSelected(Math.floor((Math.random() * 64)+32)), 5000)}
+    
+
+    // start();
+
+
+
+  
+
   useEffect(() => {
+let hashes = new Array(5)
     if (selected !== 0) {
       setRootActivated(true);
-      let _selections =
-        selected == 4
-          ? [3]
-          : selected == 5
-          ? [2]
-          : selected == 8
-          ? [5, 3]
-          : selected == 9
-          ? [4, 3]
-          : selected == 10
-          ? [7, 2]
-          : selected == 11
-          ? [6, 2]
-          : selected == 16
-          ? [9, 5, 3]
-          : selected == 17
-          ? [8, 5, 3]
-          : selected == 18
-          ? [11, 4, 3]
-          : selected == 19
-          ? [10, 4, 3]
-          : selected == 20
-          ? [13, 7, 2]
-          : selected == 21
-          ? [12, 7, 2]
-          : selected == 22
-          ? [15, 6, 2]
-          : selected == 23
-          ? [14, 6, 2]
-          : [];
-      setSelections(_selections);
+      let _selections = [];
+      if (selected % 2 == 0) {
+        hashes[0] = selected - 31;
+      } else {
+        hashes[0] = selected - 33;
+      }
+      for (let i=0; i<5; i++)
+      if (Math.floor(hashes[i] / 2) % 2 == 0) {
+        hashes[i+1] = Math.floor(hashes[i] / 2) + 1;
+      } else {
+        hashes[i+1] = Math.floor(hashes[i] / 2) - 1;
+      }
+
+      setSelections(hashes);
     } else {
       setRootActivated(false);
       setSelections([]);
@@ -72,7 +70,8 @@ export default function BuildVectorTree(props) {
   function rowOfNodes(number, type, level, empty = false) {
     //   let leaves = getNextPowerOfTwo(number);
     let row = [];
-    for (let i = totalNodes; i < totalNodes + number; i++) {
+    let letters = "SIMPLE_______SSZ_______SERIALIZE"
+    for (let i = 64; i < 96; i++) {
       row.push(
         <div
           onClick={() => toggleSelected(`${i}`)}
@@ -81,11 +80,11 @@ export default function BuildVectorTree(props) {
           className={"col p-1"}
         >
           <Node
-            idx={i - totalNodes}
+            idx={letters[i-64]}
             type={type}
             empty={empty}
-            level={level}
-            chunkIdx={i - totalNodes}
+            level="intro"
+            chunkIdx={i - 64}
             numChunks={NUMBER_OF_VALUES}
             selected={isSelected(`${i}`)}
           />
@@ -109,8 +108,8 @@ export default function BuildVectorTree(props) {
           <Node
             idx={i - totalNodes + NUMBER_OF_VALUES}
             type={type}
-            empty={true}
-            level={"leaf"}
+            empty={empty}
+            level={level}
             chunkIdx={i - totalNodes + NUMBER_OF_VALUES}
             numChunks={NUMBER_OF_VALUES}
             selected={isSelected(`${i + NUMBER_OF_VALUES}`)}
@@ -121,21 +120,20 @@ export default function BuildVectorTree(props) {
     return row;
   }
 
-
   function rowOfHashNodes(number, type, level, empty = false) {
     //   let leaves = getNextPowerOfTwo(number);
     let row = [];
-    for (let i = 0; i < number; i++) {
+    for (let i = 32; i < 64; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
           <Node
-            idx={i + numberLeaves}
+            idx={i}
             type={type}
             empty={empty}
-            level={'branch'}
+            level={level}
             chunkIdx={i}
             numChunks={NUMBER_OF_VALUES}
-            active={isInSelections(i + number)}
+            active={isInSelections(i)}
           />
         </div>
       );
@@ -153,7 +151,7 @@ export default function BuildVectorTree(props) {
             idx={i + 2 ** level}
             type=""
             empty={empty}
-            level={"intermediate"}
+            level={level}
             chunkIdx={i}
             numChunks={NUMBER_OF_VALUES}
             active={isInSelections(i + 2 ** level)}
@@ -251,16 +249,18 @@ export default function BuildVectorTree(props) {
         id={"leaves"}
         className="row row-cols-auto justify-content-around"
       >
-        {rowOfNodes(number, "", "leaf")}
+        {rowOfNodes(number, "", "intro")}
         {rowOfEmptyNodes(empties, "", "leaf", true)}
       </div>
     );
     return tree;
   }
 
-  function getTree() {
-    return tree;
-  }
+  let tree = build(32);
+//   if (animate) {
+//       start()
+//   };
 
-  return getTree();
+
+  return tree;
 }
