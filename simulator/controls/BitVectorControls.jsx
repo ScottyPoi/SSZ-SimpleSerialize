@@ -3,7 +3,6 @@ import BuildHashTree from "../trees/BuildHashTree";
 import * as BitVectorType from "../ssz/types/composite/bitVector";
 import * as BooleanType from "../ssz/types/basic/Boolean";
 import DisplayBitVector from "../display/DisplayBitVector";
-import * as math from "../ssz/util/math";
 
 export const _valueSet = [];
 for (let i = 0; i < 256 * 16; i++) {
