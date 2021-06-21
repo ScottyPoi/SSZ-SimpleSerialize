@@ -5,6 +5,11 @@
     "title": "SSZ Home Page"
   },
   {
+    "name": "Visualizer ",
+    "url": "/simulator",
+    "title": "SSZ Visualizer"
+  },
+  {
     "name": "Documentation",
     "url": "/documentation",
     "title": "Documentation",
@@ -128,7 +133,7 @@
       },
       {
         "name": "Merkleization",
-        "url": "/overview/Merkleization",
+        "url": "/overview/merkleization",
         "previous": "",
         "next": "",
         "title": "Merkleization",
@@ -172,7 +177,7 @@
       },
       {
         "name": "Merkle Proofs",
-        "url": "/overview/merkle",
+        "url": "/overview/merkle_proofs",
         "previous": "",
         "next": "",
         "pages": [
