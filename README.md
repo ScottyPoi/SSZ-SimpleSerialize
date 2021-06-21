@@ -26,23 +26,15 @@
 
 # SSZ Website in progress...
 
-- Phase0:
-  - Landing page for SSZ 
-    - Up to date Specs and other documentation
-    - High-Level Overview of SimpleSerialize and Merkle-Proofs
-    - Promotion of active SSZ implementations in Eth2 ecosystem
-    - Links to external resources
-  - Deployed to web
+## Deployed site with Overview:  www.ssz.dev
 
-- Phase1:
-  - Hard-coded demonstration of SSZ Schema in playground sandbox environment.
-    - Including visualizations of relationship between serializable / serialized / deserialized SSZ objects.
+## "Main" branch contains Visualizer in development
 
-- Phase2:
-  - Interactive version of playground
-    - Users can input custom SSZ Schema
-    - Support for coding SSZ in different languages
+### To Contribute:
 
+ - Please branch off of "Main"
+ - Overview pages exist as markdown files in "overview" directory.  Improvements to these are welcome.
+ - Visualization lives in "Simulator" directory.  Design improvements are desired. 
 
 ### To install this project locally:
   
