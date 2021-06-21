@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import BuildHashTree from "../trees/BuildHashTree";
 import * as BitVectorType from "../ssz/types/composite/bitVector";
-import * as BooleanType from "../ssz/types/basic/Boolean";
+import * as BooleanType from "../ssz/types/basic/boolean";
 import DisplayBitVector from "../display/DisplayBitVector";
 
 export const _valueSet = [];

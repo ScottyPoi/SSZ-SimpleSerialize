@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import * as BooleanType from "../ssz/types/basic/Boolean";
+import * as BooleanType from "../ssz/types/basic/boolean";
 import DisplayBitList from "../display/DisplayBitList";
 import BuildHashTree from "../trees/BuildHashTree";
 
