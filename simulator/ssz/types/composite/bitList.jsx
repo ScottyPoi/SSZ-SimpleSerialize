@@ -3,7 +3,6 @@ import {BasicListType} from "./list";
 import {booleanType} from "../basic";
 import {isTypeOf, Type} from "../type";
 import {fromHexString, toHexString} from "../../util/byteArray";
-import {Tree} from '../../../../e-z-serialize/persistent';
 import React from "react";
 
 

@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/camelcase */
 import { BasicVectorType, VectorType } from "./vector";
-import BooleanType from '../basic/Boolean'
 import { isTypeOf, Type } from "../type";
 import { fromHexString, toHexString, getByteBits } from "../../util/byteArray";
 // import { Tree } from "../../../../e-z-serialize/persistent";
