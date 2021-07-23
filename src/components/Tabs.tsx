@@ -30,6 +30,7 @@ export default class Tabs extends React.Component<Props, State> {
     return (
       <>
         <div>
+        <Serialize serializeModeOn={serializeModeOn} />
           <ul className="nav nav-tabs">
             <li className="nav-item">
               <button onClick={() => this.showSerialize()}>Serialize</button>
@@ -39,7 +40,6 @@ export default class Tabs extends React.Component<Props, State> {
           </li>
           </ul>
         </div>
-        <Serialize serializeModeOn={serializeModeOn} />
       </>
     );
   }

@@ -1,23 +1,29 @@
 /* eslint-disable @typescript-eslint/ban-types */
 
 import * as React from "react";
-import {Type, toHexString} from "@chainsafe/ssz";
+import { Type, toHexString } from "@chainsafe/ssz";
 // import {ModuleThread, spawn, Thread, Worker} from "threads";
-import {ChangeEvent} from "react";
+import { ChangeEvent } from "react";
 // import {withAlert} from "react-alert";
 
-import {inputTypes} from "../util/input_types";
-import {ForkName, typeNames, forks} from "../util/types";
-import {SszWorker} from "../pages/worker";
+import { inputTypes } from "../util/input_types";
+import { ForkName, typeNames, forks } from "../util/types";
+import { SszWorker } from "../pages/worker";
 import _createRandomValue from "./RandomValue";
 
 type Props<T> = {
-  onProcess: (forkName: ForkName, name: string, input: string | T, type: Type<T>, inputType: string) => void;
+  onProcess: (
+    forkName: ForkName,
+    name: string,
+    input: string | T,
+    type: Type<T>,
+    inputType: string
+  ) => void;
   serializeModeOn: boolean;
   sszType: Type<T>;
   serialized: Uint8Array | undefined;
   deserialized: object;
-  alert: {error: Function};
+  alert: { error: Function };
   setOverlay: Function;
   // worker: Worker;
 };
@@ -68,11 +74,11 @@ class Input<T> extends React.Component<Props<T>, State> {
   // }
 
   setValueAndInput(value: object | string, input: string): void {
-    this.setState({value, input});
+    this.setState({ value, input });
   }
 
   componentDidUpdate(prevProps: { serializeModeOn: boolean }): void {
-    if(prevProps.serializeModeOn !== this.props.serializeModeOn) {
+    if (prevProps.serializeModeOn !== this.props.serializeModeOn) {
       if (!this.props.serializeModeOn) {
         this.setInputType("hex");
         if (this.props.serialized) {
@@ -81,8 +87,13 @@ class Input<T> extends React.Component<Props<T>, State> {
       } else {
         this.setInputType(this.state.serializeInputType);
         if (this.props.deserialized) {
-          this.setState({value: this.props.deserialized});
-          this.setInput(inputTypes[this.state.serializeInputType].dump(this.props.deserialized, this.props.sszType));
+          this.setState({ value: this.props.deserialized });
+          this.setInput(
+            inputTypes[this.state.serializeInputType].dump(
+              this.props.deserialized,
+              this.props.sszType
+            )
+          );
         }
       }
     }
@@ -115,30 +126,33 @@ class Input<T> extends React.Component<Props<T>, State> {
   }
 
   getInputType(): string {
-    const {serializeModeOn} = this.props;
-    const {serializeInputType, deserializeInputType} = this.state;
+    const { serializeModeOn } = this.props;
+    const { serializeInputType, deserializeInputType } = this.state;
     return serializeModeOn ? serializeInputType : deserializeInputType;
   }
 
   parsedInput(): T {
     const inputType = this.getInputType();
-    return inputTypes[inputType].parse(this.state.input, this.types()[this.state.sszTypeName]);
+    return inputTypes[inputType].parse(
+      this.state.input,
+      this.types()[this.state.sszTypeName]
+    );
   }
 
   async resetWith(inputType: string, sszTypeName: string): Promise<void> {
     const types = this.types();
     let sszType = types[sszTypeName];
-    
+
     // get a new ssz type if it's not in our fork
     if (!sszType) {
       sszTypeName = getRandomType(types);
       sszType = types[sszTypeName];
     }
-    const {forkName} = this.state;
+    const { forkName } = this.state;
 
     this.props.setOverlay(true, `Generating random ${sszTypeName} value...`);
-    const value = _createRandomValue(sszTypeName, forkName)
-    const input = inputTypes[inputType].dump(value, sszType)
+    const value = _createRandomValue(sszTypeName, forkName);
+    const input = inputTypes[inputType].dump(value, sszType);
     if (this.props.serializeModeOn) {
       this.setState({
         serializeInputType: inputType,
@@ -151,25 +165,25 @@ class Input<T> extends React.Component<Props<T>, State> {
     this.setState({
       sszTypeName,
       input,
-      value
+      value,
     });
     this.props.setOverlay(false);
   }
 
   setFork(e: ChangeEvent<HTMLSelectElement>): void {
-    this.setState({forkName: e.target.value as ForkName}, async () => {
+    this.setState({ forkName: e.target.value as ForkName }, async () => {
       await this.resetWith(this.getInputType(), this.state.sszTypeName);
     });
   }
 
   setInputType(inputType: string): void {
-    const {sszTypeName, value} = this.state;
+    const { sszTypeName, value } = this.state;
     const sszType = this.types()[sszTypeName];
     const input = inputTypes[inputType].dump(value, sszType);
     if (this.props.serializeModeOn) {
-      this.setState({serializeInputType: inputType, sszTypeName, input});
+      this.setState({ serializeInputType: inputType, sszTypeName, input });
     } else {
-      this.setState({deserializeInputType: inputType, sszTypeName, input});
+      this.setState({ deserializeInputType: inputType, sszTypeName, input });
     }
   }
 
@@ -178,21 +192,20 @@ class Input<T> extends React.Component<Props<T>, State> {
   }
 
   setInput(input: string): void {
-    this.setState({input});
+    this.setState({ input });
   }
 
   doProcess(): void {
-    const {
-      sszTypeName, forkName} = this.state;
+    const { sszTypeName, forkName } = this.state;
     try {
       this.props.onProcess(
         forkName,
         sszTypeName,
         this.parsedInput(),
         this.types()[sszTypeName],
-        this.getInputType(),
+        this.getInputType()
       );
-    } catch(e) {
+    } catch (e) {
       this.handleError(e);
     }
   }
@@ -204,7 +217,7 @@ class Input<T> extends React.Component<Props<T>, State> {
       } else {
         this.setInput(contents);
       }
-    } catch(error) {
+    } catch (error) {
       this.handleError(error);
     }
   }
@@ -233,23 +246,25 @@ class Input<T> extends React.Component<Props<T>, State> {
   }
 
   render(): JSX.Element {
-    const {serializeModeOn} = this.props;
-    const {serializeInputType} = this.state;
+    const { serializeModeOn } = this.props;
+    const { serializeInputType } = this.state;
     return (
-      <div className='container'>
-        <h3 className='subtitle'>Input</h3>
-        <div>
+      <div className="container">
+        <div className='row'>
+          <div className='col'>
+          <h3 className="subtitle">Input</h3>
+        {/* <div>
           <div>Upload a file to populate field below (optional)</div>
           <input
             type="file"
             accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
             onChange={(e) => e.target.files && this.onUploadFile(e.target.files[0])}
           />
-        </div>
+        </div> */}
         <br />
         <div className="field is-horizontal">
           <div className="field-body">
-            <div className='field has-addons'>
+            {/* <div className='field has-addons'>
               <div className='control'>
                 <a className='button is-static'>
                   Fork
@@ -267,65 +282,86 @@ class Input<T> extends React.Component<Props<T>, State> {
                   </select>
                 </div>
               </div>
-            </div>
-            <div className='field has-addons'>
-              <div className='control'>
-                <a className='button is-static'>
-                  SSZ Type
-                </a>
-              </div>
-              <div className='control'>
-                <div className='select'>
+            </div> */}
+            <div>
+              <div>
+                <div className="form">
+                <label for="ssztypeselect">Select SSZ Type</label>
+
                   <select
+                    className="form-select"
+                    id="ssztypeselect"
+                    aria-label="ssz type"
                     value={this.state.sszTypeName}
-                    onChange={this.setSSZType.bind(this)}>
-                    {
-                      this.names().map(
-                        (name) => <option key={name} value={name}>{name}</option>)
-                    }
+                    onChange={this.setSSZType.bind(this)}
+                  >
+                    {this.names().map((name) => (
+                      <option key={name} value={name}>
+                        {name}
+                      </option>
+                    ))}
                   </select>
                 </div>
               </div>
             </div>
-            {serializeModeOn &&
-              <div className='field has-addons'>
-                <div className='control'>
-                  <a className='button is-static'>
-                    Input Type
-                  </a>
-                </div>
-                <div className='control'>
-                  <div className='select'>
-                    <select
-                      value={this.getInputType()}
-                      onChange={(e) => this.setInputType(e.target.value)}>
-                      {
-                        Object.keys(inputTypes).map(
-                          (name) => <option key={name} value={name}>{name}</option>)
-                      }
-                    </select>
-                  </div>
+            {serializeModeOn && (
+            <div>
+              <div>
+                <div className="form">
+                  <label for="inputTypeSelect">Input Type</label>
+                  <select
+                    className="form-select"
+                    id="inputTypeSelect"
+                    aria-label="input type"
+                    value={this.getInputType()}
+                    onChange={(e) => this.setInputType(e.target.value)}
+                  >
+                    {Object.keys(inputTypes).map((name) => (
+                      <option key={name} value={name}>
+                        {name}
+                      </option>
+                    ))}
+                  </select>
                 </div>
               </div>
-            }
+              </div>
+            )}
           </div>
         </div>
+        <label for="input">Input</label>
         <textarea
-          className="textarea"
+        className='form-control'
+        id="input"
           rows={this.state.input && this.getRows()}
           value={this.state.input}
           onChange={(e) => this.setInput(e.target.value)}
         />
-        <button
+          </div>
+          <div className='col'>
+            <div className='row'>
+          <img 
+                    src='/developers-eth-blocks.png'
+                    alt='ethereum building blocks'
+
+                    
+                    />
+            </div>
+            <div className='row'>
+                <button
           className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
           disabled={!(this.state.sszTypeName && this.state.input)}
           onClick={this.doProcess.bind(this)}
         >
           {serializeModeOn ? "Serialize" : "Deserialize"}
         </button>
+              
+              </div>
+            
+            </div>
+        </div>
       </div>
     );
   }
 }
 
-export default (Input);
+export default Input;
