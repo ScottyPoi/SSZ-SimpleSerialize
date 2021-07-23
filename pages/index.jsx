@@ -1,10 +1,15 @@
 import React from 'react';
 import Image from 'next/image';
-import Link from 'next/link'
+import Link from 'next/link';
+import Tabs from '../src/components/Tabs.tsx';
 export default function Hello() {
 
     return (
         <div className='container'>
+            <div className='row justify-content-center'>
+                <Tabs />
+            </div>
+
             <div className='row justify-content-center'>
                 <div className='col-8'>
                     <img 
