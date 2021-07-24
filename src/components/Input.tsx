@@ -64,10 +64,9 @@ class Input<T> extends React.Component<Props<T>, State> {
     };
   }
 
-  // async componentDidMount(): Promise<void> {
-  //   this.typesWorkerThread = await spawn<SszWorker>(this.worker);
-  //   await this.resetWith(this.getInputType(), this.state.sszTypeName);
-  // }
+  async componentDidMount(): Promise<void> {
+    await this.resetWith(this.getInputType(), this.state.sszTypeName);
+  }
 
   // async componentWillUnmount(): Promise<void> {
   //   await Thread.terminate(this.typesWorkerThread as ModuleThread<SszWorker>);
@@ -121,6 +120,21 @@ class Input<T> extends React.Component<Props<T>, State> {
   names(): string[] {
     return typeNames(this.types());
   }
+
+  basicNames(): string[] {
+    const list = [
+      "Boolean",
+      "Bytes32",
+      "Uint8",
+      "Uint16",
+      "Uint32",
+      "Uint64",
+      "Uint128",
+      "Uint256",
+    ];
+    return list;
+  }
+
   types(): Record<string, Type<unknown>> {
     return forks[this.state.forkName];
   }
@@ -250,114 +264,139 @@ class Input<T> extends React.Component<Props<T>, State> {
     const { serializeInputType } = this.state;
     return (
       <div className="container">
-        <div className='row'>
-          <div className='col'>
-          <h3 className="subtitle">Input</h3>
-        {/* <div>
-          <div>Upload a file to populate field below (optional)</div>
-          <input
-            type="file"
-            accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
-            onChange={(e) => e.target.files && this.onUploadFile(e.target.files[0])}
-          />
-        </div> */}
-        <br />
-        <div className="field is-horizontal">
-          <div className="field-body">
-            {/* <div className='field has-addons'>
-              <div className='control'>
-                <a className='button is-static'>
-                  Fork
-                </a>
-              </div>
-              <div className='control'>
-                <div className='select'>
-                  <select
-                    value={this.state.forkName}
-                    onChange={this.setFork.bind(this)}>
-                    {
-                      Object.keys(forks).map(
-                        (name) => <option key={name} value={name}>{name}</option>)
-                    }
-                  </select>
-                </div>
-              </div>
-            </div> */}
-            <div>
-              <div>
-                <div className="form">
-                <label for="ssztypeselect">Select SSZ Type</label>
-
-                  <select
-                    className="form-select"
-                    id="ssztypeselect"
-                    aria-label="ssz type"
-                    value={this.state.sszTypeName}
-                    onChange={this.setSSZType.bind(this)}
-                  >
-                    {this.names().map((name) => (
-                      <option key={name} value={name}>
-                        {name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-            </div>
-            {serializeModeOn && (
-            <div>
-              <div>
-                <div className="form">
-                  <label for="inputTypeSelect">Input Type</label>
-                  <select
-                    className="form-select"
-                    id="inputTypeSelect"
-                    aria-label="input type"
-                    value={this.getInputType()}
-                    onChange={(e) => this.setInputType(e.target.value)}
-                  >
-                    {Object.keys(inputTypes).map((name) => (
-                      <option key={name} value={name}>
-                        {name}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-              </div>
-            )}
-          </div>
-        </div>
-        <label for="input">Input</label>
-        <textarea
-        className='form-control'
-        id="input"
-          rows={this.state.input && this.getRows()}
-          value={this.state.input}
-          onChange={(e) => this.setInput(e.target.value)}
-        />
-          </div>
-          <div className='col'>
-            <div className='row'>
-          <img 
-                    src='/developers-eth-blocks.png'
-                    alt='ethereum building blocks'
-
-                    
-                    />
-            </div>
-            <div className='row'>
-                <button
-          className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
-          disabled={!(this.state.sszTypeName && this.state.input)}
-          onClick={this.doProcess.bind(this)}
-        >
-          {serializeModeOn ? "Serialize" : "Deserialize"}
-        </button>
-              
-              </div>
+        <div className="row">
+          <div className="col">
+            <h3 className="subtitle">Input</h3>
             
+            <br />
+            <div className="field is-horizontal">
+              <div className="field-body">
+                <div className="field has-addons">
+                  {/* <div className="control">
+                    <a className="button is-static">Fork</a>
+                  </div>
+                  <div className="control">
+                    <div className="select">
+                      <select
+                        value={this.state.forkName}
+                        onChange={this.setFork.bind(this)}
+                      >
+                        {Object.keys(forks).map((name) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div> */}
+                </div>
+                <div>
+                  <div>
+                    <div className="form">
+                      <label for="ssztypeselect">Select SSZ Type</label>
+
+                      <select
+                        className="form-select"
+                        id="ssztypeselect"
+                        aria-label="ssz type"
+                        value={this.state.sszTypeName}
+                        onChange={this.setSSZType.bind(this)}
+                      >
+                        {this.names().map((name) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                {serializeModeOn && (
+                  <div>
+                    <div>
+                      <br/>
+                      <label for="input">Input</label>
+<br/>
+                      <div
+                        className="btn-group"
+                        role="group"
+                        aria-label="Basic radio toggle button group"
+                      >
+                        {Object.keys(inputTypes).map((name) => (
+                          <>
+                          <input
+                          
+                            type="radio"
+                            className="btn-check"
+                            name={name}
+                            id={`inputtype${name}`}
+                            autocomplete="off"
+                            value={name}
+                            onClick={() => this.setInputType(name)}
+                            checked={serializeInputType == name}
+                          />
+                          <label className="btn btn-outline-secondary" for={`inputtype${name}`}>{name}</label>
+                        </>
+                        ))}
+                      </div>
+                      {/* <div className="form">
+                        <label for="inputTypeSelect">Input Type</label>
+
+                        <select
+                          className="form-select"
+                          id="inputTypeSelect"
+                          aria-label="input type"
+                          value={this.getInputType()}
+                          onChange={(e) => this.setInputType(e.target.value)}
+                        >
+                          {Object.keys(inputTypes).map((name) => (
+                            <option key={name} value={name}>
+                              {name}
+                            </option>
+                          ))}
+                        </select>
+                      </div> */}
+                    </div>
+                  </div>
+                )}
+              </div>
             </div>
+            <textarea
+              className="form-control"
+              id="input"
+              rows={this.state.input && this.getRows()}
+              value={this.state.input}
+              onChange={(e) => this.setInput(e.target.value)}
+            />
+          </div>
+          <div className="col">
+            <div className="row">
+              <img
+                src="/developers-eth-blocks.png"
+                alt="ethereum building blocks"
+              />
+            </div>
+            <div className="row">
+              <button
+                className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
+                disabled={!(this.state.sszTypeName && this.state.input)}
+                onClick={this.doProcess.bind(this)}
+              >
+                {serializeModeOn ? "Serialize" : "Deserialize"}
+              </button>
+              <br/>
+              <div className="row">
+              <div>Upload a file (optional)</div>
+              <input
+                type="file"
+                accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
+                onChange={(e) =>
+                  e.target.files && this.onUploadFile(e.target.files[0])
+                }
+              />
+            </div>
+            </div>
+          </div>
         </div>
       </div>
     );

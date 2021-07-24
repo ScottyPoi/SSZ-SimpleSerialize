@@ -4,12 +4,12 @@ export default function TopHeader({ ...props }) {
   return (
     <>
       <div className="container-fluid">
+
+        <div className='row'></div>
         <nav
-          className="navbar navbar-expand-lg navbar-dark bg-dark"
+          className="navbar navbar-expand-lg navbar-light bg-light"
           collapseonselect="true"
           expand="lg"
-          bg="dark"
-          variant="dark"
         >
           <div className="row">
             <button
@@ -25,7 +25,7 @@ export default function TopHeader({ ...props }) {
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
               <a className="navbar-brand" href="./">
-                SSZ
+                SSZ - SimpleSerialize
               </a>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                 {props.pages.map((page) => {
@@ -82,7 +82,7 @@ export default function TopHeader({ ...props }) {
               </ul>
             </div>
           </div>
-        </nav>
+        </nav>        
       </div>
     </>
   );

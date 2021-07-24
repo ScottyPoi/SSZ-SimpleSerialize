@@ -90,7 +90,7 @@ export default class SerializeFront<T> extends React.Component<Props, State<T>> 
         </LoadingOverlay>
         <div className='container'>
           <div className='row'>
-            <div className='col'>
+            <div className='col-8'>
               <Input
                 serializeModeOn={serializeModeOn}
                 onProcess={this.process.bind(this)}
@@ -101,7 +101,7 @@ export default class SerializeFront<T> extends React.Component<Props, State<T>> 
                 // worker={this.worker}
               />
             </div>
-            <div className='col'>
+            <div className='col-4'>
               <Output
                 deserialized={deserialized}
                 serializeModeOn={serializeModeOn}

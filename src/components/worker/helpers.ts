@@ -12,6 +12,7 @@ import {
   isBigIntUintType,
 } from "@chainsafe/ssz";
 import {forks} from "../../util/types";
+import * as crypto from 'crypto'
 
 function randomNumber(length: number): number {
   return Math.random() * length | 0;
@@ -35,7 +36,7 @@ function randomBooleanArray(length: number): Array<boolean> {
 
 function randomByteVector(length: number): Uint8Array {
   const array = new Uint8Array(length);
-  self.crypto.getRandomValues(array);
+  // self.crypto.getRandomValues(array);
   return array;
 }
 

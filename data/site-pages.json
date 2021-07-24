@@ -10,6 +10,11 @@
     "title": "SSZ Visualizer"
   },
   {
+    "name": "Eth2 SSZ Converter",
+    "url": "/Converter",
+    "title": "Eth2 SSZ Converter"
+  },
+  {
     "name": "Documentation",
     "url": "/documentation",
     "title": "Documentation",

@@ -30,15 +30,41 @@ export default class Tabs extends React.Component<Props, State> {
     return (
       <>
         <div>
+          <div className="row justify-content-center">
+            <div
+                className="btn-group"
+                role="group"
+                aria-label="Basic radio toggle button group"
+            >
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btnserialize"
+                  autocomplete="off"
+                  onClick={() => this.showSerialize()}
+                  checked={serializeModeOn}
+                />
+                <label className="btn btn-outline-secondary" for="btnserialize">
+                  Serialize
+                </label>
+
+                <input
+                  type="radio"
+                  className="btn-check"
+                  name="btnradio"
+                  id="btndeserialize"
+                  onClick={() => this.showDeserialize()}
+                  autocomplete="off"
+                  checked={!serializeModeOn}
+                />
+                <label className="btn btn-outline-secondary" for="btndeserialize">
+                  Deserialize
+                </label>
+            </div>
+          </div>
+          <br/>
         <Serialize serializeModeOn={serializeModeOn} />
-          <ul className="nav nav-tabs">
-            <li className="nav-item">
-              <button onClick={() => this.showSerialize()}>Serialize</button>
-            </li>
-            <li className="nav-item">
-              <button onClick={() => this.showDeserialize()}>Deserialize</button>
-          </li>
-          </ul>
         </div>
       </>
     );

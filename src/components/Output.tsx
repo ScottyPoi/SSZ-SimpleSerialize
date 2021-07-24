@@ -85,13 +85,13 @@ export default class Output<T> extends React.Component<Props<T>, State> {
           :
           <>
             <div className='row'>
-              <div className='control'>
+             {/* <div className='control'>
                   <a className='button is-static'>
                     Output Type
                   </a>
               </div>
               <div className='control'>
-                <div className='select'>
+                 <div className='select'>
                     <select
                       value={outputType}
                       onChange={(e) => this.setOutputType(e.target.value)}>
@@ -100,18 +100,18 @@ export default class Output<T> extends React.Component<Props<T>, State> {
                           (name) => <option key={name} value={name}>{name}</option>)
                       }
                     </select>
-                </div>
-              </div>
+                </div> 
+              </div> */}
             </div>
             <div className='row'>
               {serializeModeOn ?
                 <>
                   <NamedOutput name="HashTreeRoot" value={hashTreeRootStr} textarea={false} />
                   <NamedOutput name="Serialized" value={serializedStr} textarea />
-                  {/* <button
+                  <button
                     disabled={!this.props.serialized}
                     onClick={() => this.downloadFile(this.props.serialized, "ssz")}
-                  >{"Download data as .ssz file"}</button> */}
+                  >{"Download data as .ssz file"}</button>
                 </>
                 :
                 <>
@@ -120,10 +120,10 @@ export default class Output<T> extends React.Component<Props<T>, State> {
                     value={deserializedStr}
                     readOnly={true}
                   />
-                          {/* <button
+                          <button
                             disabled={!deserializedStr}
                             onClick={() => this.downloadFile(deserializedStr, this.state.outputType)}
-                            >{"Download data as ." + this.state.outputType + " file"}</button> */}
+                            >{"Download data as ." + this.state.outputType + " file"}</button>
                 </>
               }
             </div>
