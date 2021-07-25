@@ -13,10 +13,11 @@ const navBarStyle = {
 export default function NavBar({ ...props }) {
 
     return (
-      <div style={{border: `solid gray`}}>
-        <div   className='nav flex-column nav-expand-lg' id='navbarSupportedContent'>
-          <div className='row justify-content-center'>Site Map</div>
-          <div className='row '>
+      <div >
+        <div  className='border border-3 nav flex-column nav-expand-lg pt-5' id='navbarSupportedContent'>
+
+          <div className='border-bottom d-flex flex-row justify-content-center py-1'>Site Map</div>
+          <div className='row'>
             <div className={`d-flex flex-column  navbar-nav-scroll ${styles.nonavbar}`} style={{scrollbarWidth: 0}}>
           <>
           {props.pages.map((page) => {

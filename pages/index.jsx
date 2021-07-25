@@ -6,11 +6,15 @@ export default function Hello() {
   return (
     <div className="container">
       <div className="row">
-          <div className='col'>SSZ SimpleSerialize</div>
-          <div className='col'>      <text className="fs-2 text-center">Welcome to SSZ.dev</text>
-</div>
-          <div className='col'>      <div className='row justify-content-end'><text className="text-end">Serialization for Eth2 Data</text></div>
-</div>
+        <div className="col">SSZ SimpleSerialize</div>
+        <div className="col">
+          <text className="fs-2 text-center">Welcome to SSZ.dev</text>
+        </div>
+        <div className="col">
+          <div className="row justify-content-end">
+            <text className="text-end">Serialization for Eth2 Data</text>
+          </div>
+        </div>
       </div>
 
       <br />

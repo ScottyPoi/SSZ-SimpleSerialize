@@ -1,7 +1,7 @@
 import * as React from "react";
 import {Type} from "@chainsafe/ssz";
 import Output from "./Output";
-import Input from "./Input";
+import InputHome from "./InputHome";
 import LoadingOverlay from "react-loading-overlay-ts";
 import BounceLoader from "react-spinners/BounceLoader";
 import {ForkName} from "../util/types";
@@ -91,7 +91,7 @@ export default class SerializeFront<T> extends React.Component<Props, State<T>> 
         <div className='container'>
           <div className='row'>
             <div className='col-8'>
-              <Input
+              <InputHome
                 serializeModeOn={serializeModeOn}
                 onProcess={this.process.bind(this)}
                 sszType={sszType}

@@ -26,11 +26,11 @@ export default function TopHeader({ ...props }) {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              {/* <a className="navbar-brand" href="./">
+              <a className="navbar-brand" href="./">
                 SSZ - SimpleSerialize
-              </a> */}
+              </a>
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                <li className='nav-item dropdown'>
+                {/* <li className='nav-item dropdown'>
                 <a
                           className="nav-link dropdown-toggle"
                           role="button"
@@ -43,7 +43,7 @@ export default function TopHeader({ ...props }) {
                         <ul className='dropdown-menu' aria-labelledby='sitemap'>
                         <NavBar {...props}/>
                         </ul>
-                </li>
+                </li> */}
                 {props.pages.map((page) => {
                   if (!page.pages) {
                     return (
