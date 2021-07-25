@@ -1,5 +1,6 @@
 import React from "react";
 import Link from "next/link";
+import NavBar from './NavBar'
 export default function TopHeader({ ...props }) {
   return (
     <>
@@ -10,6 +11,7 @@ export default function TopHeader({ ...props }) {
           className="navbar navbar-expand-lg navbar-light bg-light"
           collapseonselect="true"
           expand="lg"
+          style={{border: 'solid grey', padding: '0'}}
         >
           <div className="row">
             <button
@@ -24,10 +26,24 @@ export default function TopHeader({ ...props }) {
               <span className="navbar-toggler-icon"></span>
             </button>
             <div className="collapse navbar-collapse" id="navbarNavDropdown">
-              <a className="navbar-brand" href="./">
+              {/* <a className="navbar-brand" href="./">
                 SSZ - SimpleSerialize
-              </a>
+              </a> */}
               <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+                <li className='nav-item dropdown'>
+                <a
+                          className="nav-link dropdown-toggle"
+                          role="button"
+                          data-bs-toggle="dropdown"
+                          id='sitemap'
+                          aria-expanded="false"
+                        >
+                          SSZ - SimpleSerialize
+                        </a>
+                        <ul className='dropdown-menu' aria-labelledby='sitemap'>
+                        <NavBar {...props}/>
+                        </ul>
+                </li>
                 {props.pages.map((page) => {
                   if (!page.pages) {
                     return (

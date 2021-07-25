@@ -6,18 +6,19 @@ const navBarStyle = {
     backgroundColor: "red",
     color: "white",
     width: "100%",
-    height: "100%"
+    height: "100%",
+    border: 'solid gray'
   };
   
 export default function NavBar({ ...props }) {
 
     return (
-      <div >
-        <div className='nav flex-column nav-expand-lg' id='navbarSupportedContent'>
+      <div style={{border: `solid gray`}}>
+        <div   className='nav flex-column nav-expand-lg' id='navbarSupportedContent'>
           <div className='row justify-content-center'>Site Map</div>
           <div className='row '>
             <div className={`d-flex flex-column  navbar-nav-scroll ${styles.nonavbar}`} style={{scrollbarWidth: 0}}>
-          <ul className='navbar-nav'>
+          <>
           {props.pages.map((page) => {
             if (!page.pages) {
               return (
@@ -52,10 +53,10 @@ export default function NavBar({ ...props }) {
                           <div className='d-flex flex-row' key={subpage.name}>
                             <li>
                                 <Link className='nav-link' href={`${subpage.url}`}><a className={styles.sitemap2}> {subpage.name} </a></Link>
-                              <ul className='navbar-nav'>
+                              <ul className='navbar-nav flex-column'>
                           {subpage.pages.map((subsubpage) => {
                               return (
-                                <li className='d-flex flex-row' key={subsubpage.name}>
+                                <li className='nav-item d-flex flex-row' key={subsubpage.name}>
                                   <Link className='nav-link' href={`${subsubpage.url}`}>
                                     <a className={styles.sitemap3}> {subsubpage.name} </a>
                                   </Link>
@@ -75,12 +76,12 @@ export default function NavBar({ ...props }) {
           })
           }
 
-          </ul>
-          </div>
-          </div>
+          </>
+           </div>
+           </div>
 
           
-        </div>
-      </div>
+         </div>
+       </div>
     );
 };

@@ -2,6 +2,7 @@ import styles from './layout.module.css';
 import Head from 'next/head';
 import TopHeader from '../components/TopHeader';
 import { MainPage } from '../stories/TopHeader.stories';
+import ForkMe from '../src/components/ForkMe'
 import NavBar from '../components/NavBar';
 import * as ReactBootStrap from 'react-bootstrap';
 import  pages  from '../data/site-pages.json';
@@ -20,6 +21,7 @@ const Y = {
 const X = {
   zIndex: 2
 }
+
 
 export default function Layout({ children }) {
     console.log('twerkleizing...')
@@ -50,7 +52,7 @@ export default function Layout({ children }) {
               </div>
             <div className="container">
                 <div className='d-flex row justify-content-between position-relative d-none d-sm-block'>
-                  <div className='col-2 justify-content-start position-fixed top-10 start-0 ' style={Y}>
+                  <div className='col-2 justify-content-start position-fixed start-0 top-0 p-0 g-0 m-0' style={Y}>
                     <nav className="nav align-items-stretch">
                       <NavBar { ...MainPage.args } />
                     </nav>
