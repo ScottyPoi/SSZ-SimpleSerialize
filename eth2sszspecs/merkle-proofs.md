@@ -2,27 +2,6 @@
 
 **Notice**: This document is a work-in-progress for researchers and implementers
 
-## Table of contents
-
-<!-- TOC -->
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-
-- [Helper functions](#helper-functions)
-- [Generalized Merkle tree index](#generalized-merkle-tree-index)
-- [SSZ object to index](#ssz-object-to-index)
-  - [Helpers for generalized indices](#helpers-for-generalized-indices)
-    - [`concat_generalized_indices`](#concat_generalized_indices)
-    - [`get_generalized_index_length`](#get_generalized_index_length)
-    - [`get_generalized_index_bit`](#get_generalized_index_bit)
-    - [`generalized_index_sibling`](#generalized_index_sibling)
-    - [`generalized_index_child`](#generalized_index_child)
-    - [`generalized_index_parent`](#generalized_index_parent)
-- [Merkle multiproofs](#merkle-multiproofs)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-<!-- /TOC -->
-
 ## Helper functions
 
 ```python

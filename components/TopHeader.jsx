@@ -11,7 +11,6 @@ export default function TopHeader({ ...props }) {
           className="navbar navbar-expand-lg navbar-light bg-light"
           collapseonselect="true"
           expand="lg"
-          style={{border: 'solid grey', padding: '0'}}
         >
           <div className="row">
             <button

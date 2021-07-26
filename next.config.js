@@ -1,14 +1,17 @@
-const ghPages = process.env.DEPLOY_TARGET === 'gh-pages';
+const ghPages = process.env.DEPLOY_TARGET === "gh-pages";
+const withMDX = require("@next/mdx");
 
-module.exports = {
-  future: {
-    webpack5: true,
+module.exports = [
+  withMDX(),
+  {
+    future: {
+      webpack5: true,
+    },
+    pageExtensions: ["mdx", "jsx", "js", "ts", "tsx"],
+    images: {
+      loader: "cloudinary",
+      path: "http://res.cloudinary.com/ssz",
+    },
+    assetPrefix: ghPages ? "/SSZ-SimpleSerialize" : "",
   },
-  pageExtensions: ['mdx', 'jsx', 'js', 'ts', 'tsx'],
-  images: {
-  loader: 'cloudinary',
-  path: 'http://res.cloudinary.com/ssz'
-  },
-  assetPrefix: ghPages ? '/SSZ-SimpleSerialize' : ''
-
-}
+];

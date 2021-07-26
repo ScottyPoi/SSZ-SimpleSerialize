@@ -4,8 +4,8 @@ import Link from "next/link";
 import TabsFront from "../src/components/TabsFront.tsx";
 export default function Hello() {
   return (
-    <div className="container">
-      <div className="row">
+    <div className="container py-0 px-0 border-top">
+      <div className="row px-2">
         <div className="col">SSZ SimpleSerialize</div>
         <div className="col">
           <text className="fs-2 text-center">Welcome to SSZ.dev</text>
@@ -27,7 +27,7 @@ export default function Hello() {
       </div>
       <br />
 
-      <div className="row justify-content-center">
+      <div className="row px-2 justify-content-center">
         <TabsFront />
       </div>
     </div>

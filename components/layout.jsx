@@ -42,8 +42,8 @@ export default function Layout({ children }) {
             <Head> 
               <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> 
             </Head>
-            <div className='d-flex p-5'>
-              <div className='row fixed-top'>
+            <div className='d-flex p-0'>
+              <div className='row border fixed-top'>
                 <div className='col'>
                   <div className='row'>
                     <TopHeader { ...MainPage.args } />
@@ -58,9 +58,9 @@ export default function Layout({ children }) {
                     
                   </div>
                 </div>
-                <div className='d-flex flex-row justify-content-end'>
-                  <div className='d-flex flex-col col-11'>{children}</div>
+                <div className='d-flex flex-row bd-highlight justify-content-end position-relative'>
 
+                  <div className='d-flex g-0 flex-col col-11'>{children}</div>
                 </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>
             </div>
