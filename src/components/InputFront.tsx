@@ -502,9 +502,9 @@ class InputFront<T> extends React.Component<Props<T>, State> {
     const { serializeInputType } = this.state;
     return (
       <div className="container">
-        <div className='row'>
+        <div className='row justify-content-center'>
           <div className='col'>
-          <h3 className="subtitle">Input</h3>
+          <h3>Inputs</h3>
         <br />
         <div className="field is-horizontal">
             <div>

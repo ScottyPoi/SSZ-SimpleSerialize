@@ -264,9 +264,9 @@ class InputHome<T> extends React.Component<Props<T>, State> {
     const { serializeInputType } = this.state;
     return (
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-center">
           <div className="col">
-            <h3 className="subtitle">Input</h3>
+            <h3 className="row justify-content-center border-bottom">Input</h3>
             
             <br />
             <div className="field is-horizontal">

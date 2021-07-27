@@ -78,7 +78,7 @@ export default class Output<T> extends React.Component<Props<T>, State> {
     }
 
     return (<div className='container'>
-      <h3 className='subtitle'>Output</h3>
+      <h3 className='row justify-content-center border-bottom'>Output</h3>
       {
         showError
           ? <ErrorBox error={error} hideError={this.hideError.bind(this)}/>
