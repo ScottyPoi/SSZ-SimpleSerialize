@@ -2,7 +2,7 @@ import Controls from "../simulator/controls/Controls";
 
 export default function Visualizer(props) {
   return (
-    <div className="container" style={{ outline: "solid white" }}>
+    <div className="container px-5 border-start border-3" style={{ outline: "solid white" }}>
       {" "}
       <div
         className="d-flex flex-row justify-content-center"
