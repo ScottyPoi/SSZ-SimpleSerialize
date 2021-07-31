@@ -26,7 +26,7 @@ const X = {
 export default function Layout({ children }) {
     console.log('twerkleizing...')
     return (
-          <div className='container p-0 m-0 g-0'>
+          <div >
             <Head>
               <meta charSet="utf-8" />
             </Head>
@@ -42,30 +42,34 @@ export default function Layout({ children }) {
             <Head> 
               <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap" rel="stylesheet" /> 
             </Head>
-            <div className='d-flex p-0'>
-              <div className='row border fixed-top'>
+          <div className='container'></div> 
+            <div className='col p-1'>
+              <div className='row px-2 border fixed-top'>
                 <div className='col'>
                   <div className='row'>
                     <TopHeader { ...MainPage.args } />
                   </div>
                 </div>
               </div>
-            <div className="d-flex ">
-                <div className='row position-relative g-0'>
-                  <div className='col-1 position-fixed start-0 top-0 p-0'>
+            </div>
+            <div className='container'>
+              <div className="col">
+                <div className='row position-relative'>
+                  <div className='col-1 pt-5 position-fixed start-0 top-0' style={Y}>
                     
-                      <NavBar { ...MainPage.args } />
+                      <NavBar { ...MainPage.args }/>
                     
                   </div>
+                  <div className='col-11'></div>
                 </div>
-                <div className='d-flex flex-row bd-highlight justify-content-end position-relative'>
-
-                  <div className='d-flex g-0 flex-col col-11'>{children}</div>
-                </div>
+                <div className='row border-start bd-highlight justify-content-end position-relative' style={Z}>
+              <div className='col-2'></div>
+                  <div className='d-inline-flex px-3 mx-5 flex-col col-10'>{children}</div>
+                  </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>
+              </div>
             </div>
           </div>
-        </div>
           )
   };
   

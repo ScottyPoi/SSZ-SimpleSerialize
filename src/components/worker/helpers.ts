@@ -36,7 +36,7 @@ function randomBooleanArray(length: number): Array<boolean> {
 
 function randomByteVector(length: number): Uint8Array {
   const array = new Uint8Array(length);
-  // self.crypto.getRandomValues(array);
+  self.crypto.getRandomValues(array);
   return array;
 }
 

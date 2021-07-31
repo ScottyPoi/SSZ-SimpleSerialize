@@ -13,11 +13,12 @@ const navBarStyle = {
 export default function NavBar({ ...props }) {
 
     return (
-      <div >
-        <div  className='border border-3 nav flex-column nav-expand-lg pt-5' id='navbarSupportedContent'>
-          <div className='border-bottom d-flex flex-row justify-content-center py-3'>Site Map</div>
+      <div className='container'>
+      <div className='row p-4'>
+        <div  className='nav flex-column nav-expand-lg pt-5' id='navbarSupportedContent'>
+          {/* <div className='d-flex flex-row justify-content-center pt-4 pb-2'>Site Map</div> */}
           <div className='row'>
-            <div className={`d-flex flex-column  navbar-nav-scroll ${styles.nonavbar}`} style={{scrollbarWidth: 0}}>
+            <div className={`d-flex flex-column  navbar-nav-scroll ${styles.nonavbar}`} >
           <>
           {props.pages.map((page) => {
             if (!page.pages) {
@@ -82,6 +83,7 @@ export default function NavBar({ ...props }) {
 
           
          </div>
+       </div>
        </div>
     );
 };

@@ -24,10 +24,5 @@
 
 .nonavbar {
     overflow-y: scroll;
-    margin-right: 0px;
-    scrollbar-width: none;
+    scrollbar-width: auto;
 }
-.nonavbar::-webkit-scrollbar {
-        display: none;
-        
-    }

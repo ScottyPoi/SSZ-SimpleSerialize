@@ -5,10 +5,9 @@ import { Type, toHexString } from "@chainsafe/ssz";
 // import {ModuleThread, spawn, Thread, Worker} from "threads";
 import { ChangeEvent } from "react";
 // import {withAlert} from "react-alert";
-
+import InputBar from "./display/InputBar";
 import { inputTypes } from "../util/input_types";
 import { ForkName, typeNames, forks } from "../util/types";
-import { SszWorker } from "../pages/worker";
 import _createRandomValue from "./RandomValue";
 
 type Props<T> = {
@@ -35,6 +34,7 @@ type State = {
   serializeInputType: string;
   deserializeInputType: string;
   value: object | string;
+  bytes: number
 };
 
 function getRandomType(types: Record<string, Type<unknown>>): string {
@@ -42,7 +42,7 @@ function getRandomType(types: Record<string, Type<unknown>>): string {
   return names[Math.floor(Math.random() * names.length)];
 }
 
-const DEFAULT_FORK = "phase0";
+const DEFAULT_FORK = "altair";
 
 class InputHome<T> extends React.Component<Props<T>, State> {
   // worker: Worker;
@@ -57,10 +57,11 @@ class InputHome<T> extends React.Component<Props<T>, State> {
     this.state = {
       forkName: DEFAULT_FORK,
       input: "",
-      sszTypeName: initialType,
+      sszTypeName: "Uint32",
       serializeInputType: "yaml",
       deserializeInputType: "hex",
       value: "",
+      bytes: 32,
     };
   }
 
@@ -131,8 +132,19 @@ class InputHome<T> extends React.Component<Props<T>, State> {
       "Uint64",
       "Uint128",
       "Uint256",
+      "CommitteeIndices",
     ];
     return list;
+  }
+
+  compositeNames(): object {
+    const composites = {
+      CommitteeIndices: "List<Type<Uint64>, Limit<2048>>",
+      DepositDataRootList: "List<Type<Uint256>, Limit<2**32>>",
+      HistoricalStateRoots: "Vector<Type<Uint256>, Length<2048>",
+      AttestationSubnets: "BitVector<Length<64>>",
+    };
+    return composites;
   }
 
   types(): Record<string, Type<unknown>> {
@@ -156,7 +168,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
   async resetWith(inputType: string, sszTypeName: string): Promise<void> {
     const types = this.types();
     let sszType = types[sszTypeName];
-
+    let bytes = sszType.getMaxSerializedLength();
     // get a new ssz type if it's not in our fork
     if (!sszType) {
       sszTypeName = getRandomType(types);
@@ -165,7 +177,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
     const { forkName } = this.state;
 
     this.props.setOverlay(true, `Generating random ${sszTypeName} value...`);
-    const value = _createRandomValue(sszTypeName, forkName);
+    const value = await _createRandomValue(sszTypeName, forkName);
     const input = inputTypes[inputType].dump(value, sszType);
     if (this.props.serializeModeOn) {
       this.setState({
@@ -180,6 +192,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
       sszTypeName,
       input,
       value,
+      bytes
     });
     this.props.setOverlay(false);
   }
@@ -267,7 +280,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
         <div className="row justify-content-center">
           <div className="col">
             <h3 className="row justify-content-center border-bottom">Input</h3>
-            
+
             <br />
             <div className="field is-horizontal">
               <div className="field-body">
@@ -307,6 +320,11 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                             {name}
                           </option>
                         ))}
+                        {Object.keys(this.compositeNames()).map((name) => (
+                          <option key={name} value={name}>
+                            {this.compositeNames()[name]}
+                          </option>
+                        ))}
                       </select>
                     </div>
                   </div>
@@ -314,9 +332,9 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                 {serializeModeOn && (
                   <div>
                     <div>
-                      <br/>
+                      <br />
                       <label for="input">Input</label>
-<br/>
+                      <br />
                       <div
                         className="btn-group"
                         role="group"
@@ -324,19 +342,23 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                       >
                         {Object.keys(inputTypes).map((name) => (
                           <>
-                          <input
-                          
-                            type="radio"
-                            className="btn-check"
-                            name={name}
-                            id={`inputtype${name}`}
-                            autocomplete="off"
-                            value={name}
-                            onClick={() => this.setInputType(name)}
-                            checked={serializeInputType == name}
-                          />
-                          <label className="btn btn-outline-secondary" for={`inputtype${name}`}>{name}</label>
-                        </>
+                            <input
+                              type="radio"
+                              className="btn-check"
+                              name={name}
+                              id={`inputtype${name}`}
+                              autocomplete="off"
+                              value={name}
+                              onClick={() => this.setInputType(name)}
+                              checked={serializeInputType == name}
+                            />
+                            <label
+                              className="btn btn-outline-secondary"
+                              for={`inputtype${name}`}
+                            >
+                              {name}
+                            </label>
+                          </>
                         ))}
                       </div>
                       {/* <div className="form">
@@ -368,6 +390,18 @@ class InputHome<T> extends React.Component<Props<T>, State> {
               value={this.state.input}
               onChange={(e) => this.setInput(e.target.value)}
             />
+            {/* <label for="setInput" className="form-label">Max: {2**(this.state.bytes * 8)-1}</label>
+<input type="range" value={this.state.input} onChange={(e) => this.setInput(e.target.value)} onMouseUp={this.doProcess.bind(this)}  className="form-range" min="0" max={2**(this.state.bytes * 8)-2} id="setInput"></input> */}
+          <div 
+  onMouseUp={this.doProcess.bind(this)}
+>
+          <InputBar 
+          max = {2**(this.state.bytes * 8)-1}
+          doProcess={() => this.doProcess.bind(this)}
+          set={this.setInput.bind(this)}
+          input={this.state.input}
+          />
+ </div>
           </div>
           <div className="col">
             <div className="row">
@@ -384,8 +418,8 @@ class InputHome<T> extends React.Component<Props<T>, State> {
               >
                 {serializeModeOn ? "Serialize" : "Deserialize"}
               </button>
-              <br/>
-              <div className="row">
+              <br />
+              {/* <div className="row">
               <div>Upload a file (optional)</div>
               <input
                 type="file"
@@ -394,7 +428,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                   e.target.files && this.onUploadFile(e.target.files[0])
                 }
               />
-            </div>
+            </div> */}
             </div>
           </div>
         </div>

@@ -1,11 +1,15 @@
+import DemoInput from "./DemoInput";
+
 import * as React from "react";
 import { Type } from "@chainsafe/ssz";
-import OutputHome from "./OutputHome";
+import DemoOutput from "./DemoOutput";
 import InputHome from "./InputHome";
 import LoadingOverlay from "react-loading-overlay-ts";
 import BounceLoader from "react-spinners/BounceLoader";
-import { ForkName } from "../util/types";
+import { ForkName, typeNames, forks } from "../util/types";
 import Serial from "./Serial";
+import _createRandomValue from "./RandomValue";
+
 
 type Props = {
   serializeModeOn: boolean;
@@ -23,7 +27,7 @@ type State<T> = {
   overlayText: string;
 };
 
-export default class SerializeFront<T> extends React.Component<
+export default class DemoInputGroup<T> extends React.Component<
   Props,
   State<T>
 > {
@@ -92,43 +96,79 @@ export default class SerializeFront<T> extends React.Component<
     });
   }
 
+  calculate<T>(
+    input: T,
+    type: Type<T>
+  ): object {
+    const { serialized, root } = Serial(type, input);
+    return {
+      serialized,
+      root
+    }
+  }
+
+  basicNames(): string[] {
+    const list = [
+      "Boolean",
+      "Bytes32",
+      "Uint8",
+      "Uint16",
+      "Uint32",
+      "Uint64",
+      "Uint128",
+      "Uint256",
+    ];
+    return list;
+  }
+
+  types(): Record<string, Type<unknown>> {
+    return forks["phase0"];
+  }
+
   render(): JSX.Element {
-    const { sszType, error, serialized, hashTreeRoot, deserialized } =
+    const { error, serialized, hashTreeRoot, deserialized } =
       this.state;
     const { serializeModeOn } = this.props;
     const bounceLoader = <BounceLoader css="margin: auto;" />;
 
     return (
-      <div className="section serialize-section is-family-code">
-        <LoadingOverlay
-          active={this.state.showOverlay}
-          spinner={bounceLoader}
-          text={this.state.overlayText}
-        ></LoadingOverlay>
-        <div className="container">
-          <div className="row">
-            <div className="col-8">
-              <InputHome
-                serializeModeOn={serializeModeOn}
-                onProcess={this.process.bind(this)}
-                sszType={sszType}
-                serialized={serialized}
-                deserialized={deserialized}
-                setOverlay={this.setOverlay.bind(this)}
-                // worker={this.worker}
-              />
-            </div>
-            <div className="col-4">
-              <OutputHome
-                deserialized={deserialized}
-                serializeModeOn={serializeModeOn}
-                serialized={serialized}
-                hashTreeRoot={hashTreeRoot}
-                error={error}
-                sszType={sszType}
-                sszTypeName={this.state.name}
-              />
-            </div>
+      <div className="container-fluid p-3">
+        <div className="row justify-content-end">
+          <div className="col">
+            {this.basicNames().map((basicType, idx) => {
+              const val = _createRandomValue(basicType, "phase0")
+              const sszType = this.types()[basicType];
+
+              return (
+                <div key={idx} className="row justify-content-evenly">
+                  <div className="col">
+                    {`${sszType}`}
+                    <DemoInput
+                      serializeModeOn={serializeModeOn}
+                      onProcess={this.process.bind(this)}
+                      sszType={ sszType}
+                      serialized={serialized}
+                      deserialized={deserialized}
+                      setOverlay={this.setOverlay.bind(this)}
+                      inputType={basicType}
+                      input={val}
+                      // worker={this.worker}
+                    />
+                  </div>
+                  <div className="col">
+                    <DemoOutput
+                      deserialized={deserialized}
+                      serializeModeOn={serializeModeOn}
+                      serialized={serialized}
+                      hashTreeRoot={hashTreeRoot}
+                      error={error}
+                      sszType={sszType}
+                      sszTypeName={this.state.name}
+                    />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       </div>

@@ -40,10 +40,9 @@ export default function Simulator() {
           </div>
         </div>
       </div>
-      <div className='row p-0'>
+
         <BuildDemoTree NUMBER_OF_VALUES={v} animate={true}/><br/>
-        <h5 className='text-center'>*click to see merkle-proofs!*</h5>
-      </div>
+        <div className='row'><h5 className='text-center'>*click to see merkle-proofs!*</h5></div>
     </div>
   );
 }

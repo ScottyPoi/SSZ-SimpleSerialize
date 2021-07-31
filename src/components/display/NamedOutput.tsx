@@ -7,7 +7,7 @@ type Props = {
 };
 
 const NamedOuput = ({name, value, textarea}: Props): JSX.Element => (
-  <div className='field has-addons'>
+  <div className='container'>
     <div className='control'>
       <a className='button is-static'>
         {name}
