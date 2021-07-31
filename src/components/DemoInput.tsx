@@ -8,15 +8,15 @@ import { ChangeEvent } from "react";
 
 import { inputTypes } from "../util/input_types";
 import { ForkName, typeNames, forks } from "../util/types";
-import { SszWorker } from "../pages/worker";
 import _createRandomValue from "./RandomValue";
+import Serial from './Serial';
 
 type Props<T> = {
   onProcess: (
     forkName: ForkName,
     name: string,
     input: string | T,
-    type: Type<T>,
+    type: Type<T | unknown>,
     inputType: string
   ) => void;
   serializeModeOn: boolean;
@@ -25,16 +25,11 @@ type Props<T> = {
   deserialized: object;
   alert: { error: Function };
   setOverlay: Function;
-  // worker: Worker;
-};
-
-type State = {
-  forkName: ForkName;
+  inputType: string;
+  defaultInput: string | boolean;
   sszTypeName: string;
-  input: string;
-  serializeInputType: string;
-  deserializeInputType: string;
-  value: object | string;
+  input: object | string | boolean
+  // worker: Worker;
 };
 
 function getRandomType(types: Record<string, Type<unknown>>): string {
@@ -44,29 +39,172 @@ function getRandomType(types: Record<string, Type<unknown>>): string {
 
 const DEFAULT_FORK = "phase0";
 
-class Input<T> extends React.Component<Props<T>, State> {
+// export default function DemoInput<T>(props: Props<T>) {
+//   const serializeModeOn = props.serializeModeOn
+//   const onProcess =  props.onProcess
+//   const sszTypeName = props.sszTypeName
+//   const serialized = props.serialized
+//   const deserialized = props.deserialized
+//   const setOverlay = props.setOverlay
+//   const inputType = props.inputType
+//   const defaultInput = props.defaultInput
+
+//   const forkName: ForkName = "phase0"
+//   const [input, setInput] = React.useState<string>(defaultInput)
+//   const sszType: Type<T | unknown> = types()[sszTypeName]
+//   const serializeInputType: string = "yaml"
+//   const deserializeInputType: string = "hex"
+//   const [value, setValue] = React.useState<number | bigint | boolean | object | Uint8Array | boolean[] | undefined | string>("")
+
+//   React.useEffect(() => {
+//     resetWith(getInputType(), sszTypeName);
+//   }, [])
+
+//   function setValueAndInput(value: object | string, input: string): void {
+//     setValue(value);
+//     setInput(input)
+//   }
+
+//   function handleError(error: { message: string }): void {
+//     alert(error.message);
+//     setOverlay(false);
+//   }
+
+//   // function showError(errorMessage: string): void {
+//   //   alert.error(errorMessage);
+//   // }
+
+//   function toggleBool(): void {
+//     (input == "true") ? setInput("false") : setInput("true");
+//     doProcess();
+//   }
+
+//   function getInputType(): string {
+//     return serializeModeOn ? serializeInputType : deserializeInputType;
+//   }
+
+//   function types(): Record<string, Type<T | unknown>> {
+//     return forks[forkName];
+//   }
+
+//   function parsedInput(): T | unknown{
+//     const inputType = getInputType();
+//     return inputTypes[inputType].parse(
+//       input,
+//       types()[sszTypeName]
+//     );
+//   }
+
+//   function doProcess(): void {
+
+//     try {
+//       onProcess(
+//         forkName,
+//         sszTypeName,
+//         parsedInput(),
+//         types()[sszTypeName],
+//         getInputType()
+//       );
+//     } catch (e) {
+//       handleError(e);
+//     }
+//   };
+
+//     async function resetWith(inputType: string, sszTypeName: string): Promise<void> {
+//     let sszType = types()[sszTypeName];
+
+//     // get a new ssz type if it's not in our fork
+//     if (!sszType) {
+//       sszTypeName = getRandomType(types());
+//       sszType = types()[sszTypeName];
+//     }
+
+//     setOverlay(true, `Generating random ${sszTypeName} value...`);
+//     const _value = _createRandomValue(sszTypeName, forkName);
+//     const _input = inputTypes[inputType].dump(value, sszType);
+//     setInput(_input);
+//     setValue(_value)
+//     setOverlay(false);
+//   }
+
+//   return (
+//        <div className="container">
+//          <div className="row justify-content-center">
+//            <div className="col">
+//              <h3 className="row justify-content-center border-bottom">Input</h3>
+//              <div className="row">
+//                <div className="col">{sszTypeName}</div>
+//                <div className="col">
+//                  <div className="form-check form-switch">
+//                    <input
+//                     className="form-check-input"
+//                     type="checkbox"
+//                     id="flexSwitchCheckChecked"
+//                     onChange={() => toggleBool()}
+//                     onClick={() => doProcess()}
+//                     checked={input == "true"}
+//                   />
+//                   <label
+//                     className="form-check-label"
+//                     for="flexSwitchCheckChecked"
+//                   >
+//                     {input}
+//                   </label>
+//                 </div>
+//                 {/* <textarea
+//               className="form-control"
+//               id="input"
+//               rows={this.state.input && this.getRows()}
+//               value={this.state.input}
+//               onChange={(e) => this.setInput(e.target.value)}
+//             /> */}
+//               </div>
+//             </div>
+//           </div>
+//         </div>
+//         <div className="col">
+//           <div className="row">
+//             <button
+//               className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
+//               disabled={!(sszTypeName && input)}
+//               onClick={() => doProcess()}
+//             >
+//               {serializeModeOn ? "Serialize" : "Deserialize"}
+//             </button>
+//             <br />
+//           </div>
+//         </div>
+//       </div>
+//     )
+
+// }
+
+class DemoInput<T> extends React.Component<Props<T>, State> {
   // worker: Worker;
   // typesWorkerThread: ModuleThread<SszWorker> | undefined;
 
   constructor(props: Props<T>) {
     super(props);
     const types = forks[DEFAULT_FORK];
-    const initialType = getRandomType(types);
+    const initialType = this.props.inputType;
+    const calculated = Serial(this.props.sszType, this.props.input)
+
     // this.worker = props.worker;
 
     this.state = {
       forkName: DEFAULT_FORK,
-      input: "",
+      input: this.props.input,
       sszTypeName: initialType,
       serializeInputType: "yaml",
       deserializeInputType: "hex",
       value: "",
+      calculated: calculated
     };
   }
 
-  async componentDidMount(): Promise<void> {
-    await this.resetWith(this.getInputType(), this.state.sszTypeName);
-  }
+  // async componentDidMount(): Promise<void> {
+  //   await this.resetWith(this.getInputType(), this.state.sszTypeName);
+  // }
 
   // async componentWillUnmount(): Promise<void> {
   //   await Thread.terminate(this.typesWorkerThread as ModuleThread<SszWorker>);
@@ -105,6 +243,11 @@ class Input<T> extends React.Component<Props<T>, State> {
 
   showError(errorMessage: string): void {
     this.props.alert.error(errorMessage);
+  }
+
+  toggleBool(): void {
+    this.state.input == "true" ? this.setInput("false") : this.setInput("true");
+    this.doProcess();
   }
 
   getRows(): number {
@@ -153,6 +296,32 @@ class Input<T> extends React.Component<Props<T>, State> {
     );
   }
 
+  async process<T>(
+    forkName: ForkName,
+    name: string,
+    input: T,
+    type: Type<T>
+  ): Promise<void> {
+    let error;
+    const { serialized, root } = Serial(type, input);
+    this.setState({
+      hashTreeRoot: root,
+      serialized: serialized,
+    });
+    this.setOverlay(false);
+
+    const deserialized = input;
+
+    this.setState({
+      forkName,
+      name,
+      input,
+      sszType: type,
+      error,
+      deserialized,
+    });
+  }
+
   async resetWith(inputType: string, sszTypeName: string): Promise<void> {
     const types = this.types();
     let sszType = types[sszTypeName];
@@ -165,7 +334,7 @@ class Input<T> extends React.Component<Props<T>, State> {
     const { forkName } = this.state;
 
     this.props.setOverlay(true, `Generating random ${sszTypeName} value...`);
-    const value = await _createRandomValue(sszTypeName, forkName);
+    const value = _createRandomValue(sszTypeName, forkName);
     const input = inputTypes[inputType].dump(value, sszType);
     if (this.props.serializeModeOn) {
       this.setState({
@@ -264,143 +433,38 @@ class Input<T> extends React.Component<Props<T>, State> {
     const { serializeInputType } = this.state;
     return (
       <div className="container">
-        <div className="row">
+        <div className="row justify-content-around">
           <div className="col">
-            <h3 className="subtitle">Input</h3>
-            
-            <br />
-            <div className="field is-horizontal">
-              <div className="field-body">
-                <div className="field has-addons">
-                  {/* <div className="control">
-                    <a className="button is-static">Fork</a>
-                  </div>
-                  <div className="control">
-                    <div className="select">
-                      <select
-                        value={this.state.forkName}
-                        onChange={this.setFork.bind(this)}
-                      >
-                        {Object.keys(forks).map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div> */}
-                </div>
-                <div>
-                  <div>
-                    <div className="form">
-                      <label for="ssztypeselect">Select SSZ Type</label>
-
-                      <select
-                        className="form-select"
-                        id="ssztypeselect"
-                        aria-label="ssz type"
-                        value={this.state.sszTypeName}
-                        onChange={this.setSSZType.bind(this)}
-                      >
-                        {this.names().map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                {serializeModeOn && (
-                  <div>
-                    <div>
-                      <br/>
-                      <label for="input">Input</label>
-<br/>
-                      <div
-                        className="btn-group"
-                        role="group"
-                        aria-label="Basic radio toggle button group"
-                      >
-                        {Object.keys(inputTypes).map((name) => (
-                          <>
-                          <input
-                          
-                            type="radio"
-                            className="btn-check"
-                            name={name}
-                            id={`inputtype${name}`}
-                            autocomplete="off"
-                            value={name}
-                            onClick={() => this.setInputType(name)}
-                            checked={serializeInputType == name}
-                          />
-                          <label className="btn btn-outline-secondary" for={`inputtype${name}`}>{name}</label>
-                        </>
-                        ))}
-                      </div>
-                      {/* <div className="form">
-                        <label for="inputTypeSelect">Input Type</label>
-
-                        <select
-                          className="form-select"
-                          id="inputTypeSelect"
-                          aria-label="input type"
-                          value={this.getInputType()}
-                          onChange={(e) => this.setInputType(e.target.value)}
-                        >
-                          {Object.keys(inputTypes).map((name) => (
-                            <option key={name} value={name}>
-                              {name}
-                            </option>
-                          ))}
-                        </select>
-                      </div> */}
-                    </div>
-                  </div>
-                )}
-              </div>
+            <label for="input" className="px-3 col-form-label">
+              {this.state.sszTypeName}
+            </label>
             </div>
-            <textarea
-              className="form-control"
+            <div className='col'>
+            <input
               id="input"
-              rows={this.state.input && this.getRows()}
               value={this.state.input}
               onChange={(e) => this.setInput(e.target.value)}
+              className="form-control form-control-sm"
+              type="text"
+              aria-label=".form-control-sm example"
             />
           </div>
-          <div className="col">
-            <div className="row">
-              <img
-                src="/developers-eth-blocks.png"
-                alt="ethereum building blocks"
-              />
-            </div>
-            <div className="row">
-              <button
-                className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
-                disabled={!(this.state.sszTypeName && this.state.input)}
-                onClick={this.doProcess.bind(this)}
-              >
-                {serializeModeOn ? "Serialize" : "Deserialize"}
-              </button>
-              <br/>
-              <div className="row">
-              <div>Upload a file (optional)</div>
-              <input
-                type="file"
-                accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
-                onChange={(e) =>
-                  e.target.files && this.onUploadFile(e.target.files[0])
-                }
-              />
-            </div>
-            </div>
+          <div className='col'>
+            {this.state.calculated.root}
           </div>
+        <div className="col">
+          <button
+            className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
+            disabled={!(this.state.sszTypeName && this.state.input)}
+            onClick={this.doProcess.bind(this)}
+          >
+            {serializeModeOn ? "Serialize" : "Deserialize"}
+          </button>
         </div>
+      </div>
       </div>
     );
   }
 }
 
-export default Input;
+export default DemoInput;
