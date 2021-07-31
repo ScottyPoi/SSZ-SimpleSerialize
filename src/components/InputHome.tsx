@@ -132,7 +132,6 @@ class InputHome<T> extends React.Component<Props<T>, State> {
       "Uint64",
       "Uint128",
       "Uint256",
-      "CommitteeIndices",
     ];
     return list;
   }
@@ -320,11 +319,11 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                             {name}
                           </option>
                         ))}
-                        {Object.keys(this.compositeNames()).map((name) => (
+                        {/* {Object.keys(this.compositeNames()).map((name) => (
                           <option key={name} value={name}>
                             {this.compositeNames()[name]}
                           </option>
-                        ))}
+                        ))} */}
                       </select>
                     </div>
                   </div>
@@ -333,7 +332,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                   <div>
                     <div>
                       <br />
-                      <label for="input">Input</label>
+                      {/* <label for="input">Input</label>
                       <br />
                       <div
                         className="btn-group"
@@ -360,7 +359,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                             </label>
                           </>
                         ))}
-                      </div>
+                      </div> */}
                       {/* <div className="form">
                         <label for="inputTypeSelect">Input Type</label>
 
@@ -394,14 +393,16 @@ class InputHome<T> extends React.Component<Props<T>, State> {
 <input type="range" value={this.state.input} onChange={(e) => this.setInput(e.target.value)} onMouseUp={this.doProcess.bind(this)}  className="form-range" min="0" max={2**(this.state.bytes * 8)-2} id="setInput"></input> */}
           <div 
   onMouseUp={this.doProcess.bind(this)}
->
+> {serializeModeOn && (
           <InputBar 
           max = {2**(this.state.bytes * 8)-1}
           doProcess={() => this.doProcess.bind(this)}
           set={this.setInput.bind(this)}
           input={this.state.input}
+          boolean={this.state.sszTypeName == "Boolean"}
+          serializeModeOn={this.props.serializeModeOn}
           />
- </div>
+ )}</div>
           </div>
           <div className="col">
             <div className="row">
