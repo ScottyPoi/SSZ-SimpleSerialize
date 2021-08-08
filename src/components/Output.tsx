@@ -84,7 +84,7 @@ export default class Output<T> extends React.Component<Props<T>, State> {
           ? <ErrorBox error={error} hideError={this.hideError.bind(this)}/>
           :
           <>
-            <div className='row'>
+            <div className='row py-3'>
              <div className='form'>
                   <label for='output type'>
                     Output Type

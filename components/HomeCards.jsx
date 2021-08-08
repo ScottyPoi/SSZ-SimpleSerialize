@@ -5,8 +5,8 @@ const cards = [1,2,3,4,5]
 const links = {
     specs: {
         title: "Specifications",
-        footer: "simpleserialize.md & merkleproofs.md as they appear in the Eth2.0 Specs",
-        image: "./Eth2.0SpecsRect.png",
+        footer: "'simpleserialize.md' & 'merkleproofs.md' as they appear in the Eth2.0 Specs",
+        image: "./sszspecspic.png",
         alt: "github",
         link: "show"
         
@@ -39,7 +39,7 @@ const links = {
     simpleserialize: {
         title: "SimpleSerialize for Eth2.0",
         footer: "Serialize Eth2.0 Types to SSZ | Deserialize to YAML",
-        image: "./simpleserialize2.png",
+        image: "./simpleserialize3.png",
         alt: "ssz.com"
     },
     visualizer: {
@@ -59,7 +59,7 @@ const links = {
 
 export default function HomeCards(props) {
     return (
-<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-4">
+<div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5">
 {Object.keys(links).map((card, idx) => {
     const link = links[card]
     return <HomeCard key={idx} title={link.title} text={link.text} footer={link.footer} image={link.image} link={link.link} />

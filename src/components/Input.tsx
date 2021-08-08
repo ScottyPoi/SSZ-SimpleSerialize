@@ -264,7 +264,7 @@ class Input<T> extends React.Component<Props<T>, State> {
     const { serializeInputType } = this.state;
     return (
       <div className="container">
-        <div className="row">
+        <div className="row p-3">
           <div className="col">
             <h3 className="subtitle">Input</h3>
             
@@ -299,37 +299,25 @@ class Input<T> extends React.Component<Props<T>, State> {
                       </select>
                     </div>
                   </div>
-                <div>
-                  <div>
-                    <div className="form">
-                      <label for="ssztypeselect">Select SSZ Type</label>
-
-                      <select
-                        className="form-select"
-                        id="ssztypeselect"
-                        aria-label="ssz type"
-                        value={this.state.sszTypeName}
-                        onChange={this.setSSZType.bind(this)}
-                      >
-                        {this.names().map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div>
-                </div>
-                
+                                
               </div>
             </div>
           </div>
           <div className="col">
+            <div className="row p-3">
+              <button
+              type='button'
+                className="btn btn-secondary"
+                disabled={!(this.state.sszTypeName && this.state.input)}
+                onClick={this.doProcess.bind(this)}
+              >
+                {serializeModeOn ? "Serialize" : "Deserialize"}
+              </button>
+            </div>
             <div className="row">
             {serializeModeOn && (
                   <div>
                     <div>
-                      <br/>
                       <label for="input">Input</label>
 <br/>
                       <div
@@ -354,38 +342,31 @@ class Input<T> extends React.Component<Props<T>, State> {
                         </>
                         ))}
                       </div>
-                      <div className="form">
-                        <label for="inputTypeSelect">Input Type</label>
-
-                        <select
-                          className="form-select"
-                          id="inputTypeSelect"
-                          aria-label="input type"
-                          value={this.getInputType()}
-                          onChange={(e) => this.setInputType(e.target.value)}
-                        >
-                          {Object.keys(inputTypes).map((name) => (
-                            <option key={name} value={name}>
-                              {name}
-                            </option>
-                          ))}
-                        </select>
-                      </div>
                     </div>
+                    
                   </div>
                 )}
-            </div>
-            <div className="row p-3">
-              <br />
-              <button
-              type='button'
-                className="btn btn-secondary"
-                disabled={!(this.state.sszTypeName && this.state.input)}
-                onClick={this.doProcess.bind(this)}
-              >
-                {serializeModeOn ? "Serialize" : "Deserialize"}
-              </button>
-              <br/>
+                <div>
+                  <div>
+                    <div className="form">
+                      <label for="ssztypeselect">Select SSZ Type</label>
+
+                      <select
+                        className="form-select"
+                        id="ssztypeselect"
+                        aria-label="ssz type"
+                        value={this.state.sszTypeName}
+                        onChange={this.setSSZType.bind(this)}
+                      >
+                        {this.names().map((name) => (
+                          <option key={name} value={name}>
+                            {name}
+                          </option>
+                        ))}
+                      </select>
+                    </div>
+                  </div>
+                </div>
 
             </div>
           </div>
