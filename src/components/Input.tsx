@@ -270,14 +270,24 @@ class Input<T> extends React.Component<Props<T>, State> {
             
             <br />
             <div className="field is-horizontal">
+            <div className="row">
+              <div>Upload a file (optional)</div>
+              <input
+                type="file"
+                accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
+                onChange={(e) =>
+                  e.target.files && this.onUploadFile(e.target.files[0])
+                }
+              />
+            </div>
               <div className="field-body">
                 <div className="field has-addons">
-                  {/* <div className="control">
-                    <a className="button is-static">Fork</a>
-                  </div>
-                  <div className="control">
-                    <div className="select">
+                  <div className="form">
+                    <label for="fork">Fork</label>
                       <select
+                      className='form-select'
+                      id='fork'
+                      aria-label='fork type'
                         value={this.state.forkName}
                         onChange={this.setFork.bind(this)}
                       >
@@ -288,8 +298,7 @@ class Input<T> extends React.Component<Props<T>, State> {
                         ))}
                       </select>
                     </div>
-                  </div> */}
-                </div>
+                  </div>
                 <div>
                   <div>
                     <div className="form">
@@ -311,7 +320,13 @@ class Input<T> extends React.Component<Props<T>, State> {
                     </div>
                   </div>
                 </div>
-                {serializeModeOn && (
+                
+              </div>
+            </div>
+          </div>
+          <div className="col">
+            <div className="row">
+            {serializeModeOn && (
                   <div>
                     <div>
                       <br/>
@@ -339,7 +354,7 @@ class Input<T> extends React.Component<Props<T>, State> {
                         </>
                         ))}
                       </div>
-                      {/* <div className="form">
+                      <div className="form">
                         <label for="inputTypeSelect">Input Type</label>
 
                         <select
@@ -355,48 +370,34 @@ class Input<T> extends React.Component<Props<T>, State> {
                             </option>
                           ))}
                         </select>
-                      </div> */}
+                      </div>
                     </div>
                   </div>
                 )}
-              </div>
             </div>
-            <textarea
-              className="form-control"
-              id="input"
-              rows={this.state.input && this.getRows()}
-              value={this.state.input}
-              onChange={(e) => this.setInput(e.target.value)}
-            />
-          </div>
-          <div className="col">
-            <div className="row">
-              <img
-                src="/developers-eth-blocks.png"
-                alt="ethereum building blocks"
-              />
-            </div>
-            <div className="row">
+            <div className="row p-3">
+              <br />
               <button
-                className="button is-primary is-medium is-fullwidth is-uppercase is-family-code submit"
+              type='button'
+                className="btn btn-secondary"
                 disabled={!(this.state.sszTypeName && this.state.input)}
                 onClick={this.doProcess.bind(this)}
               >
                 {serializeModeOn ? "Serialize" : "Deserialize"}
               </button>
               <br/>
-              <div className="row">
-              <div>Upload a file (optional)</div>
-              <input
-                type="file"
-                accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
-                onChange={(e) =>
-                  e.target.files && this.onUploadFile(e.target.files[0])
-                }
-              />
-            </div>
+
             </div>
           </div>
+        </div>
+        <div className='row'>
+        <textarea
+              className="form-control"
+              id="input"
+              rows={this.state.input && this.getRows()}
+              value={this.state.input}
+              onChange={(e) => this.setInput(e.target.value)}
+            />
         </div>
       </div>
     );

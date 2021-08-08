@@ -2,6 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TabsFront from "../src/components/TabsFront.tsx";
+import HomeCards from "../components/HomeCards";
 export default function Hello() {
   return (
     <div className="container py-0 px-0 border-top">
@@ -21,15 +22,16 @@ export default function Hello() {
 
       <div>
         <h4 className="text-center">
-          Technical Specs - Overview - SSZ Converter - Merkle Tree Visualizer -
-          Implementation Guide
+          Technical Specs and Resources for SSZ - SimpleSerialize
         </h4>
       </div>
       <br />
+      <HomeCards />
 
-      <div className="row px-2 justify-content-center">
+      {/* <div className="row px-2 justify-content-center">
         <TabsFront />
-      </div>
+      </div> */}
+
     </div>
   );
 }

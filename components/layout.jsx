@@ -7,6 +7,7 @@ import NavBar from '../components/NavBar';
 import * as ReactBootStrap from 'react-bootstrap';
 import  pages  from '../data/site-pages.json';
 import OnThisPage from '../components/OnThisPage';
+import NavCards from '../components/NavCards'
 
 
 
@@ -52,24 +53,11 @@ export default function Layout({ children }) {
                 </div>
               </div>
             </div>
-            <div className='container'>
-              <div className="col">
-                <div className='row position-relative'>
-                  <div className='col-1 pt-5 position-fixed start-0 top-0' style={Y}>
-                    
-                      <NavBar { ...MainPage.args }/>
-                    
-                  </div>
-                  <div className='col-11'></div>
-                </div>
-                <div className='row border-start bd-highlight justify-content-end position-relative' style={Z}>
-              <div className='col-2'></div>
-                  <div className='d-inline-flex px-3 mx-5 flex-col col-10'>{children}</div>
+                <div className='row bd-highlight justify-content-end position-relative' style={Z}>
+                  <div className='d-inline-flex px-3 flex-col col'>{children}</div>
                   </div>
                 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossOrigin="anonymous"></script>
               </div>
-            </div>
-          </div>
           )
   };
   

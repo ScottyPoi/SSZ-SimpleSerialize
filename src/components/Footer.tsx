@@ -4,7 +4,7 @@ import pkg from "../../package.json";
 
 export default function Footer(): JSX.Element {
   return (
-    <footer className='footer'>
+    <footer className='text-center footer'>
       <div className='content has-text-centered'>
         Made with ❤️ by{" "}
         <a

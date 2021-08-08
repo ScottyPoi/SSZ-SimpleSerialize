@@ -115,6 +115,8 @@ export default class SerializeFront<T> extends React.Component<
                 serialized={serialized}
                 deserialized={deserialized}
                 setOverlay={this.setOverlay.bind(this)}
+                sszTypeName={this.state.name}
+                hashTreeRoot={hashTreeRoot}
                 // worker={this.worker}
               />
             </div>

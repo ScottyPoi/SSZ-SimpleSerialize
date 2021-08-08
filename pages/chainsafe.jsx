@@ -8,7 +8,10 @@ export default function Converter(props) {
         <ForkMe />
         <Header />
         <Tabs />
+        <div className='row fixed-bottom'>
+
         <Footer />
+        </div>
         </div>
     )
 }

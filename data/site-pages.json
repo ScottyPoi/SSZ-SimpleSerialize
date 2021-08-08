@@ -5,31 +5,31 @@
     "title": "SSZ Home Page"
   },
   {
+    "name": "Specifications",
+    "url": "/show",
+    "title": "Documentation",
+    "pages": [
+      {
+        "name": "Specs",
+        "url": "/show",
+        "title": "SSZ Specs"
+      },
+      {
+        "name": "Merkle Proofs",
+        "url": "/show",
+        "title": "SSZ Merkle Proofs"
+      }
+    ]
+  },
+  {
     "name": "Visualizer ",
     "url": "/simulator",
     "title": "SSZ Visualizer"
   },
   {
-    "name": "Eth2 SSZ Converter",
+    "name": "SSZ for Eth2.0",
     "url": "/Converter",
     "title": "Eth2 SSZ Converter"
-  },
-  {
-    "name": "Documentation",
-    "url": "/documentation",
-    "title": "Documentation",
-    "pages": [
-      {
-        "name": "Specs",
-        "url": "/specs",
-        "title": "SSZ Specs"
-      },
-      {
-        "name": "Merkle Proofs",
-        "url": "/merkle-proofs",
-        "title": "SSZ Merkle Proofs"
-      }
-    ]
   },
   {
     "name": "Overview",

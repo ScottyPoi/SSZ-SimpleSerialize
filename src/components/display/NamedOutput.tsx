@@ -13,14 +13,14 @@ const NamedOuput = ({name, value, textarea}: Props): JSX.Element => (
         {name}
       </a>
     </div>
-    <div className='control is-expanded'>
+    <div className='form-floating'>
       {textarea ?
-        <textarea className='input'
+        <textarea className='form-control'
           readOnly={true}
           value={value || ""}
         />
         :
-        <input className='input'
+        <input className='form-control'
           type='text'
           readOnly={true}
           value={value || ""}

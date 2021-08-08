@@ -85,33 +85,12 @@ export default class OutputHome<T> extends React.Component<Props<T>, State> {
           :
           <>
             <div className='row'>
-             {/* <div className='control'>
-                  <a className='button is-static'>
-                    Output Type
-                  </a>
-              </div>
-              <div className='control'>
-                 <div className='select'>
-                    <select
-                      value={outputType}
-                      onChange={(e) => this.setOutputType(e.target.value)}>
-                      {
-                        Object.keys(serializeModeOn ? serializeOutputTypes : deserializeOutputTypes).map(
-                          (name) => <option key={name} value={name}>{name}</option>)
-                      }
-                    </select>
-                </div> 
-              </div> */}
             </div>
             <div className='row'>
               {serializeModeOn ?
                 <>
                   <NamedOutput name="HashTreeRoot" value={hashTreeRootStr} textarea />
                   <NamedOutput name="Serialized" value={serializedStr} textarea />
-                  {/* <button
-                    disabled={!this.props.serialized}
-                    onClick={() => this.downloadFile(this.props.serialized, "ssz")}
-                  >{"Download data as .ssz file"}</button> */}
                 </>
                 :
                 <>
@@ -120,15 +99,8 @@ export default class OutputHome<T> extends React.Component<Props<T>, State> {
                     value={deserializedStr}
                     readOnly={true}
                   />
-                          {/* <button
-                            disabled={!deserializedStr}
-                            onClick={() => this.downloadFile(deserializedStr, this.state.outputType)}
-                            >{"Download data as ." + this.state.outputType + " file"}</button> */}
                 </>
               }
-            </div>
-            <div className='row'>
-              
             </div>
       </>
       }

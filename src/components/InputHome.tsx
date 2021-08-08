@@ -20,6 +20,8 @@ type Props<T> = {
   ) => void;
   serializeModeOn: boolean;
   sszType: Type<T>;
+  sszTypeName: string;
+  hashTreeRoot: Uint8Array | undefined;
   serialized: Uint8Array | undefined;
   deserialized: object;
   alert: { error: Function };
@@ -132,6 +134,7 @@ class InputHome<T> extends React.Component<Props<T>, State> {
       "Uint64",
       "Uint128",
       "Uint256",
+      "CommitteeBits"
     ];
     return list;
   }
@@ -284,29 +287,11 @@ class InputHome<T> extends React.Component<Props<T>, State> {
             <div className="field is-horizontal">
               <div className="field-body">
                 <div className="field has-addons">
-                  {/* <div className="control">
-                    <a className="button is-static">Fork</a>
-                  </div>
-                  <div className="control">
-                    <div className="select">
-                      <select
-                        value={this.state.forkName}
-                        onChange={this.setFork.bind(this)}
-                      >
-                        {Object.keys(forks).map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
-                  </div> */}
                 </div>
                 <div>
                   <div>
-                    <div className="form">
+                    <div className="form"                                            >
                       <label for="ssztypeselect">Select SSZ Type</label>
-
                       <select
                         className="form-select"
                         id="ssztypeselect"
@@ -319,67 +304,10 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                             {name}
                           </option>
                         ))}
-                        {/* {Object.keys(this.compositeNames()).map((name) => (
-                          <option key={name} value={name}>
-                            {this.compositeNames()[name]}
-                          </option>
-                        ))} */}
                       </select>
                     </div>
                   </div>
                 </div>
-                {serializeModeOn && (
-                  <div>
-                    <div>
-                      <br />
-                      {/* <label for="input">Input</label>
-                      <br />
-                      <div
-                        className="btn-group"
-                        role="group"
-                        aria-label="Basic radio toggle button group"
-                      >
-                        {Object.keys(inputTypes).map((name) => (
-                          <>
-                            <input
-                              type="radio"
-                              className="btn-check"
-                              name={name}
-                              id={`inputtype${name}`}
-                              autocomplete="off"
-                              value={name}
-                              onClick={() => this.setInputType(name)}
-                              checked={serializeInputType == name}
-                            />
-                            <label
-                              className="btn btn-outline-secondary"
-                              for={`inputtype${name}`}
-                            >
-                              {name}
-                            </label>
-                          </>
-                        ))}
-                      </div> */}
-                      {/* <div className="form">
-                        <label for="inputTypeSelect">Input Type</label>
-
-                        <select
-                          className="form-select"
-                          id="inputTypeSelect"
-                          aria-label="input type"
-                          value={this.getInputType()}
-                          onChange={(e) => this.setInputType(e.target.value)}
-                        >
-                          {Object.keys(inputTypes).map((name) => (
-                            <option key={name} value={name}>
-                              {name}
-                            </option>
-                          ))}
-                        </select>
-                      </div> */}
-                    </div>
-                  </div>
-                )}
               </div>
             </div>
             <textarea
@@ -401,6 +329,11 @@ class InputHome<T> extends React.Component<Props<T>, State> {
           input={this.state.input}
           boolean={this.state.sszTypeName == "Boolean"}
           serializeModeOn={this.props.serializeModeOn}
+          sszType={this.props.sszType}
+          sszTypeName={this.props.sszTypeName}
+          serialized={this.props.serialized}
+          deserialized={this.props.deserialized}
+          hashTreeRoot={this.props.hashTreeRoot}
           />
  )}</div>
           </div>
@@ -409,7 +342,8 @@ class InputHome<T> extends React.Component<Props<T>, State> {
               <img
                 src="/developers-eth-blocks.png"
                 alt="ethereum building blocks"
-              />
+                height='200px'
+                width='200px'              />
             </div>
             <div className="row">
               <button
@@ -420,16 +354,6 @@ class InputHome<T> extends React.Component<Props<T>, State> {
                 {serializeModeOn ? "Serialize" : "Deserialize"}
               </button>
               <br />
-              {/* <div className="row">
-              <div>Upload a file (optional)</div>
-              <input
-                type="file"
-                accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
-                onChange={(e) =>
-                  e.target.files && this.onUploadFile(e.target.files[0])
-                }
-              />
-            </div> */}
             </div>
           </div>
         </div>

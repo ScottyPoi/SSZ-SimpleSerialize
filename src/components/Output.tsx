@@ -85,15 +85,15 @@ export default class Output<T> extends React.Component<Props<T>, State> {
           :
           <>
             <div className='row'>
-             {/* <div className='control'>
-                  <a className='button is-static'>
+             <div className='form'>
+                  <label for='output type'>
                     Output Type
-                  </a>
-              </div>
-              <div className='control'>
-                 <div className='select'>
-                    <select
-                      value={outputType}
+                  </label>
+                  <select
+ className='form-select'
+ id='output type'
+ aria-label='select output type'
+ value={outputType}
                       onChange={(e) => this.setOutputType(e.target.value)}>
                       {
                         Object.keys(serializeModeOn ? serializeOutputTypes : deserializeOutputTypes).map(
@@ -101,8 +101,7 @@ export default class Output<T> extends React.Component<Props<T>, State> {
                       }
                     </select>
                 </div> 
-              </div> */}
-            </div>
+                </div>
             <div className='row'>
               {serializeModeOn ?
                 <>
@@ -115,7 +114,7 @@ export default class Output<T> extends React.Component<Props<T>, State> {
                 </>
                 :
                 <>
-                  <textarea className='textarea'
+                  <textarea className='form-control'
                     rows={8}
                     value={deserializedStr}
                     readOnly={true}
