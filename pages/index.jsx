@@ -8,8 +8,8 @@ export default function Hello() {
     <div className="container py-0 px-0 border-top">
       <div className="row px-2">
         <div className="col">SSZ SimpleSerialize</div>
-        <div className="col">
-          <text className="fs-2 text-center">Welcome to SSZ.dev</text>
+        <div className="col text-center">
+          <h1>SSZ.DEV</h1>
         </div>
         <div className="col">
           <div className="row justify-content-end">
@@ -27,11 +27,6 @@ export default function Hello() {
       </div>
       <br />
       <HomeCards />
-
-      {/* <div className="row px-2 justify-content-center">
-        <TabsFront />
-      </div> */}
-
     </div>
   );
 }
