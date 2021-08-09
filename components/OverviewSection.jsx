@@ -10,13 +10,7 @@ export default function OverviewSection(props) {
     const prop = props.prop;
     const idx = props.idx;
     return (
-        <>
-        <div className='col'>
-            Milly and {prop} {topic} and {idx}
-        </div>
-        <div className='col'>
-            Milly and <ReactMarkdown>{text}</ReactMarkdown>
-        </div>
-    </>
+
+            <ReactMarkdown>{text}</ReactMarkdown>
     )
 }

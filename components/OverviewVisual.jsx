@@ -1,15 +1,33 @@
-import TypingVisual from "./TypingVisual"
-import AliasesVisual from "./AliasesVisual"
-export default function OverviewVisual(props) {
-    
-    const section = props.topic == "Typing" ? (<TypingVisual />) : (<AliasesVisual />)
+import TypingVisual from "./TypingVisual";
+import AliasesVisual from "./AliasesVisual";
+import DefaultValuesVisual from "./DefaultValuesVisual";
+import SerializationVisual from "./SerializationVisual";
+import DeserializationVisual from "./DeserializationVisual";
+import MerkleizationVisual from "./MerkleizationVisual";
+import MerkleProofsVisual from "./MerkleProofsVisual";
+import SummariesExpansionsVisual from "./SummariesExpansionsVisual";
 
-    
-    return (
-        <div className='row'>
-            Fee
-            {props.topic}
-            {section}
-        </div>
-    )
+export default function OverviewVisual(props) {
+  const section =
+    props.topic == "Typing" ? (
+      <TypingVisual />
+    ) : props.topic == "Aliases" ? (
+      <AliasesVisual />
+    ) : props.topic == "Default_Values" ? (
+      <DefaultValuesVisual />
+    ) : props.topic == "Serialization" ? (
+      <SerializationVisual />
+    ) : props.topic == "Deserialization" ? (
+      <DeserializationVisual />
+    ) : props.topic == "Merkleization" ? (
+      <MerkleizationVisual />
+    ) : props.topic == "Merkle_Proofs" ? (
+      <MerkleProofsVisual />
+    ) : props.topic == "Summaries_and_Expansions" ? (
+      <SummariesExpansionsVisual />
+    ) : (
+        <TypingVisual />
+    );
+
+  return <div className="row">{section}</div>;
 }

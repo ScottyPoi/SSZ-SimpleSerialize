@@ -31,5 +31,10 @@
     "url": "/active",
     "title": "SSZ Implementations"
     
+  },
+  {
+    "name": "Testing",
+    "url": "./ssztesting",
+    "title": "SSZ Testing Suite"
   }
 ]

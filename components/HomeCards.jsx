@@ -53,10 +53,11 @@ const links = {
         link: "simulator"
     },
     test: {
-        title: "SSZ Testing",
+        title: "SSZ Testing Suite",
         footer: "Test Suites for SSZ Implementations",
         image: "./testsuite.png",
-        alt: "testsuite"
+        alt: "testsuite",
+        link: 'ssztesting'
     }
 
 }
