@@ -74,6 +74,7 @@
     "react-alert": "^7.0.1",
     "react-alert-template-basic": "^1.0.0",
     "react-bootstrap": "^1.5.2",
+    "react-code-blocks": "^0.0.9-0",
     "react-dom": "^17.0.1",
     "react-loading-overlay-ts": "latest",
     "react-markdown": "^5.0.3",

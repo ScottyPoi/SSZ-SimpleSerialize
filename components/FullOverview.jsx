@@ -1,5 +1,5 @@
 import OverviewSection from "./OverviewSection";
-
+import OverviewVisual from "./OverviewVisual";
 
 const topics = [
   "Introduction",
@@ -9,9 +9,6 @@ const topics = [
   "Merkleization",
   "Merkle_Proofs",
 ];
-
-
-
 
 export default function FullOverview(props) {
   return (
@@ -36,16 +33,24 @@ export default function FullOverview(props) {
               className={`accordion-collapse collapse ${
                 text.topic == "Introduction" && "show"
               }`}
-              aria-labeledby={`${text.topic}heading`}
-              data-bs-parent="#overviewAccordion"
+              // className={`accordion-collapse collapse show`}
+              // aria-labeledby={`${text.topic}heading`}
+              // data-bs-parent="#overviewAccordion"
             >
               <div className="accordion-body">
-                <OverviewSection
-                  prop="fee"
-                  topic={text.topic}
-                  idx={idx}
-                  text={text.data}
-                />
+                <div className="row">
+                  <div className="col">
+                    <OverviewSection
+                      prop="fee"
+                      topic={text.topic}
+                      idx={idx}
+                      text={text.data}
+                    />
+                  </div>
+                  <div className="col">
+                    <OverviewVisual topic={text.topic} />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
