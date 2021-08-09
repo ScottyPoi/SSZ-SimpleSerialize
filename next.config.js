@@ -1,8 +1,11 @@
 const ghPages = process.env.DEPLOY_TARGET === "gh-pages";
-const withMDX = require("@next/mdx");
+
+const withMDX = require("@next/mdx") ({
+  extension: /\.mdx$/
+});
 
 module.exports = [
-  withMDX(),
+  withMDX(
   {
     future: {
       webpack5: true,
@@ -14,4 +17,5 @@ module.exports = [
     },
     assetPrefix: ghPages ? "/SSZ-SimpleSerialize" : "",
   },
+  )
 ];
