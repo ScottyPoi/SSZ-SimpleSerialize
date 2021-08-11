@@ -10,23 +10,23 @@ export const globalStyles = (
         margin: 0;
         min-height: 100%;
         background-color: #ffffff;
-        color: #6690a1;
+        color: #363636;
         font-family: sans-serif;
         font-size: 1rem;
      
       }
 
       a {
-        color: #6690a1;
+        color: #363636;
         text-decoration: none;
       }
 
       code {
-        color: #6690a1;
+        color: #363636;
       }
 
       text {
-        color: #6690a1
+        color: #363636
       }
 
       section {
@@ -34,42 +34,42 @@ export const globalStyles = (
       }
 
       h1 {
-        color:#6690a1;
+        color:#363636;
       }
 
       h2 {
-        color: #6690a1;
+        color: #363636;
       }
 
       h3 {
-        color: #6690a1;
+        color: #363636;
       }
 
       h4 {
-        color: #6690a1;
+        color: #363636;
       }
 
       h5 {
-        color: #6690a1;
+        color: #363636;
       }
 
       h6 {
-        color: #6690a1;
+        color: #363636;
       }
 
       p {
-        color: #6690a1;
+        color: #363636;
       }
       
       li {
-        color: #6690a1;
+        color: #363636;
       }
       td {
-        color: #6690a1;
+        color: #363636;
       }
 
       th {
-        color: #6690a1;
+        color: #363636;
       }
 
     `}
@@ -78,7 +78,7 @@ export const globalStyles = (
 
 export const basicStyles = css`
   background-color: gray;
-  color: #6690a1;
+  color: #363636;
   border: 1px solid lightgreen;
   border-right: none;
   border-bottom: none;

@@ -1,16 +1,8 @@
-import ShowSpecs from "../components/ShowSpecs";
+import ShowSpecs from "../components/DisplaySpecs/ShowSpecs";
 import React, { useState, useEffect } from "react";
 import fs from "fs";
-import SplitSpecs from "../components/splitspecs";
-import ReactMarkdown from "react-markdown";
-import gfm from "remark-gfm";
-import toc from "remark-toc";
-import slug from "remark-slug";
-import IsolateTOC from "../components/isolateTOC";
-import SeparateSections from "../components/SeparateSections";
-import TOCscroll from "../components/TOCscroll";
 import styles from "../styles/specs.module.css";
-import ShowTOC from "../components/ShowTOC";
+import ShowTOC from "../components/DisplaySpecs/ShowTOC";
 
 export async function getStaticProps() {
   const SpecsData = fs.readFileSync(
