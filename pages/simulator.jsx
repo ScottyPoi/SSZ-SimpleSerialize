@@ -1,5 +1,4 @@
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import BuildVectorTree from "../simulator/trees/BuildVectorTree";
 import BuildDemoTree from "../simulator/trees/BuildDemoTree";
