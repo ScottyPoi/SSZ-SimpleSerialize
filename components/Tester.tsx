@@ -1,28 +1,31 @@
 import React from "react";
 import { Type } from "@chainsafe/ssz";
 import { ssz, Epoch } from "@chainsafe/lodestar-types";
-import { ForkName, typeNames, forks } from "../src/util/types";
+import { ForkName, typeNames, forks } from "../sszsrc/util/types";
 
 const EpochType: Type<Epoch> = ssz.Epoch;
 
 const e = EpochType.defaultValue();
 const types = Object.keys(forks.prim);
 const typeName = typeNames(forks.prim);
-const defVals = typeName.map((type) => {
+
+
+const defVals = types.map((type, idx) => {
   return (
-    <div className="row">
-      Default Value of {type} is {forks.prim[type].defaultValue()}
+    <div key={idx}>
+      {idx}{type}
     </div>
   );
 });
 
+
 export default function Tester(props): React.ReactElement {
   return (
     <div>
-      {e} <br />
-      {types} <br />
-      {typeName} <br />
-      {defVals}
+      a{e} <br />
+      b{types} <br />
+      c{typeName} <br />
+      typeNames 22 is {types[1]}
     </div>
   );
 }

@@ -1,8 +1,8 @@
-import FullOverview from "../components/FullOverview";
+import FullOverview from "../components/Demo/FullOverview";
 import fs from "fs";
 export async function getStaticProps() {
   const markdowns = Object.keys(topics).map((topic, idx) => {
-    const data = fs.readFileSync(`./walk/${topic}.md`, "utf8");
+    const data = fs.readFileSync(`./walkthruMd/${topic}.md`, "utf8");
     return { data: data, topic: topic };
   });
 

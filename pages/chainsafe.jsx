@@ -1,7 +1,7 @@
-import ForkMe from '../src/components/ForkMe';
-import Header from '../src/components/Header';
-import Tabs from '../src/components/Tabs';
-import Footer from '../src/components/Footer';
+import ForkMe from '../sszsrc/components/ForkMe';
+import Header from '../sszsrc/components/Header';
+import Tabs from '../sszsrc/components/Tabs';
+import Footer from '../sszsrc/components/Footer';
 export default function Converter(props) {
     return (
         <div className='container'>

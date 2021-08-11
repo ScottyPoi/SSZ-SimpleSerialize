@@ -1,6 +1,5 @@
 import { useState } from "react";
-import Listform from "./Listform";
-import Basicform from './BasicForm';
+import Basicform from './VisualizerForms/BasicForm';
 export default function Serializer() {
   const [value, setValue] = useState(0);
   const [type, setType] = useState("uint8");
