@@ -1,3 +1,5 @@
+## Types
+
 Data for SSZ Serialization are represented by one or a combination of these **Types:**
 
 - ###### Basic Types: 
@@ -10,11 +12,6 @@ Data for SSZ Serialization are represented by one or a combination of these **Ty
   - ###### **Union**    - `A "Union Type" containing SSZ Types`
   - ###### **Root**    - `A Uint256 that represents the `Bytes32 hash_tree_root` of a nested merkle tree`
 
-Every type deterministically describes the shape of the **Merkle Tree** representing the type
-
-- No two different values _of the same type_ can merkleize to the same root
-- No two roots can be derived for the same value _of the type used for the root_.
-
 
 **Different types *may* merkleize to the same root:**
 
@@ -23,7 +20,32 @@ Every type deterministically describes the shape of the **Merkle Tree** represen
    - Or more exceptionally, a `Container` with 4 `Bytes32` fields can have the same root as a `Vector[uint64, 16]`.
 
 
+##### Default values
 
 
 
+All SSZ Types have a default "zeroed" value
 
+
+
+- `Uint`: 0
+- `Boolean`: False
+- `Vector`: Sequence of default values
+- `List`: Empty List 
+- `Container`: Default value for each type in container
+- `Union`: Default value of "Type_0"
+  
+
+
+
+Default values are *recursive*; elements in composite types such as containers are initialized with their respective default initializations
+
+#### `is_zero`
+
+An SSZ object is called zeroed (and thus, `is_zero(object)` returns true) if it is equal to the default value for that type.
+
+### Illegal types
+
+- Empty vector types (`Vector[type, 0]`, `Bitvector[0]`) are illegal.
+- Containers with no fields are illegal.
+- The `null` type is only legal as the first type in a union subtype (i.e. with type index zero).

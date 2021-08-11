@@ -6,6 +6,7 @@ import DeserializationVisual from "./DeserializationVisual";
 import MerkleizationVisual from "./MerkleizationVisual";
 import MerkleProofsVisual from "./MerkleProofsVisual";
 import SummariesExpansionsVisual from "./SummariesExpansionsVisual";
+import Carousel from "./Carousel";
 
 export default function OverviewVisual(props) {
   const section =
@@ -15,10 +16,8 @@ export default function OverviewVisual(props) {
       <AliasesVisual />
     ) : props.topic == "Default_Values" ? (
       <DefaultValuesVisual />
-    ) : props.topic == "Serialization" ? (
+    ) : props.topic == "Serialize_Deserialize" ? (
       <SerializationVisual />
-    ) : props.topic == "Deserialization" ? (
-      <DeserializationVisual />
     ) : props.topic == "Merkleization" ? (
       <MerkleizationVisual />
     ) : props.topic == "Merkle_Proofs" ? (
@@ -29,5 +28,5 @@ export default function OverviewVisual(props) {
         <TypingVisual />
     );
 
-  return <div className="row">{section}</div>;
+  return section;
 }

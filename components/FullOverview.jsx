@@ -1,61 +1,47 @@
+import { useState } from "react";
 import OverviewSection from "./OverviewSection";
 import OverviewVisual from "./OverviewVisual";
 
 const topics = [
   "Introduction",
   "Typing",
-  "Serialization",
+  "Serialize_Deserialize",
   "Deserialization",
   "Merkleization",
   "Merkle_Proofs",
 ];
 
 export default function FullOverview(props) {
+  const [section, setSection] = useState("Typing");
+  const [text, setText] = useState(props.text[0].data);
+
   return (
-    <div className="accordion" id="overviewAccordion">
-      {props.text.map((text, idx) => {
-        return (
-          <div className="accordion-item">
-            <h2 className="accordion-header" id={`${text.topic}heading`}>
-              <button
-                className="accordion-button collpsed"
-                type="button"
-                data-bs-toggle="collapse"
-                data-bs-target={`#${text.topic}`}
-                aria-expanded="false"
-                aria-controls={text.topic}
-              >
-                {text.topic}
-              </button>
-            </h2>
-            <div
-              id={text.topic}
-              className={`accordion-collapse collapse ${
-                text.topic == "Introduction" && "show"
-              }`}
-              // className={`accordion-collapse collapse show`}
-              // aria-labeledby={`${text.topic}heading`}
-              // data-bs-parent="#overviewAccordion"
-            >
-              <div className="accordion-body">
-                <div className="row">
-                  <div className="col">
-                    <OverviewSection
-                      prop="fee"
-                      topic={text.topic}
-                      idx={idx}
-                      text={text.data}
-                    />
-                  </div>
-                  <div className="col">
-                    <OverviewVisual topic={text.topic} />
-                  </div>
-                </div>
-              </div>
-            </div>
+    <div className="container">
+      <div class="row">
+        <ul className="nav nav-tabs">
+          {props.text.map((text, idx) => {
+            return (
+              <li className={`nav-item `} key={idx}>
+                <button
+                  className={`nav-link ${text.topic == section && "active"}`}
+                  onClick={() => setSection(text.topic)}
+                  onMouseUp={() => setText(text.data)}
+                >
+                  {text.topic}
+                </button>
+              </li>
+            );
+          })}
+        </ul>
+        <div className="row pt-4">
+          <div className="col-6">
+            <OverviewSection prop="fee" topic={section} idx={1} text={text} />
           </div>
-        );
-      })}
+          <div className="col-6">
+            <OverviewVisual topic={section} />
+          </div>
+        </div>
+      </div>
     </div>
   );
 }

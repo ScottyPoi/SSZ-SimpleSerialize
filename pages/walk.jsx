@@ -17,9 +17,7 @@ const topics = {
   // Introduction: "inro",
   Typing: "typo",
   Aliases: "Alio",
-  Default_Values: "Defo",
-  Serialization: "serio",
-  Deserialization: "deserio",
+  Serialize_Deserialize: "serio",
   Merkleization: "merklo",
   Merkle_Proofs: "merklo proofo",
   Summaries_and_Expansions: "Summaro"
