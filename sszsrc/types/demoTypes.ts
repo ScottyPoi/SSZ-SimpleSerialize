@@ -1,0 +1,1 @@
+import {BitVectorType, ContainerType, VectorType, ListType, RootType, Vector} from "@chainsafe/ssz";

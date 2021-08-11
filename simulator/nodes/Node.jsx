@@ -1,6 +1,5 @@
 import styles from "../styles/NodeStyles.module.css";
 import "../styles/NodeStyles.module.css";
-import { useState, useEffect } from "react";
 
 export default function Node(props) {
   const treeIdx = props.treeIdx;
