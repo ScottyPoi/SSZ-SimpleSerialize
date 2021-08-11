@@ -41,11 +41,11 @@ export default class Tabs extends React.Component<Props, State> {
                   className="btn-check"
                   name="btnradio"
                   id="btnserialize"
-                  autocomplete="off"
+                  autoComplete="off"
                   onClick={() => this.showSerialize()}
                   defaultChecked={serializeModeOn}
                 />
-                <label className="btn btn-outline-secondary" for="btnserialize">
+                <label className="btn btn-outline-secondary" htmlFor="btnserialize">
                   Serialize
                 </label>
 
@@ -55,10 +55,10 @@ export default class Tabs extends React.Component<Props, State> {
                   name="btnradio"
                   id="btndeserialize"
                   onClick={() => this.showDeserialize()}
-                  autocomplete="off"
+                  autoComplete="off"
                   defaultChecked={!serializeModeOn}
                 />
-                <label className="btn btn-outline-secondary" for="btndeserialize">
+                <label className="btn btn-outline-secondary" htmlFor="btndeserialize">
                   Deserialize
                 </label>
             </div>

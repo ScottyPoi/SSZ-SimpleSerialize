@@ -8,7 +8,6 @@ import { ChangeEvent } from "react";
 
 import { inputTypes } from "../util/input_types";
 import { ForkName, typeNames, forks } from "../util/types";
-import { SszWorker } from "../pages/worker";
 import _createRandomValue from "./RandomValue";
 
 type Props<T> = {
@@ -267,46 +266,46 @@ class Input<T> extends React.Component<Props<T>, State> {
         <div className="row p-3">
           <div className="col">
             <h3 className="subtitle">Input</h3>
-            
+
             <br />
             <div className="field is-horizontal">
-            <div className="row">
-              <div>Upload a file (optional)</div>
-              <input
-                type="file"
-                accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
-                onChange={(e) =>
-                  e.target.files && this.onUploadFile(e.target.files[0])
-                }
-              />
-            </div>
+              <div className="row">
+                <div>Upload a file (optional)</div>
+                <input
+                  type="file"
+                  accept={`.${serializeModeOn ? serializeInputType : "ssz"}`}
+                  onChange={(e) =>
+                    e.target.files && this.onUploadFile(e.target.files[0])
+                  }
+                />
+              </div>
               <div className="field-body">
                 <div className="field has-addons">
                   <div className="form">
-                    <label for="fork">Fork</label>
-                      <select
+                    <label htmlFor="fork">Fork</label>
+                    <select
                       className='form-select'
                       id='fork'
                       aria-label='fork type'
-                        value={this.state.forkName}
-                        onChange={this.setFork.bind(this)}
-                      >
-                        {Object.keys(forks).map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                      value={this.state.forkName}
+                      onChange={this.setFork.bind(this)}
+                    >
+                      {Object.keys(forks).map((name) => (
+                        <option key={name} value={name}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
-                                
+                </div>
+
               </div>
             </div>
           </div>
           <div className="col">
             <div className="row p-3">
               <button
-              type='button'
+                type='button'
                 className="btn btn-secondary"
                 disabled={!(this.state.sszTypeName && this.state.input)}
                 onClick={this.doProcess.bind(this)}
@@ -315,71 +314,71 @@ class Input<T> extends React.Component<Props<T>, State> {
               </button>
             </div>
             <div className="row">
-            {serializeModeOn && (
+              {serializeModeOn && (
+                <div>
                   <div>
-                    <div>
-                      <label for="input">Input</label>
-<br/>
-                      <div
-                        className="btn-group"
-                        role="group"
-                        aria-label="Basic radio toggle button group"
-                      >
-                        {Object.keys(inputTypes).map((name, idx) => (
-                          <>
+                    <label htmlFor="input">Input</label>
+                    <br />
+                    <div
+                      className="btn-group"
+                      role="group"
+                      aria-label="Basic radio toggle button group"
+                    >
+                      {Object.keys(inputTypes).map((name, idx) => (
+                        <>
                           <input
                             key={idx}
                             type="radio"
                             className="btn-check"
                             name={name}
                             id={`inputtype${name}`}
-                            autocomplete="off"
+                            autoComplete="off"
                             value={name}
                             onClick={() => this.setInputType(name)}
                             checked={serializeInputType == name}
                             readOnly
                           />
-                          <label className="btn btn-outline-secondary" for={`inputtype${name}`}>{name}</label>
+                          <label className="btn btn-outline-secondary" htmlFor={`inputtype${name}`}>{name}</label>
                         </>
-                        ))}
-                      </div>
+                      ))}
                     </div>
-                    
                   </div>
-                )}
-                <div>
-                  <div>
-                    <div className="form">
-                      <label for="ssztypeselect">Select SSZ Type</label>
 
-                      <select
-                        className="form-select"
-                        id="ssztypeselect"
-                        aria-label="ssz type"
-                        value={this.state.sszTypeName}
-                        onChange={this.setSSZType.bind(this)}
-                      >
-                        {this.names().map((name) => (
-                          <option key={name} value={name}>
-                            {name}
-                          </option>
-                        ))}
-                      </select>
-                    </div>
+                </div>
+              )}
+              <div>
+                <div>
+                  <div className="form">
+                    <label htmlFor="ssztypeselect">Select SSZ Type</label>
+
+                    <select
+                      className="form-select"
+                      id="ssztypeselect"
+                      aria-label="ssz type"
+                      value={this.state.sszTypeName}
+                      onChange={this.setSSZType.bind(this)}
+                    >
+                      {this.names().map((name) => (
+                        <option key={name} value={name}>
+                          {name}
+                        </option>
+                      ))}
+                    </select>
                   </div>
                 </div>
+              </div>
 
             </div>
           </div>
         </div>
         <div className='row'>
-        <textarea
-              className="form-control"
-              id="input"
-              rows={this.state.input && this.getRows()}
-              value={this.state.input}
-              onChange={(e) => this.setInput(e.target.value)}
-            />
+          <textarea
+            className="form-control"
+            id="input"
+            rows={this.state.input && this.getRows()}
+            value={this.state.input}
+            onChange={(e) => this.setInput(e.target.value)}
+          />
         </div>
       </div>
     );
