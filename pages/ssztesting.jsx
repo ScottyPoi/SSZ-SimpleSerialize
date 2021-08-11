@@ -6,19 +6,19 @@ import { useEffect } from "react";
 
 export const getStaticProps = async () => {
   const ssz_generic = fs.readFileSync(
-    "./eth2.0-specs/tests/formats/ssz_generic/README.md",
+    "./tests/tests/formats/ssz_generic/README.md",
     "utf8"
   );
   const ssz_static = fs.readFileSync(
-    "./eth2.0-specs/tests/formats/ssz_static/core.md",
+    "./tests/tests/formats/ssz_static/core.md",
     "utf8"
   );
   const eth2TestFormat = fs.readFileSync(
-    "./eth2.0-specs/tests/formats/README.md",
+    "./tests/tests/formats/README.md",
     "utf8"
   );
   const eth2TestSpec = fs.readFileSync(
-    "./eth2.0-specs/tests/core/pyspec/README.md",
+    "./tests/tests/core/pyspec/README.md",
     "utf8"
   );
 
