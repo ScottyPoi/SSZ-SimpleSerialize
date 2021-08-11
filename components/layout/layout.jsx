@@ -1,13 +1,8 @@
-import styles from "../layout.module.css";
+import styles from "./layout.module.css";
 import Head from "next/head";
-import TopHeader from "../TopHeader";
-import { MainPage } from "../../stories/TopHeader.stories";
-import ForkMe from "../../src/components/ForkMe";
-import NavBar from "../NavBar";
-import * as ReactBootStrap from "react-bootstrap";
-import pages from "../../data/site-pages.json";
-import OnThisPage from "../OnThisPage";
-import NavCards from "../NavCards";
+import TopHeader from "../Navigation/TopHeader";
+import { MainPage } from "../Navigation/TopHeader.stories";
+
 
 const Z = {
   zIndex: 0,

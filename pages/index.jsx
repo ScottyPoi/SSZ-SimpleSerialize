@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import Link from "next/link";
 import TabsFront from "../src/components/TabsFront.tsx";
-import HomeCards from "../components/HomeCards";
+import HomeCards from "../components/Navigation/HomeCards";
 export default function Hello() {
   return (
     <div className="container py-0 px-0 border-top">

@@ -1,7 +1,7 @@
 import useSWR from "swr";
 import { useEffect, useState } from "react";
 import DisplayNode from "../visualizer/components/DisplayNode";
-import MakeRandomTree from "../visualizer/components/MakeRandomTree";
+import MakeRandomTree from '../visualizer/components/MakeRandomTree'
 import NodeInfo from "../visualizer/components/NodeInfo";
 
 export async function getStaticProps() {

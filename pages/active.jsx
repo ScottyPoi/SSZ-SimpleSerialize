@@ -1,4 +1,4 @@
-import NavCards from '../components/NavCards'
+import NavCards from '../components/Navigation/NavCards'
 export default function active(props) {
   return (
     <div className="container">
