@@ -1,7 +1,4 @@
 import React from "react";
-import Image from "next/image";
-import Link from "next/link";
-import TabsFront from "../src/components/TabsFront.tsx";
 import HomeCards from "../components/Navigation/HomeCards";
 export default function Hello() {
   return (

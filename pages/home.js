@@ -1,11 +1,5 @@
 import 'mdb-react-ui-kit/dist/css/mdb.min.css';
 import React from 'react'
-import Node from '../stories/Node'
-import { FirstStory } from '../stories/Node.stories'
-import Link from 'next/link';
-import Layout from '../components/layout.jsx';
-import MenuButton from '../stories/MenuButton';
-import { SMap } from '../stories/MenuButton.stories';
 
 
 
