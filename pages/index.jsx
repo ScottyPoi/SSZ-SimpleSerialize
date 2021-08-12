@@ -1,6 +1,7 @@
 import React from "react";
 import HomeCards from "../components/Navigation/HomeCards";
-export default function Hello() {
+import Hello from "../components/Hello";
+export default function home() {
   return (
     <div className="container py-0 px-0 border-top">
       <div className="row px-2">
@@ -22,6 +23,7 @@ export default function Hello() {
           Technical Specs and Resources for SSZ - SimpleSerialize
         </h4>
       </div>
+      <Hello />
       <br />
       <HomeCards />
     </div>

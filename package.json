@@ -86,6 +86,7 @@
     "react-spinners": "latest",
     "remark": "^13.0.0",
     "remark-emoji": "^2.1.0",
+    "remark-frontmatter": "^4.0.0",
     "remark-gfm": "^1.0.0",
     "remark-html": "^13.0.1",
     "remark-images": "^2.0.0",
