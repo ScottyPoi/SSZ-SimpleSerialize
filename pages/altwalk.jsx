@@ -11,7 +11,7 @@ export async function getStaticProps() {
   Object.keys(topics).forEach((topic) => {
     topics[topic].forEach((file) => {
       const data = fs.readFileSync(
-        `./eth2.0-ssz/specs/${topic}/${file}.md`,
+        `./specs/${topic}/${file}.md`,
         "utf8"
       );
       markdowns.push({ data: data, topic: file });
