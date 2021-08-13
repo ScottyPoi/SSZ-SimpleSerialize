@@ -1,3 +1,8 @@
+# Eth 2.0 - Simple Serialize
+
+Simple Serialize (SSZ) is a standard for the encoding and merkleization of structured data, designed for ETH 2.0.
+ 
+
 This document outlines general things such as the principles and design choices behind SSZ.
 It does not spec any SSZ behavior, and can be ignored as an implementer of SSZ,
 but may provide valuable insight into the bigger picture of SSZ.
