@@ -11,12 +11,12 @@ const links = {
         link: "show"
         
     },
-    overview: {
-        title: "Technical Overview",
-        footer: "Walkthrough explanation of SimpleSerialize and Merkle Proofs",
-        image: "./overview.png",
-        alt: "overview",
-        link: "walk"
+    notes: {
+        title: "Notes and other docs",
+        footer: "From SSZ developers",
+        image: "./notes.png",
+        alt: "notes",
+        link: "altwalk"
     },
     implementations: {
         title: "Active Implementations",
@@ -25,6 +25,13 @@ const links = {
         image: "./implementations.png",
         alt: "implementations",
         link: "active"
+    },
+    overview: {
+        title: "Overview",
+        footer: "Walkthrough explanation of SimpleSerialize and Merkle Proofs",
+        image: "./overview.png",
+        alt: "overview",
+        link: "walk"
     },
     // chainsafe: {
     //     title: "Chainsafe SSZ",

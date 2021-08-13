@@ -32,4 +32,3 @@ yarn-error.log*
 
 # vercel
 .vercel
-eth2.0-ssz/
