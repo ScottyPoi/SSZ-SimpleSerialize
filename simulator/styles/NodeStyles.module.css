@@ -1,9 +1,13 @@
 .node {
-    display: inline-block;
-    width: 25px;
-    overflow-x: hidden;
-    height: auto;
+    display: auto;
+   width: 35%;
+height: auto;
+    padding-top: 5%;
+    position: relative;
+    scrollbar-width: none;
 }
+
+
 .empty {
     background-color: gray;
 }
@@ -33,7 +37,7 @@
 
 .merkle {
     background-color: lime;
-    outline: solid red;
+    border: solid red;
 }
 
 .branch {
@@ -48,7 +52,7 @@
 }
 
 .root {
-    outline: solid rgb(0, 0, 0);
+    border: solid rgb(0, 0, 0);
     background-color: gold;
     color: black;
 }
@@ -69,7 +73,8 @@
 
 .limit {
     background-color: red;
-    outline: solid black
+    outline: solid black;
+    color: gold;
 }
 
 .selected {

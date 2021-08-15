@@ -41,20 +41,32 @@ const containerText = `
 `;
 export default function TypingVisual(props) {
   const [type, setType] = useState("boolean");
-  const [uint, setUint] = useState("uint8");
-  const [uintValue, setUintValue] = useState("01");
   const [tree, setTree] = useState(<BuildTree NUMBER_OF_VALUES={1} />);
   const [text, setText] = useState(simpleText);
   useEffect(() => {
     type == "boolean"
-      ? setTree(<BooleanDemo />)
+      ? setTree(
+          <div className="row">
+            <div className="col-6">
+              <div className="row">
+                <BooleanDemo />
+              </div>
+              <div className="row">
+                <h4 className="text-center">var{`<boolean>`} = TRUE</h4>
+              </div>
+            </div>
+            <div className="col-6">
+              <UintBox />
+            </div>
+          </div>
+        )
       : type == "vector"
       ? setTree(<DemoVectorControls NUMBER_OF_VALUES={3} />)
       : type == "list"
       ? setTree(<DemoListControls />)
       : type == "container"
       ? setTree(<BuildContainerTree NUMBER_OF_VALUES={5} />)
-      : setTree(<UintBox value={uintValue} size={uint} />);
+      : setTree(<div>Hello</div>);
   }, [type]);
 
   useEffect(() => {
@@ -69,38 +81,7 @@ export default function TypingVisual(props) {
       : setText(simpleText);
   }, [type]);
 
-  useEffect(() => {
-    let value = "01";
-    for (let i = 2; i < uint * 2; i++) {
-      value += `${Math.floor(Math.random() * 9)}`;
-    }
-    setUintValue(value);
-  }, [uint]);
 
-  const uintSelect = () => {
-    return (
-      <>
-        <h4 className="text-center">
-          Unsigned Integers are serialized to bytes. A Merkle Tree leaf with one
-          unsigned integer value will pad the serialized value with zeros to
-          fill the 32 Byte leaf.
-        </h4>
-        <UintBox value={uintValue} size={uint} />
-        <select
-          className="form-select"
-          aria-label="Default select example"
-          onChange={(e) => setUint(e.target.value)}
-        >
-          <option value="1">Uint8</option>
-          <option value="2">Uint16</option>
-          <option value="4">Uint32</option>
-          <option value="8">Uint64</option>
-          <option value="16">Uint128</option>
-          <option value="32">Uint256</option>
-        </select>
-      </>
-    );
-  };
 
   return (
     <div>
@@ -112,16 +93,7 @@ export default function TypingVisual(props) {
               aria-current="page"
               onClick={() => setType("boolean")}
             >
-              Boolean
-            </button>
-          </li>
-          <li className="nav-item">
-            <button
-              className="nav-link active"
-              aria-current="page"
-              onClick={() => setType("uint")}
-            >
-              UintN{" "}
+              Simple
             </button>
           </li>
           <li className="nav-item">
@@ -167,18 +139,6 @@ export default function TypingVisual(props) {
         </h3>
       </div>
       <div className="row py-4">{tree}</div>
-      {type == "uint" && (
-        <h4 className="text-center">
-          Unsigned Integers are serialized to bytes. A Merkle Tree leaf with one
-          unsigned integer value will pad the serialized value with zeros to
-          fill the 32 Byte leaf.
-        </h4>
-      )}
-      {type == 'boolean' && (
-                <h4 className="text-center">
-                var{`<boolean>`} = TRUE
-              </h4>
-      )}
       <div className="row py-4 border-top">
         <h4>Default Values E.g.</h4>
         <CodeBlock

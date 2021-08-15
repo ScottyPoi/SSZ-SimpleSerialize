@@ -5,6 +5,8 @@ export default function Node(props) {
   const treeIdx = props.treeIdx;
   const selected = props.selected;
   const active = props.active;
+  const type = props.type;
+  const idx = props.idx;
 
   // useEffect(() => {
   //   toggleProof()
@@ -24,7 +26,8 @@ export default function Node(props) {
 
   let activated = isActive() ? styles.activated : styles.deactivated;
   let selectivated =
-    isSelected() && props.level === "leaf" || props.level === "intro" && isSelected()
+    (isSelected() && props.level === "leaf") ||
+    (props.level === "intro" && isSelected())
       ? styles.selected
       : styles.unselected;
 
@@ -60,12 +63,11 @@ export default function Node(props) {
     : styles.tree;
 
   let newNode = (
-    <div
-      className={`${styles.node} ${level} ${empty} ${chunkIdx} ${selectivated} ${activated}`}
-    >
-      {props.type}
-      {props.idx}
-    </div>
+    <p
+      className={`text-break p-0 text-center ${styles.node} ${level} ${empty} ${chunkIdx} ${selectivated} ${activated}`}
+      >{`${type}`}
+
+    </p>
   );
 
   return newNode;

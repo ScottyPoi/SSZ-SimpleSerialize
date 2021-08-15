@@ -34,10 +34,10 @@ export default function FullOverview(props) {
           })}
         </ul>
         <div className="row pt-4">
-          <div className="col-6">
+          {/* <div className="col-6">
             <OverviewSection prop="fee" topic={section} idx={1} text={text} />
-          </div>
-          <div className="col-6">
+          </div> */}
+          <div className="col">
             <OverviewVisual topic={section} />
           </div>
         </div>

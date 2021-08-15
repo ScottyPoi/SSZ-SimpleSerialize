@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
 
 export default function BuildtListTree(props) {
-
   const [selected, setSelected] = useState(0);
   const [rootActivated, setRootActivated] = useState(false);
   const [selections, setSelections] = useState([]);
@@ -11,7 +10,7 @@ export default function BuildtListTree(props) {
   const chunks = props.chunks;
   const length = props.length;
   const valuesPerChunk = props.valuesPerChunk;
-  const activeChunk = Math.floor((length / valuesPerChunk) + 1);
+  const activeChunk = Math.floor(length / valuesPerChunk + 1);
 
   let numberLeaves = getNextPowerOfTwo(chunks);
   let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
@@ -83,19 +82,20 @@ export default function BuildtListTree(props) {
           onClick={() => toggleSelected(`${i}`)}
           key={`${type}node${i}`}
           id={`${type}node${i}`}
-          className="col p-1"
+          className="col p-2"
         >
-          <Node
-            idx={i - totalNodes}
-            type={type}
-            empty={false}
-            level={level}
-            chunkIdx={i - totalNodes}
-            numChunks={activeChunk}
-            limit={chunks}
-            selected={isSelected(`${i}`)}
-
-          />
+          <div className="row justify-content-center">
+            <Node
+              idx={""}
+              type={type}
+              empty={false}
+              level={level}
+              chunkIdx={i - totalNodes}
+              numChunks={activeChunk}
+              limit={chunks}
+              selected={isSelected(`${i}`)}
+            />
+          </div>
         </div>
       );
     }
@@ -111,19 +111,20 @@ export default function BuildtListTree(props) {
           onClick={() => toggleSelected(`${i}`)}
           key={`${type}node${i}`}
           id={`${type}node${i}`}
-          className="col p-1"
+          className="col p-2"
         >
-          <Node
-            idx={i + fulls - totalNodes}
-            type={type}
-            empty={true}
-            level={level}
-            chunkIdx={i + fulls - totalNodes}
-            numChunks={activeChunk}
-            limit={chunks}
-            selected={isSelected(`${i + fulls - totalNodes}`)}
-
-          />
+          <div className="row justify-content-center">
+            <Node
+              idx={"empty"}
+              type={type}
+              empty={true}
+              level={level}
+              chunkIdx={i + fulls - totalNodes}
+              numChunks={activeChunk}
+              limit={chunks}
+              selected={isSelected(`${i + fulls - totalNodes}`)}
+            />
+          </div>
         </div>
       );
     }
@@ -136,18 +137,20 @@ export default function BuildtListTree(props) {
     for (let i = 0; i < number; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
+                    <div className="row justify-content-center">
+
           <Node
-            idx={i + numberLeaves}
-            type={type}
+            idx={"hash node"}
+            type={"hash node"}
             empty={empty}
             level={"branch"}
             chunkIdx={i}
             numChunks={activeChunk}
             limit={chunks}
             active={isInSelections(i + number)}
-
           />
         </div>
+</div>
       );
     }
     return row;
@@ -159,17 +162,19 @@ export default function BuildtListTree(props) {
     for (let i = 0; i < number; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
+                    <div className="row justify-content-center">
+
           <Node
-            idx={i + 2 ** level}
-            type={type}
+            idx={""}
+            type="merkle tree node"
             empty={empty}
             level={"intermediate"}
             chunkIdx={i}
             numChunks={activeChunk}
             limit={chunks}
             active={isInSelections(i + 2 ** level)}
-
           />
+</div>
         </div>
       );
     }
@@ -231,28 +236,31 @@ export default function BuildtListTree(props) {
       <div
         key={`merkleroot`}
         id={`merkleroot`}
-        className="row row-cols-auto justify-content-evenly"
+        className="row row-cols-5 justify-content-evenly"
       >
         <div className="col p-1">
-          <div
-            style={{ display: "inline-block", width: "25px", height: "auto" }}
-          />
         </div>
         <div className="col p-1">
-          <div
-            style={{ display: "inline-block", width: "25px", height: "auto" }}
-          />
         </div>
         <div className="col p-1">
-          <Node type="M" level="merkle" active={rootActive()}/>
         </div>
+        <div className="col p-1">
+          <p></p>
+          <Node
+            type={`hash_tree_root of List Object`}
+            idx=""
+            level="merkle"
+            active={rootActive()}
+          />
+        </div>
+        <div className='col'></div>
       </div>
     );
     tree.push(
       <div
         key={`hashtreeroot`}
         id={`hashtreeroot`}
-        className="row row-cols-auto justify-content-between"
+        className="row row-cols-8 justify-content-between"
       >
         <div className="col p-1">
           <div
@@ -265,7 +273,12 @@ export default function BuildtListTree(props) {
           />
         </div>
         <div className="col p-1">
-          <Node type="R" level="root" active={rootActive()} />
+          <Node
+            type="hash_tree_root of values"
+            idx=""
+            level="root"
+            active={rootActive()}
+          />
         </div>
         <div className="col p-1">
           <div
@@ -273,7 +286,12 @@ export default function BuildtListTree(props) {
           />
         </div>
         <div className="col p-1">
-          <Node type={props.limit} level="length" active={rootActive()}/>
+          <Node
+            idx="LIMIT"
+            type={`LIMIT: ${props.limit}`}
+            level="length"
+            active={rootActive()}
+          />
         </div>
       </div>
     );
@@ -282,7 +300,7 @@ export default function BuildtListTree(props) {
         <div
           key={`treelevel:${i}`}
           id={`treelevel:${i}`}
-          className="row row-cols-auto justify-content-around"
+          className="row row-cols-4 justify-content-around"
         >
           {rowOfTreeNodes(2 ** i, ``, i)}
         </div>
@@ -293,7 +311,7 @@ export default function BuildtListTree(props) {
         <div
           key={"hash"}
           id={"hash"}
-          className="row row-cols-auto justify-content-around"
+          className="row row-cols-8 justify-content-around"
         >
           {rowOfHashNodes(number + empties, "", "branch")}
           {/* {rowOfNodes(empties, "EH", 'branch', true)} */}
@@ -304,10 +322,10 @@ export default function BuildtListTree(props) {
       <div
         key={"leaves"}
         id={"leaves"}
-        className="row row-cols-auto justify-content-around"
+        className="row row-cols-8"
       >
-        {rowOfNodes(number, "", "leaf")}
-        {rowOfEmptyNodes(empties, "", 'leaf', true, number)}
+        {rowOfNodes(number, "chunk", "leaf")}
+        {rowOfEmptyNodes(empties, "empty", "leaf", true, number)}
       </div>
     );
     return tree;
