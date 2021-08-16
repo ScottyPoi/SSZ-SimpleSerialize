@@ -2,15 +2,12 @@ import Node from "../nodes/Node";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
 export default function BuildWalkVectorTree(props) {
-
   const NUMBER_OF_VALUES = props.NUMBER_OF_VALUES;
 
   let numberLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
   let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
   let numberEmpty = numberLeaves - NUMBER_OF_VALUES;
   let tree = build(NUMBER_OF_VALUES);
-
-
 
   function rowOfNodes(number, type, level, empty = false) {
     //   let leaves = getNextPowerOfTwo(number);
@@ -20,16 +17,18 @@ export default function BuildWalkVectorTree(props) {
         <div
           key={`${type}node${i}`}
           id={`${type}node${i}`}
-          className={"col p-1"}
+          className="col p-2"
         >
-          <Node
-            idx={i - totalNodes}
-            type={type}
-            empty={empty}
-            level={level}
-            chunkIdx={i - totalNodes}
-            numChunks={NUMBER_OF_VALUES}
-          />
+          <div className="row px-4 justify-content-center">
+            <Node
+              idx={i - totalNodes}
+              type={"value"}
+              empty={empty}
+              level={level}
+              chunkIdx={i - totalNodes}
+              numChunks={NUMBER_OF_VALUES}
+            />
+          </div>
         </div>
       );
     }
@@ -44,25 +43,23 @@ export default function BuildWalkVectorTree(props) {
         <div
           key={`${type}node${i}`}
           id={`${type}node${i}`}
-          className={"col p-1"}
+          className={"col p-2"}
         >
-          <Node
-            idx={i - totalNodes + NUMBER_OF_VALUES}
-            type={type}
-            empty={true}
-            level={"leaf"}
-            chunkIdx={i - totalNodes + NUMBER_OF_VALUES}
-            numChunks={NUMBER_OF_VALUES}
-          />
+          <div className="row px-4 justify-content-center">
+            <Node
+              idx={"emtpy"}
+              type={"empty"}
+              empty={true}
+              level={"leaf"}
+              chunkIdx={i - totalNodes + NUMBER_OF_VALUES}
+              numChunks={NUMBER_OF_VALUES}
+            />
+          </div>
         </div>
       );
     }
     return row;
   }
-
-  
-
-
 
   function getNextPowerOfTwo(number) {
     if (number <= 1) {
@@ -112,11 +109,7 @@ export default function BuildWalkVectorTree(props) {
     let empties = leaves - number;
     let levels = numberOfLevels(leaves);
     tree.push(
-      <div
-        key={"leaves"}
-        id={"leaves"}
-        className="row row-cols-auto justify-content-around"
-      >
+      <div key={"leaves"} id={"leaves"} className="row row-cols-8 mx-2">
         {rowOfNodes(number, "", "leaf")}
         {rowOfEmptyNodes(empties, "", "leaf", true)}
       </div>
@@ -131,7 +124,6 @@ export default function BuildWalkVectorTree(props) {
   return (
     <>
       <div className="row">{getTree()}</div>
-
     </>
   );
 }

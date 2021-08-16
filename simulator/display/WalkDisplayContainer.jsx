@@ -9,32 +9,26 @@ import { createHash } from "crypto";
 import BuildWalkVectorTree from "../trees/BuildWalkVectorTree";
 import BuildListTree from "../trees/BuildListTree";
 import BuildWalkListTree from "../trees/BuildWalkListTree";
-export default function WalkDisplayList(props) {
-  let serialized = props.serialized;
+import WalkBuildContainerTree from "../trees/WalkBuildContainerTree";
+import WalkContainerText from "../text/WalkContainerText";
+export default function WalkDisplayContainer(props) {
+  // let serialized = props.serialized;
   let values = props.values;
   let length = props.length;
-  let size = props.size;
-  let variable = props.variable;
-    const valuesPerChunk = 256 / size
+  const size = 256;
+  // let variable = props.variable;
+  const valuesPerChunk = 256 / size;
   let numberOfChunks = length / (256 / size);
 
-  let totalLeaves = getNextPowerOfTwo(numberOfChunks)
+  let roots = values.slice(0, length);
 
-  let NUMBER_OF_VALUES = Math.floor((variable) / (256 / size)) + 1;
+  let totalLeaves = getNextPowerOfTwo(numberOfChunks);
+
+  let NUMBER_OF_VALUES = Math.floor(length / (256 / size)) + 1;
 
   let numberOfLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
 
   let emptyLeaves = totalLeaves - numberOfChunks;
-
-
-
-  function toHexString(byteArray) {
-    return Array.prototype.map
-      .call(byteArray, function (byte) {
-        return ("0" + (byte & 0xff).toString(16)).slice(-2);
-      })
-      .join("");
-  }
 
   function getNextPowerOfTwo(number) {
     if (number <= 1) {
@@ -52,27 +46,31 @@ export default function WalkDisplayList(props) {
   }
 
   function chunks() {
-    let chunks = serialized.map((chunk, idx) => {
-      let _output = toHexString(chunk);
-
+    let chunks = roots.map((chunk, idx) => {
       return (
-        <WalkListText
-          numberOfLeaves={NUMBER_OF_VALUES}
-          emptyLeaves={emptyLeaves}
-          key={idx}
-          id={`chunk${idx}`}
-          chunk={_output}
-          length={variable}
-          size={size}
-          idx={idx}
-          numberOfChunks={totalLeaves}
-        />
+
+          <WalkContainerText
+            numberOfLeaves={NUMBER_OF_VALUES}
+            emptyLeaves={emptyLeaves}
+            s
+            key={idx}
+            id={`chunk${idx}`}
+            chunk={chunk}
+            length={length}
+            size={256}
+            idx={idx}
+            numberOfChunks={totalLeaves}
+          />
+
       );
     });
 
     for (let i = 0; i < emptyLeaves; i++) {
       chunks.push(
-        <div className="col text-break" style={{ border: "solid gray" }}>
+        <div
+          className="col overflow-hidden text-break"
+          style={{ border: "solid gray" }}
+        >
           {"0x".padEnd(66, "0")}
         </div>
       );
@@ -82,10 +80,9 @@ export default function WalkDisplayList(props) {
   }
 
   function string() {
-
-    let string = ""
-    serialized.forEach((chunk) => {
-      let _output = toHexString(chunk);
+    let string = "";
+    roots.forEach((chunk) => {
+      let _output = chunk;
 
       string += _output;
     });
@@ -111,14 +108,6 @@ export default function WalkDisplayList(props) {
     return valueChunks;
   }
 
-  let leaves = serialized.map((chunk) => {
-    let hash = createHash("sha256");
-    hash.update(chunk);
-    return hash.digest();
-  });
-
-  let hashRoot = merkleize(leaves);
-
   const displaySize = numberOfLeaves == 1 ? "x-large" : "large";
   const width = numberOfLeaves == 1 ? "50%" : "100%";
 
@@ -126,17 +115,18 @@ export default function WalkDisplayList(props) {
     <>
       <div className="container">
         <div className="row">
-          <BuildWalkListTree 
-      limit={length}
-      chunks={numberOfChunks}
-      length={variable}
-      valuesPerChunk={valuesPerChunk}
-      numberofLeaves={totalLeaves}
-      
-      />
-      </div>
-        <div className="row">{chunks()}</div>
-        <div className="row text-break"><p>0x{string()}</p></div>
+          <WalkBuildContainerTree
+            limit={length}
+            chunks={numberOfChunks}
+            length={length}
+            valuesPerChunk={valuesPerChunk}
+            numberofLeaves={totalLeaves}
+          />
+        </div>
+        {length < 9 && (<div className="row">{chunks()}</div>)}
+        <div className="row text-break">
+          <p>0x{string()}</p>
+        </div>
       </div>
     </>
   );

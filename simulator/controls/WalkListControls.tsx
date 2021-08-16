@@ -165,7 +165,7 @@ export default function WalkListControls(props) {
     let _chunks = [];
     let offset = size / 8 - 1;
     for (let c = 0; c < numChunks; c++) {
-      let output = new Uint16Array(32);
+      let output = new Uint8Array(32);
       output.fill(0);
       for (let i = 0; i < valuesPerChunk; i++) {
         output = NumberUintType.serialize(
@@ -221,9 +221,9 @@ export default function WalkListControls(props) {
             <option value="Uint8">Uint8</option>
             <option value="Uint16">Uint16</option>
             <option value="Uint32">Uint32</option>
-            <option value="Uint32">Uint64</option>
-            <option value="Uint32">Uint128</option>
-            <option value="Uint32">Uint256</option>
+            <option value="Uint64">Uint64</option>
+            <option value="Uint128">Uint128</option>
+            <option value="Uint256">Uint256</option>
           </select>
         </div>
         <div className="col-6">

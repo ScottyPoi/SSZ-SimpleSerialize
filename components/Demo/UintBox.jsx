@@ -38,6 +38,10 @@ export default function UintBox(props) {
 
   };
 
+  useEffect(() => {
+    handleSizeChange(1)
+  }, [])
+
   const list = [
     "Boolean",
     "Bytes32",
@@ -52,7 +56,10 @@ export default function UintBox(props) {
   const uintSelect = () => {
     return (
       <>
-        <select
+            <div className='col-3'>
+
+</div>
+      <div className='col-6'><select
           className="form-select"
           aria-label="Default select example"
           onChange={(e) => handleSizeChange(e.target.value)}
@@ -63,7 +70,11 @@ export default function UintBox(props) {
           <option value={8}>Uint64</option>
           <option value={16}>Uint128</option>
           <option value={32}>Uint256</option>
-        </select>
+        </select></div>
+      <div className='col-3'>
+
+      </div>
+        
       </>
     );
   };

@@ -1,10 +1,11 @@
 .node {
-    display: auto;
-   width: 35%;
+    display: inline-block;
+   width: 80%;
 height: auto;
     padding-top: 5%;
     position: relative;
     scrollbar-width: none;
+    padding: 2px;
 }
 
 

@@ -1,12 +1,25 @@
 import Node from "../nodes/Node";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
-export default function BuildVectorTree(props) {
+
+export default function BuildtWalkListTree(props) {
   const [selected, setSelected] = useState(0);
   const [rootActivated, setRootActivated] = useState(false);
   const [selections, setSelections] = useState([]);
 
-  const NUMBER_OF_VALUES = props.NUMBER_OF_VALUES;
+  const chunks = props.chunks;
+  const length = props.length;
+  const valuesPerChunk = props.valuesPerChunk;
+  const activeChunk = Math.floor(length / valuesPerChunk + 1);
+
+  let numberLeaves = getNextPowerOfTwo(chunks);
+  let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
+  let numberEmpty = numberLeaves - chunks;
+  let tree = build(chunks);
+
+  function toggleSelected(node) {
+    selected !== node ? setSelected(node) : setSelected(0);
+  }
 
   function rootActive() {
     return rootActivated;
@@ -18,15 +31,6 @@ export default function BuildVectorTree(props) {
 
   function isInSelections(node) {
     return selections.includes(node);
-  }
-
-  let numberLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
-  let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
-  let numberEmpty = numberLeaves - NUMBER_OF_VALUES;
-  let tree = build(NUMBER_OF_VALUES);
-
-  function toggleSelected(node) {
-    selected !== node ? setSelected(node) : setSelected(0);
   }
 
   useEffect(() => {
@@ -78,16 +82,17 @@ export default function BuildVectorTree(props) {
           onClick={() => toggleSelected(`${i}`)}
           key={`${type}node${i}`}
           id={`${type}node${i}`}
-          className={"col p-2"}
+          className="col p-2"
         >
           <div className="row justify-content-center">
             <Node
-              idx={"root"}
-              type={"root"}
-              empty={empty}
+              idx={""}
+              type={type}
+              empty={false}
               level={level}
               chunkIdx={i - totalNodes}
-              numChunks={NUMBER_OF_VALUES}
+              numChunks={activeChunk}
+              limit={chunks}
               selected={isSelected(`${i}`)}
             />
           </div>
@@ -97,26 +102,27 @@ export default function BuildVectorTree(props) {
     return row;
   }
 
-  function rowOfEmptyNodes(number, type, level, empty = true) {
+  function rowOfEmptyNodes(number, type, level, empty = false, fulls) {
     //   let leaves = getNextPowerOfTwo(number);
     let row = [];
     for (let i = totalNodes; i < totalNodes + number; i++) {
       row.push(
         <div
-          onClick={() => toggleSelected(`${i + NUMBER_OF_VALUES}`)}
+          onClick={() => toggleSelected(`${i}`)}
           key={`${type}node${i}`}
           id={`${type}node${i}`}
-          className={"col p-2"}
+          className="col p-2"
         >
           <div className="row justify-content-center">
             <Node
               idx={"empty"}
-              type={"empty"}
-              empty={empty}
+              type={type}
+              empty={true}
               level={level}
-              chunkIdx={i - totalNodes + NUMBER_OF_VALUES}
-              numChunks={NUMBER_OF_VALUES}
-              selected={isSelected(`${i + NUMBER_OF_VALUES}`)}
+              chunkIdx={i + fulls - totalNodes}
+              numChunks={activeChunk}
+              limit={chunks}
+              selected={isSelected(`${i + fulls - totalNodes}`)}
             />
           </div>
         </div>
@@ -131,19 +137,20 @@ export default function BuildVectorTree(props) {
     for (let i = 0; i < number; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
-                              <div className="row justify-content-center">
+                    <div className="row justify-content-center">
 
           <Node
-            idx={i + numberLeaves}
-            type={type}
+            idx={"hash node"}
+            type={"hash node"}
             empty={empty}
-            level={level}
+            level={"branch"}
             chunkIdx={i}
-            numChunks={NUMBER_OF_VALUES}
+            numChunks={activeChunk}
+            limit={chunks}
             active={isInSelections(i + number)}
           />
         </div>
-        </div>
+</div>
       );
     }
     return row;
@@ -155,18 +162,19 @@ export default function BuildVectorTree(props) {
     for (let i = 0; i < number; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
-                              <div className="row justify-content-center">
+                    <div className="row justify-content-center">
 
           <Node
-            idx={i + 2 ** level}
+            idx={""}
             type="merkle tree node"
             empty={empty}
-            level={level}
+            level={"intermediate"}
             chunkIdx={i}
-            numChunks={NUMBER_OF_VALUES}
+            numChunks={activeChunk}
+            limit={chunks}
             active={isInSelections(i + 2 ** level)}
           />
-        </div>
+</div>
         </div>
       );
     }
@@ -196,7 +204,11 @@ export default function BuildVectorTree(props) {
     let empties = [];
     for (let i = 0; i < number; i++) {
       empties.push(
-        <div id={`emptyvaluenode${i}`} className="col p-1">
+        <div
+          id={`emptyvaluenode${i}`}
+          key={`emptyvaluenode${i}`}
+          className="col p-1"
+        >
           <Node idx={i + 1} type="EV" empty={true} />
         </div>
       );
@@ -220,44 +232,100 @@ export default function BuildVectorTree(props) {
     let leaves = getNextPowerOfTwo(number);
     let empties = leaves - number;
     let levels = numberOfLevels(leaves);
+    // tree.push(
+    //   <div
+    //     key={`merkleroot`}
+    //     id={`merkleroot`}
+    //     className="row row-cols-5 justify-content-evenly"
+    //   >
+    //     <div className="col p-1">
+    //     </div>
+    //     <div className="col p-1">
+    //     </div>
+    //     <div className="col p-1">
+    //     </div>
+    //     <div className="col p-1">
+    //       <p></p>
+    //       <Node
+    //         type={`hash_tree_root of List Object`}
+    //         idx=""
+    //         level="merkle"
+    //         active={rootActive()}
+    //       />
+    //     </div>
+    //     <div className='col'></div>
+    //   </div>
+    // );
+    // tree.push(
+    //   <div
+    //     key={`hashtreeroot`}
+    //     id={`hashtreeroot`}
+    //     className="row row-cols-8 justify-content-between"
+    //   >
+    //     <div className="col p-1">
+    //       <div
+    //         style={{ display: "inline-block", width: "25px", height: "auto" }}
+    //       />
+    //     </div>
+    //     <div className="col p-1">
+    //       <div
+    //         style={{ display: "inline-block", width: "25px", height: "auto" }}
+    //       />
+    //     </div>
+    //     <div className="col p-1">
+    //       <Node
+    //         type="hash_tree_root of values"
+    //         idx=""
+    //         level="root"
+    //         active={rootActive()}
+    //       />
+    //     </div>
+    //     <div className="col p-1">
+    //       <div
+    //         style={{ display: "inline-block", width: "25px", height: "auto" }}
+    //       />
+    //     </div>
+    //     <div className="col p-1">
+    //       <Node
+    //         idx="LIMIT"
+    //         type={`LIMIT: ${props.limit}`}
+    //         level="length"
+    //         active={rootActive()}
+    //       />
+    //     </div>
+    //   </div>
+    // );
+    // for (let i = 1; i < levels - 1; i++) {
+    //   tree.push(
+    //     <div
+    //       key={`treelevel:${i}`}
+    //       id={`treelevel:${i}`}
+    //       className="row row-cols-4 justify-content-around"
+    //     >
+    //       {rowOfTreeNodes(2 ** i, ``, i)}
+    //     </div>
+    //   );
+    // }
+    // if (number > 1) {
+    //   tree.push(
+    //     <div
+    //       key={"hash"}
+    //       id={"hash"}
+    //       className="row row-cols-8 justify-content-around"
+    //     >
+    //       {rowOfHashNodes(number + empties, "", "branch")}
+    //       {/* {rowOfNodes(empties, "EH", 'branch', true)} */}
+    //     </div>
+    //   );
+    // }
     tree.push(
       <div
-        key={`hashtreeroot`}
-        id={`hashtreeroot`}
-        className="row row-cols-8 justify-content-around"
+        key={"leaves"}
+        id={"leaves"}
+        className="row row-cols-8"
       >
-        <div className="col p-1">
-          <Node type="R" level="root" active={rootActive()} />
-        </div>
-      </div>
-    );
-    for (let i = 1; i < levels - 1; i++) {
-      tree.push(
-        <div
-          key={`treelevel:${i}`}
-          id={`treelevel:${i}`}
-          className="row row-cols-8 justify-content-around"
-        >
-          {rowOfTreeNodes(2 ** i, `T`, i)}
-        </div>
-      );
-    }
-    if (number > 1) {
-      tree.push(
-        <div
-          key={"hash"}
-          id={"hash"}
-          className="row row-cols-8 justify-content-around"
-        >
-          {rowOfHashNodes(number + empties, "", "branch")}
-          {/* {rowOfHashNodes(empties, "", "branch", true)} */}
-        </div>
-      );
-    }
-    tree.push(
-      <div key={"leaves"} id={"leaves"} className="row row-cols-8">
-        {rowOfNodes(number, "", "leaf")}
-        {rowOfEmptyNodes(empties, "", "leaf", true)}
+        {rowOfNodes(number, "chunk", "leaf")}
+        {rowOfEmptyNodes(empties, "empty", "leaf", true, number)}
       </div>
     );
     return tree;

@@ -13,6 +13,8 @@ import ReactMarkdown from "react-markdown";
 import DemoVectorControls from "../../simulator/controls/DemoVectorControls";
 import UintBox from "./UintBox";
 import WalkListControls from "../../simulator/controls/WalkListControls";
+import WalkContainerControls from '../../simulator/controls/WalkContainerControls'
+
 
 const defaultText = `
 var a: Type<boolean>  
@@ -51,12 +53,10 @@ The fixed-length LIMIT is stored as an additional leaf.
 const containerText = 
 `
   Container types will have a Merkle Tree leaf for each field, some of which may be the 'Root' of a nested Merkle Tree.  
+  If the number of fields does not equal a power-of-two, the merkle tree is padded with zero nodes to achieve a perfect binary tree.
   
-  The number of leaves on the Merkle Tree is the next power_of_two above the number of fields.  
+
   
-  Empty leaves are 'zero_nodes'.   
-  
-  Below: A Container type with 5 fields makes an 8 leaf Merkle Tree.  
 `;
 export default function SerializationVisual(props) {
   const [type, setType] = useState("boolean");
@@ -144,6 +144,12 @@ export default function SerializationVisual(props) {
       </div>
       <div className="border-bottom row py-4">
         <WalkListControls />
+      </div>
+      <div className="row py-4 text-center">
+          {containerText}
+      </div>
+      <div className="border-bottom row py-4">
+        <WalkContainerControls />
       </div>
     </div>
   );
