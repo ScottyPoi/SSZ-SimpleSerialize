@@ -1,4 +1,4 @@
-import Node from "../nodes/Node";
+import OldNode from "../nodes/OldNode";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
 export default function BuildDemoTree(props) {
@@ -79,7 +79,7 @@ let hashes = new Array(5)
           id={`${type}node${i}`}
           className={"col p-1"}
         >
-          <Node
+          <OldNode
             idx={letters[i-64]}
             type={type}
             empty={empty}
@@ -105,7 +105,7 @@ let hashes = new Array(5)
           id={`${type}node${i}`}
           className={"col p-1"}
         >
-          <Node
+          <OldNode
             idx={i - totalNodes + NUMBER_OF_VALUES}
             type={type}
             empty={empty}
@@ -126,7 +126,7 @@ let hashes = new Array(5)
     for (let i = 32; i < 64; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
-          <Node
+          <OldNode
             idx={i}
             type={type}
             empty={empty}
@@ -147,7 +147,7 @@ let hashes = new Array(5)
     for (let i = 0; i < number; i++) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
-          <Node
+          <OldNode
             idx={i + 2 ** level}
             type=""
             empty={empty}
@@ -186,7 +186,7 @@ let hashes = new Array(5)
     for (let i = 0; i < number; i++) {
       empties.push(
         <div id={`emptyvaluenode${i}`} className="col p-1">
-          <Node idx={i + 1} type="EV" empty={true} />
+          <OldNode idx={i + 1} type="EV" empty={true} />
         </div>
       );
     }
@@ -216,7 +216,7 @@ let hashes = new Array(5)
         className="row row-cols-auto justify-content-around"
       >
         <div className="col p-1">
-          <Node type="R" level="root" active={rootActive()} />
+          <OldNode type="R" level="root" active={rootActive()} />
         </div>
       </div>
     );
