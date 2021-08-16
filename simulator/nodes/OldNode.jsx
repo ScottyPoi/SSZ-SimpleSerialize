@@ -1,12 +1,10 @@
-import styles from "../styles/NodeStyles.module.css";
-import "../styles/NodeStyles.module.css";
+import styles from "../styles/OldNodeStyles.module.css";
+import "../styles/OldNodeStyles.module.css";
 
-export default function Node(props) {
+export default function OldNode(props) {
   const treeIdx = props.treeIdx;
   const selected = props.selected;
   const active = props.active;
-  const type = props.type;
-  const idx = props.idx;
 
   // useEffect(() => {
   //   toggleProof()
@@ -26,8 +24,7 @@ export default function Node(props) {
 
   let activated = isActive() ? styles.activated : styles.deactivated;
   let selectivated =
-    (isSelected() && props.level === "leaf") ||
-    (props.level === "intro" && isSelected())
+    isSelected() && props.level === "leaf" || props.level === "intro" && isSelected()
       ? styles.selected
       : styles.unselected;
 
@@ -63,11 +60,12 @@ export default function Node(props) {
     : styles.tree;
 
   let newNode = (
-    <p
-      className={`p-0 text-center ${styles.node} ${level} ${empty} ${chunkIdx} ${selectivated} ${activated}`}
-      >{`${type}`}
-
-    </p>
+    <div
+      className={`${styles.node} ${level} ${empty} ${chunkIdx} ${selectivated} ${activated}`}
+    >
+      {props.type}
+      {props.idx}
+    </div>
   );
 
   return newNode;

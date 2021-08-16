@@ -1,6 +1,7 @@
 import { CodeBlock, dracula } from "react-code-blocks";
 import { exampleDataList, exampleSchemaList } from "../../data/examples";
 import { useState } from 'react'
+import ReactMarkdown from "react-markdown";
 
 
 const AttestationDataExampleSchema = `AttestationData = {
@@ -36,6 +37,9 @@ export default function AliasesVisual(props) {
 
             <h4 className='text-center'>Nested Aliases simplify complex data structures</h4>
         </div>
+      <div className='row pt-4'>
+<ReactMarkdown>{props.text}</ReactMarkdown>
+    </div>
       <div className="row border border-3">
         <div className="col-6 border">
           <CodeBlock
@@ -43,14 +47,13 @@ export default function AliasesVisual(props) {
             language="yaml"
             showLineNumbers={false}
           />
+          <h4>The DepositEvent object contains 3 fields.  blockNumber and index are both simple objects.  depositData is the ROOT of a merkleized depositData object.</h4>
+
         </div>
         <div className="col-6 border">
          <CodeBlock text={exampleData} language="yaml" showLineNumbers={false} />{" "}
         </div>
       </div>
-      <div className='row pt-4'>
-          {/* <button className='btn btn-secondary' type='button' onClick={() => setExampleIdx( (exampleIdx + 1) % 5)}>Next Example</button> */}
-    </div>
     </div>
   );
 }

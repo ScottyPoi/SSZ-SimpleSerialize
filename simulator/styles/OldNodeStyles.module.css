@@ -1,14 +1,9 @@
 .node {
     display: inline-block;
-   width: 80%;
-height: auto;
-    padding-top: 5%;
-    position: relative;
-    scrollbar-width: none;
-    padding: 2px;
+    width: 25px;
+    overflow-x: hidden;
+    height: auto;
 }
-
-
 .empty {
     background-color: gray;
 }
@@ -38,7 +33,7 @@ height: auto;
 
 .merkle {
     background-color: lime;
-    border: solid red;
+    outline: solid red;
 }
 
 .branch {
@@ -53,7 +48,7 @@ height: auto;
 }
 
 .root {
-    border: solid rgb(0, 0, 0);
+    outline: solid rgb(0, 0, 0);
     background-color: gold;
     color: black;
 }
@@ -74,8 +69,7 @@ height: auto;
 
 .limit {
     background-color: red;
-    outline: solid black;
-    color: gold;
+    outline: solid black
 }
 
 .selected {

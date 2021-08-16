@@ -12,7 +12,7 @@ export default function OverviewVisual(props) {
     props.topic == "Typing" ? (
       <TypingVisual />
     ) : props.topic == "Aliases" ? (
-      <AliasesVisual />
+      <AliasesVisual text={props.text} />
     ) : props.topic == "Default_Values" ? (
       <DefaultValuesVisual />
     ) : props.topic == "Serialize_Deserialize" ? (

@@ -26,8 +26,8 @@ export async function getStaticProps() {
 }
 
 const topics = {
-  general: ["general"],
-  types: ["general", `basic`, "bitfields", "complex", "union"],
+  design: ["general"],
+  types: ["types", `basic`, "bitfields", "complex", "union"],
   representation: ["fixed_variable_size", "sequences"],
   partials: ["partials"],
   merkleization: [
