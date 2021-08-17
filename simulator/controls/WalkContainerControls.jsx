@@ -31,8 +31,8 @@ export default function WalkContainerControls(props) {
 
   return (
     <>
-      <div className="row justify-content-center">
-        <div className="col-3 px-3">
+      <div className="row justify-content-evenly">
+        <div className="col-2 px-3">
           <button
             className="btn btn-outline-primary"
             type="submit"
@@ -41,10 +41,10 @@ export default function WalkContainerControls(props) {
             Less
           </button>
         </div>
-        <div className="col-6">
+        <div className="col-3">
           <h4>Container: {length} fields</h4>
         </div>
-        <div className="col-3 px-3">
+        <div className="col-2 px-3">
           <button
             className="btn btn-outline-primary"
             type="submit"
@@ -53,14 +53,12 @@ export default function WalkContainerControls(props) {
             More
           </button>
         </div>
-        <div className="row justify-content-center">
-          {/* <h4 className="text-center">{listLabel()}</h4> */}
-        </div>
-        <div className="row">
+        <div className='col-5'></div>
+</div>
+        <div className="row pt-3">
           <WalkDisplayContainer length={length} values={serialized} size={256}>
             {props.children}
           </WalkDisplayContainer>
-        </div>
       </div>
     </>
   );
