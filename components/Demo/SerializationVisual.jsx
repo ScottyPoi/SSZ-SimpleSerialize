@@ -61,6 +61,11 @@ const containerText = `
 
   
 `;
+
+const compositeText =  `
+Simple Types combine into Vectors, Lists, and Containers.  These types are serialized by serializing the simple objects inside, then packing
+those serialized bits into 32 Byte "chunks".
+`
 export default function SerializationVisual(props) {
   const [type, setType] = useState("boolean");
   const [tree, setTree] = useState(<BuildTree NUMBER_OF_VALUES={1} />);
@@ -135,6 +140,12 @@ export default function SerializationVisual(props) {
         <h5 className="text-center">{simpleText}</h5>
       </div>
       <div className="row border-bottom py-4">{simpleTree()}</div>
+      <div className="row pt-3 text-center">
+        <h4 className="text-center">COMPOSITE TYPES</h4>
+      </div>
+      <div className="row">
+        <h5 className="text-center">{compositeText}</h5>
+      </div>
       <div className="row pt-3 text-center">
         <h4 className="text-center">VECTORS</h4>
       </div>
