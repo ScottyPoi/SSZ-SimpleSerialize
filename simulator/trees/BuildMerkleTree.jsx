@@ -263,10 +263,10 @@ export default function BuildMerkleTree(props) {
 
   return (
     <div className="container">
-      <div className="row">{getTree()}</div>
       <div className="row">
-        <p className="text-center">click on leaf to show merkle proof</p>
+        <p className="text-center">Select leaf (BOTTOM ROW) to show merkle proof</p>
       </div>
+      <div className="row">{getTree()}</div>
       {selected != 0 && (
         <>
           <div className="row">

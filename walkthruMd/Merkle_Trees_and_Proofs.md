@@ -17,7 +17,6 @@
 
 ## Merkle proofs
 
-## For beginners
 
 Merkle proofs enable users to efficiently prove specific details of some data-structure that is known by a given hash.
 
@@ -26,7 +25,7 @@ For a proof of a set of leaves, branches to other leaves do not have to be fully
 the starts of each such branch, together with the values to proof, are sufficient to reconstruct the root of the tree.
 Compare the reconstructed root with the trusted root the data is known by, and the proof is complete.
 
-## Accumulator
+### Accumulator
 
 Merkle trees are a type of cryptographic accumulator, and a root is a binding vector commitment to a set of contents.
 I.e. the position of the contents is also committed, not just inclusion. Changing the position of any of the contents would change the Merkle root.
@@ -73,14 +72,6 @@ For an implementation, several choices can be made:
 
 SSZ is agnostic to this: Merkle proofs are an interface to these backings, not an enshrined choice for one approach.
 
-## Interface
 
-For application level usage, describing the proof with a typed structure is recommended, see [SSZ partials](../partials).
-
-For lower level usage, most of the complexity (and implementation freedom) is transferred to the underlying proof backing, and only a bare minimum interface is defined:
-
-`compute_root(proof_backing) -> root`
-
-`verify(proof_backing, root) -> bool: return compute_root(proof_backing) == root`
 
 

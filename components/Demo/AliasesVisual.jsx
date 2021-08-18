@@ -35,7 +35,7 @@ export default function AliasesVisual(props) {
     <div className="container">
         <div className='row'>
 
-            <h4 className='text-center'>Nested Aliases simplify complex data structures</h4>
+            {/* <h4 className='text-center'>Nested Aliases simplify complex data structures</h4> */}
         </div>
       <div className='row pt-4'>
 <ReactMarkdown>{props.text}</ReactMarkdown>
