@@ -277,17 +277,17 @@ export default function SubTree(props) {
           `H(${node}, ${node ^ 1})`
         );
       })
-      .filter((n) => n != 0)
+      .filter((n) => n != 0);
 
-      let lones = nodes.map((node) => {
-          return (
-            !nodes.includes(node ^ 1) && node
-          )
-      }).filter((n) => n!= 0)
+    let lones = nodes
+      .map((node) => {
+        return !nodes.includes(node ^ 1) && node;
+      })
+      .filter((n) => n != 0);
 
-      pairs.push(lones)
-      return pairs.toString()
-    }
+    pairs.push(lones);
+    return pairs.toString();
+  }
 
   return (
     <div className="container">
@@ -333,11 +333,9 @@ export default function SubTree(props) {
           </h4>
         </div>
         <div className="row">
-          <h4 className="text-center">
-            proof: {makeProofString(allNodes)}          </h4>
+          <h4 className="text-center">proof: {allNodes.toString()} </h4>
 
           <br />
-          {allNodes.toString()}
         </div>
       </>
     </div>
