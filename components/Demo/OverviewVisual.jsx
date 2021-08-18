@@ -18,7 +18,7 @@ export default function OverviewVisual(props) {
     ) : props.topic == "Serialize_Deserialize" ? (
       <SerializationVisual />
     ) : props.topic == "Merkleization" ? (
-      <MerkleizationVisual />
+      <MerkleizationVisual text={props.text}/>
     ) : props.topic == "Merkle_Proofs" ? (
       <MerkleProofsVisual />
     ) : props.topic == "Summaries_and_Expansions" ? (
