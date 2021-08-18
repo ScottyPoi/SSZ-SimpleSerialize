@@ -1,24 +1,28 @@
-import Node from "../nodes/Node";
+import OldNode from "../nodes/OldNode";
 import { useEffect, useState } from "react";
-import styles from '../styles/NodeStyles.module.css'
+import styles from "../styles/OldNodeStyles.module.css";
 
 export default function BuildWalkTree(props) {
+  const NUMBER_OF_VALUES = props.NUMBER_OF_VALUES;
 
-    const NUMBER_OF_VALUES = props.NUMBER_OF_VALUES
+  let numberLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
+  let numberEmpty = numberLeaves - NUMBER_OF_VALUES;
+  let tree = build(NUMBER_OF_VALUES);
 
-
-    
-    let numberLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
-    let numberEmpty = numberLeaves - NUMBER_OF_VALUES;
-    let tree = build(NUMBER_OF_VALUES);
-
-  function rowOfNodes(number, type, level, empty=false) {
-    //   let leaves = getNextPowerOfTwo(number);
+  function rowOfNodes(number, type, level, empty = false) {
     let row = [];
     for (let i = 0; i < number; i++) {
+      let idx = type == "intermediate" ? "" : i + 1;
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
-          <Node idx={i + 1} type={type} empty={empty} level={level} chunkIdx={i} numChunks={NUMBER_OF_VALUES}/>
+          <OldNode
+            idx={idx}
+            type={type}
+            empty={empty}
+            level={level}
+            chunkIdx={i}
+            numChunks={NUMBER_OF_VALUES}
+          />
         </div>
       );
     }
@@ -40,8 +44,6 @@ export default function BuildWalkTree(props) {
     }
   }
 
-
-
   function getEmpty() {
     return numberEmpty;
   }
@@ -51,7 +53,7 @@ export default function BuildWalkTree(props) {
     for (let i = 0; i < number; i++) {
       empties.push(
         <div id={`emptyvaluenode${i}`} className="col p-1">
-          <Node idx={i + 1} type="EV" empty={true}/>
+          <OldNode idx={i + 1} type="EV" empty={true} />
         </div>
       );
     }
@@ -69,7 +71,6 @@ export default function BuildWalkTree(props) {
     }
   }
 
-
   function build(number) {
     let tree = [];
     let leaves = getNextPowerOfTwo(number);
@@ -82,7 +83,7 @@ export default function BuildWalkTree(props) {
         className="row row-cols-auto justify-content-around"
       >
         <div className="col p-1">
-          <Node type="R" level='root'/>
+          <OldNode type="R" level="root" />
         </div>
       </div>
     );
@@ -93,7 +94,7 @@ export default function BuildWalkTree(props) {
           id={`treelevel:${i}`}
           className="row row-cols-auto justify-content-around"
         >
-          {rowOfNodes(2 ** i, `T${i - 1}`)}
+          {rowOfNodes(2 ** i, `H`, "intermediate")}
         </div>
       );
     }
@@ -104,7 +105,7 @@ export default function BuildWalkTree(props) {
           id={"hash"}
           className="row row-cols-auto justify-content-around"
         >
-          {rowOfNodes(number + empties, "", 'branch')}
+          {rowOfNodes(number + empties, "", "branch")}
           {/* {rowOfNodes(empties, "EH", 'branch', true)} */}
         </div>
       );
@@ -115,7 +116,7 @@ export default function BuildWalkTree(props) {
         id={"leaves"}
         className="row row-cols-auto justify-content-around"
       >
-        {rowOfNodes(number + empties, "", 'leaf')}
+        {rowOfNodes(number + empties, "", "leaf")}
         {/* {rowOfNodes(empties, "EL", 'leaf', true)} */}
       </div>
     );
@@ -126,7 +127,15 @@ export default function BuildWalkTree(props) {
     return tree;
   }
 
-  return getTree()
-
-
+  return (
+    <div className="row">
+      <div className="col-7">{getTree()}</div>
+      <div className="col-5">
+      <div className='row pb-1'><h5>hash_tree_root</h5></div>
+          <div className='row py-1'><h5>intermediate hash nodes</h5></div>
+          <div className='row py-1'><h5>hash leaf nodes</h5></div>
+          <div className='row pt-1'><h5>32 Byte serialized objects</h5></div>
+      </div>
+    </div>
+  );
 }
