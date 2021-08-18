@@ -6,6 +6,7 @@ import DeserializationVisual from "./DeserializationVisual";
 import MerkleizationVisual from "./MerkleizationVisual";
 import MerkleProofsVisual from "./MerkleProofsVisual";
 import SummariesExpansionsVisual from "./SummariesExpansionsVisual";
+import HelperFunctions from "./HelperFunctions";
 
 export default function OverviewVisual(props) {
   const section =
@@ -13,18 +14,14 @@ export default function OverviewVisual(props) {
       <TypingVisual />
     ) : props.topic == "Aliases" ? (
       <AliasesVisual text={props.text} />
-    ) : props.topic == "Default_Values" ? (
-      <DefaultValuesVisual />
-    ) : props.topic == "Serialize_Deserialize" ? (
+    ) : props.topic == "Serialization" ? (
       <SerializationVisual />
-    ) : props.topic == "Merkleization" ? (
-      <MerkleizationVisual />
-    ) : props.topic == "Merkle_Proofs" ? (
-      <MerkleProofsVisual />
-    ) : props.topic == "Summaries_and_Expansions" ? (
-      <SummariesExpansionsVisual />
+    ) : props.topic == "Merkle_Trees_and_Proofs" ? (
+      <MerkleizationVisual text={props.text} />
+    ) : props.topic == "Helper_Functions" ? (
+      <HelperFunctions text={props.text} />
     ) : (
-        <TypingVisual />
+      <TypingVisual />
     );
 
   return section;
