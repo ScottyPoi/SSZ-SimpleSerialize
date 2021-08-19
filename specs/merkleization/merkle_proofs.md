@@ -47,57 +47,6 @@ Notice that leaf nodes that share the same subtrees also share more witness node
 Sharing of witnesses in general is also more efficient than not sharing, as with individual leaf proofs.
 
 
-### Examples
-
-The numbers used in below examples are [generalized indices](../navigation/generalized_indices.md), not values.
-Note that the ordering of witness data is an encoding choice, defined by the [proof backing](#proof-backings).
-
-#### Classic single-leaf inclusion proofs
-
-```
-                      1
-          2                       3'
-    4'          5           6           7
-  8    9     10'  11*    12   13     14   15 
-```
-
-Leaf: `11`
-Witness data: `10, 4, 3`
-Proof: `H(H(4, H(10,11)), 3) == 1`
-
-#### Multiples leaves
-
-Also called "multi-proofs".
-
-```
-                      1
-          2                       3
-    4'          5           6           7'
-  8    9     10*  11*    12'  13*    14   15
-```
-
-Leaves: `10,11,13`
-Witness data: `4, 12, 7`
-Proof: `H(H(4, H(10,11)), H(H(12,13), 7)) == 1`
-
-#### Unbalanced trees
-
-
-```
-              1
-       2              3
-    4    5'        6       7'
-  8' 9*        12     13'
-            24'   25
-                50  51
-           100'101* 102*103*
-```
-
-Leaves: `9,101,102,103`
-Witness data: `8,524,100,13,7`
-Proof: `H(H(H(8,9), 5),   H(H(  H(24, H(H(100,101), H(102, 103))),   13), 7)) == 1`
-
-
 ## Proof backings
 
 A "backing" is the concept of a specialized binary tree representation that implements the Merkle proof interface,

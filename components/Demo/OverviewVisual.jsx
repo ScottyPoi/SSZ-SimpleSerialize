@@ -16,8 +16,10 @@ export default function OverviewVisual(props) {
       <AliasesVisual text={props.text} />
     ) : props.topic == "Serialization" ? (
       <SerializationVisual />
-    ) : props.topic == "Merkle_Trees_and_Proofs" ? (
+    ) : props.topic == "Merkle_Trees" ? (
       <MerkleizationVisual text={props.text} />
+    ) : props.topic == "Merkle_Proofs" ? (
+      <MerkleProofsVisual text={props.text} />
     ) : props.topic == "Helper_Functions" ? (
       <HelperFunctions text={props.text} />
     ) : (

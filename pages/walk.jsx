@@ -18,7 +18,8 @@ const topics = {
   Typing: "typo",
   Aliases: "Alio",
   Serialization: "serio",
-  Merkle_Trees_and_Proofs: "merklo",
+  Merkle_Trees: "merklo",
+  Merkle_Proofs: "proofo",
   Helper_Functions: "helpo"
 
 };

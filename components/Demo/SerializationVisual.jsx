@@ -1,15 +1,10 @@
 import BooleanDemo from "./BooleanDemo";
-import { CodeBlock, dracula } from "react-code-blocks";
 import BuildTree from "../../simulator/trees/BuildTree";
-import BuildDemoVectorTree from "../../simulator/trees/BuildDemoVectorTree";
-import BuildListTree from "../../simulator/trees/BuildVectorTree";
 import BuildContainerTree from "../../simulator/trees/BuildVectorTree";
-import BuildHashTree from "../../simulator/trees/BuildHashTree";
 import { useState } from "react";
 import { useEffect } from "react";
 import DemoListControls from "../../simulator/controls/DemoListControls";
 import WalkVectorControls from "../../simulator/controls/WalkVectorControls";
-import ReactMarkdown from "react-markdown";
 import DemoVectorControls from "../../simulator/controls/DemoVectorControls";
 import UintBox from "./UintBox";
 import WalkListControls from "../../simulator/controls/WalkListControls";
