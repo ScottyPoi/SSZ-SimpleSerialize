@@ -5,6 +5,9 @@ import BuildDemoTree from "../../simulator/trees/BuildDemoTree";
 import BuildMerkleTree from "../../simulator/trees/BuildMerkleTree";
 import BuildMultiMerkle from "../../simulator/trees/BuildMultiMerkle";
 import BuildDeepTree from "../../simulator/trees/BuildDeepTree";
+import BuildHashTree from "../../simulator/trees/BuildHashTree";
+import TreeTypes from "./TreeTypes";
+import MerkleBuildDeepTree from "../../simulator/trees/MerkleBuildDeepTree";
 
 const examples = `
 ### Examples
@@ -56,34 +59,27 @@ Leaves: \`9,101,102,103\`
 Witness data: \`8,524,100,13,7\`
 Proof: \`H(H(H(8,9), 5), H(H( H(24, H(H(100,101), H(102, 103))), 13), 7)) == 1\`
 
-`
+`;
 
 export default function MerkleizationVisual(props) {
   return (
-  <div className='row'>
-    <div className='col-6'>
-    <ReactMarkdown>{props.text}</ReactMarkdown>
-    </div>
-    <div className='col-6'>
-      <div className='row'>
-       <BuildWalkTree NUMBER_OF_VALUES={3} />
-      </div>
-      <div className='row py-4'>
-        <h3 className='text-center'>Classic Single-Leaf Inclusion Proofs:</h3>
-      </div>
-      <div className='row'>
-        <BuildMerkleTree NUMBER_OF_VALUES={8} />
+    <div className="row">
+      <div className="col-6 border-end">
+        <div className="row">
+          <BuildWalkTree NUMBER_OF_VALUES={4} />
         </div>
-      <div className='row py-4'>
-        <h3 className='text-center'>Multiple-Leaf Proofs a.k.a. Multi-Proofs:</h3>
+        <div className="row">
+          <ReactMarkdown>{props.text}</ReactMarkdown>
+        </div>
+        <div className="row">
+          <MerkleBuildDeepTree NUMBER_OF_VALUES={8} />
+        </div>
       </div>
-        <div className='row'>
-        <BuildMultiMerkle NUMBER_OF_VALUES={8} />
+      <div className="col-6">
+        <div className="row">
+          <TreeTypes />
+        </div>
       </div>
-      <div className='row'>
-        <BuildDeepTree NUMBER_OF_VALUES={8}/>
-      </div>
-
     </div>
-    </div>
-  )}
+  );
+}

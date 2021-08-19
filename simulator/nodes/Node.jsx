@@ -64,7 +64,7 @@ export default function Node(props) {
 
   let newNode = (
     <p
-      className={`p-0 text-center ${styles.node} ${level} ${empty} ${chunkIdx} ${selectivated} ${activated}`}
+      className={`p-0 text-center text-break ${styles.node} ${level} ${empty} ${chunkIdx} ${selectivated} ${activated}`}
       >{`${type}`}
 
     </p>

@@ -247,7 +247,7 @@ export default function BuildtListTree(props) {
         <div className="col p-1">
           <p></p>
           <Node
-            type={`hash_tree_root of List Object`}
+            type={`hash_tree_root(List)`}
             idx=""
             level="merkle"
             active={rootActive()}
@@ -274,7 +274,7 @@ export default function BuildtListTree(props) {
         </div>
         <div className="col p-1">
           <Node
-            type="hash_tree_root of values"
+            type="hash_tree_root(values)"
             idx=""
             level="root"
             active={rootActive()}
@@ -288,7 +288,7 @@ export default function BuildtListTree(props) {
         <div className="col p-1">
           <Node
             idx="LIMIT"
-            type={`LIMIT: ${props.limit}`}
+            type={`Hash(LIMIT: ${props.limit})`}
             level="length"
             active={rootActive()}
           />

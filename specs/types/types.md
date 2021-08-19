@@ -17,11 +17,6 @@ Default values are recursive; elements in composite types such as containers are
 
 ## Merkle proofs 
 
-Every type deterministically describes the shape of the Merkle tree representing the type:
- reasoning about the shape of a proof is abstracted away by the typing layer.
-Most types do so statically: the shape can be constructed on compile time, and navigation is stable (See [generalized indices](../navigation/generalized_indices.md)).
-Some types (e.g. those based on Sparse Merkle Trees) are not static, but are deterministic based the contents of the proof.
-
 Mapping a *valid (to the type)* merkle tree to that same type is bijective:
 - No two different values *of the same type* can merkleize to the same root
 - No two roots can be derived for the same value *of the type used for the root*.

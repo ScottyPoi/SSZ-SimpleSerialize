@@ -128,3 +128,4 @@ export default function multiProof(tree) {
 }
 
 console.log(multiProof(treeNodes));
+

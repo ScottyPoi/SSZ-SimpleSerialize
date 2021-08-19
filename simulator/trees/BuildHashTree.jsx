@@ -2,17 +2,17 @@
 // 'hash' math functions revealed
 // animated filling of merkle tree.
 
-import Node from "../nodes/Node";
+import OldNode from "../nodes/OldNode";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
 
 export default function BuildHashTree(props) {
   let numberOfValues = props.NUMBER_OF_VALUES;
   let numberLeaves = getNextPowerOfTwo(numberOfValues);
-  let numberPadded = props.red
-  let emptyLeaves = props.emptyLeaves
+  let numberPadded = props.red;
+  let emptyLeaves = props.emptyLeaves;
   let list = props.list;
-  let object = props.object ? props.object : "x"
+  let object = props.object ? props.object : "x";
   return build(numberLeaves, list, numberOfValues, numberPadded, object);
 }
 
@@ -31,7 +31,7 @@ export function getNextPowerOfTwo(number) {
   }
 }
 
-function rowOfLeafNodes(number, empty = false, pad=false) {
+function rowOfLeafNodes(number, empty = false, pad = false) {
   //   let leaves = getNextPowerOfTwo(number);
   let row = [];
   if (number % 2 == 0) {
@@ -45,7 +45,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={empty}
@@ -58,7 +58,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={empty}
@@ -81,7 +81,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={empty}
@@ -94,7 +94,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={empty}
@@ -112,7 +112,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={number + 1}
             type=""
             empty={true}
@@ -125,7 +125,7 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={number}
             type=""
             empty={empty}
@@ -141,17 +141,24 @@ function rowOfLeafNodes(number, empty = false, pad=false) {
   return row;
 }
 
-function rowOfNodes(number, type, level, empty=false, pad=false, numberOfValues) {
+function rowOfNodes(
+  number,
+  type,
+  level,
+  empty = false,
+  pad = false,
+  numberOfValues
+) {
   //   let leaves = getNextPowerOfTwo(number);
-  
+
   let row = [];
   for (let i = 0; i < number; i++) {
     row.push(
       <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
-        <Node
+        <OldNode
           idx={i + 1}
           type={type}
-          empty={i>=numberOfValues}
+          empty={i >= numberOfValues}
           level={level}
           chunkIdx={i}
           numChunks={numberOfValues}
@@ -179,7 +186,7 @@ function displayTreeNodes(number, empty = false) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 2}
               type=""
               empty={empty}
@@ -189,7 +196,7 @@ function displayTreeNodes(number, empty = false) {
             />
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 3}
               type=""
               empty={empty}
@@ -202,7 +209,7 @@ function displayTreeNodes(number, empty = false) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               // idx={Math.floor(i / 2) + 1}
               type="R"
               empty={empty}
@@ -225,7 +232,7 @@ function displayTreeNodes(number, empty = false) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 2}
               type=""
               empty={empty}
@@ -235,7 +242,7 @@ function displayTreeNodes(number, empty = false) {
             />
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 3}
               type=""
               empty={empty}
@@ -248,7 +255,7 @@ function displayTreeNodes(number, empty = false) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={Math.floor(i / 2) + 2}
               type="TA"
               empty={empty}
@@ -269,7 +276,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
   let _tree = [];
   if (leaves == 1) {
     _tree = [];
-    
+
     _tree.push(
       <div key="tophashed" className="d-flex flex-row justify-content-evenly">
         {displayTreeNodes(1)}
@@ -277,7 +284,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={1}
             type=""
             empty={false}
@@ -290,7 +297,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             //   idx={2}
             type="R"
             empty={false}
@@ -313,7 +320,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
               <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
-              <Node
+              <OldNode
                 // idx={i + 1}
                 type="M"
                 empty={false}
@@ -335,13 +342,13 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
               <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
-              <Node type="R" level="root" />){" "}
+              <OldNode type="R" level="root" />){" "}
             </div>
           </div>
         );
   } else if (leaves == 2) {
     _tree = [];
-    
+
     _tree.push(
       <div key={"leaves1"} id={"leaves"} className="justify-content-center">
         {displayTreeNodes(leaves)}
@@ -366,7 +373,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
               <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
-              <Node
+              <OldNode
                 // idx={i + 1}
                 type="M"
                 empty={false}
@@ -388,11 +395,10 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
               <h4>merkleize ({object}) =</h4>
             </div>
             <div className="d-flex flex-col p-1">
-              <Node type="R" level="root" />){" "}
+              <OldNode type="R" level="root" />){" "}
             </div>
           </div>
         );
-
   } else if (leaves == 4) {
     _tree = [];
 
@@ -402,7 +408,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={2}
             type=""
             empty={false}
@@ -412,7 +418,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           />
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={3}
             type=""
             empty={false}
@@ -425,7 +431,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             //   idx={Math.floor(i / 2) + 1}
             type="R"
             empty={false}
@@ -446,7 +452,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={false}
@@ -456,7 +462,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             />
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 2}
               type=""
               empty={false}
@@ -469,7 +475,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={Math.floor(i / 2) + 2}
               type=""
               empty={false}
@@ -491,10 +497,10 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
-              empty={i>=numberOfValues}
+              empty={i >= numberOfValues}
               level="leaf"
               chunkIdx={i}
               numChunks={numberOfValues}
@@ -504,7 +510,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={false}
@@ -516,44 +522,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
         </div>
       );
     }
-    list === true
-      ? _tree.push(
-          <div
-            key={`hashtreeroot`}
-            id={`hashtreeroot`}
-            className="row row-cols-auto justify-content-evenly align-items-center"
-            style={{ border: "solid black" }}
-          >
-            <div className="col p-1 align-items-center">
-              <h4>merkleize ({object}) =</h4>
-            </div>
-            <div className="d-flex flex-col p-1">
-              <Node
-                // idx={i + 1}
-                type="M"
-                empty={false}
-                level="merkle"
-                // chunkIdx={i}
-                numChunks={leaves}
-              />
-            </div>
-          </div>
-        )
-      : _tree.push(
-          <div
-            key={`hashtreeroot`}
-            id={`hashtreeroot`}
-            className="row row-cols-auto justify-content-evenly align-items-center"
-            style={{ border: "solid black" }}
-          >
-            <div className="col p-1 align-items-center">
-              <h4>merkleize ({object}) =</h4>
-            </div>
-            <div className="d-flex flex-col p-1">
-              <Node type="R" level="root" />){" "}
-            </div>
-          </div>
-        );
+    
   } else if (leaves == 8) {
     _tree = [];
 
@@ -563,7 +532,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={2}
             type=""
             empty={false}
@@ -573,7 +542,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           />
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={3}
             type=""
             empty={false}
@@ -586,7 +555,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             //   idx={Math.floor(i / 2) + 1}
             type="R"
             empty={false}
@@ -603,7 +572,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={4}
             type=""
             empty={false}
@@ -613,7 +582,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           />
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={5}
             type=""
             empty={false}
@@ -626,7 +595,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={2}
             type=""
             empty={false}
@@ -643,7 +612,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={6}
             type=""
             empty={false}
@@ -653,7 +622,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           />
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={7}
             type=""
             empty={false}
@@ -666,7 +635,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             idx={3}
             type=""
             empty={false}
@@ -687,7 +656,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 8}
               type=""
               empty={false}
@@ -697,7 +666,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             />
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 9}
               type=""
               empty={false}
@@ -710,8 +679,8 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
-              idx={i/2 + 4}
+            <OldNode
+              idx={i / 2 + 4}
               type=""
               empty={false}
               level="intermediate"
@@ -732,10 +701,10 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4>{`hash (`} </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
-              empty={i>=numberOfValues}
+              empty={i >= numberOfValues}
               level="leaf"
               chunkIdx={i}
               numChunks={numberOfValues}
@@ -745,7 +714,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
             <h4> ) = </h4>
           </div>
           <div className="d-flex flex-col p-1">
-            <Node
+            <OldNode
               idx={i + 1}
               type=""
               empty={false}
@@ -757,44 +726,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
         </div>
       );
     }
-    list === true
-      ? _tree.push(
-          <div
-            key={`hashtreeroot`}
-            id={`hashtreeroot`}
-            className="row row-cols-auto justify-content-evenly align-items-center"
-            style={{ border: "solid black" }}
-          >
-            <div className="col p-1 align-items-center">
-              <h4>merkleize ({object}) =</h4>
-            </div>
-            <div className="d-flex flex-col p-1">
-              <Node
-                // idx={i + 1}
-                type="M"
-                empty={false}
-                level="merkle"
-                // chunkIdx={i}
-                numChunks={leaves}
-              />
-            </div>
-          </div>
-        )
-      : _tree.push(
-          <div
-            key={`hashtreeroot`}
-            id={`hashtreeroot`}
-            className="row row-cols-auto justify-content-evenly align-items-center"
-            style={{ border: "solid black" }}
-          >
-            <div className="col p-1 align-items-center">
-              <h4>merkleize ({object}) =</h4>
-            </div>
-            <div className="d-flex flex-col p-1">
-              <Node type="R" level="root" />){" "}
-            </div>
-          </div>
-        );
+    
   } else {
     _tree = [];
   }
@@ -809,7 +741,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4>{`hash (`} </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             // idx={i + 1}
             type="R"
             empty={false}
@@ -819,7 +751,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           />
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             // idx={i + 1}
             type="LJ"
             empty={false}
@@ -832,7 +764,7 @@ function build(leaves, list, numberOfValues, numberEmpty, object) {
           <h4> ) = </h4>
         </div>
         <div className="d-flex flex-col p-1">
-          <Node
+          <OldNode
             // idx={i + 1}
             type="M"
             empty={false}

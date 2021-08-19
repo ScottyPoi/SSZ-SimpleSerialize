@@ -1,126 +1,39 @@
 import OldNode from "../nodes/OldNode";
+import multiProof from "./Proof";
 import { useEffect, useState } from "react";
 import styles from "../styles/NodeStyles.module.css";
-export default function BuildVectorTree(props) {
-  const [selected, setSelected] = useState(0);
-  const [rootActivated, setRootActivated] = useState(false);
-  const [selections, setSelections] = useState([]);
+export default function MerkleSubTree(props) {
 
-  const NUMBER_OF_VALUES = props.NUMBER_OF_VALUES;
-
-  function rootActive() {
-    return rootActivated;
-  }
-
-  function isSelected(node) {
-    return selected === node;
-  }
-
-  function isInSelections(node) {
-    return selections.includes(node);
-  }
-
+    let NUMBER_OF_VALUES = props.NUMBER_OF_VALUES
   let numberLeaves = getNextPowerOfTwo(NUMBER_OF_VALUES);
   let totalNodes = getNextPowerOfTwo(numberLeaves + 1);
   let numberEmpty = numberLeaves - NUMBER_OF_VALUES;
   let tree = build(NUMBER_OF_VALUES);
 
-  function toggleSelected(node) {
-    selected !== node ? setSelected(node) : setSelected(0);
-  }
-
-  useEffect(() => {
-    if (selected !== 0) {
-      setRootActivated(true);
-      let _selections =
-        selected == 4
-          ? [3]
-          : selected == 5
-          ? [2]
-          : selected == 8
-          ? [5, 3]
-          : selected == 9
-          ? [4, 3]
-          : selected == 10
-          ? [7, 2]
-          : selected == 11
-          ? [6, 2]
-          : selected == 16
-          ? [9, 5, 3]
-          : selected == 17
-          ? [8, 5, 3]
-          : selected == 18
-          ? [11, 4, 3]
-          : selected == 19
-          ? [10, 4, 3]
-          : selected == 20
-          ? [13, 7, 2]
-          : selected == 21
-          ? [12, 7, 2]
-          : selected == 22
-          ? [15, 6, 2]
-          : selected == 23
-          ? [14, 6, 2]
-          : [];
-      setSelections(_selections);
-    } else {
-      setRootActivated(false);
-      setSelections([]);
-    }
-  }, [selected]);
 
   function rowOfNodes(number, type, level, empty = false) {
     //   let leaves = getNextPowerOfTwo(number);
     let row = [];
-    for (let i = totalNodes; i < totalNodes + number; i++) {
+    for (let i = 8; i < 16; i++) {
       row.push(
         <div
-          onClick={() => toggleSelected(`${i}`)}
           key={`${type}node${i}`}
           id={`${type}node${i}`}
           className={"col p-1"}
         >
           <OldNode
-            idx={i - totalNodes}
+            idx={i + 14}
             type={type}
             empty={empty}
             level={level}
-            chunkIdx={i - totalNodes}
-            numChunks={NUMBER_OF_VALUES}
-            selected={isSelected(`${i}`)}
+            chunkIdx={i}
+            numChunks={8}
           />
         </div>
       );
     }
     return row;
   }
-
-  function rowOfEmptyNodes(number, type, level, empty = true) {
-    //   let leaves = getNextPowerOfTwo(number);
-    let row = [];
-    for (let i = totalNodes; i < totalNodes + number; i++) {
-      row.push(
-        <div
-          onClick={() => toggleSelected(`${i + NUMBER_OF_VALUES}`)}
-          key={`${type}node${i}`}
-          id={`${type}node${i}`}
-          className={"col p-1"}
-        >
-          <OldNode
-            idx={i - totalNodes + NUMBER_OF_VALUES}
-            type={type}
-            empty={true}
-            level={"leaf"}
-            chunkIdx={i - totalNodes + NUMBER_OF_VALUES}
-            numChunks={NUMBER_OF_VALUES}
-            selected={isSelected(`${i + NUMBER_OF_VALUES}`)}
-          />
-        </div>
-      );
-    }
-    return row;
-  }
-
 
   function rowOfHashNodes(number, type, level, empty = false) {
     //   let leaves = getNextPowerOfTwo(number);
@@ -129,13 +42,12 @@ export default function BuildVectorTree(props) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
           <OldNode
-            idx={i + numberLeaves}
+            idx={i + numberLeaves + 14}
             type={type}
             empty={empty}
-            level={'branch'}
+            level={"branch"}
             chunkIdx={i}
             numChunks={NUMBER_OF_VALUES}
-            active={isInSelections(i + number)}
           />
         </div>
       );
@@ -150,13 +62,12 @@ export default function BuildVectorTree(props) {
       row.push(
         <div key={`${type}node${i}`} id={`${type}node${i}`} className="col p-1">
           <OldNode
-            idx={i + 2 ** level}
+            idx={i + 2 ** level + 14}
             type=""
             empty={empty}
             level={"intermediate"}
             chunkIdx={i}
             numChunks={NUMBER_OF_VALUES}
-            active={isInSelections(i + 2 ** level)}
           />
         </div>
       );
@@ -179,21 +90,6 @@ export default function BuildVectorTree(props) {
     }
   }
 
-  function getEmpty() {
-    return numberEmpty;
-  }
-
-  function Empties(number) {
-    let empties = [];
-    for (let i = 0; i < number; i++) {
-      empties.push(
-        <div id={`emptyvaluenode${i}`} className="col p-1">
-          <OldNode idx={i + 1} type="EV" empty={true} />
-        </div>
-      );
-    }
-    return empties;
-  }
 
   function numberOfLevels(leaves) {
     let number = 1;
@@ -218,7 +114,7 @@ export default function BuildVectorTree(props) {
         className="row row-cols-auto justify-content-around"
       >
         <div className="col p-1">
-          <OldNode type="R" level="root" active={rootActive()} />
+          <OldNode type={props.origin} level="root" />
         </div>
       </div>
     );
@@ -252,7 +148,6 @@ export default function BuildVectorTree(props) {
         className="row row-cols-auto justify-content-around"
       >
         {rowOfNodes(number, "", "leaf")}
-        {rowOfEmptyNodes(empties, "", "leaf", true)}
       </div>
     );
     return tree;
@@ -262,5 +157,10 @@ export default function BuildVectorTree(props) {
     return tree;
   }
 
-  return getTree();
+
+  return (
+    <div className="container">
+      <div className="row">{getTree()}</div>
+    </div>
+  );
 }
