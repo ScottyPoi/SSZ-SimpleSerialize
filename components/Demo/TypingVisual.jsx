@@ -132,7 +132,7 @@ export default function TypingVisual(props) {
     <div>
       <h2>Types</h2>
       <div className="row py-4">
-        <table class="table">
+        <table class="table table-bordered table-hover">
                 <thead>
                   <tr>
                     <th scope="col"></th>
@@ -148,14 +148,7 @@ export default function TypingVisual(props) {
           return (
           <>
             <th scope="row">{category}</th>
-            <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-          </tr>
+
           {Object.keys(types[category]).map((type) => {
             acc = (acc + 3) % 7;
             return (
