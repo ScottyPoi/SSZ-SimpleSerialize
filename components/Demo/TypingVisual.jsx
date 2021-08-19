@@ -11,6 +11,7 @@ import DemoListControls from "../../simulator/controls/DemoListControls";
 import ReactMarkdown from "react-markdown";
 import DemoVectorControls from "../../simulator/controls/DemoVectorControls";
 import UintBox from "./UintBox";
+import gfm from "remark-gfm";
 
 const defaultText = `
 var a: Type<boolean>  
@@ -29,51 +30,147 @@ const text = `
 
 Data for SSZ Serialization are represented by one or a combination of these **Types:**
 
-- ###### Basic Types: 
-  - ###### **Unisigned Integer** -  \`Uint8, Uint16, Uint32, Uint64, Uint128, Uint256\`
-  - ###### **Boolean** - \`Bit, 0 or 1, True or False\`
-- ###### Composite Types
-  - ###### **Vector**    - \`"Fixed Length" sequence of elements of same **Type** (homogeneous)\`
-  - ###### **List**    - \`"Variable Length" sequence of elements of the same **Type** (homogenous)\`
-  - ###### **Container**    - \`Heterogeneous ordered collection of elements\`
-  - ###### **Union**    - \`A "Union Type" containing SSZ Types\`
-  - ###### **Root**    - \`A Uint256 that represents the \`Bytes32 hash_tree_root\` of a nested merkle tree\`
+
+| Type             	| Notation                                            	|                                                                                                	| Default Value                         	| Illegal Types                 	|
+|------------------	|-----------------------------------------------------	|------------------------------------------------------------------------------------------------	|---------------------------------------	|-------------------------------	|
+
+| BASIC            	|                                                     	|                                                                                                	|                                       	|                               	|
+|------------------	|-----------------------------------------------------	|------------------------------------------------------------------------------------------------	|---------------------------------------	|-------------------------------	|
 
 
-##### Default values
+|             	|                                                     	|                                                                                                	|                                       	|                               	|
+|------------------	|-----------------------------------------------------	|------------------------------------------------------------------------------------------------	|---------------------------------------	|-------------------------------	|
+| Unsigned Integer 	| Uint[N]                                             	| Uint8, Uint16, Uint64, Uint128, Uint256                                                        	| 0                                     	|                               	|
+| Boolean          	| Bit                                                 	| 0 or 1 / True or False / Vote A or Vote B                                                      	| False                                 	|                               	|
 
-All SSZ Types have a default "zeroed" value
+| COMPOSITE        	|                                                     	|                                                                                                	|                                       	|                               	|
+|------------------	|-----------------------------------------------------	|------------------------------------------------------------------------------------------------	|---------------------------------------	|-------------------------------	|
 
-- Uint: 0
-- Boolean: False
-- Vector: Sequence of default values
-- List: Empty List 
-- Container: Default value for each type in container
-- Union: Default value of "Type_0"
-  
-Default values are *recursive*; elements in composite types such as containers are initialized with their respective default initializations
+|             	|                                                     	|                                                                                                	|                                       	|                               	|
+|------------------	|-----------------------------------------------------	|------------------------------------------------------------------------------------------------	|---------------------------------------	|-------------------------------	|
+| SPECIAL          	|                                                     	|                                                                                                	|                                       	|                               	|
+| Vector           	| Vector[Element Type, Length]                        	| "Fixed Length" sequence of Elements of same Type (Homogeneous)                                 	| [default(type)] * length              	| Empty Vector (Vector[type, 0] 	|
+| Bitvector        	| Bitvector[Length]                                   	| Vector of type Boolean.  Vector[boolean, length].  Most efficient when treated as unique type. 	| [false] * length                      	|                               	|
+| List             	| List[Element Type, Limit]                           	| "Variable Length" sequence of Elements of same Type (Homogeneous)                              	| Empty List ([])                       	|                               	|
+| Bitlist          	| Bitlist[Limit]                                      	| List of type Boolean.  List[boolean, limit].  More efficient when treated as unique type.      	| Empty List ([])                       	|                               	|
+| Container        	| Container[var_a: Type, var_b: Type, var_c: Type...] 	| Ordered Heteregeneous collection of Values (key/value pairs).                                  	| [default(type) for type in container] 	| Containers with No Fields     	|
+| Union            	| Union[type_0, type_1, ...]                          	| Union type containing one of the given subtypes                                                	| Default of type_0                     	| Union[null, ...]              	|
+| Root             	| hash_tree_root(composite_type)                      	| A 32 Byte root of a merkleized object                                                          	|                                       	|                               	|`;
 
-#### is_zero
+const types = {
+  Basic: {
+    Unsigned_Integer: {
+      notation: "Uint[N]",
+      Definition: "Unsigned Integer of N Bytes.  Uint8, Uint16, Uint64, Uint128, Uint256",
+      Default_Value: "0",
+      Illegal_Types: "",
+    },
+    Boolean: {
+      notation: "boolean",
+      Definition: "True or False, 0 or 1, etc.",
+      Default_Value: "False",
+      Illegal_Types: "",
+    },
+  },
+  Composite: {
+    Vector: {
+      notation: "Vector[type, N]",
+      Definition: "Fixed Length sequence of elements of same type.  Homogeneous collection of length N",
+      Default_Value: "[default(type)] * N  -- A vector of default values of length N",
+      Illegal_Types: "Empty Vectors -- Vector[type, 0]",
+    },
+    List: {
+      notation: "List[type, N]",
+      Definition: "Variable Length sequence of elements of same type.  Homogenous collection limited to N values",
+      Default_Value: "Empty List: [ ]",
+      Illegal_Types: "",
+    },
+    Container: {
+      notation: "Container[var_a: type, var_b: type, ...]",
+      Definition: "Heterogeneous collection of key-type pairs.",
+      Default_Value: "default(type) for type in container. -- All fields zeroed to default values",
+      Illegal_Types: "Container with no fields",
+    },
+    Union: {
+      notation: "Union[type_0, type_1, ...]",
+      Definition: "Union type containing SSZ types",
+      Default_Value: "default(type_0).  the zeroed default value of type_0",
+      Illegal_Types: "Union with null type at type_0. -- Union[null, ...]",
+    },
+  },
+  Special: {
+    BitVector: {
+      notation: "BitVector[N]",
+      Definition: "Vector of Boolean Values of length N.  Given special notation for efficiency",
+      Default_Value: "False * N",
+      Illegal_Types: "Empty BitVectors: BitVector[0]",
+    },
+    BitList: {
+      notation: "BitList[N]",
+      Definition: "List of Boolean Values with limit N.  Given special notation for efficiency.",
+      Default_Value: "Empty List: [ ]",
+      Illegal_Types: "",
+    },
+    Root: {
+      notation: "hash_tree_root(type)",
+      Definition: "The merkleized root of a composite SSZ type",
+      Default_Value: "hash_tree_root(default(type))",
+      Illegal_Types: "",
+    },
+  },
+};
 
-An SSZ object is called zeroed (and thus, is_zero(object) returns true) if it is equal to the default value for that type.
-
-### Illegal types
-
-- Empty vector types (Vector[type, 0], Bitvector[0]) are illegal.
-- Containers with no fields are illegal.
-- The \`null\` type is only legal as the first type in a union subtype (i.e. with type index zero).
-`
+const variants = ["primray", "secondary", "success", "danger", "warning", "info", "light"]
 
 export default function TypingVisual(props) {
   const [type, setType] = useState("boolean");
   const [tree, setTree] = useState(<BuildTree NUMBER_OF_VALUES={1} />);
 
-
-
+  let acc = -1
 
   return (
     <div>
-      <div className="row py-4"><ReactMarkdown>{text}</ReactMarkdown></div>
+      <h2>Types</h2>
+      <div className="row py-4">
+        <table class="table table-bordered table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col">Type</th>
+                    <th scope="col">Notation</th>
+                    <th scope="col">Definition</th>
+                    <th scope="col">Default Value</th>
+                    <th scope="col">Illegal Types</th>
+                  </tr>
+                </thead>
+                <tbody>
+        {Object.keys(types).map((category, idx_cat) => {
+          return (
+          <>
+            <th scope="row">{category}</th>
+
+          {Object.keys(types[category]).map((type) => {
+            acc = (acc + 3) % 7;
+            return (
+          <>
+              <tr className={`table-${variants[acc]}`}>
+              <td> -</td>
+              <td>{type}</td>
+              <td>{types[category][type].notation}</td>
+              <td>{types[category][type].Definition}</td>
+              <td>{types[category][type].Default_Value}</td>
+              <td>{types[category][type].Illegal_Types}</td>
+            </tr>
+            </>
+            )
+          })}
+          </>
+          )
+        })}
+
+          </tbody>
+        </table>
+      </div>
       <div className="row py-4 border-top">
         <h4>Default Values E.g.</h4>
         <CodeBlock

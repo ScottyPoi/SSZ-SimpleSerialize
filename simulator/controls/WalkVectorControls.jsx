@@ -135,16 +135,6 @@ export default function WalkVectorControls(props) {
     <>
 
       <div className="row">
-        <WalkDisplayVector
-          serialized={serialized}
-          values={values}
-          length={length}
-          size={size}
-        >
-          {props.children}
-        </WalkDisplayVector>
-      </div>
-      <div className="row">
         <div className="col">
           <select
             className="form-select"
@@ -181,6 +171,16 @@ export default function WalkVectorControls(props) {
           <h5 className='text-center' style={{ color: "black" }}>
             {`Vector<${elementType}, ${length}>`}
           </h5>
+      </div>
+      <div className="row">
+        <WalkDisplayVector
+          serialized={serialized}
+          values={values}
+          length={length}
+          size={size}
+        >
+          {props.children}
+        </WalkDisplayVector>
       </div>
     </>
   );

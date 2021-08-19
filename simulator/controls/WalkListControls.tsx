@@ -200,17 +200,6 @@ export default function WalkListControls(props) {
 
   return (
     <>
-      <div className="row">
-        <WalkDisplayList
-          serialized={serialized}
-          values={values}
-          length={limit}
-          variable={length}
-          size={size}
-        >
-          {props.children}
-        </WalkDisplayList>
-      </div>
       <div className="row justify-content-center">
         <div className="col-3 px-3">
           <select
@@ -264,6 +253,17 @@ export default function WalkListControls(props) {
       <div className="row"></div>
       <div className="row justify-content-center">
         <h4 className="text-center">{listLabel()}</h4>
+      </div>
+      <div className="row">
+        <WalkDisplayList
+          serialized={serialized}
+          values={values}
+          length={limit}
+          variable={length}
+          size={size}
+        >
+          {props.children}
+        </WalkDisplayList>
       </div>
     </>
   );
