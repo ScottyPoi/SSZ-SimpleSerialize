@@ -16,9 +16,9 @@ export default function FullOverview(props) {
   const [text, setText] = useState(props.text[0].data);
 
   return (
-    <div className="container">
-      <div className="row">
-        <ul className="nav nav-tabs">
+    <div className="container position-relative">
+      <div className="row position-fixed mt-5 fixed-top">
+        <ul className="nav bg-light nav-tabs">
           {props.text.map((text, idx) => {
             return (
               <li className={`nav-item `} key={idx}>
@@ -33,10 +33,11 @@ export default function FullOverview(props) {
             );
           })}
         </ul>
-        <div className="row pt-4">
-          <div className="col">
-            <OverviewVisual topic={section} text={text} />
-          </div>
+      </div>
+
+      <div className="row mt-4">
+        <div className="col">
+          <OverviewVisual topic={section} text={text} />
         </div>
       </div>
     </div>
