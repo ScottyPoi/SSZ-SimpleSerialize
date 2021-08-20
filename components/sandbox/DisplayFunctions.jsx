@@ -1,35 +1,34 @@
 import { CopyBlock, monoBlue } from "react-code-blocks";
 import { useState, useEffect } from "react";
-import TopBar from "./Components/TopBar";
 
-import * as helpers from "./components";
+import { functionsList } from "./AllFunctions";
 
 export default function DisplayFunctions() {
   const [language, changeLanguage] = useState("python");
-  const [funct, changeFunct] = useState(helpers.getpoweroftwoceil);
+  const [funct, changeFunct] = useState(functionsList.getpoweroftwoceil);
   const [demoLanguage, changeDemoLanguage] = useState(
-    helpers.getpoweroftwoceil["python"]
+    functionsList.getpoweroftwoceil.python
   );
   const [lineNumbers, toggleLineNumbers] = useState(true);
-  const [helpies, setHelpies] = useState(helpers);
+  const [helpies, setHelpies] = useState(functionsList);
   const [funlabel, setfunlabel] = useState(helpies[funct]);
 
-  const theme = monoBlue
+  const theme = monoBlue;
 
   useEffect(() => {
     changeDemoLanguage(funct["python"]);
   }, [funct]);
 
   function toggleFunction(event) {
-    changeFunct(helpers[event]);
-    changeDemoLanguage(helpers[event]["python"]);
+    changeFunct(functionsList[event]);
+    changeDemoLanguage(functionsList[event]["python"]);
   }
 
-  console.log(helpers);
-  console.log(typeof helpers);
-  console.log(Object.keys(helpers));
+  console.log(functionsList);
+  console.log(typeof functionsList);
+  console.log(Object.keys(functionsList));
   console.log(Object.keys(funct));
-  console.log(typeof Object.keys(helpers)[3]);
+  console.log(typeof Object.keys(functionsList)[3]);
   console.log(typeof Object.keys(funct)[1]);
 
   function handleLangChange(lang) {
@@ -41,17 +40,23 @@ export default function DisplayFunctions() {
     <div className="row">
       <div className="col-3">
         {" "}
-        <div className='btn-group-vertical'>
-        {Object.keys(helpies).map((func, idx) => {
-          return (
-              <button type="button"  onClick={() => toggleFunction(func)} className='btn border btn-light'>{func}</button>
-              );
-            })}
-            </div>
+        <div className="btn-group-vertical">
+          {Object.keys(helpies).map((func, idx) => {
+            return (
+              <button
+                type="button"
+                onClick={() => toggleFunction(func)}
+                className="btn border btn-light"
+              >
+                {func}
+              </button>
+            );
+          })}
+        </div>
       </div>
       <div className="col-9">
-        <h5>{}</h5>
-        <CopyBlock
+      <div className='container'>
+          <h4>python</h4>        <CopyBlock
           language={language}
           text={demoLanguage}
           showLineNumbers={false}
@@ -59,6 +64,22 @@ export default function DisplayFunctions() {
           wrapLines={true}
           codeBlock
         />
+        </div>
+        {(funct.javascript != undefined) ? (
+          <div className='container'>
+          <h4>javascript</h4>
+          <CopyBlock
+            language={language}
+            text={funct.javascript}
+            showLineNumbers={false}
+            theme={theme}
+            wrapLines={true}
+            codeBlock
+          />
+          </div>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   );
