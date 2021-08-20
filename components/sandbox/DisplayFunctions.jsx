@@ -1,4 +1,4 @@
-import { CopyBlock, dracula, github } from "react-code-blocks";
+import { CopyBlock, monoBlue } from "react-code-blocks";
 import { useState, useEffect } from "react";
 import TopBar from "./Components/TopBar";
 
@@ -13,6 +13,8 @@ export default function DisplayFunctions() {
   const [lineNumbers, toggleLineNumbers] = useState(true);
   const [helpies, setHelpies] = useState(helpers);
   const [funlabel, setfunlabel] = useState(helpies[funct]);
+
+  const theme = monoBlue
 
   useEffect(() => {
     changeDemoLanguage(funct["python"]);
@@ -36,8 +38,8 @@ export default function DisplayFunctions() {
   }
 
   return (
-    <div className="row row-cols-2">
-      <div className="col">
+    <div className="row">
+      <div className="col-3">
         {" "}
         <div className='btn-group-vertical'>
         {Object.keys(helpies).map((func, idx) => {
@@ -47,13 +49,13 @@ export default function DisplayFunctions() {
             })}
             </div>
       </div>
-      <div className="col border">
+      <div className="col-9">
         <h5>{}</h5>
         <CopyBlock
           language={language}
           text={demoLanguage}
           showLineNumbers={false}
-          theme={github}
+          theme={theme}
           wrapLines={true}
           codeBlock
         />
