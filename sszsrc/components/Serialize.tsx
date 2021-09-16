@@ -1,5 +1,5 @@
-import * as React from "react";
-import {Type} from "@chainsafe/ssz";
+import * as React from 'react';
+import {Type} from '@chainsafe/ssz'
 import Output from "./Output";
 import Input from "./Input";
 import LoadingOverlay from "react-loading-overlay-ts";
