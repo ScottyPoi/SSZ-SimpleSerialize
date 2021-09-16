@@ -215,12 +215,12 @@ class InputMod<T> extends React.Component<Props<T>, State> {
     7: "xxx-large",
   };
 
-  areSame(list0, list1, list2, idx, downOne) {
-    const keys1 = Object.keys(list1);
-    const keys2 = Object.keys(list2);
-    return keys1[0] == keys2[0] ? (<div id={`${list0[keys1[0]]}`} className='row p-0' key={idx}>{this.newSubTree(list0[keys1[0]], downOne)}</div>)
-    : `${keys1} and ${keys2}`
-  }
+  // areSame(list0, list1, list2, idx, downOne) {
+  //   const keys1 = Object.keys(list1);
+  //   const keys2 = Object.keys(list2);
+  //   return keys1[0] == keys2[0] ? (<div id={`${list0[keys1[0]]}`} className='row p-0' key={idx}>{this.newSubTree(list0[keys1[0]], downOne)}</div>)
+  //   : `${keys1} and ${keys2}`
+  // }
 
   // noDups(obj) {
   //   let keys = Object.keys(obj);
@@ -239,7 +239,7 @@ class InputMod<T> extends React.Component<Props<T>, State> {
   newSubTree(list, level) {
     const _level = level;
     const downOne = level - 1;
-    const keys = Object.keys(list)
+    const keys = Object.keys(list);
     const uniqueKeys = keys;
 
     console.log(
@@ -253,12 +253,26 @@ class InputMod<T> extends React.Component<Props<T>, State> {
       uniqueKeys.length
     } level: ${level}`);
 
-    return keys[0] == "0" ? (
-      keys.length >= 2 ? (this.areSame(list[uniqueKeys[0]], list[uniqueKeys[2]], list, 765, downOne)) :
-(      uniqueKeys.map((l, idx) => {
-        return (<div id={`${Object.keys(list[l])}`} className='row p-0' key={idx}>{this.newSubTree(list[l], downOne)}</div>)
-      }))
-    ) : (
+    return keys[0] == "0" ? 
+      keys.length >= 2 ? 
+      //   this.areSame(
+      //     list[uniqueKeys[0]],
+      //     list[uniqueKeys[2]],
+      //     list,
+      //     765,
+      //     downOne
+      //   )
+      "AAAAAA"
+       : (
+        uniqueKeys.map((l, idx) => {
+          return (
+            <div id={`${Object.keys(list[l])}`} className="row p-0" key={idx}>
+              {this.newSubTree(list[l], downOne)}
+            </div>
+          );
+        })
+      )
+     : (
       <>
         {uniqueKeys.map((l, idx) => {
           console.log(`woodley: ${Object.keys(l)} -- $${idx}`);

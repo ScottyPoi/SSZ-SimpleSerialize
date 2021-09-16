@@ -46,11 +46,11 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </Head>
-      <div className="container">
-        <div className="row border fixed-top">
+      <div className="container m-0 p-0">
+        <div className="row border px-4 fixed-top">
           <TopHeader {...MainPage.args} />
         </div>
-        <div className="row" style={Z}>
+        <div className="row p-0" style={Z}>
           {children}
         </div>
         <script

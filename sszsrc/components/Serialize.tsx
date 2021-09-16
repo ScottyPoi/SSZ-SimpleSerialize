@@ -22,6 +22,7 @@ type State<T> = {
   deserialized: string | undefined;
   showOverlay: boolean;
   overlayText: string;
+  outputString: string;
 };
 
 export default class Serialize<T> extends React.Component<Props, State<T>> {
@@ -60,13 +61,14 @@ export default class Serialize<T> extends React.Component<Props, State<T>> {
   //   await Thread.terminate(this.serializationWorkerThread as ModuleThread<SszWorker>);
   // }
 
-  async process<T>(forkName: ForkName, name: string, input: T, type: Type<T>): Promise<void> {
+  async process<T>(forkName: ForkName, name: string, input: T, type: Type<T>, outputString: string): Promise<void> {
     let error;
     this.setOverlay(true, this.props.serializeModeOn ? "Serializing..." : "Deserializing...");
     const {serialized, root} = Serial(type, input)
     this.setState({
       hashTreeRoot: root,
-      serialized: serialized
+      serialized: serialized,
+      outputString: outputString
     });
     this.setOverlay(false);
 
@@ -110,6 +112,7 @@ export default class Serialize<T> extends React.Component<Props, State<T>> {
                 error={error}
                 sszType={sszType}
                 sszTypeName={this.state.name}
+                outputString={this.state.outputString}
               />
             </div>
           </div>

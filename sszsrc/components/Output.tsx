@@ -3,10 +3,12 @@
 import * as React from "react";
 import NamedOutput from "./display/NamedOutput";
 import ErrorBox from "./display/ErrorBox";
-import {saveAs} from "file-saver"
-import {serializeOutputTypes, deserializeOutputTypes} from "../util/output_types";
-import {Type} from "@chainsafe/ssz";
-
+import { saveAs } from "file-saver";
+import {
+  serializeOutputTypes,
+  deserializeOutputTypes,
+} from "../util/output_types";
+import { Type } from "@chainsafe/ssz";
 
 type Props<T> = {
   error: string | undefined;
@@ -16,6 +18,7 @@ type Props<T> = {
   deserialized: T;
   sszType: Type<T>;
   sszTypeName: string;
+  outputString: string;
 };
 
 type State = {
@@ -24,7 +27,6 @@ type State = {
 };
 
 export default class Output<T> extends React.Component<Props<T>, State> {
-
   constructor(props: Props<T>) {
     super(props);
     this.state = {
@@ -34,11 +36,11 @@ export default class Output<T> extends React.Component<Props<T>, State> {
   }
 
   static getDerivedStateFromProps<T>(nextProps: Props<T>): object {
-    return {showError: !!nextProps.error};
+    return { showError: !!nextProps.error };
   }
 
   componentDidUpdate(prevProps: { serializeModeOn: boolean }): void {
-    if(prevProps.serializeModeOn !== this.props.serializeModeOn) {
+    if (prevProps.serializeModeOn !== this.props.serializeModeOn) {
       if (!this.props.serializeModeOn) {
         this.setOutputType("yaml");
       } else {
@@ -48,11 +50,11 @@ export default class Output<T> extends React.Component<Props<T>, State> {
   }
 
   hideError(): void {
-    this.setState({showError: false});
+    this.setState({ showError: false });
   }
 
   setOutputType(outputType: string): void {
-    this.setState({outputType: outputType});
+    this.setState({ outputType: outputType });
   }
 
   downloadFile(contents: Uint8Array | string, type: string): void {
@@ -60,77 +62,115 @@ export default class Output<T> extends React.Component<Props<T>, State> {
     saveAs(fileContents, this.props.sszTypeName + "." + type);
   }
 
+  validate(str1, str2) {
+    return str1 == `0x${str2}` ? "true" : "false";
+  }
+
   render(): JSX.Element {
-    const {error, serialized, deserialized, hashTreeRoot, serializeModeOn, sszType} = this.props;
-    const {showError, outputType} = this.state;
+    const {
+      error,
+      serialized,
+      deserialized,
+      hashTreeRoot,
+      serializeModeOn,
+      sszType,
+    } = this.props;
+    const { showError, outputType } = this.state;
 
     let serializedStr, hashTreeRootStr;
     let deserializedStr = "";
     if (serializeModeOn) {
       const serializedOutput = serializeOutputTypes[outputType];
-      serializedStr = (serialized && serializedOutput) ? serializedOutput.dump(serialized) : "";
-      hashTreeRootStr = (hashTreeRoot && serializedOutput) ? serializedOutput.dump(hashTreeRoot) : "";
+      serializedStr =
+        serialized && serializedOutput ? serializedOutput.dump(serialized) : "";
+      hashTreeRootStr =
+        hashTreeRoot && serializedOutput
+          ? serializedOutput.dump(hashTreeRoot)
+          : "";
     } else {
       const deserializedOuput = deserializeOutputTypes[outputType];
-      deserializedStr = ((deserialized !== undefined) && deserializedOuput) ? 
-        deserializedOuput.dump(deserialized, sszType)
-        : "";
+      deserializedStr =
+        deserialized !== undefined && deserializedOuput
+          ? deserializedOuput.dump(deserialized, sszType)
+          : "";
     }
 
-    return (<div className='container'>
-      <h3 className='row justify-content-center border-bottom'>Output</h3>
-      {
-        showError
-          ? <ErrorBox error={error} hideError={this.hideError.bind(this)}/>
-          :
+    return (
+      <div className="container">
+        <h3 className="row justify-content-center border-bottom">Output</h3>
+        {showError ? (
+          <ErrorBox error={error} hideError={this.hideError.bind(this)} />
+        ) : (
           <>
-            <div className='row py-3'>
-             <div className='form'>
-                  <label for='output type'>
-                    Output Type
-                  </label>
-                  <select
- className='form-select'
- id='output type'
- aria-label='select output type'
- value={outputType}
-                      onChange={(e) => this.setOutputType(e.target.value)}>
-                      {
-                        Object.keys(serializeModeOn ? serializeOutputTypes : deserializeOutputTypes).map(
-                          (name) => <option key={name} value={name}>{name}</option>)
-                      }
-                    </select>
-                </div> 
-                </div>
-            <div className='row'>
-              {serializeModeOn ?
+            <div className="row py-3">
+              <div className="form">
+                <label for="output type">Output Type</label>
+                <select
+                  className="form-select"
+                  id="output type"
+                  aria-label="select output type"
+                  value={outputType}
+                  onChange={(e) => this.setOutputType(e.target.value)}
+                >
+                  {Object.keys(
+                    serializeModeOn
+                      ? serializeOutputTypes
+                      : deserializeOutputTypes
+                  ).map((name) => (
+                    <option key={name} value={name}>
+                      {name}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            </div>
+            <div className="row">
+              {serializeModeOn ? (
                 <>
-                  <NamedOutput name="HashTreeRoot" value={hashTreeRootStr} textarea={false} />
-                  <NamedOutput name="Serialized" value={serializedStr} textarea />
+                  <NamedOutput
+                    name="HashTreeRoot"
+                    value={hashTreeRootStr}
+                    textarea={false}
+                  />
+                  <NamedOutput
+                    name="Serialized"
+                    value={serializedStr}
+                    textarea
+                  />
                   <button
                     disabled={!this.props.serialized}
-                    onClick={() => this.downloadFile(this.props.serialized, "ssz")}
-                  >{"Download data as .ssz file"}</button>
+                    onClick={() =>
+                      this.downloadFile(this.props.serialized, "ssz")
+                    }
+                  >
+                    {"Download data as .ssz file"}
+                  </button>
                 </>
-                :
+              ) : (
                 <>
-                  <textarea className='form-control'
+                  <textarea
+                    className="form-control"
                     rows={8}
                     value={deserializedStr}
                     readOnly={true}
                   />
-                          <button
-                            disabled={!deserializedStr}
-                            onClick={() => this.downloadFile(deserializedStr, this.state.outputType)}
-                            >{"Download data as ." + this.state.outputType + " file"}</button>
+                  <button
+                    disabled={!deserializedStr}
+                    onClick={() =>
+                      this.downloadFile(deserializedStr, this.state.outputType)
+                    }
+                  >
+                    {"Download data as ." + this.state.outputType + " file"}
+                  </button>
                 </>
-              }
+              )}
             </div>
-            <div className='row'>
-              
+            <div className="row">
+              <h5>{this.validate(serializedStr, this.props.outputString)}</h5>
             </div>
-      </>
-      }
-    </div>);
+          </>
+        )}
+      </div>
+    );
   }
 }
