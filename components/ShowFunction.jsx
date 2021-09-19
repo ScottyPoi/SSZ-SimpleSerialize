@@ -8,7 +8,7 @@ export default function ShowFunction(props) {
     <div className="container">
       <CopyBlock
         language={"typescript"}
-        text={ssz[func].toString()}
+        text={ssz[func] != "[object Object]" ? ssz[func] : `const TreeProxyHandler: ProxyHandler<TreeValue<CompositeValue>> = { \n  ${Object.values(ssz[func]).toString()} \n}`}
         showLineNumbers={false}
         theme={monoBlue}
         wrapLines={true}

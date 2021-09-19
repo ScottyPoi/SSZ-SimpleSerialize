@@ -1,7 +1,7 @@
 import * as ssz from "@chainsafe/ssz";
 import { useState } from "react";
 import { CopyBlock, monoBlue } from "react-code-blocks";
-
+import TypeClasses from "./TypeClasses";
 import { ForkName, typeNames, forks } from "../sszsrc/util/types";
 
 const defaultFork = "altair";
@@ -12,21 +12,24 @@ const types = forks[fork];
 const names = typeNames(types);
 export default function MapMethods(props) {
   const [fun, setFun] = useState();
-  function menu(list, name) {
+  function menu(lst, name) {
+    const list = [...lst]
     return (
       <div className="col">
-        {name}
-        <ul>
+        <h3 className="text-center">{name}</h3>
+        <ul className="nav nav-pills">
           {list.map((func, idx) => {
             return (
               ssz[func] && (
-                <button
-                  type="button"
-                  className="btn "
-                  onClick={() => props.handleChange(func)}
-                >
-                  {func}
-                </button>
+                <li className="nav-item">
+                  <button
+                    type="button"
+                    className="btn btn-secondary m-1"
+                    onClick={() => props.handleChange(func)}
+                  >
+                    {func}
+                  </button>
+                </li>
               )
             );
           })}
@@ -47,14 +50,18 @@ export default function MapMethods(props) {
     .sort();
   const isFunctions = functions
     .map((func) => {
-      return new String(func).substr(0, 2) == "is" && func;
+      return (
+        new String(func).substr(0, 2) == "is" &&
+        !new String(func).includes("Type") &&
+        func
+      );
     })
     .sort();
-  const typeFunctions = functions
+  const isTypeFunctions = functions
     .map((func) => {
       return (
+        new String(func).substr(0, 2) == "is" &&
         new String(func).includes("Type") &&
-        !new String(func).includes("is") &&
         func
       );
     })
@@ -109,6 +116,8 @@ export default function MapMethods(props) {
     })
     .sort();
 
+  const typeFunctionList = ["VectorType", "ListType"];
+
   const other = Object.entries(module)
     .map(([method, object]) => {
       return [method, typeof object];
@@ -120,18 +129,34 @@ export default function MapMethods(props) {
   });
 
   return (
-    <div className="container">
-      <div className="row">
-        {menu(typeFunctions, "TYPE Classes")}
-        {menu(isFunctions, "IS Functions")}
+    <div className="d-flex flex-row p-0 m-0">
+      <div className="d-flex flex-column border border-3">
+        <h3>Type Classes:</h3>
+        <br />
+        <TypeClasses ssz={ssz} handleChange={props.handleChange} />
       </div>
-      <div className="row">
-        {menu(valueFunctions, "VALUE Classes")}
-        {menu(getFunctions, "GET Functions")}
+      <div className="d-flex flex-column m-0 border border-3">
+        <div className="d-flex flex-row mx-3">
+          {menu(typeFunctionList, "Type Functions")}
+        </div>
+        <div className="d-flex flex-row mx-3">
+          {menu(isTypeFunctions, "IsType Functions")}
+        </div>
       </div>
-      <div className="row">
-        {menu(objects, "objects")}
-        {menu(otherFunctions, "Other Functions")}
+      <div className="d-flex flex-column border border-3">
+        <div className="d-flex flex-row mx-3">{menu(objects, "Handlers")}</div>
+        <div className="d-flex flex-row mx-3">
+          {menu(getFunctions, "GET Functions")}
+        </div>
+        <div className="d-flex flex-row mx-3">
+          {menu(isFunctions, "IS Functions")}
+        </div>
+        <div className="d-flex flex-row mx-3">
+          {menu(valueFunctions, "VALUE Classes")}
+        </div>
+        <div className="d-flex flex-row mx-3">
+          {menu(otherFunctions, "Other Functions")}
+        </div>
       </div>
     </div>
   );

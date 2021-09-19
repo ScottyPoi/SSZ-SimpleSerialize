@@ -12,9 +12,7 @@ const fork = defaultFork;
 const types = forks[fork];
 const names = typeNames(types);
 
-function displayFunction(fun) {
-
-}
+function displayFunction(fun) {}
 
 function randomTypeName() {
   const i = Math.random() * names.length;
@@ -35,21 +33,25 @@ function basicInfo(typeName) {
   return infoObj;
 }
 
-
 export default function Typeinfo() {
-  const [display, setDisplay] = useState("Type")
-  return (<div className="container">
-    <div className='row'>
-      <div className='col'>
-      <MapMethods handleChange={setDisplay} />
+  const [display, setDisplay] = useState("Type");
+  return (
+    <div className="container">
+            <div className="row p-3">
+<h1 className='text-center'>SSZ in TypeScript by Chainsafe</h1>
+      </div>
+      <div className="row">
+        <div className="col-6">
+          <MapMethods handleChange={setDisplay} />
+        </div>
+
+        <div className="col-6">
+          {display}<br/>
+          <ShowFunction func={display} />
+        </div>
       </div>
     </div>
-    <div className='row'>
-      <div className='col border'>
-      <ShowFunction func={display}/>
-      </div>
-    </div>
-    </div>);
+  );
 }
 
 console.log(names);
