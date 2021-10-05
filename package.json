@@ -45,6 +45,7 @@
     "@babel/types": "^7.14.5",
     "@chainsafe/as-sha256": "^0.2.2",
     "@chainsafe/lodestar-types": "^0.26.0",
+    "@chainsafe/persistent-merkle-tree": "^0.3.7",
     "@chainsafe/ssz": "^0.8.17",
     "@emotion/core": "^11.0.0",
     "@emotion/react": "11.1.1",

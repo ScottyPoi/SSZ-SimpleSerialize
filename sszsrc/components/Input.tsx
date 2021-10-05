@@ -23,7 +23,7 @@ type Props<T> = {
   sszType: Type<T>;
   serialized: Uint8Array | undefined;
   deserialized: object;
-  alert: { error: Function };
+  // alert: { error: Function };
   setOverlay: Function;
   // worker: Worker;
 };

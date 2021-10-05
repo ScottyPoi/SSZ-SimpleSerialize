@@ -8,9 +8,8 @@ export default function FilterFunctions(module, keyword) {
     .sort();
 }
 
-const module = ssz;
-export const symbols = FilterFunctions(module, "symbol");
-export const functions = FilterFunctions(module, "function");
+export const symbols = FilterFunctions(ssz, "symbol");
+export const functions = FilterFunctions(ssz, "function");
 export const isFunctions = functions
   .map((func) => {
     return (
@@ -34,9 +33,10 @@ export const valueFunctions = functions
   .map((func) => {
     return (
       new String(func).includes("Value") &&
-      !new String(func).includes("get") &&
       !new String(func).includes("Values") &&
-      !new String(func).includes("is") &&
+      !new String(func).includes("isBackedValue") &&
+      !new String(func).includes("getTree") &&
+      !new String(func).includes("proxy") &&
       func
     );
   })
@@ -46,34 +46,31 @@ export const getFunctions = functions
     return new String(func).includes("get") && func;
   })
   .sort();
-export const otherFunctions = functions
-  .map((func) => {
-    return (
-      new String(func).includes("Values") |
-        !new String(func).includes("Value") &&
-      !new String(func).includes("is") &&
-      !new String(func).includes("Type") &&
-      !new String(func).includes("get") &&
-      func
-    );
-  })
-  .sort();
-
-export const objects = Object.entries(module)
-  .map(([method, object]) => {
-    return (
-      typeof object == "object" &&
-      !new String(method).includes("Type") &&
-      method
-    );
-  })
-  .sort();
-
-export const bigints = Object.entries(module)
+  
+  export const objects = ["TreeProxyHandler", "proxyWrapTreeValue"]
+  
+  export const bigints = Object.entries(module)
   .map(([method, object]) => {
     return typeof object == "bigint" && `${method}: ${object.toString()}`;
   })
   .sort();
 
-export const typeFunctionList = ["VectorType", "ListType"];
-
+  export const typeFunctionList = ["VectorType", "ListType"];
+  
+  
+  export const otherFunctions = functions
+    .map((func) => {
+      return (
+        !symbols.includes(func) &&
+        !valueFunctions.includes(func) &&
+        !getFunctions.includes(func) &&
+        !objects.includes(func) &&
+        !bigints.includes(func) &&
+        !typeFunctionList.includes(func) &&
+        !isTypeFunctions.includes(func) &&
+        !isFunctions.includes(func) &&
+        !func.includes("Type") &&
+        func
+      );
+    })
+    .sort();

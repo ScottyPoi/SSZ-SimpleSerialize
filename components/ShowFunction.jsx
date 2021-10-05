@@ -1,6 +1,7 @@
 import { CopyBlock, monoBlue } from "react-code-blocks";
-import * as ssz from "@chainsafe/ssz";
 export default function ShowFunction(props) {
+
+  const ssz = props.mod
 
     const func = props.func
 
@@ -8,12 +9,13 @@ export default function ShowFunction(props) {
     <div className="container">
       <CopyBlock
         language={"typescript"}
-        text={ssz[func] != "[object Object]" ? ssz[func] : `const TreeProxyHandler: ProxyHandler<TreeValue<CompositeValue>> = { \n  ${Object.values(ssz[func]).toString()} \n}`}
+        text={ssz[func] != "[object Object]" ? ssz[func] : `const ${func} = { \n  ${Object.values(ssz[func]).toString()} \n}`}
         showLineNumbers={false}
         theme={monoBlue}
         wrapLines={true}
         codeBlock
       />
+      {props.lodesReturns}
     </div>
   );
 }

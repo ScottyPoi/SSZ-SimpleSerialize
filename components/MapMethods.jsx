@@ -1,105 +1,149 @@
-import * as ssz from "@chainsafe/ssz";
-import { useState } from "react";
-import { CopyBlock, monoBlue } from "react-code-blocks";
 import TypeClasses from "./TypeClasses";
-import SSZMenu from './sszmenu'
-import { isFunctions, isTypeFunctions, valueFunctions, getFunctions, otherFunctions, objects, typeFunctionList } from "./FunctionGroups";
+import SSZMenu from "./sszmenu";
+import {
+  isFunctions,
+  isTypeFunctions,
+  valueFunctions,
+  getFunctions,
+  otherFunctions,
+  objects,
+  typeFunctionList,
+} from "./FunctionGroups";
+import classObj from "../data/ClassObj";
+import { ValueObj } from "../data/ValueObj";
+import { useEffect, useState } from "react";
+import LodesMenu from "./LodesMenu";
+import * as lodes from "@chainsafe/lodestar-types";
+import MerkleMenu from "./MerkleMenu";
+
 export default function MapMethods(props) {
-  // const module = ssz;
-  // function filterFunctions(module, keyword) {
-  //   return Object.entries(module)
-  //     .map(([method, object]) => {
-  //       return typeof object == keyword && method;
-  //     })
-  //     .sort();
-  // }
-  // const symbols = filterFunctions(module, "symbol");
-  // const functions = filterFunctions(module, "function");
-  // const isFunctions = functions
-  //   .map((func) => {
-  //     return (
-  //       new String(func).substr(0, 2) == "is" &&
-  //       !new String(func).includes("Type") &&
-  //       func
-  //     );
-  //   })
-  //   .sort();
+  const [group, setGroup] = useState("Type Classes");
+  const [subMenu, setSubMenu] = useState();
+  const [subSubMenu, setSubSubMenu] = useState(null);
+  const [subGroup, setSubGroup] = useState(null);
+  const [typeClass, setTypeClass] = useState(null)
 
-  // const isTypeFunctions = functions
-  //   .map((func) => {
-  //     return (
-  //       new String(func).substr(0, 2) == "is" &&
-  //       new String(func).includes("Type") &&
-  //       func
-  //     );
-  //   })
-  //   .sort();
-  // const valueFunctions = functions
-  //   .map((func) => {
-  //     return (
-  //       new String(func).includes("Value") &&
-  //       !new String(func).includes("get") &&
-  //       !new String(func).includes("Values") &&
-  //       !new String(func).includes("is") &&
-  //       func
-  //     );
-  //   })
-  //   .sort();
-  // const getFunctions = functions
-  //   .map((func) => {
-  //     return new String(func).includes("get") && func;
-  //   })
-  //   .sort();
-  // const otherFunctions = functions
-  //   .map((func) => {
-  //     return (
-  //       new String(func).includes("Values") |
-  //         !new String(func).includes("Value") &&
-  //       !new String(func).includes("is") &&
-  //       !new String(func).includes("Type") &&
-  //       !new String(func).includes("get") &&
-  //       func
-  //     );
-  //   })
-  //   .sort();
+  // useEffect(() => {
+  //   let newGroup = group;
+  //   newGroup != "Type Classes" && resetSubs();
+  //   newGroup != "Value Classes" && resetSubs();
+  //   return;
+  // }, [group]);
 
-  // const objects = Object.entries(module)
-  //   .map(([method, object]) => {
-  //     return (
-  //       typeof object == "object" &&
-  //       !new String(method).includes("Type") &&
-  //       method
-  //     );
-  //   })
-  //   .sort();
+  function resetSubs() {
+    setSubSubMenu(null);
+    // setSubMenu(null);
+  }
 
-  // const bigints = Object.entries(module)
-  //   .map(([method, object]) => {
-  //     return typeof object == "bigint" && `${method}: ${object.toString()}`;
-  //   })
-  //   .sort();
+  const ssz = props.ssz;
+  const pmt = props.pmt;
+  const groups = {
+    typeFuncionList: { name: "Type Functions", list: typeFunctionList },
+    isTypeFunctions: { list: isTypeFunctions, name: "IsType Functions" },
+    getFunctions: { list: getFunctions, name: "Get Functions" },
+    // valueFunctions: { list: valueFunctions, name: "Value Classes" },
+    otherFunctions: { list: otherFunctions, name: "Other Functions" },
+    objects: { list: objects, name: "Proxy" },
+    // persistantMerkleTree: {
+    //   list: Object.keys(pmt),
+    //   name: "Persistant Merkle Tree",
+    // },
+  };
 
-  // const typeFunctionList = ["VectorType", "ListType"];
 
   return (
-    <div className="d-flex flex-row p-0 m-0">
-      <div className="d-flex flex-column border border-3">
-        <div className="row">
-          <h3 className='text-center'>Type Classes:</h3>
+    <>
+      <div className="row p-1 m-1">
+        <div className="col-4">
+          <div className="row overflow-auto" style={{ height: "75%" }}>
+            <div className="list-group">
+              <h5 className="text-center list-group-item">
+                SSZ in TypeScript (@chainsafe/ssz)
+              </h5>
+              <TypeClasses
+                classObj={classObj}
+                ssz={ssz}
+                setTypeClass={setTypeClass}
+                handleChange={props.handleChange}
+                setSubMenu={setSubMenu}
+                setGroup={setGroup}
+                active={group}
+                name={"Type Classes"}
+                setSubGroup={setSubGroup}
+                setSubSubMenu={setSubSubMenu}
+                head={"Type"}
+                // functionsPage={true}
+              />
+              <TypeClasses
+                classObj={ValueObj}
+                ssz={ssz}
+                handleChange={props.handleChange}
+                setSubMenu={setSubMenu}
+                setGroup={setGroup}
+                active={group}
+                name={"Value Classes"}
+                head={"TreeValue"}
+                setSubGroup={setSubGroup}
+                setSubSubMenu={setSubSubMenu}
+                // functionsPage={true}
+              />
+
+              {Object.keys(groups).map((key) => {
+                return (
+                  <SSZMenu
+                    handleChange={props.handleChange}
+                    ssz={ssz}
+                    lst={groups[key].list}
+                    name={groups[key].name}
+                    setGroup={setGroup}
+                    setSubMenu={setSubMenu}
+                    active={group}
+                    resetSubs={resetSubs}
+                  />
+                );
+              })}
+              <h4 className="text-center list-group-item">
+                Persistent Merkle Tree (@chainsafe/persistent-merkle-tree)
+              </h4>
+              <MerkleMenu
+                handleChange={props.handleChange}
+                pmt={pmt}
+                lst={Object.keys(pmt)}
+                setSubMenu={setSubMenu}
+                setGroup={setGroup}
+                active={group}
+                resetSubs={resetSubs}
+              />
+              <h4>lodestar</h4>
+              <LodesMenu
+                handleChange={props.handleChange}
+                lodes={lodes}
+                setSubMenu={setSubMenu}
+                setSubSubMenu={setSubSubMenu}
+                setGroup={setGroup}
+                name="LodeStar Type Classes"
+                active={group}
+              />
+            </div>
+          </div>
         </div>
-          <TypeClasses ssz={ssz} handleChange={props.handleChange} />
+
+        <div className="col-8">
+        <div className="row overflow-auto">
+          {group == "Type Classes" && typeClass}
+        </div>
+          <div className="list-group">
+            {subSubMenu ? (
+              <div className="row overflow-auto" style={{height: "75%"}}>
+                <div className="col-4 p-0 vh-75">{subMenu}</div>
+                <div className="col-8 ">{subSubMenu && subSubMenu}</div>
+              </div>
+            ) : (
+              <div className="row p-0 vh-75">{subMenu}</div>
+            )}
+          </div>
+        </div>
       </div>
-      <div className="d-flex flex-column m-0 border border-3">
-        <SSZMenu handleChange={props.handleChange} ssz={ssz} lst={typeFunctionList} name="Type Functions" />
-        <SSZMenu handleChange={props.handleChange}  ssz={ssz} lst={isTypeFunctions} name="IsType Functions" />
-      </div>
-      <div className="d-flex flex-column border border-3">
-        <SSZMenu handleChange={props.handleChange}  ssz={ssz} lst={objects} name="Handlers" />
-        <SSZMenu handleChange={props.handleChange}  ssz={ssz} lst={getFunctions} name="GET Functions" />
-        <SSZMenu handleChange={props.handleChange}  ssz={ssz} lst={isFunctions} name="IS Functions" />
-        <SSZMenu handleChange={props.handleChange}  ssz={ssz} lst={valueFunctions} name="VALUE Classes" />
-        <SSZMenu handleChange={props.handleChange}  ssz={ssz} lst={otherFunctions} name="Other Functions" />
-      </div>
-    </div>
+    </>
   );
 }
