@@ -1,12 +1,12 @@
 import * as React from "react";
 
-import pkg from "../../package.json";
+import pkg from "../../../package.json";
 
 export default function Footer(): JSX.Element {
   return (
     <footer className='text-center footer pt-5'>
       <div className='content has-text-centered'>
-        Borrowed with ❤️ from{" "}
+        Powered with ❤️ by{" "}
         <a
           className='is-link has-text-danger is-family-code'
           href='https://chainsafe.io'

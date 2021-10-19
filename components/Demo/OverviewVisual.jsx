@@ -7,13 +7,18 @@ import MerkleizationVisual from "./MerkleizationVisual";
 import MerkleProofsVisual from "./MerkleProofsVisual";
 import SummariesExpansionsVisual from "./SummariesExpansionsVisual";
 import HelperFunctions from "./HelperFunctions";
-
+import OverVisual from "./overVisual";
 export default function OverviewVisual(props) {
-  const section =
-    props.topic == "Typing" ? (
+  const section =(
+
+<div className='row mt=4'>
+
+{    props.topic == "Typing" ? (
       <TypingVisual />
-    ) : props.topic == "Aliases" ? (
-      <AliasesVisual text={props.text} />
+      ) : props.topic == "Overview" ? (
+        <OverVisual text={props.text} />
+      ) : props.topic == "Aliases" ? (
+        <AliasesVisual text={props.text} />
     ) : props.topic == "Serialization" ? (
       <SerializationVisual />
     ) : props.topic == "Merkle_Trees" ? (
@@ -24,7 +29,10 @@ export default function OverviewVisual(props) {
       <HelperFunctions text={props.text} />
     ) : (
       <TypingVisual />
-    );
+    )}
+</div>
+    
+    )
 
   return section;
 }

@@ -15,14 +15,15 @@ import { useEffect, useState } from "react";
 import LodesMenu from "./LodesMenu";
 import * as lodes from "@chainsafe/lodestar-types";
 import MerkleMenu from "./MerkleMenu";
+import ProofMenu from "./proofmenu";
 
 export default function MapMethods(props) {
-  const [group, setGroup] = useState("Type Classes");
-  const [subMenu, setSubMenu] = useState();
-  const [subSubMenu, setSubSubMenu] = useState(null);
-  const [subGroup, setSubGroup] = useState(null);
-  const [typeClass, setTypeClass] = useState(null)
-
+  const group = props.group
+  const setGroup = props.setGroup
+  const setSubMenu = props.setSubMenu
+  const setSubSubMenu = props.setSubSubMenu
+  const setSubGroup=props.setSubGroup
+  const setTypeClass = props.setTypeClass
   // useEffect(() => {
   //   let newGroup = group;
   //   newGroup != "Type Classes" && resetSubs();
@@ -53,13 +54,13 @@ export default function MapMethods(props) {
 
   return (
     <>
-      <div className="row p-1 m-1">
-        <div className="col-4">
-          <div className="row overflow-auto" style={{ height: "75%" }}>
-            <div className="list-group">
-              <h5 className="text-center list-group-item">
+      <div className="d-flex flex-row">
+        <div className="d-flex flex-column">
+          <div className="d-flex flex-row overflow-auto border" >
+            <div className="list-group ">
+              <h6 className="text-center list-group-item">
                 SSZ in TypeScript (@chainsafe/ssz)
-              </h5>
+              </h6>
               <TypeClasses
                 classObj={classObj}
                 ssz={ssz}
@@ -102,9 +103,9 @@ export default function MapMethods(props) {
                   />
                 );
               })}
-              <h4 className="text-center list-group-item">
+              <h6 className="text-center list-group-item">
                 Persistent Merkle Tree (@chainsafe/persistent-merkle-tree)
-              </h4>
+              </h6>
               <MerkleMenu
                 handleChange={props.handleChange}
                 pmt={pmt}
@@ -114,7 +115,15 @@ export default function MapMethods(props) {
                 active={group}
                 resetSubs={resetSubs}
               />
-              <h4>lodestar</h4>
+              <ProofMenu
+                name={"Proof"}
+                handleChange={props.handleChange}
+                setSubMenu={setSubMenu}
+                setGroup={setGroup}
+                active={group}
+                resetSubs={resetSubs}
+              />
+              <h6>lodestar</h6>
               <LodesMenu
                 handleChange={props.handleChange}
                 lodes={lodes}
@@ -128,21 +137,7 @@ export default function MapMethods(props) {
           </div>
         </div>
 
-        <div className="col-8">
-        <div className="row overflow-auto">
-          {group == "Type Classes" && typeClass}
-        </div>
-          <div className="list-group">
-            {subSubMenu ? (
-              <div className="row overflow-auto" style={{height: "75%"}}>
-                <div className="col-4 p-0 vh-75">{subMenu}</div>
-                <div className="col-8 ">{subSubMenu && subSubMenu}</div>
-              </div>
-            ) : (
-              <div className="row p-0 vh-75">{subMenu}</div>
-            )}
-          </div>
-        </div>
+        
       </div>
     </>
   );

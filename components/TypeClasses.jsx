@@ -59,7 +59,7 @@ export default function TypeClasses(props) {
                 // onMouseUp={() => props.setTypeClass && props.setTypeClass(ssz.getTreeValueClass(new ssz[key.name](ops[key.name])) && props.setTypeClass(ssz.getTreeValueClass(new ssz[key.name](ops[key.name])).toString()))}
 
               >
-                <h5 className="text-start">{key.name}</h5>
+                <h6 className="text-start">{key.name}</h6>
               </button>
             </div>
             {Object.keys(key).includes("subs") && (
@@ -85,7 +85,7 @@ export default function TypeClasses(props) {
             id={`${classObj.name}button`}
             onClick={() => props.handleChange(props.head, ssz)}
           >
-            <h5 className="text-start">{classObj.name}</h5>
+            <h6 className="text-start">{classObj.name}</h6>
           </button>
         </div>
       </div>
@@ -108,7 +108,7 @@ export default function TypeClasses(props) {
         id={`${props.name}menu`}
         onClick={() => handleClick()}
       >
-        <h3>{props.name}</h3>
+        <h6>{props.name}</h6>
       </button>
     );
   }

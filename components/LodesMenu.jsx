@@ -25,7 +25,7 @@ export default function LodesMenu(props) {
             id={`${func}button`}
             onClick={() => handleFunctionClick(func)}
           >
-            <h5 className="text-start">{func}</h5>
+            <h6 className="text-start">{func}</h6>
           </button>
         </div>
         {Object.keys(lodes.ssz).map((k) => {
@@ -37,7 +37,7 @@ export default function LodesMenu(props) {
             id={`${func}button`}
             onClick={() => handleSubMenuClick(lodes.ssz[k])}
           >
-            <h5 className="text-start">{k}</h5>
+            <h6 className="text-start">{k}</h6>
           </button>
         </div>
 
@@ -56,7 +56,7 @@ export default function LodesMenu(props) {
         {list.map((func) => {
             return (
               <div className="row">
-      <h4 className='text-center'>{func}</h4>              
+      <h6 className='text-center'>{func}</h6>              
 </div>
           );
         })}
@@ -79,7 +79,7 @@ export default function LodesMenu(props) {
                   id={`${func}button`}
                   onClick={() => handleMenuClick(func)}
                 >
-                  <h5 className="text-start">{props.name}</h5>
+                  <h6 className="text-start">{props.name}</h6>
                 </button>
               </div>
             )

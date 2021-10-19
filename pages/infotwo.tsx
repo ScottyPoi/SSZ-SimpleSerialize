@@ -7,11 +7,10 @@ export default function infotwo(props) {
 
 
   return (
-    <div className="container">
-
-      <div className="row border">
+<div className='container'>
+  
 <Typeinfo />
-      </div>
-    </div>
+</div>
+
   );
 }

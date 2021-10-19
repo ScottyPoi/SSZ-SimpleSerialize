@@ -1,4 +1,7 @@
 import SSZMenu from "./sszmenu";
+import * as single from '@chainsafe/persistent-merkle-tree/lib/proof/single'
+import * as proof from '@chainsafe/persistent-merkle-tree/lib/proof/index'
+import * as treeOffset from '@chainsafe/persistent-merkle-tree/lib/proof/treeOffset'
 
 export default function MerkleMenu(props) {
   const list = props.lst;
@@ -53,8 +56,10 @@ export default function MerkleMenu(props) {
     "Merkle Tree Helper Functions",
   ];
 
+
+
   return (
-    <div className="container">
+    <div className="container p-0">
       {merkleTreeFunctions.map((f, idx) => {
         return (
           <SSZMenu
@@ -69,6 +74,26 @@ export default function MerkleMenu(props) {
           />
         );
       })}
+      <SSZMenu
+            lst={Object.keys(single)}
+            name={"single"}
+            handleChange={props.handleChange}
+            ssz={single}
+            setSubMenu={props.setSubMenu}
+            setGroup={props.setGroup}
+            active={props.group}
+            resetSubs={props.resetSubs}
+          />
+      <SSZMenu
+            lst={Object.keys(treeOffset)}
+            name={"treeOffset"}
+            handleChange={props.handleChange}
+            ssz={treeOffset}
+            setSubMenu={props.setSubMenu}
+            setGroup={props.setGroup}
+            active={props.group}
+            resetSubs={props.resetSubs}
+          />
     </div>
   );
 }

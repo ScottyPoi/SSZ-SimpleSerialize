@@ -50,7 +50,7 @@ export default function Layout({ children }) {
         <div className="row border px-4 fixed-top">
           <TopHeader {...MainPage.args} />
         </div>
-        <div className="row p-0" style={Z}>
+        <div className="row" style={Z}>
           {children}
         </div>
         <script
