@@ -14,7 +14,7 @@ export async function getStaticProps() {
 }
 
 const topics = {
-  // Introduction: "inro",
+Overview: "overview",
   Typing: "typo",
   Aliases: "Alio",
   Serialization: "serio",

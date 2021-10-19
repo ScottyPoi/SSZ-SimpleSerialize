@@ -19,7 +19,7 @@ const X = {
 export default function Layout({ children }) {
   console.log("twerkleizing...");
   return (
-    <div>
+    <>
       <Head>
         <meta charSet="utf-8" />
       </Head>
@@ -46,8 +46,8 @@ export default function Layout({ children }) {
           rel="stylesheet"
         />
       </Head>
-      <div className="container">
-        <div className="row border fixed-top">
+      <div className="container-fluid m-0 p-0">
+        <div className="row border px-4 fixed-top">
           <TopHeader {...MainPage.args} />
         </div>
         <div className="row" style={Z}>
@@ -59,6 +59,6 @@ export default function Layout({ children }) {
           crossOrigin="anonymous"
         ></script>
       </div>
-    </div>
+    </>
   );
 }
