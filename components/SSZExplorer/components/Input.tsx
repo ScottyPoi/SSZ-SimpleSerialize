@@ -14,9 +14,11 @@ import {
   deserializeOutputTypes,
 } from "../util/output_types";
 import NamedOutput from "./display/NamedOutput";
-import styles from "./input.module.css";
+// ts
 import { Tree } from "@chainsafe/persistent-merkle-tree";
 
+
+const styles = {boldLine: {fontWeight: "bold"}, normalLine: {fontWeight: "normal"}}
 type Props<T> = {
   onProcess: (
     forkName: ForkName,

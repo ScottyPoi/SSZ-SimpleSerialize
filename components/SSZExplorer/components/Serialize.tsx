@@ -8,7 +8,6 @@ import {
   ByteVectorType,
   ContainerType,
 } from "@chainsafe/ssz";
-import Output from "./Output";
 import Input from "./Input";
 import LoadingOverlay from "react-loading-overlay-ts";
 import BounceLoader from "react-spinners/BounceLoader";
