@@ -1,3 +1,7 @@
 [submodule "eth2.0-specs"]
 	path = eth2.0-specs
 	url = https://github.com/ethereum/eth2.0-specs
+[submodule "ssz_diy"]
+	path = ssz_diy
+	url = https://github.com/scottypoi/ssz_diy
+	branch = main
