@@ -1,6 +1,6 @@
 import React from "react";
+import HomeCard from "../components/Navigation/HomeCard";
 import HomeCards from "../components/Navigation/HomeCards";
-import Hello from "../components/Hello";
 export default function home() {
   return (
     <div className="container py-0 px-0 border-top">
@@ -23,7 +23,16 @@ export default function home() {
           Technical Specs and Resources for SSZ - SimpleSerialize
         </h4>
       </div>
-      <Hello />
+      {/* <div className="row justify-content-center">
+        <div className="col-4">
+        <HomeCard title="SSZ Browser Tool"
+        footer="Create and Test SSZ Types"
+        alt="SSZ_DIY"
+        image="./sszdiycard.png"
+        link="sszdiy"
+        />
+        </div>
+      </div> */}
       <br />
       <HomeCards />
     </div>
