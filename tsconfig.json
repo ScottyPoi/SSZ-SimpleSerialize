@@ -22,7 +22,7 @@
   "include": [
     "components",
     "pages",
-    "ssz_diy"
+    "diy"
 , "diy/components"  ],
   "exclude": [
     "node_modules"
