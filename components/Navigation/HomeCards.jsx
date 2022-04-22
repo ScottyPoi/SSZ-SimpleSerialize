@@ -12,7 +12,7 @@ const links = {
     link: "show",
   },
   SSZ_Visual_Explorer: {
-    title: "SSZ Visualizer",
+    title: "Ethereum Object Visualizer",
     footer: "Interactive Exploration of SSZ Objects",
     image: "./explorer.png",
     alt: "Explorer",
@@ -70,20 +70,49 @@ const links = {
 
 export default function HomeCards(props) {
   return (
-    <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5">
-      {Object.keys(links).map((card, idx) => {
-        const link = links[card];
-        return (
-          <HomeCard
+    // <div className="row row-cols-1 row-cols-md-2 row-cols-xl-3 g-5">
+    <div className="container">
+
+    <div className="row">
+      <div className="col-6">
+      <HomeCard title="SSZ Browser Tool"
+        footer="Create and Test SSZ Types"
+        alt="SSZ_DIY"
+        image="./sszdiycard.png"
+        link="sszdiy"
+        />
+      </div>
+      <div className="col-6">
+      <HomeCard
+            key={links.specs.idx}
+            title={links.specs.title}
+            text={links.specs.text}
+            footer={links.specs.footer}
+            image={links.specs.image}
+            link={links.specs.link}
+            />
+      </div>
+        </div>
+
+    <div className="row">
+        {Object.keys(links).map((card, idx) => {
+          const link = links[card];
+          return card !== 'specs' && (
+            <div className="col">
+
+            <HomeCard
             key={idx}
             title={link.title}
             text={link.text}
             footer={link.footer}
             image={link.image}
             link={link.link}
-          />
-        );
-      })}
+            />
+            </div>
+            );
+          })}
+
     </div>
+          </div>
   );
 }

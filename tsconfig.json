@@ -8,7 +8,7 @@
     "noEmit": true,
     "strict": true,
     "skipLibCheck": true,
-    "isolatedModules": true, 
+    "isolatedModules": true,
     "esModuleInterop": true,
     "lib": [
       "dom",
@@ -16,11 +16,14 @@
       "esnext"
     ],
     "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "incremental": true
   },
   "include": [
-    "src"
-  ],
+    "components",
+    "pages",
+    "diy"
+, "diy/components"  ],
   "exclude": [
     "node_modules"
   ]
