@@ -79,7 +79,6 @@ export default function SSZ_DIY(props: sszdiyprops) {
           setType={setType}
           setTypeName={setTypeName}
         />
-        {/* <Router> */}
           <Serialize
             userTypes={[]}
             t={type}
@@ -91,8 +90,7 @@ export default function SSZ_DIY(props: sszdiyprops) {
             SimpleSerialize={SimpleSerialize}
             showInfo={showInfo}
             setShowInfo={setShowInfo}
-          />{" "}
-        {/* </Router> */}
+          />
       </>
     )  
 }
