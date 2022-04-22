@@ -47,7 +47,7 @@ export default function Layout({ children }) {
         />
       </Head>
       <div className="container-fluid m-0 p-0">
-        <div className="row border px-4 fixed-top">
+        <div className="row border fixed-top">
           <TopHeader {...MainPage.args} />
         </div>
         <div className="row" style={Z}>

@@ -5,6 +5,11 @@
     "title": "SSZ Home Page"
   },
   {
+    "name": "SSZ Browser Tool",
+    "url": "/sszdiy",
+    "title": "SSZ in Browser"
+  },
+  {
     "name": "Specifications",
     "url": "/show",
     "title": "Documentation"
