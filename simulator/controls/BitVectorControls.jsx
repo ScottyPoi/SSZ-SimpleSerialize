@@ -29,10 +29,6 @@ export default function BitVectorControls(props) {
     return length;
   }
 
-  function NUMBER_OF_VALUES() {
-    return numChunks;
-  }
-
   function _values() {
     let numChunks = serialized.length;
     let valueChunks = [];
@@ -109,14 +105,6 @@ export default function BitVectorControls(props) {
   //   output = BitVector.serialize(vals, output);
   //   return output;
   // }
-
-  function getLength() {
-    return length;
-  }
-
-  function NUMBER_OF_VALUES() {
-    return Math.floor(getLength() / 256 + 1);
-  }
 
   return (
     <>
