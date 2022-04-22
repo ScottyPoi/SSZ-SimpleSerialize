@@ -20,10 +20,8 @@
     "incremental": true
   },
   "include": [
-    "components",
-    "pages",
-    "diy"
-, "diy/components"  ],
+    "pages/sszdiy",
+    "diy"  ],
   "exclude": [
     "node_modules"
   ]
