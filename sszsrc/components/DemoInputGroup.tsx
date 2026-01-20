@@ -4,7 +4,7 @@ import * as React from "react";
 import { Type } from "@chainsafe/ssz";
 import DemoOutput from "./DemoOutput";
 import InputHome from "./InputHome";
-import LoadingOverlay from "react-loading-overlay-ts";
+import LoadingOverlay from "@achmadk/react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import { ForkName, typeNames, forks } from "../util/types";
 import Serial from "./Serial";

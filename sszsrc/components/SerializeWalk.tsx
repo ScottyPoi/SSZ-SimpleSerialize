@@ -2,7 +2,7 @@ import * as React from "react";
 import {Type} from "@chainsafe/ssz";
 import OutputWalk from "./OutputWalk";
 import InputWalk from "./InputWalk";
-import LoadingOverlay from "react-loading-overlay-ts";
+import LoadingOverlay from "@achmadk/react-loading-overlay";
 import BounceLoader from "react-spinners/BounceLoader";
 import {ForkName} from "../util/types";
 import Serial from "./Serial";
